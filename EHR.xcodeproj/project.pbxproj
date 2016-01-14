@@ -14,6 +14,7 @@
 		BF82383B1C4730000021EFBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8238391C4730000021EFBA /* LaunchScreen.storyboard */; };
 		BF8238461C4730000021EFBA /* EHRTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8238451C4730000021EFBA /* EHRTests.swift */; };
 		BF8238511C4730000021EFBA /* EHRUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8238501C4730000021EFBA /* EHRUITests.swift */; };
+		BF82385F1C477F910021EFBA /* ehr raspberry logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BF82385E1C477F910021EFBA /* ehr raspberry logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		BF82384C1C4730000021EFBA /* EHRUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EHRUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8238501C4730000021EFBA /* EHRUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EHRUITests.swift; sourceTree = "<group>"; };
 		BF8238521C4730000021EFBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF82385E1C477F910021EFBA /* ehr raspberry logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ehr raspberry logo.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +84,9 @@
 				BF82384F1C4730000021EFBA /* EHRUITests */,
 				BF82382E1C4730000021EFBA /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		BF82382E1C4730000021EFBA /* Products */ = {
 			isa = PBXGroup;
@@ -100,6 +104,7 @@
 				BF8238301C4730000021EFBA /* AppDelegate.swift */,
 				BF8238321C4730000021EFBA /* ViewController.swift */,
 				BF8238341C4730000021EFBA /* Main.storyboard */,
+				BF82385E1C477F910021EFBA /* ehr raspberry logo.png */,
 				BF8238371C4730000021EFBA /* Assets.xcassets */,
 				BF8238391C4730000021EFBA /* LaunchScreen.storyboard */,
 				BF82383C1C4730000021EFBA /* Info.plist */,
@@ -193,6 +198,7 @@
 				TargetAttributes = {
 					BF82382C1C4730000021EFBA = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = F4TL4LM96Q;
 					};
 					BF8238401C4730000021EFBA = {
 						CreatedOnToolsVersion = 7.2;
@@ -232,6 +238,7 @@
 				BF82383B1C4730000021EFBA /* LaunchScreen.storyboard in Resources */,
 				BF8238381C4730000021EFBA /* Assets.xcassets in Resources */,
 				BF8238361C4730000021EFBA /* Main.storyboard in Resources */,
+				BF82385F1C477F910021EFBA /* ehr raspberry logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,10 +406,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = EHR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.hkust1516csefyp43.EHR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -410,10 +420,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = EHR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.hkust1516csefyp43.EHR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
