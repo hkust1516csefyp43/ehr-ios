@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,46 +18,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="EHR for One-2-One" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDd-AO-818">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="EHR for One-2-One" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDd-AO-818">
                                 <rect key="frame" x="91" y="28" width="418" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="tro-NA-4zn"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F6k-kc-Oib">
-                                <rect key="frame" x="242" y="398" width="117" height="30"/>
-                                <state key="normal" title="Consultation"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffm-y6-V0v">
-                                <rect key="frame" x="259" y="436" width="82" height="30"/>
-                                <state key="normal" title="Pharmacy"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="noW-H2-vfY">
-                                <rect key="frame" x="252" y="474" width="96" height="30"/>
-                                <state key="normal" title="Inventory"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8B5-Og-chO">
-                                <rect key="frame" x="265" y="512" width="71" height="30"/>
-                                <state key="normal" title="Statistics"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxQ-fo-pDu">
-                                <rect key="frame" x="277" y="550" width="46" height="30"/>
-                                <state key="normal" title="Admin"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zF-k5-gEu">
-                                <rect key="frame" x="277" y="360" width="46" height="30"/>
-                                <state key="normal" title="Triage"/>
-                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ehr raspberry logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="reP-L3-60d">
+                                <rect key="frame" x="0.0" y="523" width="600" height="77"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="eWM-oC-srR"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ehr raspberry logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="hT4-Re-22s">
+                                <rect key="frame" x="0.0" y="440" width="600" height="83"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="CLP-0c-Q9F"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="83" id="CxY-X7-wO1"/>
+                                    <constraint firstAttribute="height" constant="80" id="lPN-ro-hrq"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="83" id="qij-Ab-RKX"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="80" id="zwl-Wc-fho"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="CLP-0c-Q9F"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="F6k-kc-Oib" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1dp-l7-Ptl"/>
-                            <constraint firstItem="5zF-k5-gEu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AiT-Ad-bEx"/>
+                            <constraint firstItem="reP-L3-60d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="46l-Ad-Bpr"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="reP-L3-60d" secondAttribute="bottom" id="CXq-uC-bWk"/>
+                            <constraint firstItem="reP-L3-60d" firstAttribute="top" secondItem="hT4-Re-22s" secondAttribute="bottom" id="Esl-EH-NJb"/>
                             <constraint firstItem="xDd-AO-818" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Q6z-dN-Pqn"/>
-                            <constraint firstItem="kxQ-fo-pDu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Qom-UR-FRU"/>
-                            <constraint firstItem="noW-H2-vfY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qWY-DR-Kv6"/>
-                            <constraint firstItem="8B5-Og-chO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="t85-WF-Pz4"/>
-                            <constraint firstItem="ffm-y6-V0v" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="waX-Va-8GL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="reP-L3-60d" secondAttribute="trailing" id="Twr-Xs-zKk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hT4-Re-22s" secondAttribute="trailing" id="awq-Pf-KkA"/>
+                            <constraint firstItem="hT4-Re-22s" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bQY-jf-Ufr"/>
+                            <constraint firstItem="reP-L3-60d" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="gWW-hB-Kvj"/>
+                            <constraint firstItem="xDd-AO-818" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hlr-0n-lMO"/>
+                            <constraint firstItem="reP-L3-60d" firstAttribute="top" secondItem="hT4-Re-22s" secondAttribute="bottom" id="pnQ-7s-GWt"/>
+                            <constraint firstItem="hT4-Re-22s" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qxi-za-iyo"/>
+                            <constraint firstItem="xDd-AO-818" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="28" id="tkU-mk-VHV"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -65,4 +71,7 @@
             <point key="canvasLocation" x="244" y="352"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ehr raspberry logo.png" width="1024" height="1024"/>
+    </resources>
 </document>
