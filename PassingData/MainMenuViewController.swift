@@ -20,6 +20,7 @@ class MainMenuViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         NameShowingLabel.text=LabelText;
+        print(count);
     }
     
     @IBAction func BackLoginButtonOnclick(sender: AnyObject) {
@@ -37,6 +38,13 @@ class MainMenuViewController: UIViewController {
         }
     }
 
+    @IBAction func TriageButtonOnclick(sender: AnyObject) {
+        if(1==1){
+            self.performSegueWithIdentifier("MainToTriageSegue", sender: self);
+        }
+        
+
+    }
     
 //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 //        let loginViewController: LoginViewController = segue.destinationViewController as!LoginViewController;

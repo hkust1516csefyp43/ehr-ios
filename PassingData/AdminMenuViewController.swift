@@ -9,11 +9,14 @@
 import Foundation;
 import UIKit;
 
+var count = 0;
 class AdminMenuViewController : UIViewController {
-    
+
+    @IBOutlet weak var TextingLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        TextingLabel.text = String(count);
     }
 
     @IBAction func MainMenuButtonOnclick(sender: AnyObject) {
@@ -22,6 +25,10 @@ class AdminMenuViewController : UIViewController {
         }
     }
     
+    @IBAction func AddValue(sender: AnyObject) {
+        count += 1;
+        TextingLabel.text = String(count);
+    }
 //    @IBAction func ButtonOnclick (sender: UIButton!) {
 //        
 //        performSegueWithIdentifier("nextView", sender: self)

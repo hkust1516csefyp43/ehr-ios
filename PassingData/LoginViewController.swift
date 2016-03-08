@@ -5,8 +5,13 @@
 //  Created by choi chun ho,chchoiac,20124979 on 7/3/16.
 //  Copyright © 2016 John. All rights reserved.
 //
-
+import Foundation;
 import UIKit
+
+
+var patientList : [patient] = [patient]();
+//Todo: change allPatientList array to Patient object array
+var PatientName = ["Patient A","Patient B","Patient C","Patient D","Patient E"];
 
 class LoginViewController: UIViewController {
 
@@ -17,6 +22,21 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        var p1:patient = patient();
+        var p2:patient = patient();
+        var p3:patient = patient();
+        var p4:patient = patient();
+        var p5:patient = patient();
+        p1.test_setup("Albert", gender: 1, lastSeen: 1 ,dateOfBirth: 21);
+        p2.test_setup("Bob", gender: 1, lastSeen: 2 ,dateOfBirth: 22);
+        p3.test_setup("Cathy", gender: 0, lastSeen: 3 ,dateOfBirth: 23);
+        p4.test_setup("Dick", gender: 1, lastSeen: 4 ,dateOfBirth: 24);
+        p5.test_setup("Eason", gender: 1, lastSeen: 5 ,dateOfBirth: 25);
+        patientList.append(p1);
+        patientList.append(p2);
+        patientList.append(p3);
+        patientList.append(p4);
+        patientList.append(p5);
     }
 
     override func didReceiveMemoryWarning() {

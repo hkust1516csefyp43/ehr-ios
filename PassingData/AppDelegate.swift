@@ -2,6 +2,12 @@
 //  AppDelegate.swift
 //  PassingData
 //
+//I will just type here
+//ok
+//On the top you see source control
+//when you have made changes, and want to track it
+//press commit (now)
+//
 //  Created by choi chun ho,chchoiac,20124979 on 7/3/16.
 //  Copyright © 2016 John. All rights reserved.
 //
