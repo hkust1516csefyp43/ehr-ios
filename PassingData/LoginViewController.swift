@@ -27,11 +27,11 @@ class LoginViewController: UIViewController {
         var p3:patient = patient();
         var p4:patient = patient();
         var p5:patient = patient();
-        p1.test_setup("Albert", gender: 1, lastSeen: 1 ,dateOfBirth: 21);
-        p2.test_setup("Bob", gender: 1, lastSeen: 2 ,dateOfBirth: 22);
-        p3.test_setup("Cathy", gender: 0, lastSeen: 3 ,dateOfBirth: 23);
-        p4.test_setup("Dick", gender: 1, lastSeen: 4 ,dateOfBirth: 24);
-        p5.test_setup("Eason", gender: 1, lastSeen: 5 ,dateOfBirth: 25);
+        p1.test_setup("Albert", gender: "m", lastSeen: 1 ,dateOfBirth: 21);
+        p2.test_setup("Bob", gender: "m", lastSeen: 2 ,dateOfBirth: 22);
+        p3.test_setup("Cathy", gender: "f", lastSeen: 3 ,dateOfBirth: 23);
+        p4.test_setup("Dick", gender: "m", lastSeen: 4 ,dateOfBirth: 24);
+        p5.test_setup("Eason", gender: "m", lastSeen: 5 ,dateOfBirth: 25);
         patientList.append(p1);
         patientList.append(p2);
         patientList.append(p3);

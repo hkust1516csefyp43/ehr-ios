@@ -7,7 +7,7 @@
 //
 
 class patient{
-    var id: Int = -1; //start from 0;
+    var patientID: String = " "; //start from 0;
     var honorific: String = " ";
     var firstName: String = " ";
     var middleName: String = " ";
@@ -16,7 +16,7 @@ class patient{
     var phoneNumber: Int = -1;
     var address: String = " ";
     var dateOfBirth = -1; //TODO
-    var gender: Int = -1; // 1=M, 0=F, -1=undefined
+    var gender: String = " ";
     var photo: String = " ";
     var slumID: String = " ";
     var bloodType: String = " ";
@@ -25,7 +25,14 @@ class patient{
     var nextStation: Int = -1; //0=Triage, 1=Consultation, 2=Pharmacy
     var email: String = " ";
     
-    func test_setup(firstname: String, gender: Int, lastSeen: Int, dateOfBirth: Int){
+//    init(){
+//    }
+    
+//    init(JSON : AnyObject){
+//        self.patientID = JSON["patient_id"] as! String;
+//    }
+    
+    func test_setup(firstname: String, gender: String, lastSeen: Int, dateOfBirth: Int){
         self.firstName = firstname;
         self.gender = gender;
         self.lastSeen = lastSeen;

@@ -52,4 +52,10 @@ class TriageMenuViewController : UIViewController, UITableViewDataSource, UITabl
     //        let loginViewController: LoginViewController = segue.destinationViewController as!LoginViewController;
     //    }
     //    
+    @IBAction func TriageBackMainMenu(sender: AnyObject) {
+        if(1==1){
+            self.performSegueWithIdentifier("TriageToMainSegue", sender: self);
+        }
+        
+    }
 }
