@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2193D8F61C8ECA92003D5FA2 /* Object_Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2193D8F51C8ECA92003D5FA2 /* Object_Patient.swift */; };
+		219214681C96EB0300A74822 /* PendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219214671C96EB0300A74822 /* PendingViewController.swift */; };
+		2192146A1C97039800A74822 /* Visit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219214691C97039800A74822 /* Visit.swift */; };
+		2193D8F61C8ECA92003D5FA2 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2193D8F51C8ECA92003D5FA2 /* Patient.swift */; };
 		2193D8F81C8ECF7E003D5FA2 /* AdminMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2193D8F71C8ECF7E003D5FA2 /* AdminMenuViewController.swift */; };
 		2193D91A1C8F40D3003D5FA2 /* TriageMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2193D9191C8F40D3003D5FA2 /* TriageMenuViewController.swift */; };
 		2193D91C1C8F4D72003D5FA2 /* Cell_Triage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2193D91B1C8F4D72003D5FA2 /* Cell_Triage.swift */; };
@@ -17,10 +19,13 @@
 		21C017A81C8C9EA9005A5490 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21C017A71C8C9EA9005A5490 /* Assets.xcassets */; };
 		21C017AB1C8C9EA9005A5490 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21C017A91C8C9EA9005A5490 /* LaunchScreen.storyboard */; };
 		21C017B31C8CA19B005A5490 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C017B21C8CA19B005A5490 /* MainMenuViewController.swift */; };
+		E6B5158B08D7BB2720AE9511 /* Pods_PassingData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D94E32A0E1E62A0D2FB981E /* Pods_PassingData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2193D8F51C8ECA92003D5FA2 /* Object_Patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object_Patient.swift; sourceTree = "<group>"; };
+		219214671C96EB0300A74822 /* PendingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingViewController.swift; sourceTree = "<group>"; };
+		219214691C97039800A74822 /* Visit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Visit.swift; sourceTree = "<group>"; };
+		2193D8F51C8ECA92003D5FA2 /* Patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
 		2193D8F71C8ECF7E003D5FA2 /* AdminMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminMenuViewController.swift; sourceTree = "<group>"; };
 		2193D9191C8F40D3003D5FA2 /* TriageMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriageMenuViewController.swift; sourceTree = "<group>"; };
 		2193D91B1C8F4D72003D5FA2 /* Cell_Triage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell_Triage.swift; sourceTree = "<group>"; };
@@ -32,6 +37,9 @@
 		21C017AA1C8C9EA9005A5490 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		21C017AC1C8C9EA9005A5490 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21C017B21C8CA19B005A5490 /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
+		3D94E32A0E1E62A0D2FB981E /* Pods_PassingData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PassingData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84973D0D6B5CF26EF1127D1F /* Pods-PassingData.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PassingData.release.xcconfig"; path = "Pods/Target Support Files/Pods-PassingData/Pods-PassingData.release.xcconfig"; sourceTree = "<group>"; };
+		A67B441EC436824CC98D1EE1 /* Pods-PassingData.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PassingData.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PassingData/Pods-PassingData.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,17 +47,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6B5158B08D7BB2720AE9511 /* Pods_PassingData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D127783449BE3999B2B456C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3D94E32A0E1E62A0D2FB981E /* Pods_PassingData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		21C017941C8C9EA9005A5490 = {
 			isa = PBXGroup;
 			children = (
 				21C0179F1C8C9EA9005A5490 /* PassingData */,
 				21C0179E1C8C9EA9005A5490 /* Products */,
+				F4B3E8B579B70F1ADB6A981E /* Pods */,
+				1D127783449BE3999B2B456C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,16 +86,27 @@
 				21C017A01C8C9EA9005A5490 /* AppDelegate.swift */,
 				21C017A21C8C9EA9005A5490 /* LoginViewController.swift */,
 				21C017B21C8CA19B005A5490 /* MainMenuViewController.swift */,
+				219214671C96EB0300A74822 /* PendingViewController.swift */,
 				2193D9191C8F40D3003D5FA2 /* TriageMenuViewController.swift */,
-				2193D8F71C8ECF7E003D5FA2 /* AdminMenuViewController.swift */,
-				2193D8F51C8ECA92003D5FA2 /* Object_Patient.swift */,
 				2193D91B1C8F4D72003D5FA2 /* Cell_Triage.swift */,
+				2193D8F71C8ECF7E003D5FA2 /* AdminMenuViewController.swift */,
+				2193D8F51C8ECA92003D5FA2 /* Patient.swift */,
+				219214691C97039800A74822 /* Visit.swift */,
 				21C017A41C8C9EA9005A5490 /* Main.storyboard */,
 				21C017A71C8C9EA9005A5490 /* Assets.xcassets */,
 				21C017A91C8C9EA9005A5490 /* LaunchScreen.storyboard */,
 				21C017AC1C8C9EA9005A5490 /* Info.plist */,
 			);
 			path = PassingData;
+			sourceTree = "<group>";
+		};
+		F4B3E8B579B70F1ADB6A981E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A67B441EC436824CC98D1EE1 /* Pods-PassingData.debug.xcconfig */,
+				84973D0D6B5CF26EF1127D1F /* Pods-PassingData.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,9 +116,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 21C017AF1C8C9EA9005A5490 /* Build configuration list for PBXNativeTarget "PassingData" */;
 			buildPhases = (
+				5995E7C01E97397F276A30E9 /* Check Pods Manifest.lock */,
 				21C017991C8C9EA9005A5490 /* Sources */,
 				21C0179A1C8C9EA9005A5490 /* Frameworks */,
 				21C0179B1C8C9EA9005A5490 /* Resources */,
+				D59E3B907E9DFD4648D58369 /* Embed Pods Frameworks */,
+				90DA03E1088C0086C0E7836C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -146,6 +179,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5995E7C01E97397F276A30E9 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		90DA03E1088C0086C0E7836C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PassingData/Pods-PassingData-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D59E3B907E9DFD4648D58369 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PassingData/Pods-PassingData-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		21C017991C8C9EA9005A5490 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -153,11 +234,13 @@
 			files = (
 				2193D8F81C8ECF7E003D5FA2 /* AdminMenuViewController.swift in Sources */,
 				2193D91A1C8F40D3003D5FA2 /* TriageMenuViewController.swift in Sources */,
-				2193D8F61C8ECA92003D5FA2 /* Object_Patient.swift in Sources */,
+				2193D8F61C8ECA92003D5FA2 /* Patient.swift in Sources */,
 				21C017A31C8C9EA9005A5490 /* LoginViewController.swift in Sources */,
 				21C017B31C8CA19B005A5490 /* MainMenuViewController.swift in Sources */,
 				2193D91C1C8F4D72003D5FA2 /* Cell_Triage.swift in Sources */,
 				21C017A11C8C9EA9005A5490 /* AppDelegate.swift in Sources */,
+				219214681C96EB0300A74822 /* PendingViewController.swift in Sources */,
+				2192146A1C97039800A74822 /* Visit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +349,7 @@
 		};
 		21C017B01C8C9EA9005A5490 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A67B441EC436824CC98D1EE1 /* Pods-PassingData.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PassingData/Info.plist;
@@ -277,6 +361,7 @@
 		};
 		21C017B11C8C9EA9005A5490 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84973D0D6B5CF26EF1127D1F /* Pods-PassingData.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PassingData/Info.plist;

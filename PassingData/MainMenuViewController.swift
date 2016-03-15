@@ -9,6 +9,7 @@
 import Foundation;
 import UIKit;
 
+
 class MainMenuViewController: UIViewController {
     @IBOutlet weak var NameShowingLabel: UILabel!
     @IBOutlet weak var BackButton: UIButton!
@@ -20,7 +21,6 @@ class MainMenuViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         NameShowingLabel.text=LabelText;
-        print(count);
     }
     
     @IBAction func BackLoginButtonOnclick(sender: AnyObject) {
@@ -40,8 +40,12 @@ class MainMenuViewController: UIViewController {
 
     @IBAction func TriageButtonOnclick(sender: AnyObject) {
         if(1==1){
-            self.performSegueWithIdentifier("MainToTriageSegue", sender: self);
+//            self.performSegueWithIdentifier("MainToTriageSegue", sender: self);
+            next_stage = "2";
+            signal = 1;
+            self.performSegueWithIdentifier("MainToPendingSegue", sender: self);
         }
+        
         
 
     }

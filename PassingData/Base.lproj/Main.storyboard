@@ -182,7 +182,7 @@
                         <outlet property="NameShowingLabel" destination="NRs-8t-3WE" id="evA-RS-yuh"/>
                         <segue destination="i4d-SW-hEl" kind="show" identifier="MainMenuToAdminSegue" id="rUV-6q-Knx"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="MainMenuViewToLoginViewSegue" id="VSz-1U-b9Q"/>
-                        <segue destination="faa-r0-RHr" kind="show" identifier="MainToTriageSegue" id="M9x-lK-phz"/>
+                        <segue destination="ogw-qU-Pa7" kind="show" identifier="MainToPendingSegue" id="JLG-bV-YG7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4wn-xD-iqt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -261,25 +261,49 @@
                                     <action selector="TriageBackMainMenu:" destination="faa-r0-RHr" eventType="touchUpInside" id="Vvq-G5-Hq3"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mdc-cF-eq1">
+                                <rect key="frame" x="20" y="90" width="280" height="30"/>
+                                <state key="normal" title="Finished Button"/>
+                                <connections>
+                                    <action selector="FinishedButtonOnpress:" destination="faa-r0-RHr" eventType="touchUpInside" id="kvM-yj-F3d"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWL-6D-RpA">
+                                <rect key="frame" x="300" y="90" width="280" height="30"/>
+                                <state key="normal" title="IN THIS SLUM"/>
+                                <state key="highlighted" title="IN THIS SLUM"/>
+                                <connections>
+                                    <action selector="InThisSlumOnpress:" destination="faa-r0-RHr" eventType="touchUpInside" id="4Rk-eH-jpQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="owh-OW-BeM" secondAttribute="trailing" id="96g-KU-YZq"/>
+                            <constraint firstItem="mdc-cF-eq1" firstAttribute="leading" secondItem="rW2-Yt-QXS" secondAttribute="leadingMargin" id="DkW-G3-NHY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qWL-6D-RpA" secondAttribute="trailing" id="HTf-XS-bD9"/>
                             <constraint firstItem="XhK-7u-0LU" firstAttribute="top" secondItem="rW2-Yt-QXS" secondAttribute="top" constant="20" id="HhD-1l-kbh"/>
+                            <constraint firstItem="qWL-6D-RpA" firstAttribute="leading" secondItem="mdc-cF-eq1" secondAttribute="trailing" id="RAA-gf-gvO"/>
+                            <constraint firstItem="qWL-6D-RpA" firstAttribute="width" secondItem="mdc-cF-eq1" secondAttribute="width" id="Yeq-Wh-gLJ"/>
+                            <constraint firstItem="owh-OW-BeM" firstAttribute="top" secondItem="mdc-cF-eq1" secondAttribute="bottom" id="anm-ry-00s"/>
                             <constraint firstItem="owh-OW-BeM" firstAttribute="leading" secondItem="rW2-Yt-QXS" secondAttribute="leadingMargin" id="bvL-BG-0JD"/>
                             <constraint firstItem="JJa-lk-5kC" firstAttribute="top" secondItem="owh-OW-BeM" secondAttribute="bottom" id="kvJ-c9-0dL"/>
+                            <constraint firstItem="owh-OW-BeM" firstAttribute="top" secondItem="qWL-6D-RpA" secondAttribute="bottom" id="mok-4l-Z9W"/>
                             <constraint firstItem="owh-OW-BeM" firstAttribute="top" secondItem="pbB-ug-IIl" secondAttribute="bottom" constant="100" id="nFD-F2-xOi"/>
                             <constraint firstItem="XhK-7u-0LU" firstAttribute="leading" secondItem="rW2-Yt-QXS" secondAttribute="leading" constant="10" id="qGr-Zn-PFo"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="FinishedButton" destination="mdc-cF-eq1" id="jQ6-3w-nhQ"/>
+                        <outlet property="InThisSlumButton" destination="qWL-6D-RpA" id="kFc-4r-meT"/>
                         <outlet property="TriageTableView" destination="owh-OW-BeM" id="1EU-3N-2FP"/>
                         <segue destination="ynH-Lk-F7d" kind="show" identifier="TriageToMainSegue" id="yIZ-9E-gaw"/>
+                        <segue destination="ogw-qU-Pa7" kind="show" identifier="TriageToPendingSegue" id="ITD-77-G0M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nZi-Tl-UKA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1014" y="1192"/>
+            <point key="canvasLocation" x="964" y="1241"/>
         </scene>
         <!--Admin Menu View Controller-->
         <scene sceneID="VFf-rr-zvB">
@@ -360,8 +384,51 @@
             </objects>
             <point key="canvasLocation" x="1772" y="305"/>
         </scene>
+        <!--PendingView Controller-->
+        <scene sceneID="Qoi-dM-n5V">
+            <objects>
+                <viewController id="ogw-qU-Pa7" userLabel="PendingView Controller" customClass="PendingViewController" customModule="PassingData" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GMv-Us-1QS"/>
+                        <viewControllerLayoutGuide type="bottom" id="xxa-C0-U5w"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Kgz-uE-ihh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="xie-uf-oSu">
+                                <rect key="frame" x="250" y="250" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Nh9-pU-fGf"/>
+                                    <constraint firstAttribute="width" constant="100" id="oBF-ZI-wi8"/>
+                                </constraints>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wtp-kR-Q5F">
+                                <rect key="frame" x="212" y="194" width="177" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xie-uf-oSu" firstAttribute="centerY" secondItem="Kgz-uE-ihh" secondAttribute="centerY" id="8gh-up-oCC"/>
+                            <constraint firstItem="xie-uf-oSu" firstAttribute="top" secondItem="Wtp-kR-Q5F" secondAttribute="bottom" constant="20" id="8hm-61-6gu"/>
+                            <constraint firstItem="xie-uf-oSu" firstAttribute="centerX" secondItem="Kgz-uE-ihh" secondAttribute="centerX" id="Rgx-uQ-ijW"/>
+                            <constraint firstItem="Wtp-kR-Q5F" firstAttribute="centerX" secondItem="Kgz-uE-ihh" secondAttribute="centerX" id="Xc2-ks-Rsb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="faa-r0-RHr" kind="show" identifier="PendingToTriageSegue" id="mtF-xR-gvr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZVF-C8-v1j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1747" y="1241"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="ITD-77-G0M"/>
         <segue reference="yIZ-9E-gaw"/>
     </inferredMetricsTieBreakers>
 </document>

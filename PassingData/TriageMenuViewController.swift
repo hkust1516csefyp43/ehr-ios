@@ -10,12 +10,18 @@ import Foundation
 import UIKit;
 
 class TriageMenuViewController : UIViewController, UITableViewDataSource, UITableViewDelegate {
-//    @IBOutlet weak var TriageTableView: UITableView!
+    //    @IBOutlet weak var TriageTableView: UITableView!
     @IBOutlet weak var TriageTableView: UITableView!
     
+    @IBOutlet weak var FinishedButton: UIButton!
+    
+    @IBOutlet weak var InThisSlumButton: UIButton!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad();
+        self.UIsetup();
+        signal = -1;
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -25,23 +31,23 @@ class TriageMenuViewController : UIViewController, UITableViewDataSource, UITabl
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell=self.TriageTableView.dequeueReusableCellWithIdentifier("QueueCell", forIndexPath: indexPath) as! Cell_Triage;
-//        cell.NameLabel.text=nameList[indexPath.row];
-        cell.NameLabel.text=patientList[indexPath.row].firstName;
-        var DetailInput : String = "\(patientList[indexPath.row].gender) / \(patientList[indexPath.row].lastSeen) weeks ago / \(patientList[indexPath.row].dateOfBirth)";
+        //        cell.NameLabel.text=nameList[indexPath.row];
+        cell.NameLabel.text=patientList[indexPath.row].first_name;
+        var DetailInput : String = "\(patientList[indexPath.row].gender_id) / ? weeks ago / \(patientList[indexPath.row].birth_date)-\(patientList[indexPath.row].birth_month)-\(patientList[indexPath.row].birth_year)";
         cell.DetailLabel.text=DetailInput;
         
         return cell;
     }
     //onclick action to view which one is pressing
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        //CODE TO BE RUN ON CELL TOUCH
-//        NameArray.removeAtIndex(indexPath.row);
-//        Age.removeAtIndex(indexPath.row);
-//        self.TableView.reloadData();
-//        
-//    }
-
-
+    //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    //        //CODE TO BE RUN ON CELL TOUCH
+    //        NameArray.removeAtIndex(indexPath.row);
+    //        Age.removeAtIndex(indexPath.row);
+    //        self.TableView.reloadData();
+    //
+    //    }
+    
+    
     //    @IBAction func ButtonOnclick (sender: UIButton!) {
     //
     //        performSegueWithIdentifier("nextView", sender: self)
@@ -51,7 +57,35 @@ class TriageMenuViewController : UIViewController, UITableViewDataSource, UITabl
     //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     //        let loginViewController: LoginViewController = segue.destinationViewController as!LoginViewController;
     //    }
-    //    
+    //
+    func UIsetup(){
+        if(signal==1){
+            FinishedButton.backgroundColor = UIColor.whiteColor();
+            InThisSlumButton.backgroundColor = UIColor.blueColor();
+            InThisSlumButton.titleLabel?.font = UIFont(name:"HelveticaNeue-Bold", size: 15.0)
+            InThisSlumButton.enabled = false;
+        }
+        else if(signal==2){
+            FinishedButton.backgroundColor = UIColor.blueColor();
+            InThisSlumButton.backgroundColor = UIColor.whiteColor();
+            FinishedButton.titleLabel?.font = UIFont(name:"HelveticaNeue-Bold", size: 15.0)
+            FinishedButton.enabled = false;
+        }
+    }
+    
+    @IBAction func FinishedButtonOnpress(sender: AnyObject) {
+        //        InThisSlumButton.titleLabel?.textColor=UIColor.blueColor();
+        //        FinishedButton.titleLabel?.textColor=UIColor.whiteColor();
+        signal=2;
+        self.performSegueWithIdentifier("TriageToPendingSegue", sender: self);
+    }
+    @IBAction func InThisSlumOnpress(sender: AnyObject) {
+        //        InThisSlumButton.titleLabel?.textColor=UIColor.whiteColor();
+        //        FinishedButton.titleLabel?.textColor=UIColor.blueColor();
+        signal=1;
+        self.performSegueWithIdentifier("TriageToPendingSegue", sender: self);
+    }
+    
     @IBAction func TriageBackMainMenu(sender: AnyObject) {
         if(1==1){
             self.performSegueWithIdentifier("TriageToMainSegue", sender: self);
