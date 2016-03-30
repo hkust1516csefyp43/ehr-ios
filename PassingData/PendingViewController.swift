@@ -18,7 +18,7 @@ class PendingViewController : UIViewController {
         patientList.removeAll();
         // Do any additional setup after loading the view, typically from a nib.
         if(signal == 1){   //get all patients in this slum
-            var URL: String = "http://ehr-testing.herokuapp.com/v2/patient/?token=\(token)&clinic_id=\(this_clinic_id)";
+            var URL: String = "http://ehr-testing.herokuapp.com/v2/patients/?token=\(token)&clinic_id=\(this_clinic_id)";
             print("signal: \(signal) \n url: \(URL)");
             Alamofire.request(.GET, URL).responseJSON { (Response) -> Void in
                 if let JSON = Response.result.value{

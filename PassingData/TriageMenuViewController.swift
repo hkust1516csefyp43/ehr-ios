@@ -17,6 +17,8 @@ class TriageMenuViewController : UIViewController, UITableViewDataSource, UITabl
     
     @IBOutlet weak var InThisSlumButton: UIButton!
     
+    @IBOutlet weak var AddButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad();
         self.UIsetup();
@@ -38,14 +40,12 @@ class TriageMenuViewController : UIViewController, UITableViewDataSource, UITabl
         
         return cell;
     }
-    //onclick action to view which one is pressing
-    //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    //        //CODE TO BE RUN ON CELL TOUCH
-    //        NameArray.removeAtIndex(indexPath.row);
-    //        Age.removeAtIndex(indexPath.row);
-    //        self.TableView.reloadData();
-    //
-    //    }
+    //Onclick Cell Action
+        func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+            //CODE TO BE RUN ON CELL TOUCH
+            currentPatient.clonePatient(patientList[indexPath.row]);
+            self.performSegueWithIdentifier("TriageToPatientDetailSegue", sender: self);
+        }
     
     
     //    @IBAction func ButtonOnclick (sender: UIButton!) {

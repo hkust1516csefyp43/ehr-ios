@@ -276,6 +276,14 @@
                                     <action selector="InThisSlumOnpress:" destination="faa-r0-RHr" eventType="touchUpInside" id="4Rk-eH-jpQ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieZ-TO-qgX" userLabel="Add Button">
+                                <rect key="frame" x="525" y="540" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="eiw-kV-w2G"/>
+                                    <constraint firstAttribute="width" constant="50" id="goN-XG-qfU"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="add_button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -287,6 +295,8 @@
                             <constraint firstItem="qWL-6D-RpA" firstAttribute="width" secondItem="mdc-cF-eq1" secondAttribute="width" id="Yeq-Wh-gLJ"/>
                             <constraint firstItem="owh-OW-BeM" firstAttribute="top" secondItem="mdc-cF-eq1" secondAttribute="bottom" id="anm-ry-00s"/>
                             <constraint firstItem="owh-OW-BeM" firstAttribute="leading" secondItem="rW2-Yt-QXS" secondAttribute="leadingMargin" id="bvL-BG-0JD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ieZ-TO-qgX" secondAttribute="trailing" constant="5" id="esB-40-A85"/>
+                            <constraint firstItem="JJa-lk-5kC" firstAttribute="top" secondItem="ieZ-TO-qgX" secondAttribute="bottom" constant="10" id="jxr-H4-TPS"/>
                             <constraint firstItem="JJa-lk-5kC" firstAttribute="top" secondItem="owh-OW-BeM" secondAttribute="bottom" id="kvJ-c9-0dL"/>
                             <constraint firstItem="owh-OW-BeM" firstAttribute="top" secondItem="qWL-6D-RpA" secondAttribute="bottom" id="mok-4l-Z9W"/>
                             <constraint firstItem="owh-OW-BeM" firstAttribute="top" secondItem="pbB-ug-IIl" secondAttribute="bottom" constant="100" id="nFD-F2-xOi"/>
@@ -294,16 +304,94 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="AddButton" destination="ieZ-TO-qgX" id="ed3-TI-43K"/>
                         <outlet property="FinishedButton" destination="mdc-cF-eq1" id="jQ6-3w-nhQ"/>
                         <outlet property="InThisSlumButton" destination="qWL-6D-RpA" id="kFc-4r-meT"/>
                         <outlet property="TriageTableView" destination="owh-OW-BeM" id="1EU-3N-2FP"/>
                         <segue destination="ynH-Lk-F7d" kind="show" identifier="TriageToMainSegue" id="yIZ-9E-gaw"/>
                         <segue destination="ogw-qU-Pa7" kind="show" identifier="TriageToPendingSegue" id="ITD-77-G0M"/>
+                        <segue destination="kly-rr-6zh" kind="show" identifier="TriageToPatientDetailSegue" id="tMO-Ib-5II"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nZi-Tl-UKA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="964" y="1241"/>
+        </scene>
+        <!--PatientDetailViewController-->
+        <scene sceneID="5Zz-4X-KJU">
+            <objects>
+                <viewController id="kly-rr-6zh" userLabel="PatientDetailViewController" customClass="PatientDetailViewController" customModule="PassingData" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tLn-zZ-gaJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="kKY-mM-gdj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="alY-dY-crU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="002-eL-nh4" userLabel="VerticalScrollView">
+                                <rect key="frame" x="0.0" y="120" width="600" height="480"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H50-n6-ctK" userLabel="PatientImageView">
+                                        <rect key="frame" x="26" y="-48" width="19" height="16"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YmK-NG-ajz">
+                                        <rect key="frame" x="546" y="140" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXK-Ab-24A">
+                                <rect key="frame" x="10" y="20" width="43" height="30"/>
+                                <state key="normal" title="&lt;back"/>
+                                <connections>
+                                    <action selector="backButtonOnclick:" destination="kly-rr-6zh" eventType="touchUpInside" id="fMe-8r-BBZ"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u1B-xg-4FJ" userLabel="HorizontalScrollView">
+                                <rect key="frame" x="0.0" y="70" width="600" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wif-Os-GTi">
+                                        <rect key="frame" x="539" y="12" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hgw-zk-XOX">
+                                        <rect key="frame" x="23" y="8" width="555" height="30"/>
+                                        <state key="normal" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>
+                                        <connections>
+                                            <action selector="ScrollButton1OnPress:" destination="kly-rr-6zh" eventType="touchUpInside" id="c8W-4F-hiI"/>
+                                            <action selector="ScrollButton1OnRelease:" destination="kly-rr-6zh" eventType="touchUpOutside" id="gNJ-C5-px8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="vnX-Pg-Syi"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yXK-Ab-24A" firstAttribute="leading" secondItem="alY-dY-crU" secondAttribute="leading" constant="10" id="1tI-zc-aQA"/>
+                            <constraint firstItem="002-eL-nh4" firstAttribute="top" secondItem="tLn-zZ-gaJ" secondAttribute="bottom" constant="100" id="9Qn-Jz-yEn"/>
+                            <constraint firstItem="u1B-xg-4FJ" firstAttribute="leading" secondItem="alY-dY-crU" secondAttribute="leading" id="DNe-JW-mMF"/>
+                            <constraint firstItem="yXK-Ab-24A" firstAttribute="top" secondItem="alY-dY-crU" secondAttribute="top" constant="20" id="G5E-CW-2iI"/>
+                            <constraint firstItem="kKY-mM-gdj" firstAttribute="top" secondItem="002-eL-nh4" secondAttribute="bottom" id="Lwm-po-ePb"/>
+                            <constraint firstItem="002-eL-nh4" firstAttribute="top" secondItem="u1B-xg-4FJ" secondAttribute="bottom" id="U1d-7W-90d"/>
+                            <constraint firstAttribute="trailing" secondItem="u1B-xg-4FJ" secondAttribute="trailing" id="gFa-tp-1Pe"/>
+                            <constraint firstItem="002-eL-nh4" firstAttribute="leading" secondItem="alY-dY-crU" secondAttribute="leading" id="pzH-OG-hpY"/>
+                            <constraint firstAttribute="trailing" secondItem="002-eL-nh4" secondAttribute="trailing" id="v42-eH-b77"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="HorizontalScrollView" destination="u1B-xg-4FJ" id="F7m-Z7-6zx"/>
+                        <outlet property="ScrollButton1" destination="Hgw-zk-XOX" id="Mg6-lr-co2"/>
+                        <outlet property="VerticalScrollView" destination="002-eL-nh4" id="2Jx-OG-se4"/>
+                        <segue destination="ogw-qU-Pa7" kind="show" identifier="PatientDetailToPendingSegue" id="VgB-x4-Iom"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fvq-25-9bx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="990" y="2119"/>
         </scene>
         <!--Admin Menu View Controller-->
         <scene sceneID="VFf-rr-zvB">
@@ -427,8 +515,11 @@
             <point key="canvasLocation" x="1747" y="1241"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="add_button" width="256" height="256"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ITD-77-G0M"/>
         <segue reference="yIZ-9E-gaw"/>
+        <segue reference="VgB-x4-Iom"/>
     </inferredMetricsTieBreakers>
 </document>

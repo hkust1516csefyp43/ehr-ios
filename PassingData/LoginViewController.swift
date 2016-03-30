@@ -10,6 +10,7 @@ import UIKit
 
 
 var patientList : [Patient] = [Patient]();
+var currentPatient : Patient = Patient();
 var this_clinic_id : String = "3";
 var signal : Int = -1; // -1= error, 1=ThisSlumPatient, 2=Finished Slum
 var token : String = "1";

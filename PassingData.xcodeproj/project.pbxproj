@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		219214681C96EB0300A74822 /* PendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219214671C96EB0300A74822 /* PendingViewController.swift */; };
 		2192146A1C97039800A74822 /* Visit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219214691C97039800A74822 /* Visit.swift */; };
+		2192146C1C9987AA00A74822 /* PatientDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192146B1C9987AA00A74822 /* PatientDetailViewController.swift */; };
 		2193D8F61C8ECA92003D5FA2 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2193D8F51C8ECA92003D5FA2 /* Patient.swift */; };
 		2193D8F81C8ECF7E003D5FA2 /* AdminMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2193D8F71C8ECF7E003D5FA2 /* AdminMenuViewController.swift */; };
 		2193D91A1C8F40D3003D5FA2 /* TriageMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2193D9191C8F40D3003D5FA2 /* TriageMenuViewController.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		219214671C96EB0300A74822 /* PendingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingViewController.swift; sourceTree = "<group>"; };
 		219214691C97039800A74822 /* Visit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Visit.swift; sourceTree = "<group>"; };
+		2192146B1C9987AA00A74822 /* PatientDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientDetailViewController.swift; sourceTree = "<group>"; };
 		2193D8F51C8ECA92003D5FA2 /* Patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
 		2193D8F71C8ECF7E003D5FA2 /* AdminMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminMenuViewController.swift; sourceTree = "<group>"; };
 		2193D9191C8F40D3003D5FA2 /* TriageMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriageMenuViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				21C017B21C8CA19B005A5490 /* MainMenuViewController.swift */,
 				219214671C96EB0300A74822 /* PendingViewController.swift */,
 				2193D9191C8F40D3003D5FA2 /* TriageMenuViewController.swift */,
+				2192146B1C9987AA00A74822 /* PatientDetailViewController.swift */,
 				2193D91B1C8F4D72003D5FA2 /* Cell_Triage.swift */,
 				2193D8F71C8ECF7E003D5FA2 /* AdminMenuViewController.swift */,
 				2193D8F51C8ECA92003D5FA2 /* Patient.swift */,
@@ -239,6 +242,7 @@
 				21C017B31C8CA19B005A5490 /* MainMenuViewController.swift in Sources */,
 				2193D91C1C8F4D72003D5FA2 /* Cell_Triage.swift in Sources */,
 				21C017A11C8C9EA9005A5490 /* AppDelegate.swift in Sources */,
+				2192146C1C9987AA00A74822 /* PatientDetailViewController.swift in Sources */,
 				219214681C96EB0300A74822 /* PendingViewController.swift in Sources */,
 				2192146A1C97039800A74822 /* Visit.swift in Sources */,
 			);

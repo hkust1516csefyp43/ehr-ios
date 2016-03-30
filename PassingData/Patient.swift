@@ -33,5 +33,26 @@ class Patient{
     func getInformation () {
         print("\(self.patient_id)\n \(self.honorific)\n \(self.first_name) \n \(self.middle_name)\n \(self.last_name)\n \(self.address)\n \(self.email)\n \(self.birth_year)\n \(self.birth_month)\n \(self.birth_date)\n \(self.createTimeStamp)\n \(self.clinic_id)\n \(self.gender_id)\n \(self.image_id)\n \(self.blood_type_id)\n \(self.phone_number_country_code)\n \(self.phone_number)\n \(self.natvie_name)\n");
     }
+    
+    func clonePatient(target: Patient){
+        self.patient_id = target.patient_id;
+        self.honorific = target.honorific;
+        self.first_name = target.first_name
+        self.middle_name = target.middle_name;
+        self.last_name = target.last_name;
+        self.address = target.address;
+        self.email = target.email;
+        self.birth_year = target.birth_year;
+        self.birth_month = target.birth_month;
+        self.birth_date = target.birth_date;
+        self.createTimeStamp = target.createTimeStamp;
+        self.clinic_id = target.clinic_id;
+        self.gender_id = target.gender_id;
+        self.image_id  = target.image_id;
+        self.blood_type_id = target.blood_type_id;
+        self.phone_number_country_code = target.phone_number_country_code;
+        self.phone_number = target.phone_number;
+        self.natvie_name = target.natvie_name;
+    }
 }
 
