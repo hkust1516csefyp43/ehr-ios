@@ -44,7 +44,8 @@ class TriageMenuViewController : UIViewController, UITableViewDataSource, UITabl
         func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
             //CODE TO BE RUN ON CELL TOUCH
             currentPatient.clonePatient(patientList[indexPath.row]);
-            self.performSegueWithIdentifier("TriageToPatientDetailSegue", sender: self);
+//            self.performSegueWithIdentifier("TriageToPatientDetailSegue", sender: self);
+            self.performSegueWithIdentifier("TriageToPatientMenuSegue", sender: self);
         }
     
     
