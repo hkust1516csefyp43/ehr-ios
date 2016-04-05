@@ -18,6 +18,7 @@ class ChiefComplainViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         topic.lineBreakMode = NSLineBreakMode.ByWordWrapping;
+        ChiefComplain.text="hello"
     }
     
 }

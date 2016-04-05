@@ -28,6 +28,7 @@
 		215FA13C1CB17D770000B81F /* ReviewOfTheSystemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215FA13B1CB17D770000B81F /* ReviewOfTheSystemViewController.swift */; };
 		218AC4F41CB2DD1100E691EC /* Visit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218AC4F31CB2DD1100E691EC /* Visit.swift */; };
 		218AC4F61CB2E02D00E691EC /* Triage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218AC4F51CB2E02D00E691EC /* Triage.swift */; };
+		218AC5161CB398DA00E691EC /* AddVisitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218AC5151CB398DA00E691EC /* AddVisitViewController.swift */; };
 		21B7D7F91CAD95EF007CF8AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7D7F81CAD95EF007CF8AF /* AppDelegate.swift */; };
 		21B7D7FB1CAD95EF007CF8AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7D7FA1CAD95EF007CF8AF /* LoginViewController.swift */; };
 		21B7D7FE1CAD95EF007CF8AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21B7D7FC1CAD95EF007CF8AF /* Main.storyboard */; };
@@ -61,6 +62,7 @@
 		215FA13B1CB17D770000B81F /* ReviewOfTheSystemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewOfTheSystemViewController.swift; sourceTree = "<group>"; };
 		218AC4F31CB2DD1100E691EC /* Visit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Visit.swift; sourceTree = "<group>"; };
 		218AC4F51CB2E02D00E691EC /* Triage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triage.swift; sourceTree = "<group>"; };
+		218AC5151CB398DA00E691EC /* AddVisitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddVisitViewController.swift; sourceTree = "<group>"; };
 		21B7D7F51CAD95EF007CF8AF /* Easymed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Easymed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21B7D7F81CAD95EF007CF8AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21B7D7FA1CAD95EF007CF8AF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				215FA1171CAFA8A10000B81F /* TriageITSViewController.swift */,
 				21B7D80C1CAEFDE3007CF8AF /* CellL_Triage.swift */,
 				21B7D80F1CAEFE1C007CF8AF /* CellR_Triage.swift */,
+				218AC5151CB398DA00E691EC /* AddVisitViewController.swift */,
 				215FA11B1CB177930000B81F /* TriageModifyViewController.swift */,
 				215FA1251CB17A9D0000B81F /* PersonalDataViewController.swift */,
 				215FA1271CB17AB90000B81F /* VitalSignsViewController.swift */,
@@ -290,6 +293,7 @@
 				21B7D7FB1CAD95EF007CF8AF /* LoginViewController.swift in Sources */,
 				218AC4F61CB2E02D00E691EC /* Triage.swift in Sources */,
 				215FA1121CAF8DBD0000B81F /* PendingViewController.swift in Sources */,
+				218AC5161CB398DA00E691EC /* AddVisitViewController.swift in Sources */,
 				215FA1341CB17D4E0000B81F /* DrugHistoryViewController.swift in Sources */,
 				215FA11C1CB177930000B81F /* TriageModifyViewController.swift in Sources */,
 				21B7D7F91CAD95EF007CF8AF /* AppDelegate.swift in Sources */,

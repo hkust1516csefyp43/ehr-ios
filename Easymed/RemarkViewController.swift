@@ -11,10 +11,8 @@ import UIKit;
 import Alamofire;
 
 class RemarkViewController : UIViewController {
-    @IBOutlet weak var RemarkContent: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        RemarkContent.text="HELLLLLOOOOO"
     }
     
 }

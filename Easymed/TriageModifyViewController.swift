@@ -14,8 +14,18 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         //Copy currentPatient data to Temp, so all temp patient modify will save at there
-        tempPatient.clonePatient(currentPatient);
+        if(AddVisitState==0){ //new patient
         
+        }
+        else if(AddVisitState==1){ //existing patient
+//        tempPatient.clonePatient(currentPatient);
+        }
+        else if(AddVisitState==2){//edit visitng
+            
+        }
+        else{
+            print("error: Variable 'AddVisitState'")
+        }
         //Add sliding page+button
         let personaldataViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PersonalDataViewController") as! PersonalDataViewController;
         let vitalsignsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("VitalSignsViewController") as! VitalSignsViewController;
@@ -48,7 +58,11 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
     
     
     func SaveButtonOnclick(sender: UIBarButtonItem) {
-        currentPatient.Compare(tempPatient);
+        if(AddVisitState==0){
+            //call api to post new patient from "currentVisit.patient"
+            //call api to post new visit
+        }
+//        currentPatient.Compare(tempPatient);
 //        currentPatient.getInformation();
 //        tempPatient.getInformation();
     }

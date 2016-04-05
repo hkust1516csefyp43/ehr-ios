@@ -25,8 +25,7 @@ class PersonalDataViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad();
         VerticalScrollView.contentSize.height=850;
-        
-        if(TriageModifyViewControllerState==2||TriageModifyViewControllerState==1){
+            
             //step1: Set text
             LastName.text=currentPatient.last_name;
             FirstName.text=currentPatient.first_name;
@@ -53,12 +52,6 @@ class PersonalDataViewController : UIViewController {
             Birthday.text="\(currentPatient.birth_date) / \(currentPatient.birth_month) / \(currentPatient.birth_year)"
             Address.text=currentPatient.address;
             PhoneNumber.text=String(currentPatient.phone_number);
-        }
-        else if(TriageModifyViewControllerState==1){
-        }
-        else{
-            print("Signal error:'TriageModifyViewControllerState'")
-        }
     }
     
     @IBAction func LastNameOnChange(sender: UITextField) {

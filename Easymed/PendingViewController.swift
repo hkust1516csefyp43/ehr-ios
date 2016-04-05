@@ -21,7 +21,7 @@ class PendingViewController : UIViewController {
             "token": token,
         ]
         if(signal == 1){   //get all patients in this slum
-            var URL1: String = "http://ehr-testing.herokuapp.com/v2/patients/";
+            var URL1: String = "http://ehr-testing.herokuapp.com/v2/patients?clinic_id=\(this_clinic_id)&next_station=2";
             print("signal: \(signal) \n url: \(URL1)");
             Alamofire.request(.GET, URL1, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
                 if let JSON = Response.result.value{
@@ -99,7 +99,7 @@ class PendingViewController : UIViewController {
                     print("Error: Cannot get PatientList");
                 }
             }
-            var URL2: String = "http://ehr-testing.herokuapp.com/v2/patients/";
+            var URL2: String = "http://ehr-testing.herokuapp.com/v2/patients?clinic_id=\(this_clinic_id)";
             print("signal: \(signal) \n url: \(URL2)");
            Alamofire.request(.GET, URL2, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
                 if let JSON = Response.result.value{

@@ -10,9 +10,17 @@ import UIKit
 import PagingMenuController
 
 class TriageListViewController: UIViewController, PagingMenuControllerDelegate {
+    @IBOutlet weak var NavigationItem: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Handle Layout
+        NavigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Add+",
+            style: .Plain,
+            target: self,
+            action: "AddOnClick:"
+        );
         // Do any additional setup after loading the view, typically from a nib.
         
         let itsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TriageITSViewController") as! TriageITSViewController;
@@ -34,6 +42,12 @@ class TriageListViewController: UIViewController, PagingMenuControllerDelegate {
     
     func didMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController) {
         
+    }
+    func AddOnClick(sender: UIBarButtonItem){
+        if(1==1){
+            self.performSegueWithIdentifier("Triage_AddVisit", sender: self);
+        }
+        else{};
     }
 }
 

@@ -9,18 +9,19 @@
 class Triage{
     var triage_id: String = "null";
     var user_id: String = "null";
-    var systolic: Int = -1;
-    var diastolic: Int = -1;
-    var heartRate: Int = -1;
-    var weight: Int = -1;
-    var height: Int = -1;
-    var temperature: Int = -1;
-    var spo2: Int = -1;
+    var systolic: String = "null";
+    var diastolic: String = "null";
+    var heartRate: String = "null";
+    var respiratoryRate: String = "null";
+    var weight: String = "null";
+    var height: String = "null";
+    var temperature: String = "null";
+    var spo2: String = "null";
     var headCircumference: String = "null"; //TODO: what is this
     var chiefComplains: String = "null";
     var startedTimeStamp = -1;//TODO: find libarary to change it
     var endTimeStamp  = -1; //TODO: find libarary to change it
-    var editedInConsultation :Int = -1;
+    var editedInConsultation :String = "null";
     
     init(){
         
