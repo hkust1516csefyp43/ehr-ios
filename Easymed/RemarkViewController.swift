@@ -8,7 +8,6 @@
 
 import Foundation;
 import UIKit;
-import Alamofire;
 
 class RemarkViewController : UIViewController {
     override func viewDidLoad() {

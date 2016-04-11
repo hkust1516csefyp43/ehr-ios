@@ -8,17 +8,11 @@
 
 import Foundation;
 import UIKit;
-import Alamofire;
 
 class ChiefComplainViewController : UIViewController {
-    
-    @IBOutlet weak var topic: UILabel!
-    @IBOutlet weak var ChiefComplain: UITextView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        topic.lineBreakMode = NSLineBreakMode.ByWordWrapping;
-        ChiefComplain.text="hello"
     }
     
 }

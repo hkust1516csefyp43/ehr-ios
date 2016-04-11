@@ -7,10 +7,10 @@
 //
 
 class Visit{
-    var visit_id: String = "null";
+    var visit_id: String = "NULL";
     var createTimeStamp = -1; //TODO: find libarary to change it
     var tag: Int = -1;
-    var next_station: Int = 1;
+    var next_station: Int = 2;
     var patient : Patient = Patient();
     var triage : Triage = Triage();
     
@@ -21,7 +21,6 @@ class Visit{
     func getInformation () {
         print("\(self.patient.patient_id)\n");
     }
-    
     func clonePatient(target: Patient){
         self.patient.patient_id = target.patient_id;
         self.patient.honorific = target.honorific;

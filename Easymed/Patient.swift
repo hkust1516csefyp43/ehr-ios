@@ -5,60 +5,60 @@
 //  Created by choi chun ho,chchoiac,20124979 on 8/3/16.
 //  Copyright © 2016 John. All rights reserved.
 //
-
+import Alamofire;
 class Patient{
-    var patient_id: String = "null";
-    var honorific: String = "null";
-    var first_name: String = "null";
-    var middle_name: String = "null";
-    var last_name: String! = "null";
-    var address: String! = "null";
-    var email: String! = "null";
+    var patient_id: String = "NULL";
+    var honorific: String = "NULL";
+    var first_name: String = "NULL";
+    var middle_name: String = "NULL";
+    var last_name: String! = "NULL";
+    var address: String! = "NULL";
+    var email: String! = "NULL";
     var birth_year: Int = -1;
     var birth_month: Int = -1;
     var birth_date: Int = -1;
     var createTimeStamp = -1; //TODO: find libarary to change it
-    var clinic_id: String = "null";
-    var gender_id: String = "null";
-    var image_id : String = "null";
-    var blood_type_id: String! = "null";
-    var phone_number_country_code: String = "null";
-    var phone_number: String = "null";
-    var natvie_name: String! = "null";
+    var clinic_id: String = "NULL";
+    var gender_id: String = "undisclosed";
+    var image_id : String = "NULL";
+    var blood_type_id: String! = "NULL";
+    var phone_number_country_code: String = "NULL";
+    var phone_number: String = "NULL";
+    var natvie_name: String! = "NULL";
     
     init(){
         
     }
     
-//    func fixNil(){
-//        if (self.honorific==nil||self.honorific==""){
-//            self.honorific="nil";
-//        }
-//        if (self.first_name==""){
-//            self.first_name="nil";
-//        }
-//        if (self.middle_name==nil||self.middle_name==""){
-//            self.middle_name="nil";
-//        }
-//        if (self.last_name==nil||self.last_name==""){
-//            self.last_name="nil";
-//        }
-//        if (self.address==nil||self.address==""){
-//            self.address="nil";
-//        }
-//        if (self.email==nil||self.email==""){
-//            self.email="nil";
-//        }
-//        if (self.birth_year==nil){
-//            self.last_name="nil";
-//        }
-//        if (self.address==nil||self.address==""){
-//            self.address="nil";
-//        }
-//        if (self.email==nil||self.email==""){
-//            self.email="nil";
-//        }
-//    }
+    //    func fixNil(){
+    //        if (self.honorific==nil||self.honorific==""){
+    //            self.honorific="nil";
+    //        }
+    //        if (self.first_name==""){
+    //            self.first_name="nil";
+    //        }
+    //        if (self.middle_name==nil||self.middle_name==""){
+    //            self.middle_name="nil";
+    //        }
+    //        if (self.last_name==nil||self.last_name==""){
+    //            self.last_name="nil";
+    //        }
+    //        if (self.address==nil||self.address==""){
+    //            self.address="nil";
+    //        }
+    //        if (self.email==nil||self.email==""){
+    //            self.email="nil";
+    //        }
+    //        if (self.birth_year==nil){
+    //            self.last_name="nil";
+    //        }
+    //        if (self.address==nil||self.address==""){
+    //            self.address="nil";
+    //        }
+    //        if (self.email==nil||self.email==""){
+    //            self.email="nil";
+    //        }
+    //    }
     func getInformation () {
         print("\(self.patient_id)\n \(self.honorific)\n \(self.first_name) \n \(self.middle_name)\n \(self.last_name)\n \(self.address)\n \(self.email)\n \(self.birth_year)\n \(self.birth_month)\n \(self.birth_date)\n \(self.createTimeStamp)\n \(self.clinic_id)\n \(self.gender_id)\n \(self.image_id)\n \(self.blood_type_id)\n \(self.phone_number_country_code)\n \(self.phone_number)\n \(self.natvie_name)\n");
     }

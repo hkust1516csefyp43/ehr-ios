@@ -8,62 +8,120 @@
 
 import Foundation;
 import UIKit;
-import Alamofire;
 
 class VitalSignsViewController : UIViewController {
     
-    @IBOutlet weak var BloodPressure1: UITextField!
-    @IBOutlet weak var BloodPressure2: UITextField!
-    @IBOutlet weak var PulseRate: UITextField!
-    @IBOutlet weak var RespiratoryRate: UITextField!
-    @IBOutlet weak var Temperature: UITextField!
-    @IBOutlet weak var spO2: UITextField!
-    @IBOutlet weak var Weight: UITextField!
-    @IBOutlet weak var Height: UITextField!
-    @IBOutlet weak var BMI: UILabel!
-    @IBOutlet weak var LDD: UILabel!
+    @IBOutlet weak var systolic: UITextField!
+    @IBOutlet weak var diastolic: UITextField!
+    @IBOutlet weak var heartRate: UITextField!
+    @IBOutlet weak var respiratoryRate: UITextField!
+    @IBOutlet weak var temperature: UITextField!
+    @IBOutlet weak var spo2: UITextField!
+    @IBOutlet weak var weight: UITextField!
+    @IBOutlet weak var height: UITextField!
+    @IBOutlet weak var bmi: UILabel!
+    @IBOutlet weak var ldd: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        BloodPressure1.text=currentVisit.triage.systolic;
-        BloodPressure2.text=currentVisit.triage.diastolic;
-        PulseRate.text=currentVisit.triage.heartRate;
-        RespiratoryRate.text=currentVisit.triage.respiratoryRate;
-        Temperature.text=currentVisit.triage.temperature;
-        spO2.text=currentVisit.triage.spo2;
-        Weight.text=currentVisit.triage.weight;
-        Height.text=currentVisit.triage.height;
-        if(currentVisit.triage.height != "null" && currentVisit.triage.weight != "null"){
-            BMI.text=String(Int(currentVisit.triage.weight)!/(Int(currentVisit.triage.height)!*Int(currentVisit.triage.height)!));
+        if(AddVisitState==1||AddVisitState==2){
+            //        systolic.text=currentVisit.triage.systolic;
+            //        diasystolic.text=currentVisit.triage.diastolic;
+            //        heartRate.text=currentVisit.triage.heartRate;
+            //        respiratoryRate.text=currentVisit.triage.respiratoryRate;
+            //        temperature.text=currentVisit.triage.temperature;
+            //        spo2.text=currentVisit.triage.spo2;
+            //        weight.text=currentVisit.triage.weight;
+            //        height.text=currentVisit.triage.height;
+            //        if(currentVisit.triage.height != "NULL" && currentVisit.triage.weight != "NULL"){
+            //            bmi.text=String(Int(currentVisit.triage.weight)!/(Int(currentVisit.triage.height)!*Int(currentVisit.triage.height)!));
+            //        }
+            //        else{
+            //            bmi.text="Weight or Height is not input";
+            //        }
         }
-        else{
-            BMI.text="Weight or Height is not input";
+    }
+    @IBAction func systolicOnChange(sender: UITextField) {
+        let trim = systolic.text!.stringByTrimmingCharactersInSet(
+            NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        )
+        if(String!(trim)==""){
+            systolic.text="NULL";
         }
-        
+        currentVisit.triage.systolic=String!(systolic.text);
+        edit_triage=1;
     }
-    @IBAction func BloodPressure1OnChange(sender: UITextField) {
-        currentVisit.triage.systolic = String!(BloodPressure1.text);
+    
+    @IBAction func diastolicOnChange(sender: UITextField) {
+        let trim = diastolic.text!.stringByTrimmingCharactersInSet(
+            NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        )
+        if(String!(trim)==""){
+            diastolic.text="NULL";
+        }
+        currentVisit.triage.diastolic=String!(diastolic.text);
+        edit_triage=1;
     }
-    @IBAction func BloodPressure2OnChange(sender: UITextField) {
-        currentVisit.triage.diastolic = String!(BloodPressure2.text);
+    @IBAction func heartRateOnChange(sender: UITextField) {
+        let trim = heartRate.text!.stringByTrimmingCharactersInSet(
+            NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        )
+        if(String!(trim)==""){
+            heartRate.text="NULL";
+        }
+        currentVisit.triage.heartRate=String!(heartRate.text);
+        edit_triage=1;
     }
-    @IBAction func PulseRateOnChange(sender: UITextField) {
-        currentVisit.triage.heartRate = String!(BloodPressure1.text);
+    @IBAction func respiratoryRateOnChange(sender: UITextField) {
+        let trim = respiratoryRate.text!.stringByTrimmingCharactersInSet(
+            NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        )
+        if(String!(trim)==""){
+            respiratoryRate.text="NULL";
+        }
+        currentVisit.triage.respiratoryRate=String!(respiratoryRate.text);
+        edit_triage=1;
     }
-    @IBAction func RespiratoryRateOnChange(sender: UITextField) {
-        currentVisit.triage.respiratoryRate = String!(RespiratoryRate.text);
+    @IBAction func temperatureOnChange(sender: UITextField) {
+        let trim = temperature.text!.stringByTrimmingCharactersInSet(
+            NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        )
+        if(String!(trim)==""){
+            temperature.text="NULL";
+        }
+        currentVisit.triage.temperature=String!(temperature.text);
+        edit_triage=1;
     }
-    @IBAction func TemperatureOnChange(sender: UITextField) {
-        currentVisit.triage.temperature = String!(Temperature.text);
+    @IBAction func spo2OnChange(sender: UITextField) {
+        let trim = spo2.text!.stringByTrimmingCharactersInSet(
+            NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        )
+        if(String!(trim)==""){
+            spo2.text="NULL";
+        }
+        currentVisit.triage.spo2=String!(spo2.text);
+        edit_triage=1;
     }
-    @IBAction func spO2OnChange(sender: UITextField) {
-        currentVisit.triage.spo2 = String!(spO2.text);
+    @IBAction func weightOnChange(sender: UITextField) {
+        let trim = weight.text!.stringByTrimmingCharactersInSet(
+            NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        )
+        if(String!(trim)==""){
+            weight.text="NULL";
+        }
+        currentVisit.triage.weight=String!(weight.text);
+        edit_triage=1;
     }
-    @IBAction func WeightOnChange(sender: UITextField) {
-        currentVisit.triage.weight = String!(Weight.text);
-    }
-    @IBAction func HeightOnChange(sender: UITextField) {
-        currentVisit.triage.height = String!(Height.text);
+    @IBAction func heightOnChange(sender: UITextField) {
+        let trim = height.text!.stringByTrimmingCharactersInSet(
+            NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        )
+        if(String!(trim)==""){
+            height.text="NULL";
+        }
+        currentVisit.triage.spo2=String!(spo2.text);
+        edit_triage=1;
     }
     
 }

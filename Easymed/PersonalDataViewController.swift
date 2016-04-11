@@ -25,11 +25,12 @@ class PersonalDataViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad();
         VerticalScrollView.contentSize.height=850;
-            
+        if(AddVisitState==1||AddVisitState==2){
             //step1: Set text
-            LastName.text=currentPatient.last_name;
-            FirstName.text=currentPatient.first_name;
-            switch(currentPatient.gender_id){
+            edit_patient = 0;
+            LastName.text=currentVisit.patient.last_name;
+            FirstName.text=currentVisit.patient.first_name;
+            switch(currentVisit.patient.gender_id){
             case "0":
                 Gender.text="Male";
             case "1":
@@ -39,54 +40,69 @@ class PersonalDataViewController : UIViewController {
             default:
                 Gender.text="Undisclosed";
             }
-            //        switch(currentPatient.status){
-            //        case "0":
-            //            Gender.text="male";
-            //        case "1":
-            //            Gender.text="female";
-            //        case "2":
-            //            Gender.text="??";
-            //        default:
-            //            Gender.text="undisclosed";
-            //        }
-            Birthday.text="\(currentPatient.birth_date) / \(currentPatient.birth_month) / \(currentPatient.birth_year)"
-            Address.text=currentPatient.address;
-            PhoneNumber.text=String(currentPatient.phone_number);
+            Birthday.text="\(currentVisit.patient.birth_date) / \(currentVisit.patient.birth_month) / \(currentVisit.patient.birth_year)"
+            Address.text=currentVisit.patient.address;
+            PhoneNumber.text=String(currentVisit.patient.phone_number);
+        }
+        else if(AddVisitState==0){
+        Gender.text = "Undisclosed";
+        Birthday.text = "dd/mm/yyyy"
+        }
+        else{
+            print("error: variable 'AddVisitState'");
+        }
     }
     
-    @IBAction func LastNameOnChange(sender: UITextField) {
+
+    @IBAction func LsstNameOnChange(sender: UITextField) {
         //TASK: check nil
         let trimString = LastName.text!.stringByTrimmingCharactersInSet(
             NSCharacterSet.whitespaceAndNewlineCharacterSet());
         if(trimString==""){
-            LastName.text="nil"
+            LastName.text="NULL"
         }
-        tempPatient.last_name=String(LastName.text);
+        currentVisit.patient.last_name=String!(LastName.text);
+        edit_patient=1;
     }
     
+
+    
+
+
     @IBAction func FirstNameOnChange(sender: UITextField) {
         //TASK: check nil
         let trimString = FirstName.text!.stringByTrimmingCharactersInSet(
             NSCharacterSet.whitespaceAndNewlineCharacterSet());
         if(trimString==""){
-            FirstName.text="nil"
+            FirstName.text="NULL"
         }
-        tempPatient.first_name=String(FirstName.text);
+        currentVisit.patient.first_name=String!(FirstName.text);
+        edit_patient=1;
     }
+    
+    
     
     @IBAction func AddressOnChange(sender: UITextField) {
         let trimAddress = Address.text!.stringByTrimmingCharactersInSet(
             NSCharacterSet.whitespaceAndNewlineCharacterSet()
         )
         if(String!(trimAddress)==""){
-            Address.text="nil";
+            Address.text="NULL";
         }
-        tempPatient.address=String(Address.text);
+        currentVisit.patient.address=String!(Address.text);
+        edit_patient=1;
     }
     
     @IBAction func PhoneNumberOnChange(sender: UITextField) {
         //TASK: Only int available
         //TASK: check nil + trim
-        tempPatient.phone_number=String(PhoneNumber.text);
+        let trimPhone = PhoneNumber.text!.stringByTrimmingCharactersInSet(
+            NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        )
+        if(String!(trimPhone)==""){
+            PhoneNumber.text="NULL";
+        }
+        currentVisit.patient.phone_number=String!(PhoneNumber.text);
+        edit_patient=1;
     }
 }

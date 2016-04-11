@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit;
+import Alamofire;
 
 class TriageFTViewController : UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var TriageFTTableView: UITableView!
@@ -33,11 +34,11 @@ class TriageFTViewController : UIViewController, UITableViewDataSource, UITableV
     //Onclick Cell Action
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //State change
-        FT_ITS_State=1;
-        TriageModifyViewControllerState=2;
+        AddVisitState=1;
         
         //Copy target data to variable
-        currentPatient.clonePatient(patientList1[indexPath.row]);
+        currentVisit=Visit();
+        currentVisit.clonePatient(patientList1[indexPath.row]);
         
         //Call Next View Controller
         let triagemodifyViewController = storyboard?.instantiateViewControllerWithIdentifier("TriageModifyViewController") as! TriageModifyViewController;

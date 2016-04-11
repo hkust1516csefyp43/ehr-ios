@@ -7,24 +7,79 @@
 //
 
 class Triage{
-    var triage_id: String = "null";
-    var user_id: String = "null";
-    var systolic: String = "null";
-    var diastolic: String = "null";
-    var heartRate: String = "null";
-    var respiratoryRate: String = "null";
-    var weight: String = "null";
-    var height: String = "null";
-    var temperature: String = "null";
-    var spo2: String = "null";
-    var headCircumference: String = "null"; //TODO: what is this
-    var chiefComplains: String = "null";
+    var triage_id: String = "NULL";
+    var user_id: String = "NULL";
+    var systolic: String = "NULL";
+    var diastolic: String = "NULL";
+    var heartRate: String = "NULL";
+    var respiratoryRate: String = "NULL";
+    var weight: String = "NULL";
+    var height: String = "NULL";
+    var temperature: String = "NULL";
+    var spo2: String = "NULL";
+    var lastDewormingTablet: String = "NULL";
+    var chiefComplains: String = "NULL";
+    var remark: String = "NULL";
     var startedTimeStamp = -1;//TODO: find libarary to change it
     var endTimeStamp  = -1; //TODO: find libarary to change it
-    var editedInConsultation :String = "null";
-    
+    var editedInConsultation :String = "NULL";
+    var headCircumference: String = "NULL"; //TODO: what is this
     init(){
         
     }
 }
 
+//// POST patients
+//let patientsjson : [String: AnyObject] = [
+//    "first_name": "TomW",
+//    "clinic_id": "3",
+//    "gender_id": "caw23232"
+//];
+//let patientsheaders = [
+//    "token": token,
+//    "Content-Type": "application/json"
+//];
+//var patientsURL: String = "http://ehr-testing.herokuapp.com/v2/patients";
+//print("POST: \(patientsURL)");
+//Alamofire.request(.POST, patientsURL, parameters: patientsjson, encoding: .JSON, headers: patientsheaders).responseJSON { (Response) -> Void in
+//    if let patientsJSON = Response.result.value{
+//        
+//        
+//        // POST visits
+//        let visitsjson : [String: AnyObject] = [
+//            "patient_id": patientsJSON["patient_id"] as! String,
+//            "tag": tag,
+//        ];
+//        let visitsheaders = [
+//            "token": token,
+//            "Content-Type": "application/json"
+//        ];
+//        var visitsURL: String = "http://ehr-testing.herokuapp.com/v2/visits";
+//        print("POST: \(visitsURL)");
+//        Alamofire.request(.POST, visitsURL, parameters: visitsjson, encoding: .JSON, headers: visitsheaders).responseJSON { (Response) -> Void in
+//            if let visitsJSON = Response.result.value{
+//                
+//                
+//                // POST triages
+//                let triagesjson : [String: AnyObject] = [
+//                    "visit_id": visitsJSON["visit_id"] as! String,
+//                    "user_id": userID,
+//                    "edited_in_consultation":"FALSE",
+//                    "start_timestamp":startTimeStamp,
+//                    "end_timestamp":visitsJSON["create_timestamp"] as! String
+//                ];
+//                let triagesheaders = [
+//                    "token": token,
+//                    "Content-Type": "application/json"
+//                ];
+//                var triagesURL: String = "http://ehr-testing.herokuapp.com/v2/triages";
+//                print("POST: \(triagesURL)");
+//                Alamofire.request(.POST, triagesURL, parameters: triagesjson, encoding: .JSON, headers: triagesheaders).responseJSON { (Response) -> Void in
+//                    if let triagesJSON = Response.result.value{
+//                        print(triagesJSON);
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}

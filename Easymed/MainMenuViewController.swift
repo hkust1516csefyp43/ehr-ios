@@ -20,7 +20,7 @@ class MainMenuViewController: UIViewController {
     @IBAction func TriageOnclick(sender: UIButton) {
         if(1==1){
             next_stage = "2";
-            signal = 1;
+            PendingSignal = 1;
             self.performSegueWithIdentifier("Triage_Pending", sender: self);
         }
     }
