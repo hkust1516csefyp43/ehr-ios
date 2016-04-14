@@ -28,6 +28,7 @@ class PersonalDataViewController : UIViewController {
         if(AddVisitState==1||AddVisitState==2){
             //step1: Set text
             edit_patient = 0;
+            edit_triage = 0;
             LastName.text=currentVisit.patient.last_name;
             FirstName.text=currentVisit.patient.first_name;
             switch(currentVisit.patient.gender_id){

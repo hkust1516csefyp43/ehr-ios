@@ -37,6 +37,9 @@
 		21B7D80B1CAEDB45007CF8AF /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7D80A1CAEDB45007CF8AF /* MainMenuViewController.swift */; };
 		21B7D80D1CAEFDE3007CF8AF /* CellL_Triage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7D80C1CAEFDE3007CF8AF /* CellL_Triage.swift */; };
 		21B7D8101CAEFE1C007CF8AF /* CellR_Triage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7D80F1CAEFE1C007CF8AF /* CellR_Triage.swift */; };
+		21FB1A691CBE088E002E5119 /* PendingViewControllerFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FB1A681CBE088E002E5119 /* PendingViewControllerFT.swift */; };
+		21FB1A6B1CBE1BD5002E5119 /* editPatient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FB1A6A1CBE1BD5002E5119 /* editPatient.swift */; };
+		21FB1A6D1CBEBF93002E5119 /* ExistingPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FB1A6C1CBEBF93002E5119 /* ExistingPatientViewController.swift */; };
 		92FBA7D002462B58247B0F95 /* Pods_Easymed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1AC3B714C74EEE47A42F57 /* Pods_Easymed.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +76,9 @@
 		21B7D80A1CAEDB45007CF8AF /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		21B7D80C1CAEFDE3007CF8AF /* CellL_Triage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellL_Triage.swift; sourceTree = "<group>"; };
 		21B7D80F1CAEFE1C007CF8AF /* CellR_Triage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellR_Triage.swift; sourceTree = "<group>"; };
+		21FB1A681CBE088E002E5119 /* PendingViewControllerFT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingViewControllerFT.swift; sourceTree = "<group>"; };
+		21FB1A6A1CBE1BD5002E5119 /* editPatient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = editPatient.swift; sourceTree = "<group>"; };
+		21FB1A6C1CBEBF93002E5119 /* ExistingPatientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistingPatientViewController.swift; sourceTree = "<group>"; };
 		913F0D4C71DDD7D758D764FD /* Pods-Easymed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easymed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Easymed/Pods-Easymed.debug.xcconfig"; sourceTree = "<group>"; };
 		CD1AC3B714C74EEE47A42F57 /* Pods_Easymed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Easymed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA1CC2CAAF0B7787074C6C49 /* Pods-Easymed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easymed.release.xcconfig"; path = "Pods/Target Support Files/Pods-Easymed/Pods-Easymed.release.xcconfig"; sourceTree = "<group>"; };
@@ -123,12 +129,14 @@
 				21B7D7FA1CAD95EF007CF8AF /* LoginViewController.swift */,
 				21B7D80A1CAEDB45007CF8AF /* MainMenuViewController.swift */,
 				215FA1111CAF8DBD0000B81F /* PendingViewController.swift */,
+				21FB1A681CBE088E002E5119 /* PendingViewControllerFT.swift */,
 				215FA1131CAF8FEF0000B81F /* TriageListViewController.swift */,
 				215FA1151CAFA87A0000B81F /* TriageFTViewController.swift */,
 				215FA1171CAFA8A10000B81F /* TriageITSViewController.swift */,
 				21B7D80C1CAEFDE3007CF8AF /* CellL_Triage.swift */,
 				21B7D80F1CAEFE1C007CF8AF /* CellR_Triage.swift */,
 				218AC5151CB398DA00E691EC /* AddVisitViewController.swift */,
+				21FB1A6C1CBEBF93002E5119 /* ExistingPatientViewController.swift */,
 				215FA11B1CB177930000B81F /* TriageModifyViewController.swift */,
 				215FA1251CB17A9D0000B81F /* PersonalDataViewController.swift */,
 				215FA1271CB17AB90000B81F /* VitalSignsViewController.swift */,
@@ -146,6 +154,7 @@
 				218AC4F31CB2DD1100E691EC /* Visit.swift */,
 				215FA10F1CAF8D6F0000B81F /* Patient.swift */,
 				218AC4F51CB2E02D00E691EC /* Triage.swift */,
+				21FB1A6A1CBE1BD5002E5119 /* editPatient.swift */,
 				21B7D7FC1CAD95EF007CF8AF /* Main.storyboard */,
 				21B7D7FF1CAD95EF007CF8AF /* Assets.xcassets */,
 				21B7D8011CAD95EF007CF8AF /* LaunchScreen.storyboard */,
@@ -305,13 +314,16 @@
 				215FA1381CB17D610000B81F /* AllergyViewController.swift in Sources */,
 				215FA1241CB179C90000B81F /* RemarkViewController.swift in Sources */,
 				215FA1281CB17AB90000B81F /* VitalSignsViewController.swift in Sources */,
+				21FB1A6D1CBEBF93002E5119 /* ExistingPatientViewController.swift in Sources */,
 				215FA11E1CB179270000B81F /* HPIViewController.swift in Sources */,
 				215FA1201CB179470000B81F /* PreviousMedicalHistoryViewController.swift in Sources */,
 				215FA1221CB179AB0000B81F /* FamilyHistoryViewController.swift in Sources */,
 				215FA13C1CB17D770000B81F /* ReviewOfTheSystemViewController.swift in Sources */,
 				215FA13A1CB17D6C0000B81F /* PregnancyViewController.swift in Sources */,
 				21B7D80D1CAEFDE3007CF8AF /* CellL_Triage.swift in Sources */,
+				21FB1A691CBE088E002E5119 /* PendingViewControllerFT.swift in Sources */,
 				215FA1101CAF8D6F0000B81F /* Patient.swift in Sources */,
+				21FB1A6B1CBE1BD5002E5119 /* editPatient.swift in Sources */,
 				215FA1311CB17D350000B81F /* SocialHistoryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

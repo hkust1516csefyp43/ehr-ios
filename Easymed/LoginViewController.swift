@@ -8,7 +8,7 @@
 
 import UIKit;
 import Alamofire;
-
+import SwiftyJSON;
 //Save variable
 var edit_patient = 0;
 var edit_triage = 0;
@@ -39,55 +39,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var UsernameTextField: UITextField!
     @IBOutlet weak var PasswordTextField: UITextField!
     
+    @IBOutlet weak var inputbox: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        //        UsernameTextField.tag=1;
+        //        self.view.viewWithTag(1)?.hidden = true;
         UsernameTextField.text=nil;
         PasswordTextField.text=nil;
-        
-        let headers = [
-            "token": token,
-        ]
-
-        var visitsURL: String = "http://ehr-api.herokuapp.com/v2/visits?patient_id=0B9Tb4Nhy7pOAg47";
-
-        Alamofire.request(.GET, visitsURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
-            if let visitJSON = Response.result.value{
-                if(visitJSON.count != 1){
-                    print("error:patient has more than 1 visits");
-                }
-                else{
-                    var triage_id: String = "NULL";
-                    var user_id: String = "NULL";
-                    var systolic: String = "NULL";
-                    var diastolic: String = "NULL";
-                    var heartRate: String = "NULL";
-                    var respiratoryRate: String = "NULL";
-                    var weight: String = "NULL";
-                    var height: String = "NULL";
-                    var temperature: String = "NULL";
-                    var spo2: String = "NULL";
-                    var lastDewormingTablet: String = "NULL";
-                    var chiefComplains: String = "NULL";
-                    var remark: String = "NULL";
-                    var editedInConsultation :String = "NULL";
-                    var headCircumference: String = "NULL"; //TODO: what is this
-                    
-                    currentVisit.visit_id=visitJSON[0]["visit_id"]as! String;
-                    currentVisit.tag=visitJSON[0]["tag"]as! String;
-                    var triagesURL: String = "http://ehr-api.herokuapp.com/v2/triages?visit_id=\(currentVisit.visit_id)";
-                    Alamofire.request(.GET, visitsURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
-                        if let visitJSON = Response.result.value{
-//                            triage_id=
-//                            if let y = visitJSON[""] as? String{
-//                                p1.natvie_name = y;
-//                            }
-                print(visitJSON[0]["visit_id"]as! String);
-                        }
-                    }
-                }
-//                print(visitJSON["visit_id"] as? Int);
-            }
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -106,6 +64,8 @@ class LoginViewController: UIViewController {
         }
         else{};
     }
-    
+    func textViewDidChange(textView: UITextView) {
+        print(inputbox.text); //the textView parameter is the textView where text was changed
+    }
 }
 

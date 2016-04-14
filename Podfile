@@ -6,5 +6,6 @@
 target 'Easymed' do
 pod 'Alamofire', '~> 3.0’
 pod "PagingMenuController"
+pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
 end
 

@@ -25,21 +25,21 @@ class VitalSignsViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(AddVisitState==1||AddVisitState==2){
-            //        systolic.text=currentVisit.triage.systolic;
-            //        diasystolic.text=currentVisit.triage.diastolic;
-            //        heartRate.text=currentVisit.triage.heartRate;
-            //        respiratoryRate.text=currentVisit.triage.respiratoryRate;
-            //        temperature.text=currentVisit.triage.temperature;
-            //        spo2.text=currentVisit.triage.spo2;
-            //        weight.text=currentVisit.triage.weight;
-            //        height.text=currentVisit.triage.height;
-            //        if(currentVisit.triage.height != "NULL" && currentVisit.triage.weight != "NULL"){
-            //            bmi.text=String(Int(currentVisit.triage.weight)!/(Int(currentVisit.triage.height)!*Int(currentVisit.triage.height)!));
-            //        }
-            //        else{
-            //            bmi.text="Weight or Height is not input";
-            //        }
+        if(AddVisitState==2){
+                    systolic.text=currentVisit.triage.systolic;
+                    diastolic.text=currentVisit.triage.diastolic;
+                    heartRate.text=currentVisit.triage.heartRate;
+                    respiratoryRate.text=currentVisit.triage.respiratoryRate;
+                    temperature.text=currentVisit.triage.temperature;
+                    spo2.text=currentVisit.triage.spo2;
+                    weight.text=currentVisit.triage.weight;
+                    height.text=currentVisit.triage.height;
+                    if(currentVisit.triage.height != "NULL" && currentVisit.triage.weight != "NULL"){
+                        bmi.text=String(floor(Double(currentVisit.triage.weight)!/(Double(currentVisit.triage.height)!*Double(currentVisit.triage.height)!)*100)/100);
+                    }
+                    else{
+                        bmi.text="Weight or Height is not input";
+                    }
         }
     }
     @IBAction func systolicOnChange(sender: UITextField) {
