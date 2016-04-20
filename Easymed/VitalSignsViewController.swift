@@ -43,84 +43,36 @@ class VitalSignsViewController : UIViewController {
         }
     }
     @IBAction func systolicOnChange(sender: UITextField) {
-        let trim = systolic.text!.stringByTrimmingCharactersInSet(
-            NSCharacterSet.whitespaceAndNewlineCharacterSet()
-        )
-        if(String!(trim)==""){
-            systolic.text="NULL";
-        }
         currentVisit.triage.systolic=String!(systolic.text);
         edit_triage=1;
     }
     
     @IBAction func diastolicOnChange(sender: UITextField) {
-        let trim = diastolic.text!.stringByTrimmingCharactersInSet(
-            NSCharacterSet.whitespaceAndNewlineCharacterSet()
-        )
-        if(String!(trim)==""){
-            diastolic.text="NULL";
-        }
         currentVisit.triage.diastolic=String!(diastolic.text);
         edit_triage=1;
     }
     @IBAction func heartRateOnChange(sender: UITextField) {
-        let trim = heartRate.text!.stringByTrimmingCharactersInSet(
-            NSCharacterSet.whitespaceAndNewlineCharacterSet()
-        )
-        if(String!(trim)==""){
-            heartRate.text="NULL";
-        }
         currentVisit.triage.heartRate=String!(heartRate.text);
         edit_triage=1;
     }
     @IBAction func respiratoryRateOnChange(sender: UITextField) {
-        let trim = respiratoryRate.text!.stringByTrimmingCharactersInSet(
-            NSCharacterSet.whitespaceAndNewlineCharacterSet()
-        )
-        if(String!(trim)==""){
-            respiratoryRate.text="NULL";
-        }
         currentVisit.triage.respiratoryRate=String!(respiratoryRate.text);
         edit_triage=1;
     }
     @IBAction func temperatureOnChange(sender: UITextField) {
-        let trim = temperature.text!.stringByTrimmingCharactersInSet(
-            NSCharacterSet.whitespaceAndNewlineCharacterSet()
-        )
-        if(String!(trim)==""){
-            temperature.text="NULL";
-        }
         currentVisit.triage.temperature=String!(temperature.text);
         edit_triage=1;
     }
     @IBAction func spo2OnChange(sender: UITextField) {
-        let trim = spo2.text!.stringByTrimmingCharactersInSet(
-            NSCharacterSet.whitespaceAndNewlineCharacterSet()
-        )
-        if(String!(trim)==""){
-            spo2.text="NULL";
-        }
         currentVisit.triage.spo2=String!(spo2.text);
         edit_triage=1;
     }
     @IBAction func weightOnChange(sender: UITextField) {
-        let trim = weight.text!.stringByTrimmingCharactersInSet(
-            NSCharacterSet.whitespaceAndNewlineCharacterSet()
-        )
-        if(String!(trim)==""){
-            weight.text="NULL";
-        }
         currentVisit.triage.weight=String!(weight.text);
         edit_triage=1;
     }
     @IBAction func heightOnChange(sender: UITextField) {
-        let trim = height.text!.stringByTrimmingCharactersInSet(
-            NSCharacterSet.whitespaceAndNewlineCharacterSet()
-        )
-        if(String!(trim)==""){
-            height.text="NULL";
-        }
-        currentVisit.triage.spo2=String!(spo2.text);
+        currentVisit.triage.height=String!(height.text);
         edit_triage=1;
     }
     

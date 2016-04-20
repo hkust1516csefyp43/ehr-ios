@@ -54,6 +54,9 @@ class Patient{
     func getInformation () {
         print("\(self.patient_id)\n \(self.honorific)\n \(self.first_name) \n \(self.middle_name)\n \(self.last_name)\n \(self.address)\n \(self.email)\n \(self.birth_year)\n \(self.birth_month)\n \(self.birth_date)\n \(self.createTimeStamp)\n \(self.clinic_id)\n \(self.gender_id)\n \(self.image_id)\n \(self.blood_type_id)\n \(self.phone_number_country_code)\n \(self.phone_number)\n \(self.natvie_name)\n");
     }
+    func getFirstName () {
+        print("patient's name is:\(self.first_name) ");
+    }
     
     func clonePatient(target: Patient){
         self.patient_id = target.patient_id;

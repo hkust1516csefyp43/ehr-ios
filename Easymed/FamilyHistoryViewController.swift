@@ -12,8 +12,16 @@ import Alamofire;
 
 class FamilyHistoryViewController : UIViewController {
     
+    @IBOutlet weak var ScrollView: UIScrollView!
+    @IBOutlet weak var familyHistory: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        ScrollView.contentSize.height=1000;
     }
+    func textViewDidChange(textView: UITextView) {
+        //        currentVisit.triage.chiefComplains=String!(chiefComplain.text);
+        //        edit_triage=1;
+    }
+
     
 }

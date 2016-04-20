@@ -1,26 +1,44 @@
+// consultation_id
+// user_id
+// start_timestamp
+// end_timestamp
+// ros_ga
+// ros_respi
+// ros_cardio
+// ros_gastro
+// ros_genital
+// ros_ent
+// ros_skin
+// ros_other
+// preg_lmp
+// preg_curr_preg
+// preg_gestration
+// preg_breast_feeding
+// preg_contraceptive
+// preg_num_preg
+// preg_num_live_birth
+// preg_num_miscarriage
+// preg_num_abourtion
+// preg_num_still_birth
+// preg_remark
+// pe_general
+// pe_respiratory
+// pe_cardio
+// pe_gastro
+// pe_genital
+// pe_ent
+// pe_skin
+// pe_other
+// rt_aiertness
+// rt_breathing
+// rt_circulation
+// rt_dehydration
+// rt_defg
+// diagnosis
+// advice
+// follow_up
+// education
+// remark
 
-//import Foundation
-//class editPatient{
-//    var patient_id
-//    var honorific
-//    var first_name
-//    var middle_name
-//    var last_name
-//    var address
-//    var email: String! = "NULL";
-//    var birth_year: Int = -1;
-//    var birth_month: Int = -1;
-//    var birth_date: Int = -1;
-//    var createTimeStamp = -1; //TODO: find libarary to change it
-//    var clinic_id: String = "NULL";
-//    var gender_id: String = "undisclosed";
-//    var image_id : String = "NULL";
-//    var blood_type_id: String! = "NULL";
-//    var phone_number_country_code: String = "NULL";
-//    var phone_number: String = "NULL";
-//    var natvie_name: String! = "NULL";
-//    
-//    init(){
-//        
-//    }
-//}
+
+

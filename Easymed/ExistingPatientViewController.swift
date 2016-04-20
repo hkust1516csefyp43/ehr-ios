@@ -25,11 +25,19 @@ class ExistingPatientViewController : UIViewController, UITableViewDataSource, U
     
     //Assign content in cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellL=self.ExistingPatientTableView.dequeueReusableCellWithIdentifier("CellL_Triage", forIndexPath: indexPath) as! CellL_Triage;
-        cellL.NameLabel.text=patientList2[indexPath.row].first_name;
-        var DetailInput : String = "\(patientList2[indexPath.row].gender_id) / ? weeks ago / \(patientList2[indexPath.row].birth_date)-\(patientList2[indexPath.row].birth_month)-\(patientList2[indexPath.row].birth_year)";
-        cellL.DetailLabel.text=DetailInput;
-        return cellL;
+        let cell_existingPatient=self.ExistingPatientTableView.dequeueReusableCellWithIdentifier("Cell_existingPatient", forIndexPath: indexPath) as! Cell_existingPatient;
+        cell_existingPatient.NameLabel.text = patientList2[indexPath.row].first_name;
+        var ageInput : String = "?? years old"; //todo
+        cell_existingPatient.AgeLabel.text=ageInput;
+        var nativeNameInput : String;
+        if(patientList2[indexPath.row].natvie_name != "NULL"){
+        nativeNameInput = patientList2[indexPath.row].natvie_name ;
+        }
+        else{
+        nativeNameInput = "No native name";
+        }
+        cell_existingPatient.NativeNameLabel.text=nativeNameInput;
+        return cell_existingPatient;
     }
     
     //Onclick Cell Action

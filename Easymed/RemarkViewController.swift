@@ -16,13 +16,11 @@ class RemarkViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         verticalScrollView.contentSize.height=1080;
+        if(AddVisitState==2){
+            remark.text=currentVisit.triage.remark;
+        }
     }
     func textViewDidChange(textView: UITextView) {
-        //        let trimString = chiefComplain.text!.stringByTrimmingCharactersInSet(
-        //            NSCharacterSet.whitespaceAndNewlineCharacterSet());
-        //        if(trimString==""){
-        //            LastName.text="NULL"
-        //        }
         currentVisit.triage.remark=String!(remark.text);
         edit_triage=1;
     }

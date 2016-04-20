@@ -10,8 +10,9 @@ import Foundation
 import UIKit;
 import Alamofire;
 
-class TriageFTViewController : UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var TriageFTTableView: UITableView!
+class BeforeConsultationViewController : UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var BeforeConsultationTableView: UITableView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad();
@@ -24,21 +25,16 @@ class TriageFTViewController : UIViewController, UITableViewDataSource, UITableV
     
     //Assign content in cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellL=self.TriageFTTableView.dequeueReusableCellWithIdentifier("CellL_Triage", forIndexPath: indexPath) as! CellL_Triage;
-        cellL.NameLabel.text=patientList1[indexPath.row].first_name;
-        var DetailInput : String = "\(patientList1[indexPath.row].gender_id) / ? weeks ago / \(patientList1[indexPath.row].birth_date)-\(patientList1[indexPath.row].birth_month)-\(patientList1[indexPath.row].birth_year)";
-//        cellL.DetailLabel.text=DetailInput;
-        cellL.DetailLabel.text = String(patientList1[indexPath.row].birth_month);
-        if(patientList1[indexPath.row].natvie_name != "NULL"){
-        cellL.CountryLabel.text=patientList1[indexPath.row].natvie_name;
-        }
+        let cellL=self.BeforeConsultationTableView.dequeueReusableCellWithIdentifier("Cell_BeforeConsultation", forIndexPath: indexPath) as! CellL_Triage;
+        cellL.NameLabel.text="\(patientList1[indexPath.row].first_name), \(patientList1[indexPath.row].last_name)"
+//        var DetailInput : String = "\(patientList1[indexPath.row].gender_id) / ? weeks ago / \(patientList1[indexPath.row].birth_date)-\(patientList1[indexPath.row].birth_month)-\(patientList1[indexPath.row].birth_year)";
+        cellL.DetailLabel.text="\(patientList1[indexPath.row].birth_month) years old";
+        cellL.CountryLabel.text="\(patientList1[indexPath.row].first_name)"
         return cellL;
     }
     
     //Onclick Cell Action
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //State change
-        AddVisitState=1;
         
         //Copy target data to variable
         currentVisit=Visit();
@@ -100,15 +96,18 @@ class TriageFTViewController : UIViewController, UITableViewDataSource, UITableV
                             }
                             //                    var editedInConsultation :String = "NULL";
                             
-                            AddVisitState = 2;
+                            //state changes
+                            AddVisitState=2;
+                            ConsultationState = 0;
                             
                             //Navigate to next controller
-                            let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TriageModifyViewController") as! TriageModifyViewController;
+                            let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ConsultationModifyViewController") as! ConsultationModifyViewController;
                             self.navigationController?.pushViewController(nextViewController, animated: true);
                         }
                     }
                 }
             }
         }
+        
     }
 }

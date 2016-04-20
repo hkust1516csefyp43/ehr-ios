@@ -16,6 +16,9 @@ class ChiefComplainViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         verticalScrollView.contentSize.height=1080;
+        if(AddVisitState==2){
+            chiefComplain.text=currentVisit.triage.chiefComplains;
+        }
     }
     func textViewDidChange(textView: UITextView) {
 //        let trimString = chiefComplain.text!.stringByTrimmingCharactersInSet(

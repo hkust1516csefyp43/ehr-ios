@@ -10,8 +10,9 @@ import Foundation
 import UIKit;
 import Alamofire;
 
-class TriageFTViewController : UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var TriageFTTableView: UITableView!
+class AfterConsultationViewController : UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var AfterConsultationTableView: UITableView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad();
@@ -19,19 +20,15 @@ class TriageFTViewController : UIViewController, UITableViewDataSource, UITableV
     
     //Assign number of patient in TriageFT Table
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return patientList1.count;
+        return patientList2.count;
     }
     
     //Assign content in cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellL=self.TriageFTTableView.dequeueReusableCellWithIdentifier("CellL_Triage", forIndexPath: indexPath) as! CellL_Triage;
-        cellL.NameLabel.text=patientList1[indexPath.row].first_name;
-        var DetailInput : String = "\(patientList1[indexPath.row].gender_id) / ? weeks ago / \(patientList1[indexPath.row].birth_date)-\(patientList1[indexPath.row].birth_month)-\(patientList1[indexPath.row].birth_year)";
-//        cellL.DetailLabel.text=DetailInput;
-        cellL.DetailLabel.text = String(patientList1[indexPath.row].birth_month);
-        if(patientList1[indexPath.row].natvie_name != "NULL"){
-        cellL.CountryLabel.text=patientList1[indexPath.row].natvie_name;
-        }
+        let cellL=self.AfterConsultationTableView.dequeueReusableCellWithIdentifier("Cell_AfterConsultation", forIndexPath: indexPath) as! CellL_Triage;
+        cellL.NameLabel.text=patientList2[indexPath.row].first_name;
+        var DetailInput : String = "\(patientList2[indexPath.row].gender_id) / ? weeks ago / \(patientList2[indexPath.row].birth_date)-\(patientList2[indexPath.row].birth_month)-\(patientList2[indexPath.row].birth_year)";
+        cellL.DetailLabel.text=DetailInput;
         return cellL;
     }
     
@@ -42,7 +39,7 @@ class TriageFTViewController : UIViewController, UITableViewDataSource, UITableV
         
         //Copy target data to variable
         currentVisit=Visit();
-        currentVisit.clonePatient(patientList1[indexPath.row]);
+        currentVisit.clonePatient(patientList2[indexPath.row]);
         
         let headers = [
             "token": token,

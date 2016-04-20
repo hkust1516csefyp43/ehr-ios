@@ -9,21 +9,21 @@
 class Triage{
     var triage_id: String = "NULL";
     var user_id: String = "NULL";
-    var systolic: String = "-1";
-    var diastolic: String = "-1";
-    var heartRate: String = "-1";
-    var respiratoryRate: String = "-1";
-    var weight: String = "-1";
-    var height: String = "-1";
-    var temperature: String = "-1";
-    var spo2: String = "-1";
+    var systolic: String = "0";
+    var diastolic: String = "0";
+    var heartRate: String = "0";
+    var respiratoryRate: String = "0";
+    var weight: String = "0";
+    var height: String = "0";
+    var temperature: String = "0";
+    var spo2: String = "0";
     var lastDewormingTablet: String = "NULL";
     var chiefComplains: String = "NULL";
     var remark: String = "NULL";
-    var startedTimeStamp = -1;//TODO: find libarary to change it
-    var endTimeStamp  = -1; //TODO: find libarary to change it
+    var startedTimeStamp = 0;//TODO: find libarary to change it
+    var endTimeStamp  = 0; //TODO: find libarary to change it
     var editedInConsultation :String = "NULL";
-    var headCircumference: String = "-1"; //TODO: what is this
+    var headCircumference: String = "0"; //TODO: what is this
     init(){
         
     }

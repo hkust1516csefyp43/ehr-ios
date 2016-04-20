@@ -53,56 +53,22 @@ class PersonalDataViewController : UIViewController {
             print("error: variable 'AddVisitState'");
         }
     }
-    
+    @IBAction func FirstNameOnChange(sender: UITextField) {
+        currentVisit.patient.first_name=String!(FirstName.text);
+        edit_patient=1;
+    }
 
     @IBAction func LsstNameOnChange(sender: UITextField) {
-        //TASK: check nil
-        let trimString = LastName.text!.stringByTrimmingCharactersInSet(
-            NSCharacterSet.whitespaceAndNewlineCharacterSet());
-        if(trimString==""){
-            LastName.text="NULL"
-        }
         currentVisit.patient.last_name=String!(LastName.text);
         edit_patient=1;
     }
     
-
-    
-
-
-    @IBAction func FirstNameOnChange(sender: UITextField) {
-        //TASK: check nil
-        let trimString = FirstName.text!.stringByTrimmingCharactersInSet(
-            NSCharacterSet.whitespaceAndNewlineCharacterSet());
-        if(trimString==""){
-            FirstName.text="NULL"
-        }
-        currentVisit.patient.first_name=String!(FirstName.text);
-        edit_patient=1;
-    }
-    
-    
-    
     @IBAction func AddressOnChange(sender: UITextField) {
-        let trimAddress = Address.text!.stringByTrimmingCharactersInSet(
-            NSCharacterSet.whitespaceAndNewlineCharacterSet()
-        )
-        if(String!(trimAddress)==""){
-            Address.text="NULL";
-        }
         currentVisit.patient.address=String!(Address.text);
         edit_patient=1;
     }
     
     @IBAction func PhoneNumberOnChange(sender: UITextField) {
-        //TASK: Only int available
-        //TASK: check nil + trim
-        let trimPhone = PhoneNumber.text!.stringByTrimmingCharactersInSet(
-            NSCharacterSet.whitespaceAndNewlineCharacterSet()
-        )
-        if(String!(trimPhone)==""){
-            PhoneNumber.text="NULL";
-        }
         currentVisit.patient.phone_number=String!(PhoneNumber.text);
         edit_patient=1;
     }

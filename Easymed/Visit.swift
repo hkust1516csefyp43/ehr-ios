@@ -13,6 +13,7 @@ class Visit{
     var next_station: Int = 2;
     var patient : Patient = Patient();
     var triage : Triage = Triage();
+    var consultation: Consultation = Consultation();
     
     init(){
         
