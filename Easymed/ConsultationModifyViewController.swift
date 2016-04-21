@@ -11,41 +11,50 @@ import PagingMenuController
 import Alamofire
 
 class ConsultationModifyViewController: UIViewController, PagingMenuControllerDelegate {
+    @IBOutlet weak var myNavigationItem: UINavigationItem!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
         if(ConsultationState==0){ //before consultation -> POST consultation
-            //do nothing
+            related_dataList.removeAll();
         }
         else if(ConsultationState==1){ //after consultation -> PUT consultation
-            //modification
+            //Related data setup
+            modified_related_dataList.removeAll();
+            new_related_dataList.removeAll();
+            deleted_related_dataList.removeAll();
+            modified_related_data=0;
+            new_related_data=0;
+            deleted_related_data=0;
+            //
         }
         else{
             print("error: Variable 'ConsultationState'")
         }
-        
-        
         //Add sliding page & button
         //        let personaldataViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PersonalDataViewController") as! PersonalDataViewController;
         //        let vitalsignsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("VitalSignsViewController") as! VitalSignsViewController;
         //        let chiefcomplainViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ChiefComplainViewController") as! ChiefComplainViewController;
         //        let remarkViewController = self.storyboard?.instantiateViewControllerWithIdentifier("RemarkViewController") as! RemarkViewController;
-        let hpiViewController = self.storyboard?.instantiateViewControllerWithIdentifier("HPIViewController") as! HPIViewController;
+        //        let hpiViewController = self.storyboard?.instantiateViewControllerWithIdentifier("HPIViewController") as! HPIViewController;
         //        let previousmedicalhistoryViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PreviousMedicalHistoryViewController") as! PreviousMedicalHistoryViewController;
-        let familyhistoryViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FamilyHistoryViewController") as! FamilyHistoryViewController;
-        let socialhistoryViewController = self.storyboard?.instantiateViewControllerWithIdentifier("SocialHistoryViewController") as! SocialHistoryViewController;
+        //        let familyhistoryViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FamilyHistoryViewController") as! FamilyHistoryViewController;
+        //        let socialhistoryViewController = self.storyboard?.instantiateViewControllerWithIdentifier("SocialHistoryViewController") as! SocialHistoryViewController;
         //        let drughistoryViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DrugHistoryViewController") as! DrugHistoryViewController;
         //        let screeningViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ScreeningViewController") as! ScreeningViewController;
         //        let allergyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AllergyViewController") as! AllergyViewController;
         //        let pregnancyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PregnancyViewController") as! PregnancyViewController;
-//        let reviewofthesystemViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ReviewOfTheSystemViewController") as! ReviewOfTheSystemViewController;
-//        let physicalExaminationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PhysicalExaminationViewController") as! PhysicalExaminationViewController;
-//        let pregnancyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PregnancyViewController") as! PregnancyViewController;
-        let followupViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FollowUpViewController") as! FollowUpViewController;
+        //        let reviewofthesystemViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ReviewOfTheSystemViewController") as! ReviewOfTheSystemViewController;
+        //        let physicalExaminationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PhysicalExaminationViewController") as! PhysicalExaminationViewController;
+        //        let pregnancyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PregnancyViewController") as! PregnancyViewController;
+        //        let followupViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FollowUpViewController") as! FollowUpViewController;
+        let adviceViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AdviceViewController") as! AdviceViewController;
+        
         
         //Finishted Triage Case
         //        let consultationmodifyFTViewController = [personalataViewController,vitalsignsViewController,chiefcomplainViewController,remarkViewController]d;
-        let consultationmodifyFTViewController = [hpiViewController,familyhistoryViewController,socialhistoryViewController,followupViewController];
+        let consultationmodifyFTViewController = [adviceViewController];
         //        let consultationmodifyFTViewController = [personaldataViewController,chiefcomplainViewController,remarkViewController];
         let options = PagingMenuOptions()
         options.menuHeight = 30
@@ -55,7 +64,7 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
         pagingmenuController.setup(viewControllers: consultationmodifyFTViewController, options: options)
         
         //Add navigationbar button
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Confirm", style: .Plain, target: self, action:"SaveButtonOnclick:")
+        myNavigationItem.rightBarButtonItem = UIBarButtonItem(title: "Confirm", style: .Plain, target: self, action:"SaveButtonOnclick:")
     }
     
     
@@ -227,7 +236,7 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
             currentVisit.consultation.preg_num_preg="0";
         }
         
-       trimString=currentVisit.consultation.preg_num_live_birth.stringByTrimmingCharactersInSet(
+        trimString=currentVisit.consultation.preg_num_live_birth.stringByTrimmingCharactersInSet(
             NSCharacterSet.whitespaceAndNewlineCharacterSet());
         if(trimString==""){
             currentVisit.consultation.preg_num_live_birth="0";
@@ -256,7 +265,6 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
         if(trimString==""){
             currentVisit.consultation.preg_remark="NULL";
         }
-        
         
         //Start create data in database
         if(ConsultationState==0){
@@ -427,20 +435,294 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
             print("POST: \(consultationsURL)");
             Alamofire.request(.POST, consultationsURL, parameters: consultationsjson, encoding: .JSON, headers: consultationsheaders).responseJSON { (Response) -> Void in
                 if let consultationsJSON = Response.result.value{
-                    print("Success: PUT triage tuple");
-                    edit_consultation=0;
-                    if(edit_patient==0 && edit_triage==0 && edit_visit==0){
-                        //Navigate to next controller
-                        simulate_click = 1;
-                        let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainMenuViewController") as! MainMenuViewController;
-                        self.navigationController?.pushViewController(nextViewController, animated: true);
+                    //POST related_data
+                    var count=0;
+                    for (var i=0 ; i<related_dataList.count ; i++){
+                        let related_datajson : [String: AnyObject] = [
+                            "data": related_dataList[i].data,
+                            "remark": related_dataList[i].remark,
+                            "consultation_id": consultationsJSON["consultation_id"] as! String,
+                            "category": related_dataList[i].category,
+                        ];
+                        let related_dataheaders = [
+                            "token": token,
+                            "Content-Type": "application/json"
+                        ];
+                        let related_dataURL: String = "http://ehr-api.herokuapp.com/v2/related_data";
+                        print("POST: \(related_dataURL)");
+                        Alamofire.request(.POST, related_dataURL, parameters: related_datajson, encoding: .JSON, headers: related_dataheaders).responseJSON { (Response) -> Void in
+                            if let related_dataJSON = Response.result.value{
+                                count++;
+                                if(count>=related_dataList.count){
+                                    edit_consultation=0;
+                                    if(edit_patient==0 && edit_triage==0 && edit_visit==0){
+                                        //Navigate to next controller
+                                        simulate_click = 1;
+                                        let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainMenuViewController") as! MainMenuViewController;
+                                        self.navigationController?.pushViewController(nextViewController, animated: true);
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
                 else{
                     print("Fail: POST consultation tuple");
                 }
             }
-            //nextcase
+        }
+        else if(ConsultationState == 1){
+            //            edit_consultation=1;
+            ConsultationState = -1;
+            AddVisitState = -1;
+            
+            if(edit_patient == 1){
+                // PUT patients
+                let patientsjson : [String: AnyObject] = [
+                    "honorific":currentVisit.patient.honorific,
+                    "first_name": currentVisit.patient.first_name,
+                    "middle_name":currentVisit.patient.middle_name,
+                    "last_name": currentVisit.patient.last_name,
+                    "address":currentVisit.patient.address,
+                    "email":currentVisit.patient.email,
+                    //ref
+                    "gender_id": "caw23232",
+                    "birth_year":currentVisit.patient.birth_year,
+                    "birth_month":currentVisit.patient.birth_month,
+                    "birth_date":currentVisit.patient.birth_date,
+                    //ref value
+                    //                "blood_type_id":currentVisit.patient.blood_type_id,
+                    //ref value
+                    "phone_number_country_code":currentVisit.patient.phone_number_country_code,
+                    "phone_number":currentVisit.patient.phone_number,
+                    "native_name":currentVisit.patient.natvie_name
+                ];
+                
+                let patientsheaders = [
+                    "token": token,
+                    "Content-Type": "application/json"
+                ];
+                let patientsURL: String = "http://ehr-api.herokuapp.com/v2/patients/\(currentVisit.patient.patient_id)";
+                print("PUT: \(patientsURL)");
+                Alamofire.request(.PUT, patientsURL, parameters: patientsjson, encoding: .JSON, headers: patientsheaders).responseJSON { (Response) -> Void in
+                    if let patientsJSON = Response.result.value{
+                        print("Success: PUT patient tuple");
+                        edit_patient=0;
+                        if(edit_patient==0 && edit_triage==0 && edit_consultation==0 && new_related_data==0 && modified_related_data==0 && deleted_related_data==0){
+                            //Navigate to next controller
+                            simulate_click = 1;
+                            let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainMenuViewController") as! MainMenuViewController;
+                            self.navigationController?.pushViewController(nextViewController, animated: true);
+                        }
+                    }
+                    else{
+                        print("Fail: PUT patient tuple");
+                    }
+                }
+            }
+            if(edit_triage == 1){
+                // PUT triages
+                let triagesjson : [String: AnyObject] = [
+                    "user_id": userID,
+                    "systolic": Int(currentVisit.triage.systolic)!,
+                    "diastolic": Int(currentVisit.triage.diastolic)!,
+                    "heart_rate": Int(currentVisit.triage.heartRate)!,
+                    "respiratory_rate": Int(currentVisit.triage.respiratoryRate)!,
+                    "weight":Int(currentVisit.triage.weight)!,
+                    "height":Int(currentVisit.triage.height)!,
+                    "temperature":Int(currentVisit.triage.temperature)!,
+                    "spo2":Int(currentVisit.triage.spo2)!,
+                    //                               "last_deworming_tablet":currentVisit.triage.lastDewormingTablet,
+                    "chief_complains":currentVisit.triage.chiefComplains,
+                    "remark":currentVisit.triage.remark,
+                    //                   "start_timestamp":startTimeStamp,
+                    //                   "end_timestamp":visitsJSON["create_timestamp"] as! String,
+                    //"edited_in_consultation":"FALSE",
+                    "head_circumference":Int(currentVisit.triage.headCircumference)!
+                ];
+                let triagesheaders = [
+                    "token": token,
+                    "Content-Type": "application/json"
+                ];
+                let triagesURL: String = "http://ehr-api.herokuapp.com/v2/triages/\(currentVisit.triage.triage_id)";
+                print("PUT: \(triagesURL)");
+                Alamofire.request(.PUT, triagesURL, parameters: triagesjson, encoding: .JSON, headers: triagesheaders).responseJSON { (Response) -> Void in
+                    if let triagesJSON = Response.result.value{
+                        print("Success: PUT triage tuple");
+                        edit_triage=0;
+                        if(edit_patient==0 && edit_triage==0 && edit_consultation==0 && new_related_data==0 && modified_related_data==0 && deleted_related_data==0){
+                            //Navigate to next controller
+                            simulate_click = 1;
+                            let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainMenuViewController") as! MainMenuViewController;
+                            self.navigationController?.pushViewController(nextViewController, animated: true);
+                        }
+                    }
+                    else{
+                        print("Fail: PUT triage tuple");
+                    }
+                }
+            }
+            
+            //            task
+            //            else if
+            if(edit_consultation==1){
+                let consultationsjson : [String: AnyObject] = [
+                    "user_id": userID,
+                    "end_timestamp": "2016-03-11 02:45:27",
+                    
+                    //Review of the system
+                    "ros_respi": currentVisit.consultation.ros_respi,
+                    "ros_cardio": currentVisit.consultation.ros_cardio,
+                    "ros_gastro": currentVisit.consultation.ros_gastro,
+                    "ros_genital": currentVisit.consultation.ros_genital,
+                    "ros_ent": currentVisit.consultation.ros_ent,
+                    "ros_skin": currentVisit.consultation.ros_skin,
+                    
+                    //Physical Examination
+                    "pe_general" : currentVisit.consultation.pe_general,
+                    "pe_respiratory" : currentVisit.consultation.pe_respiratory,
+                    "pe_cardio" : currentVisit.consultation.pe_cardio,
+                    "pe_gastro" : currentVisit.consultation.pe_gastro,
+                    "pe_genital" : currentVisit.consultation.pe_genital,
+                    "pe_ent" : currentVisit.consultation.pe_ent,
+                    "pe_skin" : currentVisit.consultation.pe_skin,
+                    "pe_other" : currentVisit.consultation.pe_other,
+                    
+                    //pregnancy
+                    // "preg_lmp" : "preg_lmp",
+                    "preg_curr_preg" : Int(currentVisit.consultation.preg_curr_preg)!,
+                    "preg_gestration" : Int(currentVisit.consultation.preg_gestration)!,
+                    "preg_breast_feeding" : Bool(currentVisit.consultation.preg_breast_feeding),
+                    "preg_contraceptive" : Bool(currentVisit.consultation.preg_contraceptive),
+                    "preg_num_preg" : Int(currentVisit.consultation.preg_num_preg)!,
+                    "preg_num_live_birth" : Int(currentVisit.consultation.preg_num_live_birth)!,
+                    "preg_num_miscarriage" : Int(currentVisit.consultation.preg_num_miscarriage)!,
+                    "preg_num_abortion" : Int(currentVisit.consultation.preg_num_abourtion)!,
+                    "preg_num_still_birth" :Int(currentVisit.consultation.preg_num_still_birth)!,
+                    "preg_remark" :  currentVisit.consultation.preg_remark,
+                ];
+                let consultationsheaders = [
+                    "token": token,
+                    "Content-Type": "application/json"
+                ];
+                let consultationsURL: String = "http://ehr-api.herokuapp.com/v2/consultations";
+                print("PUT: \(consultationsURL)");
+                Alamofire.request(.POST, consultationsURL, parameters: consultationsjson, encoding: .JSON, headers: consultationsheaders).responseJSON { (Response) -> Void in
+                    if let consultationsJSON = Response.result.value{
+                        edit_consultation=0;
+                        if(edit_patient==0 && edit_triage==0 && edit_consultation==0 && new_related_data==0 && modified_related_data==0 && deleted_related_data==0){
+                            //Navigate to next controller
+                            simulate_click = 1;
+                            let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainMenuViewController") as! MainMenuViewController;
+                            self.navigationController?.pushViewController(nextViewController, animated: true);
+                        }
+                    }
+                    else{
+                        print("Fail: PUT consultation tuple");
+                    }
+                }
+            }
+            if(new_related_data==1){
+                //POST related_data
+                var count=0;
+                for (var i=0 ; i<new_related_dataList.count ; i++){
+                    let related_datajson : [String: AnyObject] = [
+                        "data": new_related_dataList[i].data,
+                        "remark": new_related_dataList[i].remark,
+                        "consultation_id": currentVisit.consultation.consultation_id,
+                        "category": new_related_dataList[i].category,
+                    ];
+                    let related_dataheaders = [
+                        "token": token,
+                        "Content-Type": "application/json"
+                    ];
+                    let related_dataURL: String = "http://ehr-api.herokuapp.com/v2/related_data";
+                    print("POST: \(related_dataURL)");
+                    Alamofire.request(.POST, related_dataURL, parameters: related_datajson, encoding: .JSON, headers: related_dataheaders).responseJSON { (Response) -> Void in
+                        if let related_dataJSON = Response.result.value{
+                            count++;
+                            if(count>=new_related_dataList.count){
+                                new_related_data=0;
+                                if(edit_patient==0 && edit_triage==0 && edit_consultation==0 && new_related_data==0 && modified_related_data==0 && deleted_related_data==0){
+                                    //Navigate to next controller
+                                    simulate_click = 1;
+                                    let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainMenuViewController") as! MainMenuViewController;
+                                    self.navigationController?.pushViewController(nextViewController, animated: true);
+                                }
+                            }
+                        }
+                        else{
+                            print("fail:POST related_data tuple")
+                        }
+                    }
+                }
+            }
+            if(modified_related_data==1){
+                //PUT related_data
+                var count=0;
+                for (var i=0 ; i<modified_related_dataList.count ; i++){
+                    let related_datajson : [String: AnyObject] = [
+                        "data": modified_related_dataList[i].data,
+                        "remark": modified_related_dataList[i].remark,
+                    ];
+                    let related_dataheaders = [
+                        "token": token,
+                        "Content-Type": "application/json"
+                    ];
+                    let related_dataURL: String = "http://ehr-api.herokuapp.com/v2/related_data?rd_id=\(modified_related_dataList[i].rd_id)";
+                    print("PUT: \(related_dataURL)");
+                    Alamofire.request(.PUT, related_dataURL, parameters: related_datajson, encoding: .JSON, headers: related_dataheaders).responseJSON { (Response) -> Void in
+                        if let related_dataJSON = Response.result.value{
+                            count++;
+                            if(count>=modified_related_dataList.count){
+                                modified_related_data=0;
+                                if(edit_patient==0 && edit_triage==0 && edit_consultation==0 && new_related_data==0 && modified_related_data==0 && deleted_related_data==0){
+                                    //Navigate to next controller
+                                    simulate_click = 1;
+                                    let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainMenuViewController") as! MainMenuViewController;
+                                    self.navigationController?.pushViewController(nextViewController, animated: true);
+                                }
+                            }
+                        }
+                        else{
+                            print("fail:PUT related_data tuple")
+                        }
+                    }
+                }
+            }
+            //            if(deleted_related_data==1){
+            //                //PUT related_data
+            //                var count=0;
+            //                for (var i=0 ; i<modified_related_dataList.count ; i++){
+            //                    let related_datajson : [String: AnyObject] = [
+            //                        "data": modified_related_dataList[i].data,
+            //                        "remark": modified_related_dataList[i].remark,
+            //                        "consultation_id": currentVisit.consultation.consultation_id,
+            //                        "category": modified_related_dataList[i].category,
+            //                    ];
+            //                    let related_dataheaders = [
+            //                        "token": token,
+            //                        "Content-Type": "application/json"
+            //                    ];
+            //                    let related_dataURL: String = "http://ehr-api.herokuapp.com/v2/related_data?rd_id=\(modified_related_dataList[i].rd_id)";
+            //                    print("PUT: \(related_dataURL)");
+            //                    Alamofire.request(.PUT, related_dataURL, parameters: related_datajson, encoding: .JSON, headers: related_dataheaders).responseJSON { (Response) -> Void in
+            //                        if let related_dataJSON = Response.result.value{
+            //                            count++;
+            //                            if(count>=modified_related_dataList.count){
+            //                                modified_related_data=0;
+            //                                if(edit_patient==0 && edit_triage==0 && edit_visit==0){
+            //                                    //Navigate to next controller
+            //                                    simulate_click = 1;
+            //                                    let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainMenuViewController") as! MainMenuViewController;
+            //                                    self.navigationController?.pushViewController(nextViewController, animated: true);
+            //                                }
+            //                            }
+            //                        }
+            //                    }
+            //                }
+            //            }
+            //                -----
         }
     }
     

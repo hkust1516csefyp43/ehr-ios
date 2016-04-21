@@ -14,11 +14,17 @@ var edit_patient = 0;
 var edit_triage = 0;
 var edit_consultation = 0;
 var edit_visit = 0;
+var new_related_data = 0;
+var modified_related_data = 0;
+var deleted_related_data = 0;
 var simulate_click = 0;
+var related_dataState = -1; //-1 = error, 0 = new, 1=modify
+var related_data_type = -1; //1=screening, 2=Allergy, 3=diagnosis, 4=advice, 5=follow-up
 //
 var patientList1 : [Patient] = [Patient]();
 var patientList2 : [Patient] = [Patient]();
 var currentVisit: Visit = Visit();
+var currentRelatedData: related_data = related_data();
 var currentPatient : Patient = Patient();
 var tempPatient: Patient = Patient();
 var TriageModifyViewControllerState = -1; //-1= default, 0= new patient + add visit, 1= old patient + add visit, 2= old patient + modify visit
@@ -37,7 +43,12 @@ var userID: String = "acwaeoiwlin";
 var edited_in_consultation: String = "FALSE";
 var startTimeStamp: String = "1994-04-07 21:09:31.481+00";
 
-
+//related_data storage
+var related_dataList:[related_data] = [related_data]();
+var new_related_dataList:[related_data] = [related_data]();
+var modified_related_dataList:[related_data] = [related_data]();
+var deleted_related_dataList:[related_data] = [related_data]();
+var keywordsList:[keywords] = [keywords]();
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var UsernameTextField: UITextField!
@@ -48,30 +59,24 @@ class LoginViewController: UIViewController {
         //        self.view.viewWithTag(1)?.hidden = true;
         UsernameTextField.text=nil;
         PasswordTextField.text=nil;
-        
-//        // POST consultations
-//        let consultationsjson : [String: AnyObject] = [
-//            "visit_id": "ETzvIbJCcj8jki8C",
-//            "user_id": userID,
-//            "start_timestamp": "2016-03-11 02:45:27",
-//            "end_timestamp": "2016-03-11 02:45:27",
+//        let related_datajson : [String: AnyObject] = [
+//            "data": "MODIFIED",
+//            "remark": "MODIFIED",
 //        ];
-//        let consultationsheaders = [
+//        let related_dataheaders = [
 //            "token": token,
 //            "Content-Type": "application/json"
 //        ];
-//        let consultationsURL: String = "http://ehr-api.herokuapp.com/v2/consultations";
-//        print("POST: \(consultationsURL)");
-//        Alamofire.request(.POST, consultationsURL, parameters: consultationsjson, encoding: .JSON, headers: consultationsheaders).responseJSON { (Response) -> Void in
-//            if let consultationsJSON = Response.result.value{
-//                print(consultationsJSON);
-//                
+//        let related_dataURL: String = "http://ehr-api.herokuapp.com/v2/related_data?rd_id=HKkufeNf2ogu3irD";
+//        print("PUT: \(related_dataURL)");
+//        Alamofire.request(.PUT, related_dataURL, parameters: related_datajson, encoding: .JSON, headers: related_dataheaders).responseJSON { (Response) -> Void in
+//            if let related_dataJSON = Response.result.value{
+//                print(related_dataJSON);
 //            }
 //            else{
-//                print("Fail: POST consultation tuple");
+//                print("PUT fail");
 //            }
 //        }
-
     }
     
     override func didReceiveMemoryWarning() {
@@ -89,9 +94,9 @@ class LoginViewController: UIViewController {
             self.performSegueWithIdentifier("Login_MainMenu", sender: self);
         }
         else{};
-//        let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ConsultationModifyViewController") as! ConsultationModifyViewController;
-//        self.navigationController?.pushViewController(nextViewController, animated: true);
+        //        let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ConsultationModifyViewController") as! ConsultationModifyViewController;
+        //        self.navigationController?.pushViewController(nextViewController, animated: true);
     }
-
+    
 }
 

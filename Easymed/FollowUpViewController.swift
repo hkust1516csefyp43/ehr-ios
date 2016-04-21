@@ -16,7 +16,9 @@ class FollowUpViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    
     @IBAction func addButtonOnclick(sender: UIButton) {
+        
         //Navigate to next controller
         let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AddNewViewController") as! AddNewViewController;
         self.navigationController?.pushViewController(nextViewController, animated: true);
