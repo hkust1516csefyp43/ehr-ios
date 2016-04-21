@@ -100,9 +100,6 @@ class AfterConsultationViewController : UIViewController, UITableViewDataSource,
                                 currentVisit.triage.remark = y;
                             }
                             //                    var editedInConsultation :String = "NULL";
-                            
-                            
-                            
                             got_visit=1;
                             if(got_consultation==1 && got_related_data==1){
                                 //Navigate to next controller
@@ -112,6 +109,9 @@ class AfterConsultationViewController : UIViewController, UITableViewDataSource,
                                 let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ConsultationModifyViewController") as! ConsultationModifyViewController;
                                 self.navigationController?.pushViewController(nextViewController, animated: true);
                             }
+                        }
+                        else{
+                            print("Fail: GET triages tuple")
                         }
                     }
                     var consultationsURL: String = "http://ehr-api.herokuapp.com/v2/consultations?visit_id=\(currentVisit.visit_id)";

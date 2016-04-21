@@ -521,7 +521,7 @@
                                             </mask>
                                         </variation>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Si7-Zu-mCH">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Si7-Zu-mCH">
                                         <rect key="frame" x="507" y="107" width="45" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="45" id="8F0-Wi-pK4"/>
@@ -534,8 +534,7 @@
                                                 <exclude reference="AVG-Qz-2sN"/>
                                             </mask>
                                         </variation>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="283" y="172" width="45" height="30"/>
+                                        <variation key="widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="8F0-Wi-pK4"/>
                                                 <include reference="AVG-Qz-2sN"/>
@@ -636,11 +635,11 @@
                         <viewControllerLayoutGuide type="bottom" id="qrG-MF-jjc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4Ga-6u-cfG">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="1600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xpf-8X-nOW">
-                                <rect key="frame" x="20" y="20" width="360" height="1580"/>
+                                <rect key="frame" x="20" y="20" width="560" height="580"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Respiratory" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Hq-i7-EGK">
                                         <rect key="frame" x="19" y="60" width="88" height="21"/>
@@ -1176,11 +1175,11 @@
                         <viewControllerLayoutGuide type="bottom" id="kQ5-We-mQm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ipi-Yp-bYe">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="1400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fYC-Ea-bj8">
-                                <rect key="frame" x="71" y="-446" width="360" height="1580"/>
+                                <rect key="frame" x="71" y="-446" width="560" height="1580"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="General Appearance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZt-wr-wt0">
                                         <rect key="frame" x="27" y="13" width="43" height="21"/>
@@ -1650,24 +1649,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wuj-xF-9q8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3252" y="-4408"/>
-        </scene>
-        <!--Clinical Diagnosis View Controller-->
-        <scene sceneID="oDa-5Q-VWk">
-            <objects>
-                <viewController storyboardIdentifier="ClinicalDiagnosisViewController" title="Clinical Diagnosis View Controller" id="Gl6-2L-t8A" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Pgq-cB-K91"/>
-                        <viewControllerLayoutGuide type="bottom" id="8q8-HD-9r7"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="h5u-w6-mWX">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7nE-Hq-Ehk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3897" y="-4408"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="1LQ-AV-wGP">
@@ -4918,7 +4899,7 @@
                                     <constraint firstAttribute="height" constant="600" id="HNR-if-d18"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell_relatedData" rowHeight="111" id="5pX-6Q-6Rd" customClass="Cell_relatedData" customModule="Easymed" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell_Screening" rowHeight="111" id="5pX-6Q-6Rd" customClass="Cell_Screening" customModule="Easymed" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5pX-6Q-6Rd" id="YSu-aQ-k0G">
@@ -4961,24 +4942,35 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="Descripsion" destination="ZW4-Co-ikz" id="bhP-Cq-B4h"/>
+                                            <outlet property="Title" destination="F6n-Hf-wAS" id="8KG-Y9-T1i"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="HNR-if-d18"/>
                                         <exclude reference="9qs-IQ-asB"/>
+                                        <exclude reference="HNR-if-d18"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="HNR-if-d18"/>
                                         <include reference="9qs-IQ-asB"/>
+                                        <include reference="HNR-if-d18"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="7XK-kD-Pei" id="63M-Fs-0Sn"/>
+                                    <outlet property="delegate" destination="7XK-kD-Pei" id="a1g-oF-5zb"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VEE-wG-ew0">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Add+"/>
+                                <connections>
+                                    <action selector="addButtonOnclick:" destination="7XK-kD-Pei" eventType="touchUpInside" id="T5h-YB-HBB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -5009,6 +5001,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="ScreeningTableView" destination="qjt-y2-bVC" id="eDq-Qh-ncw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="knI-WE-FCU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -5034,7 +5029,7 @@
                                     <constraint firstAttribute="height" constant="600" id="ydv-E8-Ahk"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell_relatedData" rowHeight="111" id="h1E-21-2NV" customClass="Cell_relatedData" customModule="Easymed" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell_Allergy" rowHeight="111" id="h1E-21-2NV" customClass="Cell_Allergy" customModule="Easymed" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h1E-21-2NV" id="ITi-NS-EN4">
@@ -5077,24 +5072,35 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="Descripsion" destination="fzp-Cr-me1" id="bfm-Rf-hoZ"/>
+                                            <outlet property="Title" destination="Qc1-i1-8RD" id="LpH-dc-lWG"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="ydv-E8-Ahk"/>
                                         <exclude reference="Mbq-f4-kbe"/>
+                                        <exclude reference="ydv-E8-Ahk"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="ydv-E8-Ahk"/>
                                         <include reference="Mbq-f4-kbe"/>
+                                        <include reference="ydv-E8-Ahk"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="ESh-3N-ax9" id="V1L-Ks-9YE"/>
+                                    <outlet property="delegate" destination="ESh-3N-ax9" id="LB0-Qa-86h"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k51-IW-PKM">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Add+"/>
+                                <connections>
+                                    <action selector="addButtonOnclick:" destination="ESh-3N-ax9" eventType="touchUpInside" id="iKG-0W-n0p"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -5125,6 +5131,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="AllergyTableView" destination="19Y-SQ-8RW" id="vpK-u8-2vO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6pT-Pd-Uz6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -5150,7 +5159,7 @@
                                     <constraint firstAttribute="width" constant="400" id="Zxw-5p-9ov"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell_relatedData" rowHeight="111" id="hWw-IC-eFy" customClass="Cell_relatedData" customModule="Easymed" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell_FollowUp" rowHeight="111" id="hWw-IC-eFy" customClass="Cell_FollowUp" customModule="Easymed" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hWw-IC-eFy" id="8sI-WH-lrF">
@@ -5193,6 +5202,10 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="Descripsion" destination="TGX-sZ-s24" id="hQX-CA-9Bl"/>
+                                            <outlet property="Title" destination="QKI-3I-rj1" id="uAP-wT-Woq"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <variation key="default">
@@ -5207,10 +5220,17 @@
                                         <include reference="Zxw-5p-9ov"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="b0j-bj-Kwe" id="q1S-tT-U4m"/>
+                                    <outlet property="delegate" destination="b0j-bj-Kwe" id="lXD-Ei-u0U"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EnZ-7e-7ce">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Add+"/>
+                                <connections>
+                                    <action selector="addButtonOnclick:" destination="b0j-bj-Kwe" eventType="touchUpInside" id="Pfb-3f-Ia1"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -5241,10 +5261,143 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="FollowUpTableView" destination="mrY-DI-Li5" id="Es7-4C-Bdj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xia-NR-lPg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3909" y="-5110"/>
+        </scene>
+        <!--DiagnosisViewController-->
+        <scene sceneID="UsB-jm-40e">
+            <objects>
+                <viewController storyboardIdentifier="DiagnosisViewController" title="Clinical Diagnosis" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I1e-o8-SbR" userLabel="DiagnosisViewController" customClass="DiagnosisViewController" customModule="Easymed" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iEC-qa-tIm"/>
+                        <viewControllerLayoutGuide type="bottom" id="YtH-CC-ikM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ia2-Ha-qM8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="111" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oi5-HV-Zee">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="Irb-LP-L7b"/>
+                                    <constraint firstAttribute="height" constant="600" id="fyv-7g-sO3"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell_Diagnosis" rowHeight="111" id="6ha-DM-Ora" customClass="Cell_Diagnosis" customModule="Easymed" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="111"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6ha-DM-Ora" id="ij6-zZ-Fiu">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="110"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Descipsion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9h-6E-PtR" userLabel="Descripsion">
+                                                    <rect key="frame" x="319" y="69" width="44" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                        <rect key="frame" x="70" y="71" width="85" height="21"/>
+                                                    </variation>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUS-Fe-LIh">
+                                                    <rect key="frame" x="318" y="17" width="45" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                        <rect key="frame" x="22" y="8" width="48" height="22"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="pUS-Fe-LIh" firstAttribute="top" secondItem="ij6-zZ-Fiu" secondAttribute="topMargin" constant="17" id="5T4-KL-uLC"/>
+                                                <constraint firstItem="M9h-6E-PtR" firstAttribute="top" secondItem="pUS-Fe-LIh" secondAttribute="bottom" constant="24" id="s2M-gd-amP"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="5T4-KL-uLC"/>
+                                                    <exclude reference="s2M-gd-amP"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="constraints">
+                                                    <include reference="5T4-KL-uLC"/>
+                                                    <include reference="s2M-gd-amP"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="Descripsion" destination="M9h-6E-PtR" id="Hql-bF-ldp"/>
+                                            <outlet property="Title" destination="pUS-Fe-LIh" id="jIC-ZH-nbg"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="fyv-7g-sO3"/>
+                                        <exclude reference="Irb-LP-L7b"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="fyv-7g-sO3"/>
+                                        <include reference="Irb-LP-L7b"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="I1e-o8-SbR" id="222-EB-Ctd"/>
+                                    <outlet property="delegate" destination="I1e-o8-SbR" id="yEL-Ut-Wac"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BU9-YB-pta">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Add+"/>
+                                <connections>
+                                    <action selector="addButtonOnclick:" destination="I1e-o8-SbR" eventType="touchUpInside" id="F6u-MQ-us3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oi5-HV-Zee" firstAttribute="top" secondItem="ia2-Ha-qM8" secondAttribute="top" id="4HZ-yc-VpS"/>
+                            <constraint firstItem="YtH-CC-ikM" firstAttribute="top" secondItem="oi5-HV-Zee" secondAttribute="bottom" id="7cr-AL-JVU"/>
+                            <constraint firstItem="oi5-HV-Zee" firstAttribute="leading" secondItem="ia2-Ha-qM8" secondAttribute="leading" id="LBu-Ar-qRM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BU9-YB-pta" secondAttribute="trailing" constant="10" id="UaK-cd-DSa"/>
+                            <constraint firstItem="YtH-CC-ikM" firstAttribute="top" secondItem="BU9-YB-pta" secondAttribute="bottom" constant="55" id="ZDv-6S-MgJ"/>
+                            <constraint firstAttribute="trailing" secondItem="oi5-HV-Zee" secondAttribute="trailing" id="aH6-3i-Awp"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="BU9-YB-pta"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="ZDv-6S-MgJ"/>
+                                <exclude reference="UaK-cd-DSa"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="BU9-YB-pta"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="ZDv-6S-MgJ"/>
+                                <include reference="UaK-cd-DSa"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="DiagnosisTableView" destination="oi5-HV-Zee" id="Flp-eI-46u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hh7-Ax-E4h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3909" y="-4408"/>
         </scene>
     </scenes>
 </document>

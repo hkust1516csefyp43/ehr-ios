@@ -50,19 +50,19 @@ class AddNewViewController: UIViewController {
                         obj.remark=Descripsion.text;
                     }
                     if(related_data_type == 1){
-                        
+                         obj.category = 1;
                     }
                     else if(related_data_type == 2){
-                        
+                         obj.category = 2;
                     }
                     else if(related_data_type == 3){
-                        
+                         obj.category = 3;
                     }
                     else if(related_data_type == 4){
                         obj.category = 4;
                     }
                     else if(related_data_type == 5){
-                        
+                         obj.category = 5;
                     }
                     related_dataList.append(obj);
                     self.navigationController?.popViewControllerAnimated(true);
@@ -80,19 +80,19 @@ class AddNewViewController: UIViewController {
                         obj.remark=Descripsion.text;
                     }
                     if(related_data_type == 1){
-                        
+                         obj.category = 1;
                     }
                     else if(related_data_type == 2){
-                        
+                        obj.category = 2;
                     }
                     else if(related_data_type == 3){
-                        
+                        obj.category = 3;
                     }
                     else if(related_data_type == 4){
                         obj.category = 4;
                     }
                     else if(related_data_type == 5){
-                        
+                        obj.category = 5;
                     }
                     related_dataList.append(obj);
                     new_related_dataList.append(obj);
@@ -112,21 +112,26 @@ class AddNewViewController: UIViewController {
             else if(ConsultationState==1){
                 var obj:related_data = related_data();
                 obj.consultation_id = currentVisit.consultation.consultation_id;
-                obj.rd_id = related_dataList[Int(currentRelatedData.rd_id)!].rd_id;
-                obj.category = related_dataList[Int(currentRelatedData.rd_id)!].category;
+                obj.rd_id = currentRelatedData.rd_id;
+                obj.category = currentRelatedData.category;
                 if(objTitle.text != ""){
-                    related_dataList[Int(currentRelatedData.rd_id)!].data=objTitle.text;
-                    related_dataList[Int(currentRelatedData.rd_id)!].remark=Descripsion.text;
                     obj.data = objTitle.text;
+                    obj.remark = Descripsion.text;
+                    for(var i=0; i<related_dataList.count ; i++){
+                        if(related_dataList[i].rd_id==obj.rd_id){
+                            related_dataList[i].data=obj.data;
+                            related_dataList[i].remark=obj.remark;
+                            break;
+                        }
+                    }
+                    modified_related_dataList.append(obj);
+                    modified_related_data=1;
                 }
-                else{
-                    obj.data = related_dataList[Int(currentRelatedData.rd_id)!].data;
-                }
-                 obj.remark = Descripsion.text;
-                modified_related_dataList.append(obj);
-                modified_related_data=1;
                 self.navigationController?.popViewControllerAnimated(true);
             }
         }
+//        for(var i = 0; i<related_dataList.count;i++){
+//            print("\(related_dataList[i].data) , \(related_dataList[i].remark) ,  \(String(related_dataList[i].category))" )
+//        }
     }
 }

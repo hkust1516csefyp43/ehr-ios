@@ -33,7 +33,7 @@
 		217871411CC753FA00386E62 /* AddNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217871401CC753FA00386E62 /* AddNewViewController.swift */; };
 		217871491CC772B500386E62 /* ConsultationRemarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217871481CC772B500386E62 /* ConsultationRemarkViewController.swift */; };
 		2178714C1CC7731900386E62 /* AdviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2178714B1CC7731900386E62 /* AdviceViewController.swift */; };
-		217871521CC77D5C00386E62 /* Diagnosis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217871511CC77D5C00386E62 /* Diagnosis.swift */; };
+		217871521CC77D5C00386E62 /* DiagnosisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217871511CC77D5C00386E62 /* DiagnosisViewController.swift */; };
 		217871551CC7812400386E62 /* related_data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217871541CC7812400386E62 /* related_data.swift */; };
 		217871571CC78CB000386E62 /* keywords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217871561CC78CB000386E62 /* keywords.swift */; };
 		217871591CC7DDA700386E62 /* Cell_relatedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217871581CC7DDA700386E62 /* Cell_relatedData.swift */; };
@@ -44,6 +44,10 @@
 		218AC4F41CB2DD1100E691EC /* Visit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218AC4F31CB2DD1100E691EC /* Visit.swift */; };
 		218AC4F61CB2E02D00E691EC /* Triage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218AC4F51CB2E02D00E691EC /* Triage.swift */; };
 		218AC5161CB398DA00E691EC /* AddVisitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218AC5151CB398DA00E691EC /* AddVisitViewController.swift */; };
+		219000AA1CC8E69C001B6957 /* Cell_FollowUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219000A91CC8E69C001B6957 /* Cell_FollowUp.swift */; };
+		219000AC1CC8E6C8001B6957 /* Cell_Allergy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219000AB1CC8E6C8001B6957 /* Cell_Allergy.swift */; };
+		219000AE1CC8E6D8001B6957 /* Cell_Screening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219000AD1CC8E6D8001B6957 /* Cell_Screening.swift */; };
+		219000B01CC8E6E6001B6957 /* Cell_Diagnosis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219000AF1CC8E6E6001B6957 /* Cell_Diagnosis.swift */; };
 		21B7D7F91CAD95EF007CF8AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7D7F81CAD95EF007CF8AF /* AppDelegate.swift */; };
 		21B7D7FB1CAD95EF007CF8AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7D7FA1CAD95EF007CF8AF /* LoginViewController.swift */; };
 		21B7D7FE1CAD95EF007CF8AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21B7D7FC1CAD95EF007CF8AF /* Main.storyboard */; };
@@ -86,7 +90,7 @@
 		217871401CC753FA00386E62 /* AddNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewViewController.swift; sourceTree = "<group>"; };
 		217871481CC772B500386E62 /* ConsultationRemarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultationRemarkViewController.swift; sourceTree = "<group>"; };
 		2178714B1CC7731900386E62 /* AdviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdviceViewController.swift; sourceTree = "<group>"; };
-		217871511CC77D5C00386E62 /* Diagnosis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diagnosis.swift; sourceTree = "<group>"; };
+		217871511CC77D5C00386E62 /* DiagnosisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagnosisViewController.swift; sourceTree = "<group>"; };
 		217871541CC7812400386E62 /* related_data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = related_data.swift; sourceTree = "<group>"; };
 		217871561CC78CB000386E62 /* keywords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = keywords.swift; sourceTree = "<group>"; };
 		217871581CC7DDA700386E62 /* Cell_relatedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell_relatedData.swift; sourceTree = "<group>"; };
@@ -97,6 +101,10 @@
 		218AC4F31CB2DD1100E691EC /* Visit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Visit.swift; sourceTree = "<group>"; };
 		218AC4F51CB2E02D00E691EC /* Triage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triage.swift; sourceTree = "<group>"; };
 		218AC5151CB398DA00E691EC /* AddVisitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddVisitViewController.swift; sourceTree = "<group>"; };
+		219000A91CC8E69C001B6957 /* Cell_FollowUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell_FollowUp.swift; sourceTree = "<group>"; };
+		219000AB1CC8E6C8001B6957 /* Cell_Allergy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell_Allergy.swift; sourceTree = "<group>"; };
+		219000AD1CC8E6D8001B6957 /* Cell_Screening.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell_Screening.swift; sourceTree = "<group>"; };
+		219000AF1CC8E6E6001B6957 /* Cell_Diagnosis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell_Diagnosis.swift; sourceTree = "<group>"; };
 		21B7D7F81CAD95EF007CF8AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21B7D7FA1CAD95EF007CF8AF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		21B7D7FD1CAD95EF007CF8AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -141,6 +149,10 @@
 				21B7D80F1CAEFE1C007CF8AF /* CellR_Triage.swift */,
 				2188F0EA1CC4FD1F00AC3BB0 /* Cell_existingPatient.swift */,
 				217871581CC7DDA700386E62 /* Cell_relatedData.swift */,
+				219000A91CC8E69C001B6957 /* Cell_FollowUp.swift */,
+				219000AB1CC8E6C8001B6957 /* Cell_Allergy.swift */,
+				219000AD1CC8E6D8001B6957 /* Cell_Screening.swift */,
+				219000AF1CC8E6E6001B6957 /* Cell_Diagnosis.swift */,
 			);
 			name = cell_format;
 			sourceTree = "<group>";
@@ -198,11 +210,11 @@
 		2178714A1CC772D300386E62 /* related_data */ = {
 			isa = PBXGroup;
 			children = (
+				215FA1351CB17D580000B81F /* ScreeningViewController.swift */,
+				215FA1371CB17D610000B81F /* AllergyViewController.swift */,
+				217871511CC77D5C00386E62 /* DiagnosisViewController.swift */,
 				2178714B1CC7731900386E62 /* AdviceViewController.swift */,
 				2178713E1CC7524700386E62 /* FollowUpViewController.swift */,
-				215FA1371CB17D610000B81F /* AllergyViewController.swift */,
-				215FA1351CB17D580000B81F /* ScreeningViewController.swift */,
-				217871511CC77D5C00386E62 /* Diagnosis.swift */,
 				217871401CC753FA00386E62 /* AddNewViewController.swift */,
 			);
 			name = related_data;
@@ -388,7 +400,7 @@
 				21B7D80B1CAEDB45007CF8AF /* MainMenuViewController.swift in Sources */,
 				2188F0E51CC4483500AC3BB0 /* Consultation.swift in Sources */,
 				217871491CC772B500386E62 /* ConsultationRemarkViewController.swift in Sources */,
-				217871521CC77D5C00386E62 /* Diagnosis.swift in Sources */,
+				217871521CC77D5C00386E62 /* DiagnosisViewController.swift in Sources */,
 				21B7D7FB1CAD95EF007CF8AF /* LoginViewController.swift in Sources */,
 				218AC4F61CB2E02D00E691EC /* Triage.swift in Sources */,
 				2188F0E91CC4CABF00AC3BB0 /* ConsultationModifyViewController.swift in Sources */,
@@ -397,6 +409,7 @@
 				215FA1341CB17D4E0000B81F /* DrugHistoryViewController.swift in Sources */,
 				215FA11C1CB177930000B81F /* TriageModifyViewController.swift in Sources */,
 				21B7D7F91CAD95EF007CF8AF /* AppDelegate.swift in Sources */,
+				219000AC1CC8E6C8001B6957 /* Cell_Allergy.swift in Sources */,
 				215FA12A1CB17AD60000B81F /* ChiefComplainViewController.swift in Sources */,
 				2178713F1CC7524700386E62 /* FollowUpViewController.swift in Sources */,
 				215FA1181CAFA8A10000B81F /* TriageITSViewController.swift in Sources */,
@@ -405,6 +418,8 @@
 				215FA1161CAFA87A0000B81F /* TriageFTViewController.swift in Sources */,
 				21502F2A1CC1749700B2DAAD /* AfterConsultationViewController.swift in Sources */,
 				21B7D8101CAEFE1C007CF8AF /* CellR_Triage.swift in Sources */,
+				219000B01CC8E6E6001B6957 /* Cell_Diagnosis.swift in Sources */,
+				219000AA1CC8E69C001B6957 /* Cell_FollowUp.swift in Sources */,
 				2188F0EB1CC4FD1F00AC3BB0 /* Cell_existingPatient.swift in Sources */,
 				215FA1381CB17D610000B81F /* AllergyViewController.swift in Sources */,
 				215FA1241CB179C90000B81F /* RemarkViewController.swift in Sources */,
@@ -422,6 +437,7 @@
 				21FB1A691CBE088E002E5119 /* PendingViewControllerFT.swift in Sources */,
 				217871591CC7DDA700386E62 /* Cell_relatedData.swift in Sources */,
 				215FA1101CAF8D6F0000B81F /* Patient.swift in Sources */,
+				219000AE1CC8E6D8001B6957 /* Cell_Screening.swift in Sources */,
 				21FB1A6B1CBE1BD5002E5119 /* editPatient.swift in Sources */,
 				21502F261CC1663100B2DAAD /* ConsultationListViewController.swift in Sources */,
 				215FA1311CB17D350000B81F /* SocialHistoryViewController.swift in Sources */,

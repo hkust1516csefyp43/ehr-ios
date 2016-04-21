@@ -48,12 +48,16 @@ class AdviceViewController : UIViewController, UITableViewDataSource, UITableVie
     
     //Onclick Cell Action
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //Copy target data to variable
         currentRelatedData=related_data();
-        currentRelatedData.rd_id=String(indexPath.row);
+        if(ConsultationState==0){
+            currentRelatedData.rd_id=String(indexPath.row);
+        }
+        else{
+            currentRelatedData.rd_id=tempList[indexPath.row].rd_id;
+        }
         currentRelatedData.data=tempList[indexPath.row].data;
         currentRelatedData.remark=tempList[indexPath.row].remark;
-        
+        currentRelatedData.category = 4;
         
         // GET keywords
         keywordsList.removeAll();

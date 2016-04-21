@@ -21,11 +21,12 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
         }
         else if(ConsultationState==1){ //after consultation -> PUT consultation
             //Related data setup
-            modified_related_dataList.removeAll();
             new_related_dataList.removeAll();
+            modified_related_dataList.removeAll();
             deleted_related_dataList.removeAll();
-            modified_related_data=0;
+            
             new_related_data=0;
+            modified_related_data=0;
             deleted_related_data=0;
             //
         }
@@ -42,26 +43,27 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
         //        let familyhistoryViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FamilyHistoryViewController") as! FamilyHistoryViewController;
         //        let socialhistoryViewController = self.storyboard?.instantiateViewControllerWithIdentifier("SocialHistoryViewController") as! SocialHistoryViewController;
         //        let drughistoryViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DrugHistoryViewController") as! DrugHistoryViewController;
-        //        let screeningViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ScreeningViewController") as! ScreeningViewController;
-        //        let allergyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AllergyViewController") as! AllergyViewController;
+        
         //        let pregnancyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PregnancyViewController") as! PregnancyViewController;
         //        let reviewofthesystemViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ReviewOfTheSystemViewController") as! ReviewOfTheSystemViewController;
         //        let physicalExaminationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PhysicalExaminationViewController") as! PhysicalExaminationViewController;
         //        let pregnancyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PregnancyViewController") as! PregnancyViewController;
-        //        let followupViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FollowUpViewController") as! FollowUpViewController;
+        
         let adviceViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AdviceViewController") as! AdviceViewController;
+        let followupViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FollowUpViewController") as! FollowUpViewController;
+        let allergyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AllergyViewController") as! AllergyViewController;
+        let screeningViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ScreeningViewController") as! ScreeningViewController;
+        let diagnosisViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DiagnosisViewController") as! DiagnosisViewController;
+        //        let consultationmodifyViewController = [diagnosisViewController];
         
+        let consultationmodifyViewController = [ screeningViewController, allergyViewController, diagnosisViewController ,adviceViewController, followupViewController];
         
-        //Finishted Triage Case
-        //        let consultationmodifyFTViewController = [personalataViewController,vitalsignsViewController,chiefcomplainViewController,remarkViewController]d;
-        let consultationmodifyFTViewController = [adviceViewController];
-        //        let consultationmodifyFTViewController = [personaldataViewController,chiefcomplainViewController,remarkViewController];
         let options = PagingMenuOptions()
         options.menuHeight = 30
         
         let pagingmenuController = self.childViewControllers.first as! PagingMenuController
         pagingmenuController.delegate = self;
-        pagingmenuController.setup(viewControllers: consultationmodifyFTViewController, options: options)
+        pagingmenuController.setup(viewControllers: consultationmodifyViewController, options: options)
         
         //Add navigationbar button
         myNavigationItem.rightBarButtonItem = UIBarButtonItem(title: "Confirm", style: .Plain, target: self, action:"SaveButtonOnclick:")
@@ -669,7 +671,7 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
                         "token": token,
                         "Content-Type": "application/json"
                     ];
-                    let related_dataURL: String = "http://ehr-api.herokuapp.com/v2/related_data?rd_id=\(modified_related_dataList[i].rd_id)";
+                    let related_dataURL: String = "http://ehr-api.herokuapp.com/v2/related_data/\(modified_related_dataList[i].rd_id)";
                     print("PUT: \(related_dataURL)");
                     Alamofire.request(.PUT, related_dataURL, parameters: related_datajson, encoding: .JSON, headers: related_dataheaders).responseJSON { (Response) -> Void in
                         if let related_dataJSON = Response.result.value{

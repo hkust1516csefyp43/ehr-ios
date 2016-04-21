@@ -59,24 +59,26 @@ class LoginViewController: UIViewController {
         //        self.view.viewWithTag(1)?.hidden = true;
         UsernameTextField.text=nil;
         PasswordTextField.text=nil;
-//        let related_datajson : [String: AnyObject] = [
-//            "data": "MODIFIED",
-//            "remark": "MODIFIED",
-//        ];
-//        let related_dataheaders = [
-//            "token": token,
-//            "Content-Type": "application/json"
-//        ];
-//        let related_dataURL: String = "http://ehr-api.herokuapp.com/v2/related_data?rd_id=HKkufeNf2ogu3irD";
-//        print("PUT: \(related_dataURL)");
-//        Alamofire.request(.PUT, related_dataURL, parameters: related_datajson, encoding: .JSON, headers: related_dataheaders).responseJSON { (Response) -> Void in
-//            if let related_dataJSON = Response.result.value{
-//                print(related_dataJSON);
-//            }
-//            else{
-//                print("PUT fail");
-//            }
-//        }
+
+        
+        //        let related_datajson : [String: AnyObject] = [
+        //            "data": "MODIFIED",
+        //            "remark": "MODIFIED",
+        //        ];
+        //        let related_dataheaders = [
+        //            "token": token,
+        //            "Content-Type": "application/json"
+        //        ];
+        //        let related_dataURL: String = "http://ehr-api.herokuapp.com/v2/related_data?rd_id=HKkufeNf2ogu3irD";
+        //        print("PUT: \(related_dataURL)");
+        //        Alamofire.request(.PUT, related_dataURL, parameters: related_datajson, encoding: .JSON, headers: related_dataheaders).responseJSON { (Response) -> Void in
+        //            if let related_dataJSON = Response.result.value{
+        //                print(related_dataJSON);
+        //            }
+        //            else{
+        //                print("PUT fail");
+        //            }
+        //        }
     }
     
     override func didReceiveMemoryWarning() {
