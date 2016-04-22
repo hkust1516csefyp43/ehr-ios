@@ -26,6 +26,7 @@ var patientList1 : [Patient] = [Patient]();
 var patientList2 : [Patient] = [Patient]();
 var currentVisit: Visit = Visit();
 var currentRelatedData: related_data = related_data();
+var currentPrescription: prescriptions = prescriptions();
 var currentPatient : Patient = Patient();
 var tempPatient: Patient = Patient();
 var TriageModifyViewControllerState = -1; //-1= default, 0= new patient + add visit, 1= old patient + add visit, 2= old patient + modify visit
@@ -50,6 +51,9 @@ var new_related_dataList:[related_data] = [related_data]();
 var modified_related_dataList:[related_data] = [related_data]();
 var deleted_related_dataList:[related_data] = [related_data]();
 var keywordsList:[keywords] = [keywords]();
+var medicationsList:[medications] = [medications]();
+var prescriptionsList: [prescriptions] = [prescriptions]();
+
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var UsernameTextField: UITextField!
@@ -60,26 +64,17 @@ class LoginViewController: UIViewController {
         //        self.view.viewWithTag(1)?.hidden = true;
         UsernameTextField.text=nil;
         PasswordTextField.text=nil;
-
         
-        //        let related_datajson : [String: AnyObject] = [
-        //            "data": "MODIFIED",
-        //            "remark": "MODIFIED",
-        //        ];
+        
+        //                let related_datajson : [String: AnyObject] = [
+        //                    "data": "MODIFIED",
+        //                    "remark": "MODIFIED",
+        //                ];
         //        let related_dataheaders = [
         //            "token": token,
-        //            "Content-Type": "application/json"
+        //                    "Content-Type": "application/json"
         //        ];
-        //        let related_dataURL: String = "http://ehr-api.herokuapp.com/v2/related_data?rd_id=HKkufeNf2ogu3irD";
-        //        print("PUT: \(related_dataURL)");
-        //        Alamofire.request(.PUT, related_dataURL, parameters: related_datajson, encoding: .JSON, headers: related_dataheaders).responseJSON { (Response) -> Void in
-        //            if let related_dataJSON = Response.result.value{
-        //                print(related_dataJSON);
-        //            }
-        //            else{
-        //                print("PUT fail");
-        //            }
-        //        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -93,12 +88,34 @@ class LoginViewController: UIViewController {
         //call api to submit username and password
         print("\(Username) , \(Password)")
         
-        if(1==1){
-            self.performSegueWithIdentifier("Login_MainMenu", sender: self);
+        if(1==1){ //token correct
+            let headers = [
+                "token": token,
+            ];
+            let URL: String = "http://ehr-api.herokuapp.com/v2/medications";
+            print("POST: \(URL)");
+            Alamofire.request(.GET, URL, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
+                if let JSON = Response.result.value{
+                    medicationsList.removeAll();
+                    for(var i=0 ; i<JSON.count ; i++){
+                        var obj:medications = medications();
+                        obj.medication_id = JSON[i]["medication_id"]as! String;
+                        obj.user_id = JSON[i]["user_id"]as! String;
+                        obj.medication = JSON[i]["medication"]as! String;
+                        medicationsList.append(obj);
+                    }
+                                        self.performSegueWithIdentifier("Login_MainMenu", sender: self);
+//                    let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ConsultationModifyViewController") as! ConsultationModifyViewController;
+//                    self.navigationController?.pushViewController(nextViewController, animated: true);
+                }
+                else{
+                    print("Fail: Get medications tuple");
+                }
+            }
         }
-        else{};
-        //        let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ConsultationModifyViewController") as! ConsultationModifyViewController;
-        //        self.navigationController?.pushViewController(nextViewController, animated: true);
+        else{ //token incorrect
+            
+        };
     }
     
 }

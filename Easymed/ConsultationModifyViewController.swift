@@ -18,6 +18,12 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
         super.viewDidLoad()
         if(ConsultationState==0){ //before consultation -> POST consultation
             related_dataList.removeAll();
+            prescriptionsList.removeAll();
+            for(var i=0; i<medicationsList.count ;i++){
+                var obj:prescriptions = prescriptions();
+                obj.medication_id = medicationsList[i].medication_id;
+                prescriptionsList.append(obj);
+            }
         }
         else if(ConsultationState==1){ //after consultation -> PUT consultation
             //Related data setup
@@ -49,16 +55,18 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
         //        let reviewofthesystemViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ReviewOfTheSystemViewController") as! ReviewOfTheSystemViewController;
         //        let physicalExaminationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PhysicalExaminationViewController") as! PhysicalExaminationViewController;
         //        let pregnancyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PregnancyViewController") as! PregnancyViewController;
-        let drughistoryViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DrugHistoryViewController") as! DrugHistoryViewController;
-
-        let adviceViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AdviceViewController") as! AdviceViewController;
-        let followupViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FollowUpViewController") as! FollowUpViewController;
-        let allergyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AllergyViewController") as! AllergyViewController;
-        let screeningViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ScreeningViewController") as! ScreeningViewController;
-        let diagnosisViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DiagnosisViewController") as! DiagnosisViewController;
-        //        let consultationmodifyViewController = [diagnosisViewController];
+//        let drughistoryViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DrugHistoryViewController") as! DrugHistoryViewController;
+//        let adviceViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AdviceViewController") as! AdviceViewController;
+//        let followupViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FollowUpViewController") as! FollowUpViewController;
+//        let allergyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AllergyViewController") as! AllergyViewController;
+//        let screeningViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ScreeningViewController") as! ScreeningViewController;
+//        let diagnosisViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DiagnosisViewController") as! DiagnosisViewController;
+        let medicationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MedicationViewController") as! MedicationViewController;
         
-        let consultationmodifyViewController = [screeningViewController, allergyViewController, diagnosisViewController ,adviceViewController, followupViewController];
+        
+    
+//        let consultationmodifyViewController = [screeningViewController, allergyViewController, diagnosisViewController ,adviceViewController, followupViewController];
+        let consultationmodifyViewController = [medicationViewController];
         
         let options = PagingMenuOptions()
         options.menuHeight = 30
