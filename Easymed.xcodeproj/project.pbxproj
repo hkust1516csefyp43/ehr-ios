@@ -48,6 +48,9 @@
 		219000AC1CC8E6C8001B6957 /* Cell_Allergy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219000AB1CC8E6C8001B6957 /* Cell_Allergy.swift */; };
 		219000AE1CC8E6D8001B6957 /* Cell_Screening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219000AD1CC8E6D8001B6957 /* Cell_Screening.swift */; };
 		219000B01CC8E6E6001B6957 /* Cell_Diagnosis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219000AF1CC8E6E6001B6957 /* Cell_Diagnosis.swift */; };
+		219000D11CC9424E001B6957 /* Cell_DrugHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219000D01CC9424E001B6957 /* Cell_DrugHistory.swift */; };
+		219000D61CC9D316001B6957 /* MedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219000D51CC9D316001B6957 /* MedicationViewController.swift */; };
+		219000D81CC9D680001B6957 /* Cell_Medication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219000D71CC9D680001B6957 /* Cell_Medication.swift */; };
 		21B7D7F91CAD95EF007CF8AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7D7F81CAD95EF007CF8AF /* AppDelegate.swift */; };
 		21B7D7FB1CAD95EF007CF8AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7D7FA1CAD95EF007CF8AF /* LoginViewController.swift */; };
 		21B7D7FE1CAD95EF007CF8AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21B7D7FC1CAD95EF007CF8AF /* Main.storyboard */; };
@@ -105,6 +108,9 @@
 		219000AB1CC8E6C8001B6957 /* Cell_Allergy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell_Allergy.swift; sourceTree = "<group>"; };
 		219000AD1CC8E6D8001B6957 /* Cell_Screening.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell_Screening.swift; sourceTree = "<group>"; };
 		219000AF1CC8E6E6001B6957 /* Cell_Diagnosis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell_Diagnosis.swift; sourceTree = "<group>"; };
+		219000D01CC9424E001B6957 /* Cell_DrugHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell_DrugHistory.swift; sourceTree = "<group>"; };
+		219000D51CC9D316001B6957 /* MedicationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationViewController.swift; sourceTree = "<group>"; };
+		219000D71CC9D680001B6957 /* Cell_Medication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell_Medication.swift; sourceTree = "<group>"; };
 		21B7D7F81CAD95EF007CF8AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21B7D7FA1CAD95EF007CF8AF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		21B7D7FD1CAD95EF007CF8AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -153,6 +159,8 @@
 				219000AB1CC8E6C8001B6957 /* Cell_Allergy.swift */,
 				219000AD1CC8E6D8001B6957 /* Cell_Screening.swift */,
 				219000AF1CC8E6E6001B6957 /* Cell_Diagnosis.swift */,
+				219000D01CC9424E001B6957 /* Cell_DrugHistory.swift */,
+				219000D71CC9D680001B6957 /* Cell_Medication.swift */,
 			);
 			name = cell_format;
 			sourceTree = "<group>";
@@ -173,17 +181,11 @@
 		217871461CC7707D00386E62 /* visit_data */ = {
 			isa = PBXGroup;
 			children = (
-				217871531CC77DD500386E62 /* documents */,
+				219000D21CC9D24C001B6957 /* Triage_data */,
+				217871531CC77DD500386E62 /* HTML_documents */,
+				219000D31CC9D27E001B6957 /* SwitchPage */,
 				2178714A1CC772D300386E62 /* related_data */,
-				215FA1251CB17A9D0000B81F /* PersonalDataViewController.swift */,
-				215FA1271CB17AB90000B81F /* VitalSignsViewController.swift */,
-				215FA1291CB17AD60000B81F /* ChiefComplainViewController.swift */,
-				215FA1231CB179C90000B81F /* RemarkViewController.swift */,
-				215FA11F1CB179470000B81F /* PreviousMedicalHistoryViewController.swift */,
-				215FA1331CB17D4E0000B81F /* DrugHistoryViewController.swift */,
-				215FA1391CB17D6C0000B81F /* PregnancyViewController.swift */,
-				215FA13B1CB17D770000B81F /* ReviewOfTheSystemViewController.swift */,
-				2188F0E61CC4AA6A00AC3BB0 /* PhysicalExaminationViewController.swift */,
+				219000D41CC9D2F9001B6957 /* Medicine */,
 				217871481CC772B500386E62 /* ConsultationRemarkViewController.swift */,
 			);
 			name = visit_data;
@@ -210,6 +212,7 @@
 		2178714A1CC772D300386E62 /* related_data */ = {
 			isa = PBXGroup;
 			children = (
+				215FA1331CB17D4E0000B81F /* DrugHistoryViewController.swift */,
 				215FA1351CB17D580000B81F /* ScreeningViewController.swift */,
 				215FA1371CB17D610000B81F /* AllergyViewController.swift */,
 				217871511CC77D5C00386E62 /* DiagnosisViewController.swift */,
@@ -220,14 +223,44 @@
 			name = related_data;
 			sourceTree = "<group>";
 		};
-		217871531CC77DD500386E62 /* documents */ = {
+		217871531CC77DD500386E62 /* HTML_documents */ = {
 			isa = PBXGroup;
 			children = (
 				215FA11D1CB179270000B81F /* HPIViewController.swift */,
 				215FA1211CB179AB0000B81F /* FamilyHistoryViewController.swift */,
 				215FA1301CB17D350000B81F /* SocialHistoryViewController.swift */,
 			);
-			name = documents;
+			name = HTML_documents;
+			sourceTree = "<group>";
+		};
+		219000D21CC9D24C001B6957 /* Triage_data */ = {
+			isa = PBXGroup;
+			children = (
+				215FA1251CB17A9D0000B81F /* PersonalDataViewController.swift */,
+				215FA1271CB17AB90000B81F /* VitalSignsViewController.swift */,
+				215FA1291CB17AD60000B81F /* ChiefComplainViewController.swift */,
+				215FA1231CB179C90000B81F /* RemarkViewController.swift */,
+			);
+			name = Triage_data;
+			sourceTree = "<group>";
+		};
+		219000D31CC9D27E001B6957 /* SwitchPage */ = {
+			isa = PBXGroup;
+			children = (
+				2188F0E61CC4AA6A00AC3BB0 /* PhysicalExaminationViewController.swift */,
+				215FA13B1CB17D770000B81F /* ReviewOfTheSystemViewController.swift */,
+				215FA1391CB17D6C0000B81F /* PregnancyViewController.swift */,
+			);
+			name = SwitchPage;
+			sourceTree = "<group>";
+		};
+		219000D41CC9D2F9001B6957 /* Medicine */ = {
+			isa = PBXGroup;
+			children = (
+				215FA11F1CB179470000B81F /* PreviousMedicalHistoryViewController.swift */,
+				219000D51CC9D316001B6957 /* MedicationViewController.swift */,
+			);
+			name = Medicine;
 			sourceTree = "<group>";
 		};
 		21B7D7EC1CAD95EE007CF8AF = {
@@ -432,6 +465,7 @@
 				2178714C1CC7731900386E62 /* AdviceViewController.swift in Sources */,
 				215FA1221CB179AB0000B81F /* FamilyHistoryViewController.swift in Sources */,
 				215FA13C1CB17D770000B81F /* ReviewOfTheSystemViewController.swift in Sources */,
+				219000D11CC9424E001B6957 /* Cell_DrugHistory.swift in Sources */,
 				215FA13A1CB17D6C0000B81F /* PregnancyViewController.swift in Sources */,
 				21B7D80D1CAEFDE3007CF8AF /* CellL_Triage.swift in Sources */,
 				21FB1A691CBE088E002E5119 /* PendingViewControllerFT.swift in Sources */,
@@ -440,7 +474,9 @@
 				219000AE1CC8E6D8001B6957 /* Cell_Screening.swift in Sources */,
 				21FB1A6B1CBE1BD5002E5119 /* editPatient.swift in Sources */,
 				21502F261CC1663100B2DAAD /* ConsultationListViewController.swift in Sources */,
+				219000D81CC9D680001B6957 /* Cell_Medication.swift in Sources */,
 				215FA1311CB17D350000B81F /* SocialHistoryViewController.swift in Sources */,
+				219000D61CC9D316001B6957 /* MedicationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

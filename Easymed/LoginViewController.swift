@@ -20,6 +20,7 @@ var deleted_related_data = 0;
 var simulate_click = 0;
 var related_dataState = -1; //-1 = error, 0 = new, 1=modify
 var related_data_type = -1; //1=screening, 2=Allergy, 3=diagnosis, 4=advice, 5=follow-up
+var related_data_id_count = 0;
 //
 var patientList1 : [Patient] = [Patient]();
 var patientList2 : [Patient] = [Patient]();

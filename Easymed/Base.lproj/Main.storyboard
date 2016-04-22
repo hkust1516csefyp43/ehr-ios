@@ -427,26 +427,6 @@
             </objects>
             <point key="canvasLocation" x="3204" y="149"/>
         </scene>
-        <!--Medication View Controller-->
-        <scene sceneID="zgK-l6-lNY">
-            <objects>
-                <viewController storyboardIdentifier="MedicationViewController" title="Medication View Controller" id="vv1-8m-5fY" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="uwa-nL-c2a"/>
-                        <viewControllerLayoutGuide type="bottom" id="zcd-l7-lOK"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yTR-dU-MRc">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="400" height="600"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FRK-D6-jsh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2605" y="-5110"/>
-        </scene>
         <!--Add task View Controller-->
         <scene sceneID="bHM-zG-a8l">
             <objects>
@@ -1667,24 +1647,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2VL-VV-zfS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4581" y="-4417"/>
-        </scene>
-        <!--Drug History View Controller-->
-        <scene sceneID="UtL-A8-29J">
-            <objects>
-                <viewController storyboardIdentifier="DrugHistoryViewController" title="Drug History View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gIx-f5-HsS" customClass="DrugHistoryViewController" customModule="Easymed" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="whQ-d3-ZPb"/>
-                        <viewControllerLayoutGuide type="bottom" id="8gK-FD-HAW"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="43B-fd-bbJ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="E87-lK-WCc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2597" y="-3700"/>
         </scene>
         <!--PREGNANCY(FEMALE ONLY)-->
         <scene sceneID="Fxe-6Y-JXF">
@@ -4749,6 +4711,82 @@
             </objects>
             <point key="canvasLocation" x="3889" y="1738"/>
         </scene>
+        <!--medicationViewController-->
+        <scene sceneID="ZND-7Z-MLi">
+            <objects>
+                <tableViewController storyboardIdentifier="MedicationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jj2-PP-X1u" userLabel="medicationViewController" customClass="Medication" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" id="H8X-ps-aCn" customClass="Medica">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell_Medication" rowHeight="110" id="UIS-93-sl9" customClass="Cell_Medication" customModule="Easymed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="110"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UIS-93-sl9" id="9XV-1m-ZLv">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="109"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qcJ-Kb-zpv">
+                                            <rect key="frame" x="103" y="39" width="51" height="31"/>
+                                        </switch>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DrugName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6e9-Ve-Xb7" userLabel="DrugName">
+                                            <rect key="frame" x="171" y="21" width="83" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DrugDetail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQI-wk-jTF" userLabel="DrugDetail">
+                                            <rect key="frame" x="172" y="60" width="82" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact" misplaced="YES">
+                                                <rect key="frame" x="99" y="57" width="61" height="13"/>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="FQI-wk-jTF" firstAttribute="leading" secondItem="qcJ-Kb-zpv" secondAttribute="trailing" constant="29" id="04E-it-B8W"/>
+                                        <constraint firstItem="qcJ-Kb-zpv" firstAttribute="top" secondItem="9XV-1m-ZLv" secondAttribute="topMargin" constant="31" id="0Xh-Ii-y70"/>
+                                        <constraint firstItem="qcJ-Kb-zpv" firstAttribute="leading" secondItem="9XV-1m-ZLv" secondAttribute="leadingMargin" constant="13" id="L5K-NJ-Qid"/>
+                                        <constraint firstItem="6e9-Ve-Xb7" firstAttribute="top" secondItem="9XV-1m-ZLv" secondAttribute="topMargin" constant="8" id="ds3-Ki-Cz1"/>
+                                        <constraint firstItem="6e9-Ve-Xb7" firstAttribute="leading" secondItem="9XV-1m-ZLv" secondAttribute="leadingMargin" constant="91" id="gOM-xZ-WtW"/>
+                                        <constraint firstItem="FQI-wk-jTF" firstAttribute="top" secondItem="6e9-Ve-Xb7" secondAttribute="bottom" constant="20" id="uKq-SI-18C"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="0Xh-Ii-y70"/>
+                                            <exclude reference="L5K-NJ-Qid"/>
+                                            <exclude reference="ds3-Ki-Cz1"/>
+                                            <exclude reference="gOM-xZ-WtW"/>
+                                            <exclude reference="04E-it-B8W"/>
+                                            <exclude reference="uKq-SI-18C"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="widthClass=compact">
+                                        <mask key="constraints">
+                                            <include reference="0Xh-Ii-y70"/>
+                                            <include reference="L5K-NJ-Qid"/>
+                                            <include reference="ds3-Ki-Cz1"/>
+                                            <include reference="gOM-xZ-WtW"/>
+                                            <include reference="04E-it-B8W"/>
+                                            <include reference="uKq-SI-18C"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="jj2-PP-X1u" id="TsB-qH-v5A"/>
+                            <outlet property="delegate" destination="jj2-PP-X1u" id="GNH-qL-Xv0"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IeT-ol-Isl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2517" y="-5114"/>
+        </scene>
         <!--AdviceViewController-->
         <scene sceneID="VJZ-Fi-qNm">
             <objects>
@@ -5007,7 +5045,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="knI-WE-FCU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3244.5" y="-3700"/>
+            <point key="canvasLocation" x="3252" y="-3700"/>
         </scene>
         <!--AllergyViewController-->
         <scene sceneID="gda-Mc-LUs">
@@ -5398,6 +5436,136 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hh7-Ax-E4h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3909" y="-4408"/>
+        </scene>
+        <!--DrugHistoryViewController-->
+        <scene sceneID="tHE-Fv-5AI">
+            <objects>
+                <viewController storyboardIdentifier="DrugHistoryViewController" title="Drug history" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vpe-58-VgL" userLabel="DrugHistoryViewController" customClass="DrugHistoryViewController" customModule="Easymed" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AZq-LP-4OR"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zuz-RJ-LTp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gXt-PE-I2d">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="111" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4DZ-5j-h4c">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="OjT-8V-q3X"/>
+                                    <constraint firstAttribute="height" constant="600" id="ntQ-IZ-mm4"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell_DrugHistory" rowHeight="111" id="iXN-D2-j5F" customClass="Cell_DrugHistory" customModule="Easymed" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="111"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iXN-D2-j5F" id="S5S-3X-9JU">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="110"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Descipsion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jad-5K-OT8" userLabel="Descripsion">
+                                                    <rect key="frame" x="319" y="69" width="44" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                        <rect key="frame" x="70" y="71" width="85" height="21"/>
+                                                    </variation>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYj-ex-wmu">
+                                                    <rect key="frame" x="318" y="17" width="45" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                        <rect key="frame" x="22" y="8" width="48" height="22"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="jad-5K-OT8" firstAttribute="top" secondItem="sYj-ex-wmu" secondAttribute="bottom" constant="24" id="CLS-A9-Q8T"/>
+                                                <constraint firstItem="sYj-ex-wmu" firstAttribute="top" secondItem="S5S-3X-9JU" secondAttribute="topMargin" constant="17" id="pvD-EI-2KB"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="pvD-EI-2KB"/>
+                                                    <exclude reference="CLS-A9-Q8T"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="constraints">
+                                                    <include reference="pvD-EI-2KB"/>
+                                                    <include reference="CLS-A9-Q8T"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="Descripsion" destination="jad-5K-OT8" id="ht7-6N-0Pl"/>
+                                            <outlet property="Title" destination="sYj-ex-wmu" id="J8X-2s-iOH"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="OjT-8V-q3X"/>
+                                        <exclude reference="ntQ-IZ-mm4"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="OjT-8V-q3X"/>
+                                        <include reference="ntQ-IZ-mm4"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="vpe-58-VgL" id="MIs-Hv-V47"/>
+                                    <outlet property="delegate" destination="vpe-58-VgL" id="3z5-ng-hBU"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwh-fh-CSl">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Add+"/>
+                                <connections>
+                                    <action selector="addButtonOnclick:" destination="vpe-58-VgL" eventType="touchUpInside" id="qD4-JU-vhe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4DZ-5j-h4c" secondAttribute="trailing" id="9NC-qd-gIu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rwh-fh-CSl" secondAttribute="trailing" constant="10" id="idx-Hc-Juj"/>
+                            <constraint firstItem="4DZ-5j-h4c" firstAttribute="top" secondItem="gXt-PE-I2d" secondAttribute="top" id="lr7-Zq-8Jh"/>
+                            <constraint firstItem="4DZ-5j-h4c" firstAttribute="leading" secondItem="gXt-PE-I2d" secondAttribute="leading" id="oH3-hK-aLL"/>
+                            <constraint firstItem="Zuz-RJ-LTp" firstAttribute="top" secondItem="rwh-fh-CSl" secondAttribute="bottom" constant="55" id="rl9-sK-RTN"/>
+                            <constraint firstItem="Zuz-RJ-LTp" firstAttribute="top" secondItem="4DZ-5j-h4c" secondAttribute="bottom" id="seU-Zs-tCu"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="rwh-fh-CSl"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="rl9-sK-RTN"/>
+                                <exclude reference="idx-Hc-Juj"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="rwh-fh-CSl"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="rl9-sK-RTN"/>
+                                <include reference="idx-Hc-Juj"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="DrugHistoryTableView" destination="4DZ-5j-h4c" id="nta-z1-O3d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cw5-K9-vf0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2601" y="-3700"/>
         </scene>
     </scenes>
 </document>

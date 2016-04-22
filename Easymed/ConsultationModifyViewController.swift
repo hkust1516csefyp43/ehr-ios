@@ -28,7 +28,8 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
             new_related_data=0;
             modified_related_data=0;
             deleted_related_data=0;
-            //
+            
+            related_data_id_count = 0;
         }
         else{
             print("error: Variable 'ConsultationState'")
@@ -48,7 +49,8 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
         //        let reviewofthesystemViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ReviewOfTheSystemViewController") as! ReviewOfTheSystemViewController;
         //        let physicalExaminationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PhysicalExaminationViewController") as! PhysicalExaminationViewController;
         //        let pregnancyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PregnancyViewController") as! PregnancyViewController;
-        
+        let drughistoryViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DrugHistoryViewController") as! DrugHistoryViewController;
+
         let adviceViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AdviceViewController") as! AdviceViewController;
         let followupViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FollowUpViewController") as! FollowUpViewController;
         let allergyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AllergyViewController") as! AllergyViewController;
@@ -56,7 +58,7 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
         let diagnosisViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DiagnosisViewController") as! DiagnosisViewController;
         //        let consultationmodifyViewController = [diagnosisViewController];
         
-        let consultationmodifyViewController = [ screeningViewController, allergyViewController, diagnosisViewController ,adviceViewController, followupViewController];
+        let consultationmodifyViewController = [screeningViewController, allergyViewController, diagnosisViewController ,adviceViewController, followupViewController];
         
         let options = PagingMenuOptions()
         options.menuHeight = 30

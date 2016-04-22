@@ -49,20 +49,23 @@ class AddNewViewController: UIViewController {
                     if(Descripsion.text != ""){
                         obj.remark=Descripsion.text;
                     }
+                    if(related_data_type == 0){
+                        obj.category = 0;
+                    }
                     if(related_data_type == 1){
-                         obj.category = 1;
+                        obj.category = 1;
                     }
                     else if(related_data_type == 2){
-                         obj.category = 2;
+                        obj.category = 2;
                     }
                     else if(related_data_type == 3){
-                         obj.category = 3;
+                        obj.category = 3;
                     }
                     else if(related_data_type == 4){
                         obj.category = 4;
                     }
                     else if(related_data_type == 5){
-                         obj.category = 5;
+                        obj.category = 5;
                     }
                     related_dataList.append(obj);
                     self.navigationController?.popViewControllerAnimated(true);
@@ -79,8 +82,11 @@ class AddNewViewController: UIViewController {
                     if(Descripsion.text != ""){
                         obj.remark=Descripsion.text;
                     }
+                    if(related_data_type == 0){
+                        obj.category = 0;
+                    }
                     if(related_data_type == 1){
-                         obj.category = 1;
+                        obj.category = 1;
                     }
                     else if(related_data_type == 2){
                         obj.category = 2;
@@ -104,8 +110,13 @@ class AddNewViewController: UIViewController {
         else if(related_dataState==1){
             if(ConsultationState==0){
                 if(objTitle.text != ""){
-                    related_dataList[Int(currentRelatedData.rd_id)!].data=objTitle.text;
-                    related_dataList[Int(currentRelatedData.rd_id)!].remark=Descripsion.text;
+                    for(var i=0; i<related_dataList.count ; i++){
+                        if(related_dataList[i].rd_id==currentRelatedData.rd_id){
+                            related_dataList[i].data=objTitle.text;
+                            related_dataList[i].remark=Descripsion.text;
+                            break;
+                        }
+                    }
                 }
                 self.navigationController?.popViewControllerAnimated(true);
             }
@@ -130,8 +141,8 @@ class AddNewViewController: UIViewController {
                 self.navigationController?.popViewControllerAnimated(true);
             }
         }
-//        for(var i = 0; i<related_dataList.count;i++){
-//            print("\(related_dataList[i].data) , \(related_dataList[i].remark) ,  \(String(related_dataList[i].category))" )
-//        }
+        //        for(var i = 0; i<related_dataList.count;i++){
+        //            print("\(related_dataList[i].data) , \(related_dataList[i].remark) ,  \(String(related_dataList[i].category))" )
+        //        }
     }
 }

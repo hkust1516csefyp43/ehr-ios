@@ -52,7 +52,9 @@ class FollowUpViewController : UIViewController, UITableViewDataSource, UITableV
         //Copy target data to variable
         currentRelatedData=related_data();
         if(ConsultationState==0){
-            currentRelatedData.rd_id=String(indexPath.row);
+            related_data_id_count=related_data_id_count+1;
+            tempList[indexPath.row].rd_id = String(related_data_id_count);
+            currentRelatedData.rd_id=String(related_data_id_count);
         }
         else{
             currentRelatedData.rd_id=tempList[indexPath.row].rd_id;
