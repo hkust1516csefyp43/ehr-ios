@@ -15,7 +15,7 @@ class AddPrescriptionViewController : UIViewController {
     @IBOutlet weak var descipsion: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(currentPrescription.prescribed==1 && currentPrescription.prescription_detail != "NULL"){
+        if(currentPrescription.use==1 && currentPrescription.prescription_detail != "NULL"){
             descipsion.text = currentPrescription.prescription_detail;
         }
     }
@@ -23,12 +23,12 @@ class AddPrescriptionViewController : UIViewController {
     @IBAction func AddOnclick(sender: UIButton) {
         for(var i=0; i<prescriptionsList.count ; i++){
             if(prescriptionsList[i].medication_id==currentPrescription.medication_id){
-                prescriptionsList[i].prescribed = 1;
+                prescriptionsList[i].use = 1;
                 if(descipsion.text != ""){
-                prescriptionsList[i].prescription_detail=descipsion.text;
+                    prescriptionsList[i].prescription_detail=descipsion.text;
                 }
                 else{
-                prescriptionsList[i].prescription_detail="NULL";
+                    prescriptionsList[i].prescription_detail="NULL";
                 }
                 break;
             }
@@ -37,10 +37,10 @@ class AddPrescriptionViewController : UIViewController {
         self.navigationController?.popViewControllerAnimated(true);
     }
     @IBAction func RemoveOnclick(sender: UIButton) {
-        if(currentPrescription.prescribed==1){
+        if(currentPrescription.use==1){
             for(var i=0; i<prescriptionsList.count ; i++){
                 if(prescriptionsList[i].medication_id==currentPrescription.medication_id){
-                    prescriptionsList[i].prescribed = 0;
+                    prescriptionsList[i].use = 0;
                     prescriptionsList[i].prescription_detail="NULL";
                     break;
                 }

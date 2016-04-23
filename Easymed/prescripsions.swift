@@ -5,8 +5,24 @@ class prescriptions{
     var medication_id:String = "NULL";
     var prescription_detail:String = "NULL";
     var prescribed:Int = 0;
+    var use:Int = 0;
     
     init(){
         
+    }
+    
+    func compare(obj2:prescriptions)->Int{
+        if(self.use != obj2.use){
+            if(obj2.use==1){
+                return 1;
+            }
+            if(obj2.use==0){
+                return 3;
+            }
+        }
+        if(self.prescription_detail != obj2.prescription_detail){
+            return 2;
+        }
+        return 0;
     }
 }

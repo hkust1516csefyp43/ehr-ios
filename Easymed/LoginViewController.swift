@@ -14,6 +14,9 @@ var edit_patient = 0;
 var edit_triage = 0;
 var edit_consultation = 0;
 var edit_visit = 0;
+var edit_related_data = 0;
+var edit_prescription = 0;
+
 var new_related_data = 0;
 var modified_related_data = 0;
 var deleted_related_data = 0;
@@ -53,6 +56,7 @@ var deleted_related_dataList:[related_data] = [related_data]();
 var keywordsList:[keywords] = [keywords]();
 var medicationsList:[medications] = [medications]();
 var prescriptionsList: [prescriptions] = [prescriptions]();
+var prescriptionsList_original: [prescriptions] = [prescriptions]();
 
 class LoginViewController: UIViewController {
     
@@ -65,7 +69,6 @@ class LoginViewController: UIViewController {
         UsernameTextField.text=nil;
         PasswordTextField.text=nil;
         
-        
         //                let related_datajson : [String: AnyObject] = [
         //                    "data": "MODIFIED",
         //                    "remark": "MODIFIED",
@@ -74,6 +77,25 @@ class LoginViewController: UIViewController {
         //            "token": token,
         //                    "Content-Type": "application/json"
         //        ];
+//        let prescriptionsjson : [String: AnyObject] = [
+//            "prescription_detail": "modified_details",
+//            "prescribed": 0
+//        ];
+//        let prescriptionsheaders = [
+//            "token": token,
+//            "Content-Type": "application/json"
+//        ];
+//        let prescriptionsURL: String = "http://ehr-api.herokuapp.com/v2/prescriptions/RcVcK8FVbZ3G4KYH";
+//        print("PUT: \(prescriptionsURL)");
+//        Alamofire.request(.PUT, prescriptionsURL, parameters: prescriptionsjson, encoding: .JSON, headers: prescriptionsheaders).responseJSON { (Response) -> Void in
+//            if let prescriptionsJSON = Response.result.value{
+//                print("success")
+//            }
+//            else{
+//                print("fail: PUT prescripsion")
+//            }
+//        }
+        
         
     }
     
@@ -85,6 +107,7 @@ class LoginViewController: UIViewController {
     @IBAction func LoginOnclick(sender: UIButton) {
         let Username:String = String!(UsernameTextField.text);
         let Password:String = String!(PasswordTextField.text);
+        
         //call api to submit username and password
         print("\(Username) , \(Password)")
         
@@ -93,7 +116,7 @@ class LoginViewController: UIViewController {
                 "token": token,
             ];
             let URL: String = "http://ehr-api.herokuapp.com/v2/medications";
-            print("POST: \(URL)");
+            print("GET: \(URL)");
             Alamofire.request(.GET, URL, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
                 if let JSON = Response.result.value{
                     medicationsList.removeAll();
@@ -104,9 +127,9 @@ class LoginViewController: UIViewController {
                         obj.medication = JSON[i]["medication"]as! String;
                         medicationsList.append(obj);
                     }
-                                        self.performSegueWithIdentifier("Login_MainMenu", sender: self);
-//                    let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ConsultationModifyViewController") as! ConsultationModifyViewController;
-//                    self.navigationController?.pushViewController(nextViewController, animated: true);
+                    self.performSegueWithIdentifier("Login_MainMenu", sender: self);
+                    //                    let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ConsultationModifyViewController") as! ConsultationModifyViewController;
+                    //                    self.navigationController?.pushViewController(nextViewController, animated: true);
                 }
                 else{
                     print("Fail: Get medications tuple");

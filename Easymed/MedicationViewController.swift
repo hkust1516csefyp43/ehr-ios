@@ -30,15 +30,15 @@ class MedicationViewController : UIViewController, UITableViewDataSource, UITabl
     //Assign content in cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell=self.MedicationTableView.dequeueReusableCellWithIdentifier("Cell_Medication", forIndexPath: indexPath) as! Cell_Medication;
-        if(prescriptionsList[indexPath.row].prescribed == 1){
-          cell.Switch.text = "Yes";
+        if(prescriptionsList[indexPath.row].use == 1){
+            cell.Switch.text = "Y";
         }
         else{
-          cell.Switch.text = "No";
+            cell.Switch.text = "N";
         }
         for(var i=0; i<medicationsList.count;i++){
             if(prescriptionsList[indexPath.row].medication_id == medicationsList[i].medication_id){
-             cell.Title.text = medicationsList[i].medication;
+                cell.Title.text = medicationsList[i].medication;
                 break;
             }
         }
@@ -51,13 +51,12 @@ class MedicationViewController : UIViewController, UITableViewDataSource, UITabl
         //UI management
         currentPrescription.prescription_id = prescriptionsList[indexPath.row].prescription_id;
         currentPrescription.medication_id = prescriptionsList[indexPath.row].medication_id;
-        currentPrescription.prescribed = prescriptionsList[indexPath.row].prescribed;
         currentPrescription.prescription_detail = prescriptionsList[indexPath.row].prescription_detail;
+        currentPrescription.use = prescriptionsList[indexPath.row].use;
         
         //Data management
         let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AddPrescriptionViewController") as! AddPrescriptionViewController;
         self.navigationController?.pushViewController(nextViewController, animated: true);
-        
     }
     
 }

@@ -16,6 +16,7 @@ class BeforeConsultationViewController : UIViewController, UITableViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        
     }
     
     //Assign number of patient in TriageFT Table

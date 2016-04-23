@@ -220,12 +220,12 @@
 		2178714A1CC772D300386E62 /* related_data */ = {
 			isa = PBXGroup;
 			children = (
-				215FA1331CB17D4E0000B81F /* DrugHistoryViewController.swift */,
 				215FA1351CB17D580000B81F /* ScreeningViewController.swift */,
 				215FA1371CB17D610000B81F /* AllergyViewController.swift */,
 				217871511CC77D5C00386E62 /* DiagnosisViewController.swift */,
 				2178714B1CC7731900386E62 /* AdviceViewController.swift */,
 				2178713E1CC7524700386E62 /* FollowUpViewController.swift */,
+				215FA1331CB17D4E0000B81F /* DrugHistoryViewController.swift */,
 				217871401CC753FA00386E62 /* AddNewViewController.swift */,
 			);
 			name = related_data;

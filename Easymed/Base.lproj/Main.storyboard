@@ -165,7 +165,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FX4-1d-2xQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1857" y="149"/>
+            <point key="canvasLocation" x="1806" y="149"/>
         </scene>
         <!--MainMenu View Controller-->
         <scene sceneID="kYU-XB-62U">
@@ -3388,7 +3388,7 @@
         <!--Remark View Controller-->
         <scene sceneID="Cnt-OL-3b4">
             <objects>
-                <viewController storyboardIdentifier="RemarkViewController" title="Remark" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RQV-AW-5cw" userLabel="Remark View Controller" customClass="RemarkViewController" customModule="Easymed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RemarkViewController" title="Triage Remark" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RQV-AW-5cw" userLabel="Remark View Controller" customClass="RemarkViewController" customModule="Easymed" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ueG-CC-TF1"/>
                         <viewControllerLayoutGuide type="bottom" id="4uE-WG-QBc"/>
@@ -3487,7 +3487,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2PB-QY-EPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4580" y="-2257"/>
+            <point key="canvasLocation" x="4576.5" y="-2257"/>
         </scene>
         <!--Add visit-->
         <scene sceneID="Aea-86-4nd">
@@ -5703,6 +5703,110 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nxP-3h-t1x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2467.5" y="-5836"/>
+        </scene>
+        <!--Remark View Controller-->
+        <scene sceneID="fSw-KH-q5a">
+            <objects>
+                <viewController storyboardIdentifier="ConsultationRemarkViewController" title="Consultation Remark" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Wh-Fl-fGV" userLabel="Remark View Controller" customClass="ConsultationRemarkViewController" customModule="Easymed" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="D99-pi-78l"/>
+                        <viewControllerLayoutGuide type="bottom" id="SUA-Hb-mae"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fTG-dE-v8E">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yMJ-wg-TFp">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Any Remark?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x75-QY-reI">
+                                        <rect key="frame" x="43" y="48" width="100" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5pU-gp-PBu">
+                                        <rect key="frame" x="172" y="48" width="51" height="31"/>
+                                    </switch>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="Click here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TXY-wc-grN">
+                                        <rect key="frame" x="180" y="181" width="240" height="128"/>
+                                        <color key="backgroundColor" red="0.77092764889999998" green="0.9991754289" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1000" id="UDW-wo-nME"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="UDW-wo-nME"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="UDW-wo-nME"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="delegate" destination="5Wh-Fl-fGV" id="emJ-Yl-W4u"/>
+                                        </connections>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="5pU-gp-PBu" firstAttribute="top" secondItem="yMJ-wg-TFp" secondAttribute="top" constant="13" id="BKF-Wn-5Sj"/>
+                                    <constraint firstAttribute="trailing" secondItem="TXY-wc-grN" secondAttribute="trailing" constant="8" id="GHE-g5-OxS"/>
+                                    <constraint firstItem="x75-QY-reI" firstAttribute="leading" secondItem="yMJ-wg-TFp" secondAttribute="leading" constant="8" id="TY7-vE-HVe"/>
+                                    <constraint firstItem="TXY-wc-grN" firstAttribute="centerX" secondItem="yMJ-wg-TFp" secondAttribute="centerX" id="Za6-yY-KUA"/>
+                                    <constraint firstItem="TXY-wc-grN" firstAttribute="top" secondItem="yMJ-wg-TFp" secondAttribute="top" constant="62" id="jHi-zu-DfX"/>
+                                    <constraint firstItem="5pU-gp-PBu" firstAttribute="leading" secondItem="x75-QY-reI" secondAttribute="trailing" constant="220" id="l7z-ua-Xmf"/>
+                                    <constraint firstItem="x75-QY-reI" firstAttribute="top" secondItem="yMJ-wg-TFp" secondAttribute="top" constant="20" id="nxT-wV-J2K"/>
+                                    <constraint firstItem="TXY-wc-grN" firstAttribute="leading" secondItem="yMJ-wg-TFp" secondAttribute="leading" constant="8" id="qff-7E-rxn"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="nxT-wV-J2K"/>
+                                        <exclude reference="TY7-vE-HVe"/>
+                                        <exclude reference="l7z-ua-Xmf"/>
+                                        <exclude reference="BKF-Wn-5Sj"/>
+                                        <exclude reference="Za6-yY-KUA"/>
+                                        <exclude reference="qff-7E-rxn"/>
+                                        <exclude reference="GHE-g5-OxS"/>
+                                        <exclude reference="jHi-zu-DfX"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular" ambiguous="YES">
+                                    <rect key="frame" x="0.0" y="20" width="600" height="780"/>
+                                </variation>
+                                <variation key="widthClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="0.0" y="20" width="400" height="580"/>
+                                    <mask key="constraints">
+                                        <include reference="nxT-wV-J2K"/>
+                                        <include reference="TY7-vE-HVe"/>
+                                        <include reference="l7z-ua-Xmf"/>
+                                        <include reference="BKF-Wn-5Sj"/>
+                                        <include reference="Za6-yY-KUA"/>
+                                        <include reference="qff-7E-rxn"/>
+                                        <include reference="GHE-g5-OxS"/>
+                                        <include reference="jHi-zu-DfX"/>
+                                    </mask>
+                                </variation>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yMJ-wg-TFp" firstAttribute="leading" secondItem="fTG-dE-v8E" secondAttribute="leading" id="A5w-zF-Qzx"/>
+                            <constraint firstItem="yMJ-wg-TFp" firstAttribute="top" secondItem="D99-pi-78l" secondAttribute="bottom" id="JXQ-x8-t2s"/>
+                            <constraint firstAttribute="trailing" secondItem="yMJ-wg-TFp" secondAttribute="trailing" id="Puh-tO-DhP"/>
+                            <constraint firstItem="SUA-Hb-mae" firstAttribute="top" secondItem="yMJ-wg-TFp" secondAttribute="bottom" id="sAQ-QX-8fo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="remark" destination="TXY-wc-grN" id="mQp-YG-wdH"/>
+                        <outlet property="verticalScrollView" destination="yMJ-wg-TFp" id="EhH-vJ-6XV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YyG-pE-xHR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5263.5" y="-2991"/>
         </scene>
     </scenes>
 </document>

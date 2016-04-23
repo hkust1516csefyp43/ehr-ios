@@ -19,8 +19,8 @@ class Consultation{
     var preg_lmp: String  = "NULL";  //todo
     var preg_curr_preg: String = "0";
     var preg_gestration: String = "0";
-    var preg_breast_feeding: Bool = false;
-    var preg_contraceptive: Bool = false;
+    var preg_breast_feeding: Int = 0;
+    var preg_contraceptive: Int = 0;
     var preg_num_preg: String = "0";
     var preg_num_live_birth: String = "0";
     var preg_num_miscarriage: String = "0";
@@ -37,11 +37,15 @@ class Consultation{
     var pe_ent: String = "NULL";
     var pe_skin: String = "NULL";
     var pe_other: String = "NULL";
-    var rt_aiertness: String = "NULL";
-    var rt_breathing: String = "NULL";
-    var rt_circulation: String = "NULL";
-    var rt_dehydration: String = "NULL";
-    var rt_defg: String = "NULL";
+    
+    
+    var rf_alertness: String = "NULL";
+    var rf_breathing: String = "NULL";
+    var rf_circulation: String = "NULL";
+    var rf_dehydration: String = "NULL";
+    var rf_defg: String = "NULL";
+    
+    
     var diagnosis: String = "NULL";
     var advice: String = "NULL";
     var follow_up: String = "NULL";

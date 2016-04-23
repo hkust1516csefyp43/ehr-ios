@@ -57,18 +57,18 @@ class PregnancyViewController : UIViewController {
     }
     @IBAction func BreastFeedingChange(sender: UISwitch) {
         if(BreastFeeding.on==true){
-            currentVisit.consultation.preg_breast_feeding = true;
+            currentVisit.consultation.preg_breast_feeding = 1;
         }
         else{
-            currentVisit.consultation.preg_breast_feeding = false;
+            currentVisit.consultation.preg_breast_feeding = 0;
         }
     }
     @IBAction func ContraceptiveUseChange(sender: UISwitch) {
         if(ContraceptiveUse.on==true){
-            currentVisit.consultation.preg_contraceptive = true;
+            currentVisit.consultation.preg_contraceptive = 1;
         }
         else{
-            currentVisit.consultation.preg_contraceptive = false;
+            currentVisit.consultation.preg_contraceptive = 0;
         }
     }
     @IBAction func noPregnancyChange(sender: UITextField) {

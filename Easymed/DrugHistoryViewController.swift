@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  PassingData
-//
-//  Created by choi chun ho,chchoiac,20121979 on 7/3/16.
-//  Copyright © 2016 John. All rights reserved.
-//
 
 import Foundation;
 import UIKit;
@@ -25,7 +18,7 @@ class DrugHistoryViewController : UIViewController, UITableViewDataSource, UITab
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count=0;
         for(var i=0; i<related_dataList.count; i++){
-            if(related_dataList[i].category==0){
+            if(related_dataList[i].category==6){
                 count++;
             }
         }
@@ -36,7 +29,7 @@ class DrugHistoryViewController : UIViewController, UITableViewDataSource, UITab
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         tempList = [related_data]();
         for(var i=0; i<related_dataList.count; i++){
-            if(related_dataList[i].category==0){
+            if(related_dataList[i].category==6){
                 tempList.append(related_dataList[i]);
             }
         }
@@ -59,7 +52,7 @@ class DrugHistoryViewController : UIViewController, UITableViewDataSource, UITab
         }
         currentRelatedData.data=tempList[indexPath.row].data;
         currentRelatedData.remark=tempList[indexPath.row].remark;
-        currentRelatedData.category = 0;
+        currentRelatedData.category = 6;
         
         print("\(currentRelatedData.rd_id) , \(currentRelatedData.data) , \(currentRelatedData.remark)")
         // GET keywords
@@ -88,7 +81,7 @@ class DrugHistoryViewController : UIViewController, UITableViewDataSource, UITab
                     keywordsList.append(obj);
                 }
                 //Change variable
-                related_data_type = 0;
+                related_data_type = 6;
                 related_dataState = 1;
                 //Navigate to next controller
                 let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AddNewViewController") as! AddNewViewController;
@@ -128,7 +121,7 @@ class DrugHistoryViewController : UIViewController, UITableViewDataSource, UITab
                     keywordsList.append(obj);
                 }
                 //Change variable
-                related_data_type = 0;
+                related_data_type = 6;
                 related_dataState = 0;
                 //Navigate to next controller
                 let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AddNewViewController") as! AddNewViewController;

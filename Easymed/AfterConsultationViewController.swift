@@ -16,20 +16,21 @@ class AfterConsultationViewController : UIViewController, UITableViewDataSource,
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        
     }
     
     //Assign number of patient in TriageFT Table
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return patientList1.count;
+        return patientList2.count;
     }
     
     //Assign content in cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellL=self.AfterConsultationTableView.dequeueReusableCellWithIdentifier("Cell_AfterConsultation", forIndexPath: indexPath) as! CellL_Triage;
-        cellL.NameLabel.text="\(patientList1[indexPath.row].first_name), \(patientList1[indexPath.row].last_name)"
-        //        var DetailInput : String = "\(patientList1[indexPath.row].gender_id) / ? weeks ago / \(patientList1[indexPath.row].birth_date)-\(patientList1[indexPath.row].birth_month)-\(patientList1[indexPath.row].birth_year)";
-        cellL.DetailLabel.text="\(patientList1[indexPath.row].birth_month) years old";
-        cellL.CountryLabel.text="\(patientList1[indexPath.row].first_name)"
+        cellL.NameLabel.text="\(patientList2[indexPath.row].first_name), \(patientList2[indexPath.row].last_name)"
+        //        var DetailInput : String = "\(patientList2[indexPath.row].gender_id) / ? weeks ago / \(patientList2[indexPath.row].birth_date)-\(patientList2[indexPath.row].birth_month)-\(patientList2[indexPath.row].birth_year)";
+        cellL.DetailLabel.text="\(patientList2[indexPath.row].birth_month) years old";
+        cellL.CountryLabel.text="\(patientList2[indexPath.row].first_name)"
         return cellL;
     }
     
@@ -39,9 +40,10 @@ class AfterConsultationViewController : UIViewController, UITableViewDataSource,
         var got_visit=0;
         var got_consultation=0
         var got_related_data=0;
+        var got_prescriptions=0;
         //Copy target data to variable
         currentVisit=Visit();
-        currentVisit.clonePatient(patientList1[indexPath.row]);
+        currentVisit.clonePatient(patientList2[indexPath.row]);
         
         let headers = [
             "token": token,
@@ -51,12 +53,13 @@ class AfterConsultationViewController : UIViewController, UITableViewDataSource,
         
         Alamofire.request(.GET, visitsURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
             if let visitJSON = Response.result.value{
-                if(visitJSON.count != 1){
-                    print("error:patient has more than 1 visits");
+                if(visitJSON.count > 1){
+                    print("FAIL: patient \(currentVisit.patient.patient_id) has more than 1 visits");
                 }
                 else{
                     currentVisit.visit_id=visitJSON[0]["visit_id"]as! String;
                     currentVisit.tag=visitJSON[0]["tag"]as! Int;
+                    
                     var triagesURL: String = "http://ehr-api.herokuapp.com/v2/triages?visit_id=\(currentVisit.visit_id)";
                     
                     Alamofire.request(.GET, triagesURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
@@ -101,7 +104,7 @@ class AfterConsultationViewController : UIViewController, UITableViewDataSource,
                             }
                             //                    var editedInConsultation :String = "NULL";
                             got_visit=1;
-                            if(got_consultation==1 && got_related_data==1){
+                            if(got_consultation==1 && got_visit==1 && got_prescriptions==1 && got_related_data==1){
                                 //Navigate to next controller
                                 //state changes
                                 AddVisitState=2;
@@ -118,40 +121,205 @@ class AfterConsultationViewController : UIViewController, UITableViewDataSource,
                     
                     Alamofire.request(.GET, consultationsURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
                         if let consultationsJSON = Response.result.value{
-                            currentVisit.consultation.consultation_id=consultationsJSON[0]["consultation_id"]as! String;
-                            got_consultation=1;
-                            var relatedDataURL: String = "http://ehr-api.herokuapp.com/v2/related_data?consultation_id=\(currentVisit.consultation.consultation_id)";
-                            
-                            Alamofire.request(.GET, relatedDataURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
-                                if let relatedDataJSON = Response.result.value{
-                                    related_dataList.removeAll();
-                                    for(var i=0 ; i<relatedDataJSON.count ; i++){
-                                        var obj:related_data = related_data();
-                                        if let y = relatedDataJSON[i]["rd_id"]as? String{
-                                            obj.rd_id=y;
+                            if(consultationsJSON.count>1){
+                                print("Fail: Get consultations tuple, more than 1 consultations found for visit_id: \(currentVisit.visit_id)")
+                            }
+                            else{
+                                got_consultation=1;
+                                
+                                currentVisit.consultation.consultation_id=consultationsJSON[0]["consultation_id"]as! String;
+                                
+                                //consultation_remark
+                                if let y = consultationsJSON[0]["remark"]as? String{
+                                    currentVisit.consultation.remark = y;
+                                }
+                                
+                                // review_of_system
+                                if let y = consultationsJSON[0]["ros_ga"]as? String{
+                                    currentVisit.consultation.ros_ga = y;
+                                }
+                                if let y = consultationsJSON[0]["ros_respi"]as? String{
+                                    currentVisit.consultation.ros_respi = y;
+                                }
+                                if let y = consultationsJSON[0]["ros_cardio"]as? String{
+                                    currentVisit.consultation.ros_cardio = y;
+                                }
+                                if let y = consultationsJSON[0]["ros_gastro"]as? String{
+                                    currentVisit.consultation.ros_gastro = y;
+                                }
+                                if let y = consultationsJSON[0]["ros_genital"]as? String{
+                                    currentVisit.consultation.ros_genital = y;
+                                }
+                                if let y = consultationsJSON[0]["ros_ent"]as? String{
+                                    currentVisit.consultation.ros_ent = y;
+                                }
+                                if let y = consultationsJSON[0]["ros_skin"]as? String{
+                                    currentVisit.consultation.ros_skin = y;
+                                }
+                                if let y = consultationsJSON[0]["ros_other"]as? String{
+                                    currentVisit.consultation.ros_other = y;
+                                }
+                                
+                                //pregnancy
+                                if let y = consultationsJSON[0]["preg_lmp"]as? String{
+                                    currentVisit.consultation.preg_lmp = y;
+                                }
+                                if let y = consultationsJSON[0]["preg_curr_preg"]as? String{
+                                    currentVisit.consultation.preg_curr_preg = y;
+                                }
+                                if let y = consultationsJSON[0]["preg_gestration"]as? String{
+                                    currentVisit.consultation.preg_gestration = y;
+                                }
+                                if let y = consultationsJSON[0]["preg_breast_feeding"]as? Int{
+                                    currentVisit.consultation.preg_breast_feeding = y;
+                                }
+                                if let y = consultationsJSON[0]["preg_contraceptive"]as? Int{
+                                    currentVisit.consultation.preg_contraceptive = y;
+                                }
+                                if let y = consultationsJSON[0]["preg_num_preg"]as? String{
+                                    currentVisit.consultation.preg_num_preg = y;
+                                }
+                                if let y = consultationsJSON[0]["preg_num_live_birth"]as? String{
+                                    currentVisit.consultation.preg_num_live_birth = y;
+                                }
+                                if let y = consultationsJSON[0]["preg_num_miscarriage"]as? String{
+                                    currentVisit.consultation.preg_num_miscarriage = y;
+                                }
+                                if let y = consultationsJSON[0]["preg_num_abortion"]as? String{
+                                    currentVisit.consultation.preg_num_abourtion = y;
+                                }
+                                if let y = consultationsJSON[0]["preg_num_still_birth"]as? String{
+                                    currentVisit.consultation.preg_num_still_birth = y;
+                                }
+                                if let y = consultationsJSON[0]["preg_remark"]as? String{
+                                    currentVisit.consultation.preg_remark = y;
+                                }
+                                
+                                //physical examination
+                                if let y = consultationsJSON[0]["pe_general"]as? String{
+                                    currentVisit.consultation.pe_general = y;
+                                }
+                                if let y = consultationsJSON[0]["pe_respiratory"]as? String{
+                                    currentVisit.consultation.pe_respiratory = y;
+                                }
+                                if let y = consultationsJSON[0]["pe_cardio"]as? String{
+                                    currentVisit.consultation.pe_cardio = y;
+                                }
+                                if let y = consultationsJSON[0]["pe_gastro"]as? String{
+                                    currentVisit.consultation.pe_gastro = y;
+                                }
+                                if let y = consultationsJSON[0]["pe_genital"]as? String{
+                                    currentVisit.consultation.pe_genital = y;
+                                }
+                                if let y = consultationsJSON[0]["pe_ent"]as? String{
+                                    currentVisit.consultation.pe_ent = y;
+                                }
+                                if let y = consultationsJSON[0]["pe_skin"]as? String{
+                                    currentVisit.consultation.pe_skin = y;
+                                }
+                                if let y = consultationsJSON[0]["pe_other"]as? String{
+                                    currentVisit.consultation.pe_other = y;
+                                }
+                                
+                                //red flag
+                                if let y = consultationsJSON[0]["rf_alertness"]as? String{
+                                    currentVisit.consultation.rf_alertness = y;
+                                }
+                                if let y = consultationsJSON[0]["rf_breathing"]as? String{
+                                    currentVisit.consultation.rf_breathing = y;
+                                }
+                                if let y = consultationsJSON[0]["rf_circulation"]as? String{
+                                    currentVisit.consultation.rf_circulation = y;
+                                }
+                                if let y = consultationsJSON[0]["rf_dehydration"]as? String{
+                                    currentVisit.consultation.rf_dehydration = y;
+                                }
+                                if let y = consultationsJSON[0]["rf_defg"]as? String{
+                                    currentVisit.consultation.rf_defg = y;
+                                }
+                                
+                                //Get prescriptions
+                                let prescriptionsURL: String = "http://ehr-api.herokuapp.com/v2/prescriptions?consultation_id=\(currentVisit.consultation.consultation_id)";
+                                print("GET: \(prescriptionsURL)");
+                                Alamofire.request(.GET, prescriptionsURL, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
+                                    if let prescriptionsJSON = Response.result.value{
+                                        prescriptionsList_original.removeAll();
+                                        for(var i=0; i<medicationsList.count ;i++){
+                                            var obj:prescriptions = prescriptions();
+                                            obj.medication_id = medicationsList[i].medication_id;
+                                            prescriptionsList_original.append(obj);
                                         }
-                                        if let y = relatedDataJSON[i]["consultation_id"]as? String{
-                                            obj.consultation_id=y;
+                                        var tempList:[prescriptions]=[prescriptions]();
+                                        for(var i=0 ; i<prescriptionsJSON.count ; i++){
+                                            var obj: prescriptions = prescriptions();
+                                            if let y = prescriptionsJSON[i]["prescription_id"]as? String{
+                                                obj.prescription_id = y;
+                                            }
+                                            if let y = prescriptionsJSON[i]["medication_id"]as? String{
+                                                obj.medication_id = y;
+                                            }
+                                            if let y = prescriptionsJSON[i]["prescription_detail"]as? String{
+                                                obj.prescription_detail = y;
+                                            }
+                                            tempList.append(obj);
                                         }
-                                        if let y = relatedDataJSON[i]["data"]as? String{
-                                            obj.data=y;
+                                        for(var i=0 ; i<tempList.count ; i++){
+                                            for(var k=0 ; k<prescriptionsList_original.count;k++){
+                                                if(tempList[i].medication_id==prescriptionsList_original[k].medication_id){
+                                                    prescriptionsList_original[k].prescription_detail=tempList[i].prescription_detail;
+                                                    prescriptionsList_original[k].prescription_id=tempList[i].prescription_id;
+                                                    prescriptionsList_original[k].use=1;
+                                                    break;
+                                                }
+                                            }
                                         }
-                                        if let y = relatedDataJSON[i]["remark"]as? String{
-                                            obj.remark=y;
+                                        
+                                        got_prescriptions=1;
+                                        if(got_consultation==1 && got_visit==1 && got_prescriptions==1 && got_related_data==1){
+                                            //Navigate to next controller
+                                            //state changes
+                                            AddVisitState=2;
+                                            ConsultationState = 1;
+                                            let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ConsultationModifyViewController") as! ConsultationModifyViewController;
+                                            self.navigationController?.pushViewController(nextViewController, animated: true);
                                         }
-                                        if let y = relatedDataJSON[i]["category"]as? Int{
-                                            obj.category=y;
-                                        }
-                                        related_dataList.append(obj);
                                     }
-                                    got_related_data=1;
-                                    if(got_consultation==1 && got_visit==1){
-                                        //Navigate to next controller
-                                        //state changes
-                                        AddVisitState=2;
-                                        ConsultationState = 1;
-                                        let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ConsultationModifyViewController") as! ConsultationModifyViewController;
-                                        self.navigationController?.pushViewController(nextViewController, animated: true);
+                                }
+                                
+                                //Get related_data
+                                var relatedDataURL: String = "http://ehr-api.herokuapp.com/v2/related_data?consultation_id=\(currentVisit.consultation.consultation_id)";
+                                
+                                Alamofire.request(.GET, relatedDataURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
+                                    if let relatedDataJSON = Response.result.value{
+                                        related_dataList.removeAll();
+                                        for(var i=0 ; i<relatedDataJSON.count ; i++){
+                                            var obj:related_data = related_data();
+                                            if let y = relatedDataJSON[i]["rd_id"]as? String{
+                                                obj.rd_id=y;
+                                            }
+                                            if let y = relatedDataJSON[i]["consultation_id"]as? String{
+                                                obj.consultation_id=y;
+                                            }
+                                            if let y = relatedDataJSON[i]["data"]as? String{
+                                                obj.data=y;
+                                            }
+                                            if let y = relatedDataJSON[i]["remark"]as? String{
+                                                obj.remark=y;
+                                            }
+                                            if let y = relatedDataJSON[i]["category"]as? Int{
+                                                obj.category=y;
+                                            }
+                                            related_dataList.append(obj);
+                                        }
+                                        got_related_data=1;
+                                        if(got_consultation==1 && got_visit==1 && got_prescriptions==1 && got_related_data==1){
+                                            //Navigate to next controller
+                                            //state changes
+                                            AddVisitState=2;
+                                            ConsultationState = 1;
+                                            let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ConsultationModifyViewController") as! ConsultationModifyViewController;
+                                            self.navigationController?.pushViewController(nextViewController, animated: true);
+                                        }
                                     }
                                 }
                             }

@@ -49,8 +49,8 @@ class AddNewViewController: UIViewController {
                     if(Descripsion.text != ""){
                         obj.remark=Descripsion.text;
                     }
-                    if(related_data_type == 0){
-                        obj.category = 0;
+                    if(related_data_type == 6){
+                        obj.category = 6;
                     }
                     if(related_data_type == 1){
                         obj.category = 1;
@@ -82,8 +82,8 @@ class AddNewViewController: UIViewController {
                     if(Descripsion.text != ""){
                         obj.remark=Descripsion.text;
                     }
-                    if(related_data_type == 0){
-                        obj.category = 0;
+                    if(related_data_type == 6){
+                        obj.category = 6;
                     }
                     if(related_data_type == 1){
                         obj.category = 1;
