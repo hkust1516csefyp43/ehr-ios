@@ -327,6 +327,7 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
             }
         }
         else if(AddVisitState==2){
+            print("-------------------------\(currentVisit.patient.birth_year) / \(currentVisit.patient.birth_month) / \(currentVisit.patient.birth_date)");
             AddVisitState = -1;
             if(edit_patient == 1){
                 // PUT patients
@@ -355,7 +356,7 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                     "Content-Type": "application/json"
                 ];
                 let patientsURL: String = "http://ehr-api.herokuapp.com/v2/patients/\(currentVisit.patient.patient_id)";
-                print("POST: \(patientsURL)");
+                print("PUT: \(patientsURL)");
                 Alamofire.request(.PUT, patientsURL, parameters: patientsjson, encoding: .JSON, headers: patientsheaders).responseJSON { (Response) -> Void in
                     if let patientsJSON = Response.result.value{
                         print("Success: PUT patient tuple");

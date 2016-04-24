@@ -81,8 +81,8 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
         let medicationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MedicationViewController") as! MedicationViewController;
         
         
-//        let consultationmodifyViewController = [consultationremarkViewController];
-                let consultationmodifyViewController = [personaldataViewController, vitalsignsViewController, chiefcomplainViewController, remarkViewController, screeningViewController, allergyViewController, diagnosisViewController ,adviceViewController, followupViewController,drughistoryViewController,medicationViewController, consultationremarkViewController];
+        //        let consultationmodifyViewController = [consultationremarkViewController];
+        let consultationmodifyViewController = [personaldataViewController, vitalsignsViewController, chiefcomplainViewController, remarkViewController, screeningViewController, allergyViewController, diagnosisViewController ,adviceViewController, followupViewController,drughistoryViewController,medicationViewController, consultationremarkViewController];
         
         let options = PagingMenuOptions()
         options.menuHeight = 30
@@ -939,38 +939,38 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
                     }
                 }
             }
-            //            if(deleted_related_data==1){
-            //                //PUT related_data
-            //                var count=0;
-            //                for (var i=0 ; i<modified_related_dataList.count ; i++){
-            //                    let related_datajson : [String: AnyObject] = [
-            //                        "data": modified_related_dataList[i].data,
-            //                        "remark": modified_related_dataList[i].remark,
-            //                        "consultation_id": currentVisit.consultation.consultation_id,
-            //                        "category": modified_related_dataList[i].category,
-            //                    ];
-            //                    let related_dataheaders = [
-            //                        "token": token,
-            //                        "Content-Type": "application/json"
-            //                    ];
-            //                    let related_dataURL: String = "http://ehr-api.herokuapp.com/v2/related_data?rd_id=\(modified_related_dataList[i].rd_id)";
-            //                    print("PUT: \(related_dataURL)");
-            //                    Alamofire.request(.PUT, related_dataURL, parameters: related_datajson, encoding: .JSON, headers: related_dataheaders).responseJSON { (Response) -> Void in
-            //                        if let related_dataJSON = Response.result.value{
-            //                            count++;
-            //                            if(count>=modified_related_dataList.count){
-            //                                modified_related_data=0;
-            //                                if(edit_patient==0 && edit_triage==0 && edit_visit==0){
-            //                                    //Navigate to next controller
-            //                                    simulate_click = 1;
-            //                                    let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainMenuViewController") as! MainMenuViewController;
-            //                                    self.navigationController?.pushViewController(nextViewController, animated: true);
-            //                                }
-            //                            }
-            //                        }
-            //                    }
-            //                }
-            //            }
+            if(deleted_related_data==1){
+                //PUT related_data
+                var count=0;
+                for (var i=0 ; i<modified_related_dataList.count ; i++){
+                    let related_datajson : [String: AnyObject] = [
+                        "data": modified_related_dataList[i].data,
+                        "remark": modified_related_dataList[i].remark,
+                        "consultation_id": currentVisit.consultation.consultation_id,
+                        "category": modified_related_dataList[i].category,
+                    ];
+                    let related_dataheaders = [
+                        "token": token,
+                        "Content-Type": "application/json"
+                    ];
+                    let related_dataURL: String = "http://ehr-api.herokuapp.com/v2/related_data?rd_id=\(modified_related_dataList[i].rd_id)";
+                    print("PUT: \(related_dataURL)");
+                    Alamofire.request(.PUT, related_dataURL, parameters: related_datajson, encoding: .JSON, headers: related_dataheaders).responseJSON { (Response) -> Void in
+                        if let related_dataJSON = Response.result.value{
+                            count++;
+                            if(count>=modified_related_dataList.count){
+                                modified_related_data=0;
+                                if(edit_patient==0 && edit_triage==0 && edit_visit==0){
+                                    //Navigate to next controller
+                                    simulate_click = 1;
+                                    let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainMenuViewController") as! MainMenuViewController;
+                                    self.navigationController?.pushViewController(nextViewController, animated: true);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             //                -----
         }
     }

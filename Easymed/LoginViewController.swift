@@ -36,7 +36,9 @@ var TriageModifyViewControllerState = -1; //-1= default, 0= new patient + add vi
 var FT_ITS_State = -1; //-1= default, 0=Finished Triage Onclick, 1=In this clinic Onclick
 //AddVisitViewController,TriageModifyViewController
 var AddVisitState = -1; //-1=default, 0=new PATIENT+ new VISIT, 1=existing PATIENT + new VISIT, 2=edit VISIT
-var ConsultationState = -1;
+var ConsultationState = -1; //-1=error, 0=waitlist Consultation(add consultation), 1=finished Consultation(modify consultation)
+var PharmacyState = -1; //-1=error, 0=waitlist Pharmacy(modify prescripsion), 1=finished Pharmacy (modify prescripsion)
+
 var this_clinic_id : String = "3";
 var PendingSignal : Int = -1; // -1= error, 1=ThisSlumPatient, 2=Finished Slum
 var token : String = "1";

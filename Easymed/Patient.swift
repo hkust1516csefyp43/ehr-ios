@@ -6,9 +6,9 @@ class Patient{
     var last_name: String! = "NULL";
     var address: String! = "NULL";
     var email: String! = "NULL";
-    var birth_year: Int = -1;
-    var birth_month: Int = -1;
-    var birth_date: Int = -1;
+    var birth_year: Int = 1911;
+    var birth_month: Int = 11;
+    var birth_date: Int = 11;
     var createTimeStamp = -1; //TODO: find libarary to change it
     var clinic_id: String = "NULL";
     var gender_id: String = "undisclosed";

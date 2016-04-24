@@ -29,6 +29,13 @@
 		215FA1381CB17D610000B81F /* AllergyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215FA1371CB17D610000B81F /* AllergyViewController.swift */; };
 		215FA13A1CB17D6C0000B81F /* PregnancyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215FA1391CB17D6C0000B81F /* PregnancyViewController.swift */; };
 		215FA13C1CB17D770000B81F /* ReviewOfTheSystemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215FA13B1CB17D770000B81F /* ReviewOfTheSystemViewController.swift */; };
+		2173720A1CCBABEB00566591 /* Cell_Pharmacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217372091CCBABEB00566591 /* Cell_Pharmacy.swift */; };
+		217372101CCBAF6E00566591 /* PharmacyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2173720F1CCBAF6E00566591 /* PharmacyListViewController.swift */; };
+		217372121CCBAFEC00566591 /* BeforePharmacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217372111CCBAFEC00566591 /* BeforePharmacyViewController.swift */; };
+		217372141CCBAFFD00566591 /* AfterPharmacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217372131CCBAFFD00566591 /* AfterPharmacyViewController.swift */; };
+		217372161CCBB01600566591 /* PharmacyModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217372151CCBB01600566591 /* PharmacyModifyViewController.swift */; };
+		217372181CCBCD8D00566591 /* Cell_BeforePharmacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217372171CCBCD8D00566591 /* Cell_BeforePharmacy.swift */; };
+		2173721A1CCBCD9B00566591 /* Cell_AfterPharmacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217372191CCBCD9B00566591 /* Cell_AfterPharmacy.swift */; };
 		2178713F1CC7524700386E62 /* FollowUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2178713E1CC7524700386E62 /* FollowUpViewController.swift */; };
 		217871411CC753FA00386E62 /* AddNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217871401CC753FA00386E62 /* AddNewViewController.swift */; };
 		217871491CC772B500386E62 /* ConsultationRemarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217871481CC772B500386E62 /* ConsultationRemarkViewController.swift */; };
@@ -63,7 +70,7 @@
 		21FB1A6B1CBE1BD5002E5119 /* editPatient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FB1A6A1CBE1BD5002E5119 /* editPatient.swift */; };
 		21FB1A6D1CBEBF93002E5119 /* ExistingPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FB1A6C1CBEBF93002E5119 /* ExistingPatientViewController.swift */; };
 		21FCF59C1CC9E70B00E7A527 /* medications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FCF59B1CC9E70B00E7A527 /* medications.swift */; };
-		21FCF59E1CC9EBED00E7A527 /* prescripsions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FCF59D1CC9EBED00E7A527 /* prescripsions.swift */; };
+		21FCF59E1CC9EBED00E7A527 /* prescriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FCF59D1CC9EBED00E7A527 /* prescriptions.swift */; };
 		21FCF5A01CC9F89500E7A527 /* AddPrescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FCF59F1CC9F89500E7A527 /* AddPrescriptionViewController.swift */; };
 		92FBA7D002462B58247B0F95 /* Pods_Easymed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1AC3B714C74EEE47A42F57 /* Pods_Easymed.framework */; };
 /* End PBXBuildFile section */
@@ -91,6 +98,13 @@
 		215FA1371CB17D610000B81F /* AllergyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllergyViewController.swift; sourceTree = "<group>"; };
 		215FA1391CB17D6C0000B81F /* PregnancyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PregnancyViewController.swift; sourceTree = "<group>"; };
 		215FA13B1CB17D770000B81F /* ReviewOfTheSystemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewOfTheSystemViewController.swift; sourceTree = "<group>"; };
+		217372091CCBABEB00566591 /* Cell_Pharmacy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell_Pharmacy.swift; sourceTree = "<group>"; };
+		2173720F1CCBAF6E00566591 /* PharmacyListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PharmacyListViewController.swift; sourceTree = "<group>"; };
+		217372111CCBAFEC00566591 /* BeforePharmacyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeforePharmacyViewController.swift; sourceTree = "<group>"; };
+		217372131CCBAFFD00566591 /* AfterPharmacyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfterPharmacyViewController.swift; sourceTree = "<group>"; };
+		217372151CCBB01600566591 /* PharmacyModifyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PharmacyModifyViewController.swift; sourceTree = "<group>"; };
+		217372171CCBCD8D00566591 /* Cell_BeforePharmacy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell_BeforePharmacy.swift; sourceTree = "<group>"; };
+		217372191CCBCD9B00566591 /* Cell_AfterPharmacy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell_AfterPharmacy.swift; sourceTree = "<group>"; };
 		2178713D1CC6C24A00386E62 /* Easymed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Easymed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2178713E1CC7524700386E62 /* FollowUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowUpViewController.swift; sourceTree = "<group>"; };
 		217871401CC753FA00386E62 /* AddNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewViewController.swift; sourceTree = "<group>"; };
@@ -127,7 +141,7 @@
 		21FB1A6A1CBE1BD5002E5119 /* editPatient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = editPatient.swift; sourceTree = "<group>"; };
 		21FB1A6C1CBEBF93002E5119 /* ExistingPatientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistingPatientViewController.swift; sourceTree = "<group>"; };
 		21FCF59B1CC9E70B00E7A527 /* medications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = medications.swift; sourceTree = "<group>"; };
-		21FCF59D1CC9EBED00E7A527 /* prescripsions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = prescripsions.swift; sourceTree = "<group>"; };
+		21FCF59D1CC9EBED00E7A527 /* prescriptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = prescriptions.swift; sourceTree = "<group>"; };
 		21FCF59F1CC9F89500E7A527 /* AddPrescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPrescriptionViewController.swift; sourceTree = "<group>"; };
 		913F0D4C71DDD7D758D764FD /* Pods-Easymed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easymed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Easymed/Pods-Easymed.debug.xcconfig"; sourceTree = "<group>"; };
 		CD1AC3B714C74EEE47A42F57 /* Pods_Easymed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Easymed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,11 +168,49 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2173720B1CCBAEEA00566591 /* Triage */ = {
+			isa = PBXGroup;
+			children = (
+				215FA11B1CB177930000B81F /* TriageModifyViewController.swift */,
+				215FA1131CAF8FEF0000B81F /* TriageListViewController.swift */,
+				21FB1A681CBE088E002E5119 /* PendingViewControllerFT.swift */,
+				215FA1151CAFA87A0000B81F /* TriageFTViewController.swift */,
+				215FA1171CAFA8A10000B81F /* TriageITSViewController.swift */,
+				218AC5151CB398DA00E691EC /* AddVisitViewController.swift */,
+				21FB1A6C1CBEBF93002E5119 /* ExistingPatientViewController.swift */,
+			);
+			name = Triage;
+			sourceTree = "<group>";
+		};
+		2173720D1CCBAF2900566591 /* Consultation */ = {
+			isa = PBXGroup;
+			children = (
+				21502F251CC1663100B2DAAD /* ConsultationListViewController.swift */,
+				21502F271CC1747E00B2DAAD /* BeforeConsultationViewController.swift */,
+				21502F291CC1749700B2DAAD /* AfterConsultationViewController.swift */,
+				2188F0E81CC4CABF00AC3BB0 /* ConsultationModifyViewController.swift */,
+			);
+			name = Consultation;
+			sourceTree = "<group>";
+		};
+		2173720E1CCBAF3900566591 /* Pharmacy */ = {
+			isa = PBXGroup;
+			children = (
+				2173720F1CCBAF6E00566591 /* PharmacyListViewController.swift */,
+				217372111CCBAFEC00566591 /* BeforePharmacyViewController.swift */,
+				217372131CCBAFFD00566591 /* AfterPharmacyViewController.swift */,
+				217372151CCBB01600566591 /* PharmacyModifyViewController.swift */,
+			);
+			name = Pharmacy;
+			sourceTree = "<group>";
+		};
 		217871431CC76FAF00386E62 /* cell_format */ = {
 			isa = PBXGroup;
 			children = (
 				21B7D80C1CAEFDE3007CF8AF /* CellL_Triage.swift */,
 				21B7D80F1CAEFE1C007CF8AF /* CellR_Triage.swift */,
+				217372171CCBCD8D00566591 /* Cell_BeforePharmacy.swift */,
+				217372191CCBCD9B00566591 /* Cell_AfterPharmacy.swift */,
 				2188F0EA1CC4FD1F00AC3BB0 /* Cell_existingPatient.swift */,
 				217871581CC7DDA700386E62 /* Cell_relatedData.swift */,
 				219000A91CC8E69C001B6957 /* Cell_FollowUp.swift */,
@@ -167,6 +219,7 @@
 				219000AF1CC8E6E6001B6957 /* Cell_Diagnosis.swift */,
 				219000D01CC9424E001B6957 /* Cell_DrugHistory.swift */,
 				219000D71CC9D680001B6957 /* Cell_Medication.swift */,
+				217372091CCBABEB00566591 /* Cell_Pharmacy.swift */,
 			);
 			name = cell_format;
 			sourceTree = "<group>";
@@ -181,7 +234,8 @@
 				217871541CC7812400386E62 /* related_data.swift */,
 				217871561CC78CB000386E62 /* keywords.swift */,
 				21FCF59B1CC9E70B00E7A527 /* medications.swift */,
-				21FCF59D1CC9EBED00E7A527 /* prescripsions.swift */,
+				215FA13B1CB17D770000B81F /* ReviewOfTheSystemViewController.swift */,
+				21FCF59D1CC9EBED00E7A527 /* prescriptions.swift */,
 			);
 			name = class;
 			sourceTree = "<group>";
@@ -202,17 +256,9 @@
 		217871471CC7715E00386E62 /* stage */ = {
 			isa = PBXGroup;
 			children = (
-				215FA1131CAF8FEF0000B81F /* TriageListViewController.swift */,
-				21FB1A681CBE088E002E5119 /* PendingViewControllerFT.swift */,
-				215FA1151CAFA87A0000B81F /* TriageFTViewController.swift */,
-				215FA1171CAFA8A10000B81F /* TriageITSViewController.swift */,
-				218AC5151CB398DA00E691EC /* AddVisitViewController.swift */,
-				215FA11B1CB177930000B81F /* TriageModifyViewController.swift */,
-				21FB1A6C1CBEBF93002E5119 /* ExistingPatientViewController.swift */,
-				21502F251CC1663100B2DAAD /* ConsultationListViewController.swift */,
-				21502F271CC1747E00B2DAAD /* BeforeConsultationViewController.swift */,
-				21502F291CC1749700B2DAAD /* AfterConsultationViewController.swift */,
-				2188F0E81CC4CABF00AC3BB0 /* ConsultationModifyViewController.swift */,
+				2173720B1CCBAEEA00566591 /* Triage */,
+				2173720D1CCBAF2900566591 /* Consultation */,
+				2173720E1CCBAF3900566591 /* Pharmacy */,
 			);
 			name = stage;
 			sourceTree = "<group>";
@@ -256,7 +302,6 @@
 			isa = PBXGroup;
 			children = (
 				2188F0E61CC4AA6A00AC3BB0 /* PhysicalExaminationViewController.swift */,
-				215FA13B1CB17D770000B81F /* ReviewOfTheSystemViewController.swift */,
 				215FA1391CB17D6C0000B81F /* PregnancyViewController.swift */,
 			);
 			name = SwitchPage;
@@ -438,12 +483,15 @@
 				217871571CC78CB000386E62 /* keywords.swift in Sources */,
 				215FA1141CAF8FEF0000B81F /* TriageListViewController.swift in Sources */,
 				217871551CC7812400386E62 /* related_data.swift in Sources */,
+				217372141CCBAFFD00566591 /* AfterPharmacyViewController.swift in Sources */,
 				218AC4F41CB2DD1100E691EC /* Visit.swift in Sources */,
 				21B7D80B1CAEDB45007CF8AF /* MainMenuViewController.swift in Sources */,
 				2188F0E51CC4483500AC3BB0 /* Consultation.swift in Sources */,
 				217871491CC772B500386E62 /* ConsultationRemarkViewController.swift in Sources */,
+				217372161CCBB01600566591 /* PharmacyModifyViewController.swift in Sources */,
 				217871521CC77D5C00386E62 /* DiagnosisViewController.swift in Sources */,
 				21B7D7FB1CAD95EF007CF8AF /* LoginViewController.swift in Sources */,
+				217372181CCBCD8D00566591 /* Cell_BeforePharmacy.swift in Sources */,
 				218AC4F61CB2E02D00E691EC /* Triage.swift in Sources */,
 				2188F0E91CC4CABF00AC3BB0 /* ConsultationModifyViewController.swift in Sources */,
 				215FA1121CAF8DBD0000B81F /* PendingViewController.swift in Sources */,
@@ -459,8 +507,11 @@
 				215FA1361CB17D580000B81F /* ScreeningViewController.swift in Sources */,
 				215FA1161CAFA87A0000B81F /* TriageFTViewController.swift in Sources */,
 				21502F2A1CC1749700B2DAAD /* AfterConsultationViewController.swift in Sources */,
+				217372101CCBAF6E00566591 /* PharmacyListViewController.swift in Sources */,
 				21B7D8101CAEFE1C007CF8AF /* CellR_Triage.swift in Sources */,
 				219000B01CC8E6E6001B6957 /* Cell_Diagnosis.swift in Sources */,
+				2173721A1CCBCD9B00566591 /* Cell_AfterPharmacy.swift in Sources */,
+				217372121CCBAFEC00566591 /* BeforePharmacyViewController.swift in Sources */,
 				21FCF5A01CC9F89500E7A527 /* AddPrescriptionViewController.swift in Sources */,
 				219000AA1CC8E69C001B6957 /* Cell_FollowUp.swift in Sources */,
 				2188F0EB1CC4FD1F00AC3BB0 /* Cell_existingPatient.swift in Sources */,
@@ -484,10 +535,11 @@
 				215FA1101CAF8D6F0000B81F /* Patient.swift in Sources */,
 				219000AE1CC8E6D8001B6957 /* Cell_Screening.swift in Sources */,
 				21FB1A6B1CBE1BD5002E5119 /* editPatient.swift in Sources */,
+				2173720A1CCBABEB00566591 /* Cell_Pharmacy.swift in Sources */,
 				21502F261CC1663100B2DAAD /* ConsultationListViewController.swift in Sources */,
 				219000D81CC9D680001B6957 /* Cell_Medication.swift in Sources */,
 				215FA1311CB17D350000B81F /* SocialHistoryViewController.swift in Sources */,
-				21FCF59E1CC9EBED00E7A527 /* prescripsions.swift in Sources */,
+				21FCF59E1CC9EBED00E7A527 /* prescriptions.swift in Sources */,
 				219000D61CC9D316001B6957 /* MedicationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

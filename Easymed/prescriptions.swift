@@ -6,6 +6,7 @@ class prescriptions{
     var prescription_detail:String = "NULL";
     var prescribed:Int = 0;
     var use:Int = 0;
+    var pharmacy_decision:Int = 0;
     
     init(){
         
@@ -25,4 +26,12 @@ class prescriptions{
         }
         return 0;
     }
+    
+    func compare_prescription_decision(obj2:prescriptions)->Int{
+        if(self.pharmacy_decision != obj2.pharmacy_decision){
+            return 1;
+        }
+        return 0;
+    }
+
 }
