@@ -43,6 +43,11 @@ class TriageListViewController: UIViewController, PagingMenuControllerDelegate {
     func didMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController) {
         
     }
+    @IBAction func MenuOnclick(sender: UIButton) {
+        let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainMenuViewController") as! MainMenuViewController;
+        self.navigationController?.pushViewController(nextViewController, animated: true);
+   
+    }
     func AddOnClick(sender: UIBarButtonItem){
         if(1==1){
             self.performSegueWithIdentifier("Triage_AddVisit", sender: self);

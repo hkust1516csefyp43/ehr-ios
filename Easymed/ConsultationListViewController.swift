@@ -17,9 +17,9 @@ class ConsultationListViewController: UIViewController, PagingMenuControllerDele
         let beforeConsultationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("BeforeConsultationViewController") as! BeforeConsultationViewController;
         let afterConsultationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AfterConsultationViewController") as! AfterConsultationViewController;
         
-//        let afterConsultationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("BeforeConsultationViewController") as! BeforeConsultationViewController;
-//        let beforeConsultationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TriagebeforeConsultationViewController") as! TriagebeforeConsultationViewController;
-
+        //        let afterConsultationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("BeforeConsultationViewController") as! BeforeConsultationViewController;
+        //        let beforeConsultationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TriagebeforeConsultationViewController") as! TriagebeforeConsultationViewController;
+        
         let triagelistviewControllers = [beforeConsultationViewController,afterConsultationViewController];
         //        let triagelistviewControllers = [beforeConsultationViewController];
         let options = PagingMenuOptions()
@@ -37,6 +37,10 @@ class ConsultationListViewController: UIViewController, PagingMenuControllerDele
     func didMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController) {
         
     }
-
+    
+    @IBAction func BackOnclick(sender: UIButton) {
+        let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainMenuViewController") as! MainMenuViewController;
+        self.navigationController?.pushViewController(nextViewController, animated: true);
+    }
 }
 

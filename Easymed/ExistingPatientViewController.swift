@@ -31,10 +31,10 @@ class ExistingPatientViewController : UIViewController, UITableViewDataSource, U
         cell_existingPatient.AgeLabel.text=ageInput;
         var nativeNameInput : String;
         if(patientList2[indexPath.row].natvie_name != "NULL"){
-        nativeNameInput = patientList2[indexPath.row].natvie_name ;
+            nativeNameInput = patientList2[indexPath.row].natvie_name ;
         }
         else{
-        nativeNameInput = "No native name";
+            nativeNameInput = "No native name";
         }
         cell_existingPatient.NativeNameLabel.text=nativeNameInput;
         return cell_existingPatient;
@@ -53,6 +53,11 @@ class ExistingPatientViewController : UIViewController, UITableViewDataSource, U
         let nextViewController = storyboard?.instantiateViewControllerWithIdentifier("TriageModifyViewController") as! TriageModifyViewController;
         navigationController?.pushViewController(nextViewController, animated: true);
     }
+    
+    @IBAction func BackOnclick(sender: UIButton) {
+        self.navigationController?.popViewControllerAnimated(true);
+    }
+    
     
     
 }

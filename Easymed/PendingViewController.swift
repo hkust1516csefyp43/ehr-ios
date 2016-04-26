@@ -11,9 +11,11 @@ import UIKit;
 import Alamofire;
 
 class PendingViewController : UIViewController {
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loading.startAnimating();
         var backEndFinish = false;
         patientList1.removeAll();
         patientList2.removeAll();

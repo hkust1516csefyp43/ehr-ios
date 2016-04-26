@@ -63,7 +63,7 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
             NSCharacterSet.whitespaceAndNewlineCharacterSet());
         if(trimString==""){
             // TASK WARNING FOR FIRST NAME NULL
-           print("First name cannot be NULL")
+            print("First name cannot be NULL")
         }
         trimString = currentVisit.patient.last_name.stringByTrimmingCharactersInSet(
             NSCharacterSet.whitespaceAndNewlineCharacterSet());
@@ -481,6 +481,9 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
     //        currentPatient.getInformation();
     //        currentVisit.patient.getInformation();
     //}
+    @IBAction func BackOnclick(sender: UIButton) {
+        self.navigationController?.popViewControllerAnimated(true);
+    }
     
     func willMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController) {
         

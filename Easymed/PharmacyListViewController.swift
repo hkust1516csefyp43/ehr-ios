@@ -37,5 +37,9 @@ class PharmacyListViewController: UIViewController, PagingMenuControllerDelegate
         
     }
     
+    @IBAction func BackOnclick(sender: UIButton) {
+        let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainMenuViewController") as! MainMenuViewController;
+        self.navigationController?.pushViewController(nextViewController, animated: true);
+    }
 }
 

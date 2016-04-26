@@ -58,6 +58,8 @@
 		219000D11CC9424E001B6957 /* Cell_DrugHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219000D01CC9424E001B6957 /* Cell_DrugHistory.swift */; };
 		219000D61CC9D316001B6957 /* MedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219000D51CC9D316001B6957 /* MedicationViewController.swift */; };
 		219000D81CC9D680001B6957 /* Cell_Medication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219000D71CC9D680001B6957 /* Cell_Medication.swift */; };
+		21B0AFD81CCD1B8100A21FDD /* Clinics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0AFD71CCD1B8100A21FDD /* Clinics.swift */; };
+		21B0AFDA1CCD24B700A21FDD /* LaunchAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0AFD91CCD24B700A21FDD /* LaunchAppViewController.swift */; };
 		21B7D7F91CAD95EF007CF8AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7D7F81CAD95EF007CF8AF /* AppDelegate.swift */; };
 		21B7D7FB1CAD95EF007CF8AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7D7FA1CAD95EF007CF8AF /* LoginViewController.swift */; };
 		21B7D7FE1CAD95EF007CF8AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21B7D7FC1CAD95EF007CF8AF /* Main.storyboard */; };
@@ -128,6 +130,8 @@
 		219000D01CC9424E001B6957 /* Cell_DrugHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell_DrugHistory.swift; sourceTree = "<group>"; };
 		219000D51CC9D316001B6957 /* MedicationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationViewController.swift; sourceTree = "<group>"; };
 		219000D71CC9D680001B6957 /* Cell_Medication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell_Medication.swift; sourceTree = "<group>"; };
+		21B0AFD71CCD1B8100A21FDD /* Clinics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clinics.swift; sourceTree = "<group>"; };
+		21B0AFD91CCD24B700A21FDD /* LaunchAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchAppViewController.swift; sourceTree = "<group>"; };
 		21B7D7F81CAD95EF007CF8AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21B7D7FA1CAD95EF007CF8AF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		21B7D7FD1CAD95EF007CF8AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 				21FCF59B1CC9E70B00E7A527 /* medications.swift */,
 				215FA13B1CB17D770000B81F /* ReviewOfTheSystemViewController.swift */,
 				21FCF59D1CC9EBED00E7A527 /* prescriptions.swift */,
+				21B0AFD71CCD1B8100A21FDD /* Clinics.swift */,
 			);
 			name = class;
 			sourceTree = "<group>";
@@ -331,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				21B7D7F81CAD95EF007CF8AF /* AppDelegate.swift */,
+				21B0AFD91CCD24B700A21FDD /* LaunchAppViewController.swift */,
 				21B7D7FA1CAD95EF007CF8AF /* LoginViewController.swift */,
 				21B7D80A1CAEDB45007CF8AF /* MainMenuViewController.swift */,
 				215FA1111CAF8DBD0000B81F /* PendingViewController.swift */,
@@ -500,6 +506,7 @@
 				215FA11C1CB177930000B81F /* TriageModifyViewController.swift in Sources */,
 				21B7D7F91CAD95EF007CF8AF /* AppDelegate.swift in Sources */,
 				219000AC1CC8E6C8001B6957 /* Cell_Allergy.swift in Sources */,
+				21B0AFD81CCD1B8100A21FDD /* Clinics.swift in Sources */,
 				215FA12A1CB17AD60000B81F /* ChiefComplainViewController.swift in Sources */,
 				2178713F1CC7524700386E62 /* FollowUpViewController.swift in Sources */,
 				215FA1181CAFA8A10000B81F /* TriageITSViewController.swift in Sources */,
@@ -529,6 +536,7 @@
 				215FA13C1CB17D770000B81F /* ReviewOfTheSystemViewController.swift in Sources */,
 				219000D11CC9424E001B6957 /* Cell_DrugHistory.swift in Sources */,
 				215FA13A1CB17D6C0000B81F /* PregnancyViewController.swift in Sources */,
+				21B0AFDA1CCD24B700A21FDD /* LaunchAppViewController.swift in Sources */,
 				21B7D80D1CAEFDE3007CF8AF /* CellL_Triage.swift in Sources */,
 				21FB1A691CBE088E002E5119 /* PendingViewControllerFT.swift in Sources */,
 				217871591CC7DDA700386E62 /* Cell_relatedData.swift in Sources */,

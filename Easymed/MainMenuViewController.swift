@@ -28,6 +28,12 @@ class MainMenuViewController: UIViewController {
         }
     }
     
+    @IBAction func LogoutOnclick(sender: UIButton) {
+        //Navigate to next controller
+        let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("LaunchAppViewController") as! LaunchAppViewController;
+        self.navigationController?.pushViewController(nextViewController, animated: true);
+    }
+    
     @IBAction func TriageOnclick(sender: UIButton) {
         if(1==1){
             next_stage = "2";

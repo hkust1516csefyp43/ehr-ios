@@ -1039,6 +1039,10 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
     //        currentPatient.getInformation();
     //        currentVisit.patient.getInformation();
     //}
+    @IBAction func BackOnclick(sender: UIButton) {
+        self.navigationController?.popViewControllerAnimated(true);
+    }
+    
     
     func willMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController) {
         
