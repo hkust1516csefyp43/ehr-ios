@@ -54,8 +54,8 @@ class PersonalDataViewController : UIViewController,UITextFieldDelegate,UIImageP
             PhoneNumber.text=String(currentVisit.patient.phone_number);
         }
         else if(AddVisitState==0){
-        Gender.text = "Undisclosed";
-        Birthday.text = "dd/mm/yyyy"
+            Gender.text = "Undisclosed";
+            Birthday.text = "dd/mm/yyyy"
         }
         else{
             print("error: variable 'AddVisitState'");
@@ -65,7 +65,7 @@ class PersonalDataViewController : UIViewController,UITextFieldDelegate,UIImageP
         currentVisit.patient.first_name=String!(FirstName.text);
         edit_patient=1;
     }
-
+    
     @IBAction func LsstNameOnChange(sender: UITextField) {
         currentVisit.patient.last_name=String!(LastName.text);
         edit_patient=1;
@@ -81,13 +81,15 @@ class PersonalDataViewController : UIViewController,UITextFieldDelegate,UIImageP
         edit_patient=1;
     }
     
-    //ImageView use for following 3 functions
+    //ImageView use for following 4 functions (CameraOnclick, LibraryOnclick,imagePickerController,cropToBounds)
+    
     @IBAction func CameraOnclick(sender: UIButton) {
         let picker = UIImagePickerController();
         picker.delegate=self;
         picker.sourceType = .Camera;
         presentViewController(picker, animated: true, completion: nil)
     }
+    
     @IBAction func LibraryOnclick(sender: UIButton) {
         let picker = UIImagePickerController();
         picker.delegate=self;
@@ -95,16 +97,15 @@ class PersonalDataViewController : UIViewController,UITextFieldDelegate,UIImageP
         
         presentViewController(picker, animated: true, completion: nil)
     }
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        imageDisplay.image = cropToBounds((info[UIImagePickerControllerOriginalImage]as?UIImage)!,width: 364,height: 364);
+        let imageToConvert=cropToBounds((info[UIImagePickerControllerOriginalImage]as?UIImage)!,width: 364,height: 364);
+        let imageData = UIImagePNGRepresentation(imageToConvert.imageRotatedByDegrees(90, flip: false));
+        let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+        let decodedData = NSData(base64EncodedString: base64String, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
+        let decodedimage = UIImage(data: decodedData!);
+        imageDisplay.image = decodedimage! as UIImage
         dismissViewControllerAnimated(true, completion: nil);
-    }
-
-
-    func textFieldShouldReturn(textField: UITextField!) -> Bool // called when 'return' key pressed. return NO to ignore.
-    {
-        textField.resignFirstResponder()
-        return true;
     }
     
     func cropToBounds(image: UIImage, width: Double, height: Double) -> UIImage {
@@ -141,4 +142,11 @@ class PersonalDataViewController : UIViewController,UITextFieldDelegate,UIImageP
         
         return image
     }
+    
+    func textFieldShouldReturn(textField: UITextField!) -> Bool // called when 'return' key pressed. return NO to ignore.
+    {
+        textField.resignFirstResponder()
+        return true;
+    }
+    
 }
