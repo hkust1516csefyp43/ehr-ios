@@ -647,16 +647,8 @@
                                             <action selector="DeleteOnclick:" destination="spF-VC-Bw1" eventType="touchUpInside" id="zKM-0C-47B"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Fd-DE-fkb" userLabel="Title" customClass="AutoCompleteTextField" customModule="Easymed" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="38" width="340" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="340" id="2Zq-vX-bcJ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bOM-ZC-nxB" userLabel="Descripsion">
-                                        <rect key="frame" x="110" y="102" width="340" height="350"/>
+                                        <rect key="frame" x="110" y="102" width="340" height="196"/>
                                         <color key="backgroundColor" red="0.77092764889999998" green="0.9991754289" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="340" id="C0d-LT-m3c"/>
@@ -664,13 +656,18 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="10" y="102" width="336" height="210"/>
-                                        </variation>
                                     </textView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Fd-DE-fkb" userLabel="Title" customClass="AutoCompleteTextField" customModule="Easymed" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="36" width="340" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="340" id="2Zq-vX-bcJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="3Fd-DE-fkb" firstAttribute="leading" secondItem="GRg-x2-K3g" secondAttribute="leading" id="KOo-Rx-dzV"/>
+                                    <constraint firstItem="3Fd-DE-fkb" firstAttribute="leading" secondItem="GRg-x2-K3g" secondAttribute="leading" constant="10" id="KOo-Rx-dzV"/>
                                     <constraint firstItem="Si7-Zu-mCH" firstAttribute="top" secondItem="GRg-x2-K3g" secondAttribute="top" constant="5" id="McT-Ps-Gyy"/>
                                     <constraint firstItem="bOM-ZC-nxB" firstAttribute="centerX" secondItem="GRg-x2-K3g" secondAttribute="centerX" id="Mmm-rh-ac9"/>
                                     <constraint firstItem="Si7-Zu-mCH" firstAttribute="leading" secondItem="GRg-x2-K3g" secondAttribute="leading" constant="290" id="Nhh-Bn-Luf"/>

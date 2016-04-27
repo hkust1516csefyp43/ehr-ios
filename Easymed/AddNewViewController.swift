@@ -20,9 +20,7 @@ class AddNewViewController: UIViewController {
     var autotextdata:[String]=[String]();
     
     override func viewDidLoad() {
-        //keyboard
-        self.hideKeyboardWhenTappedAround()
-        
+
         autotextdata.removeAll();
         for(var i=0;i<keywordsList.count;i++){
             var obj:String=keywordsList[i].keyword

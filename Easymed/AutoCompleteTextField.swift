@@ -74,7 +74,7 @@ public class AutoCompleteTextField:UITextField {
     public override func willMoveToSuperview(newSuperview: UIView?) {
         super.willMoveToSuperview(newSuperview)
         commonInit()
-        setupAutocompleteTable(newSuperview!)
+//        setupAutocompleteTable(newSuperview!)
     }
     
     private func commonInit(){
@@ -111,7 +111,7 @@ public class AutoCompleteTextField:UITextField {
     private func reload(){
         if enableAttributedText{
             let attrs = [NSForegroundColorAttributeName:autoCompleteTextColor, NSFontAttributeName:UIFont.systemFontOfSize(12.0)]
-    
+            
             if attributedAutoCompleteStrings.count > 0 {
                 attributedAutoCompleteStrings.removeAll(keepCapacity: false)
             }
@@ -148,7 +148,7 @@ public class AutoCompleteTextField:UITextField {
 
 //MARK: - UITableViewDataSource - UITableViewDelegate
 extension AutoCompleteTextField: UITableViewDataSource, UITableViewDelegate {
-  
+    
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return autoCompleteStrings != nil ? (autoCompleteStrings!.count > maximumAutoCompleteCount ? maximumAutoCompleteCount : autoCompleteStrings!.count) : 0
     }
