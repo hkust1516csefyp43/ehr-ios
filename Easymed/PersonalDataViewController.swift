@@ -10,7 +10,7 @@ import Foundation;
 import UIKit;
 import Alamofire;
 
-class PersonalDataViewController : UIViewController {
+class PersonalDataViewController : UIViewController,UITextFieldDelegate  {
     
     @IBOutlet weak var VerticalScrollView: UIScrollView!
     @IBOutlet weak var PatientPreview: UIImageView!
@@ -24,6 +24,12 @@ class PersonalDataViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        self.hideKeyboardWhenTappedAround()
+        LastName.delegate=self;
+        FirstName.delegate=self;
+        Address.delegate=self;
+        PhoneNumber.delegate=self
+        
         VerticalScrollView.contentSize.height=1100;
         if(AddVisitState==1||AddVisitState==2){
             //step1: Set text
@@ -73,4 +79,9 @@ class PersonalDataViewController : UIViewController {
         edit_patient=1;
     }
 
+    func textFieldShouldReturn(textField: UITextField!) -> Bool // called when 'return' key pressed. return NO to ignore.
+    {
+        textField.resignFirstResponder()
+        return true;
+    }
 }

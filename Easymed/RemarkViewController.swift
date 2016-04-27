@@ -15,6 +15,7 @@ class RemarkViewController : UIViewController {
     @IBOutlet weak var remark: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         verticalScrollView.contentSize.height=1080;
         if(AddVisitState==2){
             remark.text=currentVisit.triage.remark;

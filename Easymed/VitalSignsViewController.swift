@@ -9,7 +9,7 @@
 import Foundation;
 import UIKit;
 
-class VitalSignsViewController : UIViewController {
+class VitalSignsViewController : UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var systolic: UITextField!
     @IBOutlet weak var diastolic: UITextField!
@@ -25,23 +25,32 @@ class VitalSignsViewController : UIViewController {
     
     
     override func viewDidLoad() {
+        systolic.delegate=self;
+        diastolic.delegate=self;
+        heartRate.delegate=self;
+        respiratoryRate.delegate=self;
+        temperature.delegate=self;
+        spo2.delegate=self;
+        weight.delegate=self;
+        height.delegate=self;
         VerticalScrollView.contentSize.height=800;
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         if(AddVisitState==2){
-                    systolic.text=currentVisit.triage.systolic;
-                    diastolic.text=currentVisit.triage.diastolic;
-                    heartRate.text=currentVisit.triage.heartRate;
-                    respiratoryRate.text=currentVisit.triage.respiratoryRate;
-                    temperature.text=currentVisit.triage.temperature;
-                    spo2.text=currentVisit.triage.spo2;
-                    weight.text=currentVisit.triage.weight;
-                    height.text=currentVisit.triage.height;
-                    if(currentVisit.triage.height != "NULL" && currentVisit.triage.weight != "NULL"){
-                        bmi.text=String(floor(Double(currentVisit.triage.weight)!/(Double(currentVisit.triage.height)!*Double(currentVisit.triage.height)!)*100)/100);
-                    }
-                    else{
-                        bmi.text="Weight or Height is not input";
-                    }
+            systolic.text=currentVisit.triage.systolic;
+            diastolic.text=currentVisit.triage.diastolic;
+            heartRate.text=currentVisit.triage.heartRate;
+            respiratoryRate.text=currentVisit.triage.respiratoryRate;
+            temperature.text=currentVisit.triage.temperature;
+            spo2.text=currentVisit.triage.spo2;
+            weight.text=currentVisit.triage.weight;
+            height.text=currentVisit.triage.height;
+            if(currentVisit.triage.height != "NULL" && currentVisit.triage.weight != "NULL"){
+                bmi.text=String(floor(Double(currentVisit.triage.weight)!/(Double(currentVisit.triage.height)!*Double(currentVisit.triage.height)!)*100)/100);
+            }
+            else{
+                bmi.text="Weight or Height is not input";
+            }
         }
     }
     @IBAction func systolicOnChange(sender: UITextField) {
@@ -76,6 +85,12 @@ class VitalSignsViewController : UIViewController {
     @IBAction func heightOnChange(sender: UITextField) {
         currentVisit.triage.height=String!(height.text);
         edit_triage=1;
+    }
+    
+    func textFieldShouldReturn(textField: UITextField!) -> Bool // called when 'return' key pressed. return NO to ignore.
+    {
+        textField.resignFirstResponder()
+        return true;
     }
     
 }

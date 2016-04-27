@@ -9,7 +9,7 @@
 import UIKit;
 import Alamofire;
 
-class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDelegate{
+class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate{
     
     @IBOutlet weak var ClinicButton: UIButton!
     @IBOutlet weak var UsernameTextField: UITextField!
@@ -20,7 +20,8 @@ class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerView
     override func viewDidLoad() {
         //keyboard
         self.hideKeyboardWhenTappedAround()
-        
+        UsernameTextField.delegate=self;
+        PasswordTextField.delegate=self;
         
         //ui
         super.viewDidLoad()
@@ -176,6 +177,13 @@ class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerView
         else{ //login problem incorrect
             
         };
+    }
+    
+    //keyboard
+    func textFieldShouldReturn(textField: UITextField!) -> Bool // called when 'return' key pressed. return NO to ignore.
+    {
+        textField.resignFirstResponder()
+        return true;
     }
 }
 

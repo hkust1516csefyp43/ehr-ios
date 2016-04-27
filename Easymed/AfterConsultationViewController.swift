@@ -127,7 +127,9 @@ class AfterConsultationViewController : UIViewController, UITableViewDataSource,
                         if let triagesJSON = Response.result.value{
                             
                             //manage currentVisit.triage data
-                            currentVisit.triage.triage_id=triagesJSON[0]["triage_id"]as! String;
+                            if let y = triagesJSON[0]["triage_id"]as? String{
+                                currentVisit.triage.triage_id = y;
+                            }
                             currentVisit.triage.user_id = userID;
                             if let y = triagesJSON[0]["systolic"]as? Int{
                                 currentVisit.triage.systolic = String(y);

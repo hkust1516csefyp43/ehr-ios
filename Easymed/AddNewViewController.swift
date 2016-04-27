@@ -10,7 +10,7 @@ import Foundation;
 import UIKit;
 import Alamofire;
 
-class AddNewViewController: UIViewController {
+class AddNewViewController: UIViewController,UITextFieldDelegate,UITextViewDelegate {
     
     @IBOutlet weak var objTitle: AutoCompleteTextField!
     @IBOutlet weak var Descripsion: UITextView!
@@ -20,7 +20,8 @@ class AddNewViewController: UIViewController {
     var autotextdata:[String]=[String]();
     
     override func viewDidLoad() {
-
+        objTitle.delegate=self;
+        Descripsion.delegate=self;
         autotextdata.removeAll();
         for(var i=0;i<keywordsList.count;i++){
             var obj:String=keywordsList[i].keyword
@@ -69,7 +70,7 @@ class AddNewViewController: UIViewController {
         
         var temp:[String] = [String]();
         for(var i=0; i<autotextdata.count ; i++){
-            if autotextdata[i].lowercaseString.rangeOfString("\(keyword)") != nil {
+            if autotextdata[i].lowercaseString.rangeOfString("\(keyword.lowercaseString)") != nil {
                 temp.append(autotextdata[i]);
             }
         }
@@ -201,5 +202,17 @@ class AddNewViewController: UIViewController {
         //        for(var i = 0; i<related_dataList.count;i++){
         //            print("\(related_dataList[i].data) , \(related_dataList[i].remark) ,  \(String(related_dataList[i].category))" )
         //        }
+    }
+    
+    //keyboard
+    func textFieldShouldReturn(textField: UITextField!) -> Bool // called when 'return' key pressed. return NO to ignore.
+    {
+        textField.resignFirstResponder()
+        return true;
+    }
+    func textViewShouldReturn(textField: UITextView!) -> Bool // called when 'return' key pressed. return NO to ignore.
+    {
+        textField.resignFirstResponder()
+        return true;
     }
 }
