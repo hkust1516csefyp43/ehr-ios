@@ -10,6 +10,7 @@ import UIKit;
 import Alamofire;
 
 //Save variable
+var edit_attachments = 0;
 var edit_patient = 0;
 var edit_triage = 0;
 var edit_consultation = 0;
@@ -31,6 +32,7 @@ var currentVisit: Visit = Visit();
 var currentRelatedData: related_data = related_data();
 var currentPrescription: prescriptions = prescriptions();
 var currentPatient : Patient = Patient();
+var currentAttachments : attachments = attachments();
 var tempPatient: Patient = Patient();
 var TriageModifyViewControllerState = -1; //-1= default, 0= new patient + add visit, 1= old patient + add visit, 2= old patient + modify visit
 var FT_ITS_State = -1; //-1= default, 0=Finished Triage Onclick, 1=In this clinic Onclick
@@ -141,6 +143,7 @@ class LaunchAppViewController: UIViewController {
     
     func initializeVar (){
         //Save iable
+        edit_attachments = 0;
         edit_patient = 0;
         edit_triage = 0;
         edit_consultation = 0;
@@ -163,6 +166,7 @@ class LaunchAppViewController: UIViewController {
         currentPrescription = prescriptions();
         currentPatient  = Patient();
         tempPatient = Patient();
+        currentAttachments = attachments();
         TriageModifyViewControllerState = -1; //-1= default, 0= new patient + add visit, 1= old patient + add visit, 2= old patient + modify visit
         FT_ITS_State = -1; //-1= default, 0=Finished Triage Onclick, 1=In this clinic Onclick
         //AddVisitViewController,TriageModifyViewController

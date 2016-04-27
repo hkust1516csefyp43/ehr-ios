@@ -25,6 +25,7 @@ class PersonalDataViewController : UIViewController,UITextFieldDelegate,UIImageP
     @IBOutlet weak var imageDisplay: UIImageView!
     
     override func viewDidLoad() {
+        edit_attachments=0;
         super.viewDidLoad();
         self.hideKeyboardWhenTappedAround()
         LastName.delegate=self;
@@ -100,13 +101,17 @@ class PersonalDataViewController : UIViewController,UITextFieldDelegate,UIImageP
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let imageToConvert=cropToBounds((info[UIImagePickerControllerOriginalImage]as?UIImage)!,width: 364,height: 364);
-        let imageData = UIImagePNGRepresentation(imageToConvert.imageRotatedByDegrees(90, flip: false));
+        let resize_imageToConvert=resizeImage(imageToConvert, newWidth: 100);
+        let imageData = UIImagePNGRepresentation(resize_imageToConvert.imageRotatedByDegrees(0, flip: false));
         let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+        currentAttachments.file_in_base64=base64String;
         let decodedData = NSData(base64EncodedString: base64String, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
         let decodedimage = UIImage(data: decodedData!);
         imageDisplay.image = decodedimage! as UIImage
+        edit_attachments = 1;
         dismissViewControllerAnimated(true, completion: nil);
     }
+    
     
     func cropToBounds(image: UIImage, width: Double, height: Double) -> UIImage {
         

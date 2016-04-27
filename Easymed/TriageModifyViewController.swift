@@ -20,6 +20,7 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
         //Copy currentPatient data to Temp, so all temp patient modify will save at there
         if(AddVisitState==0){ //new patient
             currentVisit = Visit();
+            currentAttachments=attachments();
         }
         else if(AddVisitState==1){ //existing patient
             
@@ -138,87 +139,215 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
         //Start create data in database
         if(AddVisitState==0){
             AddVisitState = -1;
-            // POST patients
-            let patientsjson : [String: AnyObject] = [
-                "honorific":currentVisit.patient.honorific,
-                "first_name": currentVisit.patient.first_name,
-                "middle_name":currentVisit.patient.middle_name,
-                "last_name": currentVisit.patient.last_name,
-                "address":currentVisit.patient.address,
-                "email":currentVisit.patient.email,
-                //ref
-                "clinic_id": this_clinic_id,
-                //ref
-                "gender_id": "caw23232",
-                "birth_year":currentVisit.patient.birth_year,
-                "birth_month":currentVisit.patient.birth_month,
-                "birth_date":currentVisit.patient.birth_date,
-                //ref value
-                //                "blood_type_id":currentVisit.patient.blood_type_id,
-                //ref value
-                "phone_number_country_code":"2",
-                "phone_number":currentVisit.patient.phone_number,
-                "native_name":currentVisit.patient.natvie_name
-            ];
-            
-            let patientsheaders = [
-                "token": token,
-                "Content-Type": "application/json"
-            ];
-            let patientsURL: String = "http://ehr-api.herokuapp.com/v2/patients";
-            print("POST: \(patientsURL)");
-            Alamofire.request(.POST, patientsURL, parameters: patientsjson, encoding: .JSON, headers: patientsheaders).responseJSON { (Response) -> Void in
-                if let patientsJSON = Response.result.value{
-                    
-                    
-                    // POST visits
-                    let visitsjson : [String: AnyObject] = [
-                        "patient_id": patientsJSON["patient_id"] as! String,
-                        "tag": tag,
-                        "next_station": currentVisit.next_station
-                    ];
-                    let visitsheaders = [
-                        "token": token,
-                        "Content-Type": "application/json"
-                    ];
-                    let visitsURL: String = "http://ehr-api.herokuapp.com/v2/visits";
-                    print("POST: \(visitsURL)");
-                    Alamofire.request(.POST, visitsURL, parameters: visitsjson, encoding: .JSON, headers: visitsheaders).responseJSON { (Response) -> Void in
-                        if let visitsJSON = Response.result.value{
-                            
-                            // POST triages
-                            let triagesjson : [String: AnyObject] = [
-                                "visit_id": visitsJSON["visit_id"] as! String,
-                                "user_id": userID,
-                                "systolic": Int(currentVisit.triage.systolic)!,
-                                "diastolic": Int(currentVisit.triage.diastolic)!,
-                                "heart_rate": Int(currentVisit.triage.heartRate)!,
-                                "respiratory_rate": Int(currentVisit.triage.respiratoryRate)!,
-                                "weight":Int(currentVisit.triage.weight)!,
-                                "height":Int(currentVisit.triage.height)!,
-                                "temperature":Int(currentVisit.triage.temperature)!,
-                                "spo2":Int(currentVisit.triage.spo2)!,
-                                //                                                               "last_deworming_tablet":currentVisit.triage.lastDewormingTablet,
-                                "chief_complains":currentVisit.triage.chiefComplains,
-                                "remark":currentVisit.triage.remark,
-                                "start_timestamp":startTimeStamp,
-                                "end_timestamp":visitsJSON["create_timestamp"] as! String,
-                                //                                "edited_in_consultation":"FALSE",
-                                //                                "head_circumference":currentVisit.triage.headCircumference
-                            ];
-                            let triagesheaders = [
-                                "token": token,
-                                "Content-Type": "application/json"
-                            ];
-                            let triagesURL: String = "http://ehr-api.herokuapp.com/v2/triages";
-                            print("POST: \(triagesURL)");
-                            Alamofire.request(.POST, triagesURL, parameters: triagesjson, encoding: .JSON, headers: triagesheaders).responseJSON { (Response) -> Void in
-                                if let triagesJSON = Response.result.value{
-                                    print(triagesJSON);
-                                    //Call Next View Controller
-                                    let nextController = self.storyboard?.instantiateViewControllerWithIdentifier("PendingViewController") as! PendingViewController;
-                                    self.navigationController?.pushViewController(nextController, animated: true);
+            if(edit_attachments==1){
+                let attachmentsjson: [String:AnyObject]=[
+                    //                    "attachment_id":currentAttachments.attachment_id,
+                    //                    "cloudinary_url":currentAttachments.cloudinary_url,
+                    "file_name":"PROFILE_pic",
+                    "user_id":userID,
+                    "create_timestamp":"2016-03-11 02:45:27" ,
+                    "file_in_base64":currentAttachments.file_in_base64,
+//                    "file_in_base64":"testing"
+                ]
+                let headers = [
+                    "token": token,
+                    "Content-Type": "application/json"
+                ];
+                
+                let attachmentsURL: String = "http://ehr-api.herokuapp.com/v2/attachments";
+                print("POST: \(attachmentsURL)");
+                Alamofire.request(.POST, attachmentsURL, parameters: attachmentsjson, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
+                    if let attachmentsJSON = Response.result.value{
+                        print("SUCCESS: POST attachments tuple with visitstate=0")
+                        
+                        // POST patients
+                        let patientsjson : [String: AnyObject] = [
+                            "honorific":currentVisit.patient.honorific,
+                            "first_name": currentVisit.patient.first_name,
+                            "middle_name":currentVisit.patient.middle_name,
+                            "last_name": currentVisit.patient.last_name,
+                            "address":currentVisit.patient.address,
+                            "email":currentVisit.patient.email,
+                            //ref
+                            "clinic_id": this_clinic_id,
+                            //ref
+                            "gender_id": "caw23232",
+                            "birth_year":currentVisit.patient.birth_year,
+                            "birth_month":currentVisit.patient.birth_month,
+                            "birth_date":currentVisit.patient.birth_date,
+                            //ref value
+                            //                "blood_type_id":currentVisit.patient.blood_type_id,
+                            //ref value
+                            "image_id":attachmentsJSON["attachment_id"]as! String,
+                            "phone_number_country_code":"2",
+                            "phone_number":currentVisit.patient.phone_number,
+                            "native_name":currentVisit.patient.natvie_name
+                        ];
+                        
+                        
+                        let patientsURL: String = "http://ehr-api.herokuapp.com/v2/patients";
+                        print("POST: \(patientsURL)");
+                        Alamofire.request(.POST, patientsURL, parameters: patientsjson, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
+                            if let patientsJSON = Response.result.value{
+                                
+                                
+                                // POST visits
+                                let visitsjson : [String: AnyObject] = [
+                                    "patient_id": patientsJSON["patient_id"] as! String,
+                                    "tag": tag,
+                                    "next_station": currentVisit.next_station
+                                ];
+                                
+                                let visitsURL: String = "http://ehr-api.herokuapp.com/v2/visits";
+                                print("POST: \(visitsURL)");
+                                Alamofire.request(.POST, visitsURL, parameters: visitsjson, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
+                                    if let visitsJSON = Response.result.value{
+                                        print("SUCCESS: POST visits tuple with visits state=0")
+                                        // POST triages
+                                        let triagesjson : [String: AnyObject] = [
+                                            "visit_id": visitsJSON["visit_id"] as! String,
+                                            "user_id": userID,
+                                            "systolic": Int(currentVisit.triage.systolic)!,
+                                            "diastolic": Int(currentVisit.triage.diastolic)!,
+                                            "heart_rate": Int(currentVisit.triage.heartRate)!,
+                                            "respiratory_rate": Int(currentVisit.triage.respiratoryRate)!,
+                                            "weight":Int(currentVisit.triage.weight)!,
+                                            "height":Int(currentVisit.triage.height)!,
+                                            "temperature":Int(currentVisit.triage.temperature)!,
+                                            "spo2":Int(currentVisit.triage.spo2)!,
+                                            //                                                               "last_deworming_tablet":currentVisit.triage.lastDewormingTablet,
+                                            "chief_complains":currentVisit.triage.chiefComplains,
+                                            "remark":currentVisit.triage.remark,
+                                            "start_timestamp":startTimeStamp,
+                                            "end_timestamp":visitsJSON["create_timestamp"] as! String,
+                                            //                                "edited_in_consultation":"FALSE",
+                                            //                                "head_circumference":currentVisit.triage.headCircumference
+                                        ];
+                                        
+                                        let triagesURL: String = "http://ehr-api.herokuapp.com/v2/triages";
+                                        print("POST: \(triagesURL)");
+                                        Alamofire.request(.POST, triagesURL, parameters: triagesjson, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
+                                            if let triagesJSON = Response.result.value{
+                                                print("SUCCESS: POST triages tuple with visitstate=0");
+                                                //Call Next View Controller
+                                                let nextController = self.storyboard?.instantiateViewControllerWithIdentifier("PendingViewController") as! PendingViewController;
+                                                self.navigationController?.pushViewController(nextController, animated: true);
+                                            }
+                                            else{
+                                                print("FAIL: POST triages tuple with visitstate=0")
+                                                return;
+                                            }
+                                        }
+                                    }
+                                    else{
+                                        print("FAIL: POST visits tuple with visitstate=0")
+                                        return;
+                                    }
                                 }
+                            }
+                            else{
+                                print("FAIL: POST patients tuple with visitstate=0")
+                                return;
+                            }
+                        }
+                    }
+                    else{
+                        print("FAIL: POST attachments tuple with visitstate=0")
+                        return;
+                    }
+                }
+            }
+            else{
+                // POST patients
+                let patientsjson : [String: AnyObject] = [
+                    "honorific":currentVisit.patient.honorific,
+                    "first_name": currentVisit.patient.first_name,
+                    "middle_name":currentVisit.patient.middle_name,
+                    "last_name": currentVisit.patient.last_name,
+                    "address":currentVisit.patient.address,
+                    "email":currentVisit.patient.email,
+                    //ref
+                    "clinic_id": this_clinic_id,
+                    //ref
+                    "gender_id": "caw23232",
+                    "birth_year":currentVisit.patient.birth_year,
+                    "birth_month":currentVisit.patient.birth_month,
+                    "birth_date":currentVisit.patient.birth_date,
+                    //ref value
+                    //                "blood_type_id":currentVisit.patient.blood_type_id,
+                    //ref value
+                    "phone_number_country_code":"2",
+                    "phone_number":currentVisit.patient.phone_number,
+                    "native_name":currentVisit.patient.natvie_name
+                ];
+                
+                let patientsheaders = [
+                    "token": token,
+                    "Content-Type": "application/json"
+                ];
+                let patientsURL: String = "http://ehr-api.herokuapp.com/v2/patients";
+                print("POST: \(patientsURL)");
+                Alamofire.request(.POST, patientsURL, parameters: patientsjson, encoding: .JSON, headers: patientsheaders).responseJSON { (Response) -> Void in
+                    if let patientsJSON = Response.result.value{
+                        
+                        
+                        // POST visits
+                        let visitsjson : [String: AnyObject] = [
+                            "patient_id": patientsJSON["patient_id"] as! String,
+                            "tag": tag,
+                            "next_station": currentVisit.next_station
+                        ];
+                        let visitsheaders = [
+                            "token": token,
+                            "Content-Type": "application/json"
+                        ];
+                        let visitsURL: String = "http://ehr-api.herokuapp.com/v2/visits";
+                        print("POST: \(visitsURL)");
+                        Alamofire.request(.POST, visitsURL, parameters: visitsjson, encoding: .JSON, headers: visitsheaders).responseJSON { (Response) -> Void in
+                            if let visitsJSON = Response.result.value{
+                                print("SUCCESS: POST visits tuple with visits state=0")
+                                // POST triages
+                                let triagesjson : [String: AnyObject] = [
+                                    "visit_id": visitsJSON["visit_id"] as! String,
+                                    "user_id": userID,
+                                    "systolic": Int(currentVisit.triage.systolic)!,
+                                    "diastolic": Int(currentVisit.triage.diastolic)!,
+                                    "heart_rate": Int(currentVisit.triage.heartRate)!,
+                                    "respiratory_rate": Int(currentVisit.triage.respiratoryRate)!,
+                                    "weight":Int(currentVisit.triage.weight)!,
+                                    "height":Int(currentVisit.triage.height)!,
+                                    "temperature":Int(currentVisit.triage.temperature)!,
+                                    "spo2":Int(currentVisit.triage.spo2)!,
+                                    //                                                               "last_deworming_tablet":currentVisit.triage.lastDewormingTablet,
+                                    "chief_complains":currentVisit.triage.chiefComplains,
+                                    "remark":currentVisit.triage.remark,
+                                    "start_timestamp":startTimeStamp,
+                                    "end_timestamp":visitsJSON["create_timestamp"] as! String,
+                                    //                                "edited_in_consultation":"FALSE",
+                                    //                                "head_circumference":currentVisit.triage.headCircumference
+                                ];
+                                let triagesheaders = [
+                                    "token": token,
+                                    "Content-Type": "application/json"
+                                ];
+                                let triagesURL: String = "http://ehr-api.herokuapp.com/v2/triages";
+                                print("POST: \(triagesURL)");
+                                Alamofire.request(.POST, triagesURL, parameters: triagesjson, encoding: .JSON, headers: triagesheaders).responseJSON { (Response) -> Void in
+                                    if let triagesJSON = Response.result.value{
+                                        print(triagesJSON);
+                                        //Call Next View Controller
+                                        let nextController = self.storyboard?.instantiateViewControllerWithIdentifier("PendingViewController") as! PendingViewController;
+                                        self.navigationController?.pushViewController(nextController, animated: true);
+                                    }
+                                    else{
+                                        print("FAIL: POST patient tuple with visitstate=0")
+                                        return;
+                                    }
+                                }
+                            }
+                            else{
+                                print("FAIL: POST visit tuple with visitstate=0")
+                                return;
                             }
                         }
                     }

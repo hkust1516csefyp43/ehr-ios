@@ -32,6 +32,27 @@ class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerView
         UsernameTextField.text=nil;
         PasswordTextField.text=nil;
         
+            let attachmentsjson: [String:AnyObject]=[
+                //                    "attachment_id":currentAttachments.attachment_id,
+                //                    "cloudinary_url":currentAttachments.cloudinary_url,
+                "file_name":"PROFILE_pic",
+                "user_id":userID,
+                "create_timestamp":"2016-03-11 02:45:27" ,
+                "file_in_base64":"hello" ,
+            ]
+            let headers = [
+                "token": token,
+                "Content-Type": "application/json"
+            ];
+            
+            let attachmentsURL: String = "http://ehr-api.herokuapp.com/v2/attachments";
+            print("POST: \(attachmentsURL)");
+            Alamofire.request(.POST, attachmentsURL, parameters: attachmentsjson, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
+                if let attachmentsJSON = Response.result.value{
+//                    print(attachmentsJSON["image_id"]as! String)
+                    print(attachmentsJSON);
+                }
+        }
         //                let related_datajson : [String: AnyObject] = [
         //                    "data": "MODIFIED",
         //                    "remark": "MODIFIED",
@@ -197,7 +218,17 @@ extension UIViewController {
         view.endEditing(true)
     }
     
-
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+        
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))
+        image.drawInRect(CGRectMake(0, 0, newWidth, newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
 }
 
 extension UIImage {
