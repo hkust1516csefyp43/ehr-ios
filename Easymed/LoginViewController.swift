@@ -18,6 +18,11 @@ class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerView
     @IBOutlet weak var ConfirmButton: UIButton!
     
     override func viewDidLoad() {
+        //keyboard
+        self.hideKeyboardWhenTappedAround()
+        
+        
+        //ui
         super.viewDidLoad()
         picker.delegate = self
         picker.dataSource = self
@@ -25,7 +30,7 @@ class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerView
         ConfirmButton.tag=2;
         UsernameTextField.text=nil;
         PasswordTextField.text=nil;
-
+        
         //                let related_datajson : [String: AnyObject] = [
         //                    "data": "MODIFIED",
         //                    "remark": "MODIFIED",
@@ -116,12 +121,14 @@ class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerView
         print("\(Username) , \(Password)")
         
         if(1==1){ //token correct
+            var got_genders = 0;
+            var got_medications = 0;
             let headers = [
                 "token": token,
             ];
-            let URL: String = "http://ehr-api.herokuapp.com/v2/medications";
-            print("GET: \(URL)");
-            Alamofire.request(.GET, URL, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
+            let medicationsURL: String = "http://ehr-api.herokuapp.com/v2/medications";
+            print("GET: \(medicationsURL)");
+            Alamofire.request(.GET, medicationsURL, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
                 if let JSON = Response.result.value{
                     medicationsList.removeAll();
                     for(var i=0 ; i<JSON.count ; i++){
@@ -131,19 +138,55 @@ class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerView
                         obj.medication = JSON[i]["medication"]as! String;
                         medicationsList.append(obj);
                     }
+                    if(got_genders==1){
                     self.performSegueWithIdentifier("Login_MainMenu", sender: self);
-                    //                    let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ConsultationModifyViewController") as! ConsultationModifyViewController;
-                    //                    self.navigationController?.pushViewController(nextViewController, animated: true);
+                    }
+                    else{
+                        got_medications=1;
+                    }
                 }
                 else{
                     print("Fail: Get medications tuple");
                 }
             }
+            let gendersURL: String = "http://ehr-api.herokuapp.com/v2/genders";
+            print("GET: \(gendersURL)");
+            Alamofire.request(.GET, gendersURL, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
+                if let JSON = Response.result.value{
+                    gendersList.removeAll();
+                    for(var i=0 ; i<JSON.count ; i++){
+                        var obj:genders = genders();
+                        obj.gender_id = JSON[i]["gender_id"]as! String;
+                        obj.description = JSON[i]["description"]as! String;
+                        gendersList.append(obj);
+                    }
+                    if(got_medications==1){
+                        self.performSegueWithIdentifier("Login_MainMenu", sender: self);
+                    }
+                    else{
+                        got_genders=1;
+                    }
+                }
+                else{
+                    print("Fail: Get genders tuple");
+                }
+            }
+
         }
-        else{ //token incorrect
+        else{ //login problem incorrect
             
         };
     }
-    
 }
 
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+}

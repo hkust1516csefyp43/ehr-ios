@@ -12,6 +12,10 @@ import Alamofire
 
 class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate {
     override func viewDidLoad() {
+        //keyboard
+        self.hideKeyboardWhenTappedAround()
+        
+        
         super.viewDidLoad()
         //Copy currentPatient data to Temp, so all temp patient modify will save at there
         if(AddVisitState==0){ //new patient

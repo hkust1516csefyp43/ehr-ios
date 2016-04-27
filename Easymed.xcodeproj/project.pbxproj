@@ -29,6 +29,7 @@
 		215FA1381CB17D610000B81F /* AllergyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215FA1371CB17D610000B81F /* AllergyViewController.swift */; };
 		215FA13A1CB17D6C0000B81F /* PregnancyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215FA1391CB17D6C0000B81F /* PregnancyViewController.swift */; };
 		215FA13C1CB17D770000B81F /* ReviewOfTheSystemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215FA13B1CB17D770000B81F /* ReviewOfTheSystemViewController.swift */; };
+		217113A71CD0A70200006264 /* gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217113A61CD0A70200006264 /* gender.swift */; };
 		2173720A1CCBABEB00566591 /* Cell_Pharmacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217372091CCBABEB00566591 /* Cell_Pharmacy.swift */; };
 		217372101CCBAF6E00566591 /* PharmacyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2173720F1CCBAF6E00566591 /* PharmacyListViewController.swift */; };
 		217372121CCBAFEC00566591 /* BeforePharmacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217372111CCBAFEC00566591 /* BeforePharmacyViewController.swift */; };
@@ -58,6 +59,7 @@
 		219000D11CC9424E001B6957 /* Cell_DrugHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219000D01CC9424E001B6957 /* Cell_DrugHistory.swift */; };
 		219000D61CC9D316001B6957 /* MedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219000D51CC9D316001B6957 /* MedicationViewController.swift */; };
 		219000D81CC9D680001B6957 /* Cell_Medication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219000D71CC9D680001B6957 /* Cell_Medication.swift */; };
+		21938C341CCF978000C04CB3 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21938C331CCF978000C04CB3 /* AutoCompleteTextField.swift */; };
 		21B0AFD81CCD1B8100A21FDD /* Clinics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0AFD71CCD1B8100A21FDD /* Clinics.swift */; };
 		21B0AFDA1CCD24B700A21FDD /* LaunchAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0AFD91CCD24B700A21FDD /* LaunchAppViewController.swift */; };
 		21B7D7F91CAD95EF007CF8AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7D7F81CAD95EF007CF8AF /* AppDelegate.swift */; };
@@ -100,6 +102,7 @@
 		215FA1371CB17D610000B81F /* AllergyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllergyViewController.swift; sourceTree = "<group>"; };
 		215FA1391CB17D6C0000B81F /* PregnancyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PregnancyViewController.swift; sourceTree = "<group>"; };
 		215FA13B1CB17D770000B81F /* ReviewOfTheSystemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewOfTheSystemViewController.swift; sourceTree = "<group>"; };
+		217113A61CD0A70200006264 /* gender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gender.swift; sourceTree = "<group>"; };
 		217372091CCBABEB00566591 /* Cell_Pharmacy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell_Pharmacy.swift; sourceTree = "<group>"; };
 		2173720F1CCBAF6E00566591 /* PharmacyListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PharmacyListViewController.swift; sourceTree = "<group>"; };
 		217372111CCBAFEC00566591 /* BeforePharmacyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeforePharmacyViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +133,7 @@
 		219000D01CC9424E001B6957 /* Cell_DrugHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell_DrugHistory.swift; sourceTree = "<group>"; };
 		219000D51CC9D316001B6957 /* MedicationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationViewController.swift; sourceTree = "<group>"; };
 		219000D71CC9D680001B6957 /* Cell_Medication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell_Medication.swift; sourceTree = "<group>"; };
+		21938C331CCF978000C04CB3 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		21B0AFD71CCD1B8100A21FDD /* Clinics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clinics.swift; sourceTree = "<group>"; };
 		21B0AFD91CCD24B700A21FDD /* LaunchAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchAppViewController.swift; sourceTree = "<group>"; };
 		21B7D7F81CAD95EF007CF8AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -175,11 +179,11 @@
 		2173720B1CCBAEEA00566591 /* Triage */ = {
 			isa = PBXGroup;
 			children = (
-				215FA11B1CB177930000B81F /* TriageModifyViewController.swift */,
 				215FA1131CAF8FEF0000B81F /* TriageListViewController.swift */,
 				21FB1A681CBE088E002E5119 /* PendingViewControllerFT.swift */,
 				215FA1151CAFA87A0000B81F /* TriageFTViewController.swift */,
 				215FA1171CAFA8A10000B81F /* TriageITSViewController.swift */,
+				215FA11B1CB177930000B81F /* TriageModifyViewController.swift */,
 				218AC5151CB398DA00E691EC /* AddVisitViewController.swift */,
 				21FB1A6C1CBEBF93002E5119 /* ExistingPatientViewController.swift */,
 			);
@@ -241,6 +245,8 @@
 				215FA13B1CB17D770000B81F /* ReviewOfTheSystemViewController.swift */,
 				21FCF59D1CC9EBED00E7A527 /* prescriptions.swift */,
 				21B0AFD71CCD1B8100A21FDD /* Clinics.swift */,
+				21938C331CCF978000C04CB3 /* AutoCompleteTextField.swift */,
+				217113A61CD0A70200006264 /* gender.swift */,
 			);
 			name = class;
 			sourceTree = "<group>";
@@ -491,6 +497,7 @@
 				217871551CC7812400386E62 /* related_data.swift in Sources */,
 				217372141CCBAFFD00566591 /* AfterPharmacyViewController.swift in Sources */,
 				218AC4F41CB2DD1100E691EC /* Visit.swift in Sources */,
+				217113A71CD0A70200006264 /* gender.swift in Sources */,
 				21B7D80B1CAEDB45007CF8AF /* MainMenuViewController.swift in Sources */,
 				2188F0E51CC4483500AC3BB0 /* Consultation.swift in Sources */,
 				217871491CC772B500386E62 /* ConsultationRemarkViewController.swift in Sources */,
@@ -526,6 +533,7 @@
 				215FA1241CB179C90000B81F /* RemarkViewController.swift in Sources */,
 				2188F0E71CC4AA6A00AC3BB0 /* PhysicalExaminationViewController.swift in Sources */,
 				21FCF59C1CC9E70B00E7A527 /* medications.swift in Sources */,
+				21938C341CCF978000C04CB3 /* AutoCompleteTextField.swift in Sources */,
 				215FA1281CB17AB90000B81F /* VitalSignsViewController.swift in Sources */,
 				21FB1A6D1CBEBF93002E5119 /* ExistingPatientViewController.swift in Sources */,
 				215FA11E1CB179270000B81F /* HPIViewController.swift in Sources */,

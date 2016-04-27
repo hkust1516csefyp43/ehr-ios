@@ -24,7 +24,7 @@ class PendingViewController : UIViewController {
         ]
         
         var URL1: String = "http://ehr-api.herokuapp.com/v2/patients?clinic_id=\(this_clinic_id)&next_station=2";
-        print("signal: \(signal) \n url: \(URL1)");
+        print("GET: \(URL1)");
         Alamofire.request(.GET, URL1, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
             if let JSON = Response.result.value{
                 for(var i=0; i<JSON.count; i++){
@@ -90,7 +90,7 @@ class PendingViewController : UIViewController {
                     patientList1.append(p1);
                 }
                 if(backEndFinish==true){
-                    print("\(patientList1.count)  ,  \(patientList2.count)");
+                    print("\(patientList1.count)  ,  \(patientList2.count)")
                     self.performSegueWithIdentifier("Pending_Triage", sender: self);
                 }
                 else{
@@ -102,7 +102,7 @@ class PendingViewController : UIViewController {
             }
         }
         var URL2: String = "http://ehr-api.herokuapp.com/v2/patients?clinic_id=\(this_clinic_id)";
-        print("signal: \(signal) \n url: \(URL2)");
+        print("GET: \(URL2)");
         Alamofire.request(.GET, URL2, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
             if let JSON = Response.result.value{
                 for(var i=0; i<JSON.count; i++){
@@ -174,6 +174,7 @@ class PendingViewController : UIViewController {
                 else{
                     backEndFinish=true
                 }
+                return;
             }
             else{
                 print("Error: Cannot get PatientList");

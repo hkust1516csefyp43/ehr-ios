@@ -21,9 +21,11 @@ class VitalSignsViewController : UIViewController {
     @IBOutlet weak var height: UITextField!
     @IBOutlet weak var bmi: UILabel!
     @IBOutlet weak var ldd: UILabel!
+    @IBOutlet weak var VerticalScrollView: UIScrollView!
     
     
     override func viewDidLoad() {
+        VerticalScrollView.contentSize.height=800;
         super.viewDidLoad()
         if(AddVisitState==2){
                     systolic.text=currentVisit.triage.systolic;

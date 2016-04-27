@@ -11,7 +11,7 @@ class Patient{
     var birth_date: Int = 11;
     var createTimeStamp = -1; //TODO: find libarary to change it
     var clinic_id: String = "NULL";
-    var gender_id: String = "undisclosed";
+    var gender_id: String = "NULL";
     var image_id : String = "NULL";
     var blood_type_id: String! = "NULL";
     var phone_number_country_code: String = "NULL";

@@ -59,6 +59,7 @@ var modified_related_dataList:[related_data] = [related_data]();
 var deleted_related_dataList:[related_data] = [related_data]();
 var keywordsList:[keywords] = [keywords]();
 var medicationsList:[medications] = [medications]();
+var gendersList:[genders] = [genders]();
 var prescriptionsList: [prescriptions] = [prescriptions]();
 var prescriptionsList_original: [prescriptions] = [prescriptions]();
 
@@ -189,7 +190,9 @@ class LaunchAppViewController: UIViewController {
         deleted_related_dataList.removeAll()
         keywordsList.removeAll()
         medicationsList.removeAll()
+        gendersList.removeAll()
         prescriptionsList.removeAll()
+        prescriptionsList_original.removeAll()
     }
 }
 

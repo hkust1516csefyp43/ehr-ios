@@ -15,6 +15,9 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
     
     
     override func viewDidLoad() {
+        //keyboard
+        self.hideKeyboardWhenTappedAround()
+        
         super.viewDidLoad()
         if(ConsultationState==0){ //before consultation -> POST consultation
             related_dataList.removeAll();

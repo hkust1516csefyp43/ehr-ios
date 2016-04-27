@@ -24,7 +24,7 @@ class PersonalDataViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        VerticalScrollView.contentSize.height=850;
+        VerticalScrollView.contentSize.height=1100;
         if(AddVisitState==1||AddVisitState==2){
             //step1: Set text
             edit_patient = 0;
@@ -72,4 +72,5 @@ class PersonalDataViewController : UIViewController {
         currentVisit.patient.phone_number=String!(PhoneNumber.text);
         edit_patient=1;
     }
+
 }

@@ -12,11 +12,25 @@ import Alamofire;
 
 class AddNewViewController: UIViewController {
     
-    @IBOutlet weak var objTitle: UITextView!
+    @IBOutlet weak var objTitle: AutoCompleteTextField!
     @IBOutlet weak var Descripsion: UITextView!
     @IBOutlet weak var delete: UIButton!
+    private var responseData:NSMutableData?
+    private var dataTask:NSURLSessionDataTask?
+    var autotextdata:[String]=[String]();
     
     override func viewDidLoad() {
+        //keyboard
+        self.hideKeyboardWhenTappedAround()
+        
+        autotextdata.removeAll();
+        for(var i=0;i<keywordsList.count;i++){
+            var obj:String=keywordsList[i].keyword
+            autotextdata.append(obj);
+        }
+        autotextdata.sortInPlace();
+        configureTextField();
+        handleTextFieldInterfaces();
         if(related_dataState == 1){
             delete.enabled=true;
             objTitle.text = currentRelatedData.data;
@@ -27,6 +41,43 @@ class AddNewViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    //UI AUTOTEXTING SETUP
+    private func configureTextField(){
+        objTitle.autoCompleteTextColor = UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
+        objTitle.autoCompleteTextFont = UIFont(name: "HelveticaNeue-Light", size: 12.0)!
+        objTitle.autoCompleteCellHeight = 35.0
+        objTitle.maximumAutoCompleteCount = 20
+        objTitle.hidesWhenSelected = true
+        objTitle.hidesWhenEmpty = true
+        objTitle.enableAttributedText = true
+        var attributes = [String:AnyObject]()
+        attributes[NSForegroundColorAttributeName] = UIColor.redColor()
+        attributes[NSFontAttributeName] = UIFont(name: "HelveticaNeue-Bold", size: 12.0)
+        objTitle.autoCompleteAttributes = attributes
+    }
+    
+    private func handleTextFieldInterfaces(){
+        objTitle.onTextChange = {[weak self] text in
+            if !text.isEmpty{
+                if let dataTask = self?.dataTask {
+                    dataTask.cancel()
+                }
+                self?.fetchAutocompleteRelatedData(text)
+            }
+        }
+    }
+    
+    private func fetchAutocompleteRelatedData(keyword:String) {
+        
+        var temp:[String] = [String]();
+        for(var i=0; i<autotextdata.count ; i++){
+            if autotextdata[i].lowercaseString.rangeOfString("\(keyword)") != nil {
+                temp.append(autotextdata[i]);
+            }
+        }
+        self.objTitle.autoCompleteStrings = temp;
+    }
+
     @IBAction func DeleteOnclick(sender: UIButton) {
         if(ConsultationState == 1){
             var obj:related_data = related_data();
@@ -40,12 +91,16 @@ class AddNewViewController: UIViewController {
     @IBAction func AddOnclick(sender: UIButton) {
         if(related_dataState==0){
             if(ConsultationState == 0){
-                if(objTitle.text==""){
+                var trimString = String!(objTitle.text).stringByTrimmingCharactersInSet(
+                    NSCharacterSet.whitespaceAndNewlineCharacterSet());
+                if(trimString==""){
                     print("Fill in title, please.");
+                    return;
+                    //todo: add a warning sentance before
                 }
                 else{
                     var obj:related_data = related_data();
-                    obj.data=objTitle.text;
+                    obj.data=String!(objTitle.text);
                     if(Descripsion.text != ""){
                         obj.remark=Descripsion.text;
                     }
@@ -72,13 +127,17 @@ class AddNewViewController: UIViewController {
                 }
             }
             else if(ConsultationState == 1){
-                if(objTitle.text==""){
+                var trimString = String!(objTitle.text).stringByTrimmingCharactersInSet(
+                    NSCharacterSet.whitespaceAndNewlineCharacterSet());
+                if(trimString==""){
                     print("Fill in title, please.");
+                    return;
+                    //todo: add a warning sentance before
                 }
                 else{
                     var obj:related_data = related_data();
                     obj.consultation_id = currentVisit.consultation.consultation_id;
-                    obj.data=objTitle.text;
+                    obj.data=String!(objTitle.text);
                     if(Descripsion.text != ""){
                         obj.remark=Descripsion.text;
                     }
@@ -112,7 +171,7 @@ class AddNewViewController: UIViewController {
                 if(objTitle.text != ""){
                     for(var i=0; i<related_dataList.count ; i++){
                         if(related_dataList[i].rd_id==currentRelatedData.rd_id){
-                            related_dataList[i].data=objTitle.text;
+                            related_dataList[i].data=String!(objTitle.text);
                             related_dataList[i].remark=Descripsion.text;
                             break;
                         }
@@ -126,7 +185,7 @@ class AddNewViewController: UIViewController {
                 obj.rd_id = currentRelatedData.rd_id;
                 obj.category = currentRelatedData.category;
                 if(objTitle.text != ""){
-                    obj.data = objTitle.text;
+                    obj.data = String!(objTitle.text);
                     obj.remark = Descripsion.text;
                     for(var i=0; i<related_dataList.count ; i++){
                         if(related_dataList[i].rd_id==obj.rd_id){
