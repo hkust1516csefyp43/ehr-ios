@@ -12,6 +12,7 @@ import UIKit
 class CellL_Triage: UITableViewCell {
     
     
+    @IBOutlet weak var imageDisplay: UIImageView!
     @IBOutlet weak var NameLabel: UILabel!
     @IBOutlet weak var DetailLabel: UILabel!
     @IBOutlet weak var CountryLabel: UILabel!

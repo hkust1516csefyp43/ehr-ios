@@ -64,6 +64,7 @@ var medicationsList:[medications] = [medications]();
 var gendersList:[genders] = [genders]();
 var prescriptionsList: [prescriptions] = [prescriptions]();
 var prescriptionsList_original: [prescriptions] = [prescriptions]();
+var attachmentsList:[attachments] = [attachments]();
 
 class LaunchAppViewController: UIViewController {
     
@@ -197,6 +198,7 @@ class LaunchAppViewController: UIViewController {
         gendersList.removeAll()
         prescriptionsList.removeAll()
         prescriptionsList_original.removeAll()
+        attachmentsList.removeAll();
     }
 }
 

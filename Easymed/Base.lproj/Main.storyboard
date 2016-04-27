@@ -4178,6 +4178,7 @@
                                             <outlet property="CountryLabel" destination="jzM-hm-7zk" id="zwx-Ss-4Ph"/>
                                             <outlet property="DetailLabel" destination="70j-yY-52O" id="S19-37-mV3"/>
                                             <outlet property="NameLabel" destination="A1O-Wt-Fmu" id="Vpb-yb-NPT"/>
+                                            <outlet property="imageDisplay" destination="YBN-OQ-Ygd" id="xSI-af-Qy5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
