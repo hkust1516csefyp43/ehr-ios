@@ -9,13 +9,16 @@
 import Foundation
 import UIKit
 
-class Cell_AfterPharmacy: UITableViewCell {
+class Cell_BeforeConsultation: UITableViewCell {
     
-    @IBOutlet weak var NameLabel: UILabel!
-    @IBOutlet weak var AgeLabel: UILabel!
-    @IBOutlet weak var NativeNameLabel: UILabel!
     @IBOutlet weak var imageDisplay: UIImageView!
-    
+    @IBOutlet weak var NameLabel: UILabel!
+    @IBOutlet weak var DetailLabel: UILabel!
+    @IBOutlet weak var CountryLabel: UILabel!
+
+    //    @IBOutlet weak var NameLabel: UILabel!
+    //    @IBOutlet weak var DetailLabel: UILabel!
+    //    @IBOutlet weak var CountryLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

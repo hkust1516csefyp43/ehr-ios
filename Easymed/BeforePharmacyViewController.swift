@@ -39,6 +39,25 @@ class BeforePharmacyViewController : UIViewController, UITableViewDataSource, UI
         var lastname_text:String=""
         let cell=self.BeforePharmacyTableView.dequeueReusableCellWithIdentifier("Cell_BeforePharmacy", forIndexPath: indexPath) as! Cell_BeforePharmacy;
         
+        cell.imageDisplay.image = UIImage(named: "defaultPatient");
+        if (patientList1[indexPath.row].image_id != "NULL"){
+            for(var i=0; i<attachmentsList.count ; i++){
+                if(patientList1[indexPath.row].image_id == attachmentsList[i].attachment_id){
+                    if(attachmentsList[i].file_in_base64.characters.count>40){
+                        let base64:String=attachmentsList[i].file_in_base64;
+                        let decodedData = NSData(base64EncodedString: base64, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
+                        let decodedimage = UIImage(data: decodedData!);
+                        cell.imageDisplay.image = decodedimage! as UIImage
+                        break;
+                    }
+                    else{
+                        break;
+                    }
+                }
+            }
+        }
+
+        
         if(patientList1[indexPath.row].last_name != "NULL"){
             lastname_text=patientList1[indexPath.row].last_name
         }

@@ -4323,6 +4323,7 @@
                                             <outlet property="CountryLabel" destination="iYT-Sk-hqG" id="wbd-zQ-Zc8"/>
                                             <outlet property="DetailLabel" destination="QNS-k6-KQH" id="rcz-0S-fuH"/>
                                             <outlet property="NameLabel" destination="GdK-vB-Qbk" id="Npb-dk-8Sa"/>
+                                            <outlet property="imageDisplay" destination="Tdx-27-kw1" id="fqw-7m-GvG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -4748,7 +4749,7 @@
                                     <constraint firstAttribute="height" constant="600" id="8gV-kI-MOQ"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell_BeforeConsultation" rowHeight="111" id="y1L-V9-qOG" userLabel="Cell_BeforeConsultation" customClass="CellL_Triage" customModule="Easymed" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell_BeforeConsultation" rowHeight="111" id="y1L-V9-qOG" userLabel="Cell_BeforeConsultation" customClass="Cell_BeforeConsultation" customModule="Easymed" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y1L-V9-qOG" id="clB-Mm-1fG">
@@ -4774,15 +4775,6 @@
                                                         </mask>
                                                     </variation>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9L-wy-59A" userLabel="Name">
-                                                    <rect key="frame" x="245" y="0.0" width="45" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="117" y="25" width="45" height="21"/>
-                                                    </variation>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbw-K3-11h" userLabel="Detail">
                                                     <rect key="frame" x="240" y="22" width="44" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -4799,6 +4791,26 @@
                                                     <nil key="highlightedColor"/>
                                                     <variation key="widthClass=compact" misplaced="YES">
                                                         <rect key="frame" x="308" y="44" width="62" height="21"/>
+                                                    </variation>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9L-wy-59A" userLabel="Name">
+                                                    <rect key="frame" x="245" y="0.0" width="45" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="45" id="0Iz-XY-fWn"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="0Iz-XY-fWn"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="117" y="25" width="45" height="21"/>
+                                                        <mask key="constraints">
+                                                            <include reference="0Iz-XY-fWn"/>
+                                                        </mask>
                                                     </variation>
                                                 </label>
                                             </subviews>
@@ -4838,9 +4850,10 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="CountryLabel" destination="S18-eM-RNY" id="hp5-jD-Gyq"/>
-                                            <outlet property="DetailLabel" destination="lbw-K3-11h" id="eKJ-NC-5Lv"/>
-                                            <outlet property="NameLabel" destination="g9L-wy-59A" id="In5-iz-uJI"/>
+                                            <outlet property="CountryLabel" destination="S18-eM-RNY" id="VRB-SH-d7B"/>
+                                            <outlet property="DetailLabel" destination="lbw-K3-11h" id="eFZ-AY-XOS"/>
+                                            <outlet property="NameLabel" destination="g9L-wy-59A" id="kDp-cM-mxp"/>
+                                            <outlet property="imageDisplay" destination="SEr-Nz-iMP" id="f8I-x7-IQF"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -4898,32 +4911,13 @@
                                     <constraint firstAttribute="width" constant="400" id="yv1-LG-i0I"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell_AfterConsultation" rowHeight="111" id="wYT-rs-0oH" userLabel="Cell_AfterConsultation" customClass="CellL_Triage" customModule="Easymed" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell_AfterConsultation" rowHeight="111" id="wYT-rs-0oH" userLabel="Cell_AfterConsultation" customClass="Cell_AfterConsultation" customModule="Easymed" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wYT-rs-0oH" id="uoI-sa-gyK">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uVr-I7-FW5" userLabel="Patient Preview">
-                                                    <rect key="frame" x="-40" y="-56" width="240" height="128"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="101" id="jcL-aV-S3O"/>
-                                                        <constraint firstAttribute="width" constant="101" id="ns7-hB-2mZ"/>
-                                                    </constraints>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="jcL-aV-S3O"/>
-                                                            <exclude reference="ns7-hB-2mZ"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <variation key="widthClass=compact">
-                                                        <mask key="constraints">
-                                                            <include reference="jcL-aV-S3O"/>
-                                                            <include reference="ns7-hB-2mZ"/>
-                                                        </mask>
-                                                    </variation>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fl-Ek-dfh" userLabel="Name">
                                                     <rect key="frame" x="245" y="0.0" width="45" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -4951,6 +4945,25 @@
                                                         <rect key="frame" x="308" y="44" width="62" height="21"/>
                                                     </variation>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uVr-I7-FW5" userLabel="Patient Preview">
+                                                    <rect key="frame" x="-40" y="-56" width="240" height="128"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="101" id="jcL-aV-S3O"/>
+                                                        <constraint firstAttribute="width" constant="101" id="ns7-hB-2mZ"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="jcL-aV-S3O"/>
+                                                            <exclude reference="ns7-hB-2mZ"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="jcL-aV-S3O"/>
+                                                            <include reference="ns7-hB-2mZ"/>
+                                                        </mask>
+                                                    </variation>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="2fl-Ek-dfh" firstAttribute="top" secondItem="uoI-sa-gyK" secondAttribute="topMargin" constant="17" id="4xR-7s-i4J"/>
@@ -4988,9 +5001,10 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="CountryLabel" destination="FK6-UG-6uj" id="Wtf-iL-B5g"/>
-                                            <outlet property="DetailLabel" destination="Y6b-Dv-UAU" id="TKT-lV-emj"/>
-                                            <outlet property="NameLabel" destination="2fl-Ek-dfh" id="8gC-32-sfx"/>
+                                            <outlet property="CountryLabel" destination="FK6-UG-6uj" id="mUc-dN-za1"/>
+                                            <outlet property="DetailLabel" destination="Y6b-Dv-UAU" id="eVE-lj-UEl"/>
+                                            <outlet property="NameLabel" destination="2fl-Ek-dfh" id="LFW-T2-YCa"/>
+                                            <outlet property="imageDisplay" destination="uVr-I7-FW5" id="HS9-iV-WRC"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -6513,6 +6527,7 @@
                                             <outlet property="AgeLabel" destination="e4i-It-ozP" id="4G6-97-6qu"/>
                                             <outlet property="NameLabel" destination="6dp-Bx-GIV" id="1d0-n5-4J7"/>
                                             <outlet property="NativeNameLabel" destination="dx6-5d-QTl" id="Hh8-0j-kE9"/>
+                                            <outlet property="imageDisplay" destination="hsC-MQ-S4u" id="XWp-HE-DCk"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -6663,6 +6678,7 @@
                                             <outlet property="AgeLabel" destination="xU7-ev-NWO" id="cH4-mU-5lK"/>
                                             <outlet property="NameLabel" destination="XGa-gF-QQH" id="oKf-7l-suq"/>
                                             <outlet property="NativeNameLabel" destination="xpC-kl-OY0" id="Iic-un-k5n"/>
+                                            <outlet property="imageDisplay" destination="yzW-IZ-VZl" id="64f-tP-InR"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

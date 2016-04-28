@@ -14,6 +14,7 @@ class CellR_Triage: UITableViewCell {
     @IBOutlet weak var NameLabel: UILabel!
     @IBOutlet weak var DetailLabel: UILabel!
     @IBOutlet weak var CountryLabel: UILabel!
+    @IBOutlet weak var imageDisplay: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

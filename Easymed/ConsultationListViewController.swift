@@ -13,7 +13,7 @@ class ConsultationListViewController: UIViewController, PagingMenuControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        currentStage=2
         let beforeConsultationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("BeforeConsultationViewController") as! BeforeConsultationViewController;
         let afterConsultationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AfterConsultationViewController") as! AfterConsultationViewController;
         

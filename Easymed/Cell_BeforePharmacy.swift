@@ -14,6 +14,7 @@ class Cell_BeforePharmacy: UITableViewCell {
     @IBOutlet weak var NameLabel: UILabel!
     @IBOutlet weak var AgeLabel: UILabel!
     @IBOutlet weak var NativeNameLabel: UILabel!
+    @IBOutlet weak var imageDisplay: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

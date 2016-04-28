@@ -25,6 +25,10 @@ class PersonalDataViewController : UIViewController,UITextFieldDelegate,UIImageP
     @IBOutlet weak var imageDisplay: UIImageView!
     
     override func viewDidLoad() {
+        if(currentStage != 1){
+            CameraButton.hidden = true;
+            LibraryButton.hidden = true;
+        }
         edit_attachments=0;
         super.viewDidLoad();
         self.hideKeyboardWhenTappedAround()
@@ -35,6 +39,28 @@ class PersonalDataViewController : UIViewController,UITextFieldDelegate,UIImageP
         
         VerticalScrollView.contentSize.height=1100;
         if(AddVisitState==1||AddVisitState==2){
+            //setpicture
+            if (currentVisit.patient.image_id != "NULL"){
+                for(var i=0; i<attachmentsList.count ; i++){
+                    if(currentVisit.patient.image_id == attachmentsList[i].attachment_id){
+                        if(attachmentsList[i].file_in_base64.characters.count>40){
+                            let base64:String=attachmentsList[i].file_in_base64;
+                            let decodedData = NSData(base64EncodedString: base64, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
+                            let decodedimage = UIImage(data: decodedData!);
+                            imageDisplay.image = decodedimage! as UIImage
+                            break;
+                        }
+                        else{
+                            imageDisplay.image = UIImage(named: "defaultPatient");
+                            break;
+                        }
+                    }
+                }
+            }
+            else{
+                imageDisplay.image = UIImage(named: "defaultPatient");
+            }
+            
             //step1: Set text
             edit_patient = 0;
             edit_triage = 0;
@@ -57,6 +83,7 @@ class PersonalDataViewController : UIViewController,UITextFieldDelegate,UIImageP
         else if(AddVisitState==0){
             Gender.text = "Undisclosed";
             Birthday.text = "dd/mm/yyyy"
+            imageDisplay.image = UIImage(named: "defaultPatient");
         }
         else{
             print("error: variable 'AddVisitState'");
@@ -108,7 +135,18 @@ class PersonalDataViewController : UIViewController,UITextFieldDelegate,UIImageP
         let decodedData = NSData(base64EncodedString: base64String, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
         let decodedimage = UIImage(data: decodedData!);
         imageDisplay.image = decodedimage! as UIImage
+        if(AddVisitState==0){
         edit_attachments = 1;
+        }
+        else {
+            if(currentVisit.patient.image_id=="NULL"){
+                edit_attachments = 1;
+                edit_patient = 1;
+            }
+            else{
+                edit_attachments = 2;
+            }
+        }
         dismissViewControllerAnimated(true, completion: nil);
     }
     

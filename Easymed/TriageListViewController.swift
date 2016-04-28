@@ -14,6 +14,7 @@ class TriageListViewController: UIViewController, PagingMenuControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentStage=1;
         // Handle Layout
         NavigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Add+",

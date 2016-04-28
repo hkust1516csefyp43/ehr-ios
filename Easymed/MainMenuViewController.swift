@@ -43,14 +43,50 @@ class MainMenuViewController: UIViewController {
     }
     
     @IBAction func ConsultationOnclick(sender: UIButton) {
-        var backEndFinish = false;
+        var got_p1=0;
+        var got_p2=0;
+        var got_attachments=0;
         patientList1.removeAll();
         patientList2.removeAll();
         let headers = [
             "token": token,
         ]
         
-        var URL1: String = "http://ehr-api.herokuapp.com/v2/patients?clinic_id=\(this_clinic_id)&next_station=2";
+        let attachmentsURL: String = "http://ehr-api.herokuapp.com/v2/attachments";
+        print("GET: \(attachmentsURL)");
+        Alamofire.request(.GET, attachmentsURL, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
+            if let JSON = Response.result.value{
+                print("SUCCESS: GET attachments tuples");
+                for(var i=0; i<JSON.count; i++){
+                    var obj:attachments = attachments();
+                    if let y = JSON[i]["attachment_id"] as? String{
+                        obj.attachment_id = y;
+                    }
+                    if let y = JSON[i]["cloudinary_url"] as? String{
+                        obj.cloudinary_url = y;
+                    }
+                    if let y = JSON[i]["file_name"] as? String{
+                        obj.file_name = y;
+                    }
+                    if let y = JSON[i]["file_in_base64"] as? String{
+                        obj.file_in_base64 = y;
+                    }
+                    attachmentsList.append(obj);
+                }
+                if(got_p1==1 && got_p2==1){
+                   self.performSegueWithIdentifier("Main_Consultation", sender: self);
+                }
+                else{
+                    got_attachments=1;
+                }
+            }
+            else{
+                print("FAIL: GET attachments tuples")
+                return;
+            }
+        }
+        
+        var URL1: String = "http://ehr-api.herokuapp.com/v2/patients?clinic_id=\(this_clinic_id)&next_station=2&visit_date=";
         print("signal: \(signal) \n url: \(URL1)");
         Alamofire.request(.GET, URL1, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
             if let JSON = Response.result.value{
@@ -116,18 +152,19 @@ class MainMenuViewController: UIViewController {
                     }
                     patientList1.append(p1);
                 }
-                if(backEndFinish==true){
-                    //                    print("Success: \(patientList1.count)  ,  \(patientList2.count)");
+                if(got_attachments==1 && got_p2==1){
                     self.performSegueWithIdentifier("Main_Consultation", sender: self);
                 }
                 else{
-                    backEndFinish=true
+                    got_p1=1;
                 }
             }
             else{
                 print("Error: Cannot get PatientList");
+                return;
             }
         }
+        
         var URL2: String = "http://ehr-api.herokuapp.com/v2/patients?clinic_id=\(this_clinic_id)&next_station=3";
         print("signal: \(signal) \n url: \(URL2)");
         Alamofire.request(.GET, URL2, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
@@ -194,28 +231,63 @@ class MainMenuViewController: UIViewController {
                     }
                     patientList2.append(p1);
                 }
-                if(backEndFinish==true){
-                    //                    print("Success: \(patientList1.count)  ,  \(patientList2.count)");
+                if(got_attachments==1 && got_p1==1){
                     self.performSegueWithIdentifier("Main_Consultation", sender: self);
                 }
                 else{
-                    backEndFinish=true
+                    got_p2=1;
                 }
             }
             else{
                 print("Error: Cannot get PatientList");
+                return;
             }
         }
     }
     
     @IBAction func PharmacyOnclick(sender: UIButton) {
-        var backEndFinish = false;
+        var got_p1=0;
+        var got_p2=0;
+        var got_attachments=0;
         patientList1.removeAll();
         patientList2.removeAll();
         let headers = [
             "token": token,
         ]
-        
+        let attachmentsURL: String = "http://ehr-api.herokuapp.com/v2/attachments";
+        print("GET: \(attachmentsURL)");
+        Alamofire.request(.GET, attachmentsURL, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
+            if let JSON = Response.result.value{
+                print("SUCCESS: GET attachments tuples");
+                for(var i=0; i<JSON.count; i++){
+                    var obj:attachments = attachments();
+                    if let y = JSON[i]["attachment_id"] as? String{
+                        obj.attachment_id = y;
+                    }
+                    if let y = JSON[i]["cloudinary_url"] as? String{
+                        obj.cloudinary_url = y;
+                    }
+                    if let y = JSON[i]["file_name"] as? String{
+                        obj.file_name = y;
+                    }
+                    if let y = JSON[i]["file_in_base64"] as? String{
+                        obj.file_in_base64 = y;
+                    }
+                    attachmentsList.append(obj);
+                }
+                if(got_p1==1 && got_p2==1){
+                   self.performSegueWithIdentifier("Main_Pharmacy", sender: self);
+                }
+                else{
+                    got_attachments=1;
+                }
+            }
+            else{
+                print("FAIL: GET attachments tuples")
+                return;
+            }
+        }
+
         var URL1: String = "http://ehr-api.herokuapp.com/v2/patients?clinic_id=\(this_clinic_id)&next_station=3";
         print("signal: \(signal) \n url: \(URL1)");
         Alamofire.request(.GET, URL1, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
@@ -282,12 +354,11 @@ class MainMenuViewController: UIViewController {
                     }
                     patientList1.append(p1);
                 }
-                if(backEndFinish==true){
-                    //                    print("Success: \(patientList1.count)  ,  \(patientList2.count)");
+                if(got_attachments==1 && got_p2==1){
                     self.performSegueWithIdentifier("Main_Pharmacy", sender: self);
                 }
                 else{
-                    backEndFinish=true
+                    got_p1=1;
                 }
             }
             else{
@@ -360,12 +431,11 @@ class MainMenuViewController: UIViewController {
                     }
                     patientList2.append(p1);
                 }
-                if(backEndFinish==true){
-                    //                    print("Success: \(patientList1.count)  ,  \(patientList2.count)");
+                if(got_attachments==1 && got_p1==1){
                     self.performSegueWithIdentifier("Main_Pharmacy", sender: self);
                 }
                 else{
-                    backEndFinish=true
+                    got_p2=1;
                 }
             }
             else{

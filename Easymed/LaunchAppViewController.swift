@@ -66,6 +66,15 @@ var prescriptionsList: [prescriptions] = [prescriptions]();
 var prescriptionsList_original: [prescriptions] = [prescriptions]();
 var attachmentsList:[attachments] = [attachments]();
 
+//
+let currentdate = NSDate();
+let currentcalendar = NSCalendar.currentCalendar();
+let currentcomponents = currentcalendar.components([.Day , .Month , .Year], fromDate: currentdate);
+let currentyear =  currentcomponents.year;
+let currentmonth =  currentcomponents.month;
+var currentDay = currentcomponents.day;
+var currentStage = 0;
+
 class LaunchAppViewController: UIViewController {
     
     @IBOutlet weak var icon: UIImageView!

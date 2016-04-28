@@ -71,6 +71,8 @@
 		21B7D80D1CAEFDE3007CF8AF /* CellL_Triage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7D80C1CAEFDE3007CF8AF /* CellL_Triage.swift */; };
 		21B7D8101CAEFE1C007CF8AF /* CellR_Triage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7D80F1CAEFE1C007CF8AF /* CellR_Triage.swift */; };
 		21C888151CD14AE7003681EC /* attachments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C888141CD14AE7003681EC /* attachments.swift */; };
+		21C888171CD1D736003681EC /* Cell_BeforeConsultation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C888161CD1D736003681EC /* Cell_BeforeConsultation.swift */; };
+		21C888191CD1D748003681EC /* Cell_AfterConsultation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C888181CD1D748003681EC /* Cell_AfterConsultation.swift */; };
 		21FB1A691CBE088E002E5119 /* PendingViewControllerFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FB1A681CBE088E002E5119 /* PendingViewControllerFT.swift */; };
 		21FB1A6B1CBE1BD5002E5119 /* editPatient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FB1A6A1CBE1BD5002E5119 /* editPatient.swift */; };
 		21FB1A6D1CBEBF93002E5119 /* ExistingPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FB1A6C1CBEBF93002E5119 /* ExistingPatientViewController.swift */; };
@@ -147,6 +149,8 @@
 		21B7D80C1CAEFDE3007CF8AF /* CellL_Triage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellL_Triage.swift; sourceTree = "<group>"; };
 		21B7D80F1CAEFE1C007CF8AF /* CellR_Triage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellR_Triage.swift; sourceTree = "<group>"; };
 		21C888141CD14AE7003681EC /* attachments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = attachments.swift; sourceTree = "<group>"; };
+		21C888161CD1D736003681EC /* Cell_BeforeConsultation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell_BeforeConsultation.swift; sourceTree = "<group>"; };
+		21C888181CD1D748003681EC /* Cell_AfterConsultation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell_AfterConsultation.swift; sourceTree = "<group>"; };
 		21FB1A681CBE088E002E5119 /* PendingViewControllerFT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingViewControllerFT.swift; sourceTree = "<group>"; };
 		21FB1A6A1CBE1BD5002E5119 /* editPatient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = editPatient.swift; sourceTree = "<group>"; };
 		21FB1A6C1CBEBF93002E5119 /* ExistingPatientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistingPatientViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 			children = (
 				21B7D80C1CAEFDE3007CF8AF /* CellL_Triage.swift */,
 				21B7D80F1CAEFE1C007CF8AF /* CellR_Triage.swift */,
+				21C888161CD1D736003681EC /* Cell_BeforeConsultation.swift */,
+				21C888181CD1D748003681EC /* Cell_AfterConsultation.swift */,
 				217372171CCBCD8D00566591 /* Cell_BeforePharmacy.swift */,
 				217372191CCBCD9B00566591 /* Cell_AfterPharmacy.swift */,
 				2188F0EA1CC4FD1F00AC3BB0 /* Cell_existingPatient.swift */,
@@ -545,8 +551,10 @@
 				21502F281CC1747E00B2DAAD /* BeforeConsultationViewController.swift in Sources */,
 				2178714C1CC7731900386E62 /* AdviceViewController.swift in Sources */,
 				215FA1221CB179AB0000B81F /* FamilyHistoryViewController.swift in Sources */,
+				21C888191CD1D748003681EC /* Cell_AfterConsultation.swift in Sources */,
 				215FA13C1CB17D770000B81F /* ReviewOfTheSystemViewController.swift in Sources */,
 				219000D11CC9424E001B6957 /* Cell_DrugHistory.swift in Sources */,
+				21C888171CD1D736003681EC /* Cell_BeforeConsultation.swift in Sources */,
 				215FA13A1CB17D6C0000B81F /* PregnancyViewController.swift in Sources */,
 				21B0AFDA1CCD24B700A21FDD /* LaunchAppViewController.swift in Sources */,
 				21B7D80D1CAEFDE3007CF8AF /* CellL_Triage.swift in Sources */,

@@ -58,7 +58,8 @@ class PendingViewController : UIViewController {
                 print("FAIL: GET attachments tuples")
             }
         }
-        var URL1: String = "http://ehr-api.herokuapp.com/v2/patients?clinic_id=\(this_clinic_id)&next_station=2";
+//        var URL1: String = "http://ehr-api.herokuapp.com/v2/patients?clinic_id=\(this_clinic_id)&next_station=2&&visit_date=\(currentyear)-\(currentmonth)-\(currentDay)";
+        var URL1: String = "http://ehr-api.herokuapp.com/v2/patients?clinic_id=\(this_clinic_id)&&next_station=2&&visit_date=\(currentyear)-\(currentmonth)-\(currentDay)";
         print("GET: \(URL1)");
         Alamofire.request(.GET, URL1, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
             if let JSON = Response.result.value{
@@ -76,9 +77,6 @@ class PendingViewController : UIViewController {
                     }
                     if let y = b["first_name"] as? String{
                         p1.first_name = y;
-                    }
-                    else{
-                        print("error, cannot get first_name");
                     }
                     if let y = b["middle_name"] as? String{
                         p1.middle_name = y;
@@ -108,7 +106,6 @@ class PendingViewController : UIViewController {
                         p1.gender_id = y;
                     }
                     if let y = b["image_id"] as? String{
-                        print("yes");
                         p1.image_id = y;
                     }
                     if let y = b["blood_type_id"] as? String{
@@ -154,9 +151,6 @@ class PendingViewController : UIViewController {
                     }
                     if let y = b["first_name"] as? String{
                         p1.first_name = y;
-                    }
-                    else{
-                        print("error, cannot get first_name");
                     }
                     if let y = b["middle_name"] as? String{
                         p1.middle_name = y;

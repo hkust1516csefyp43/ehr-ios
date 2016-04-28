@@ -14,7 +14,7 @@ class PharmacyListViewController: UIViewController, PagingMenuControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        currentStage=3;
         let beforePharmacyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("BeforePharmacyViewController") as! BeforePharmacyViewController;
         let afterPharmacyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AfterPharmacyViewController") as! AfterPharmacyViewController;
         
