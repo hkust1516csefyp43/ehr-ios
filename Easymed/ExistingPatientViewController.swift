@@ -109,9 +109,9 @@ class ExistingPatientViewController : UIViewController, UITableViewDataSource, U
             }
             
             if(SearchPatientList[indexPath.row].gender_id != "NULL" || SearchPatientList[indexPath.row].gender_id != "undisclosed"){
-                for(var i=0; i<gendersList.count ; i++){
-                    if(SearchPatientList[indexPath.row].gender_id==gendersList[i].gender_id){
-                        gender_text=gendersList[i].description;
+                for(var i=0; i<gendersList[0].count ; i++){
+                    if(SearchPatientList[indexPath.row].gender_id==gendersList[0][i].gender_id){
+                        gender_text=gendersList[0][i].description;
                         break;
                     }
                 }
@@ -163,9 +163,9 @@ class ExistingPatientViewController : UIViewController, UITableViewDataSource, U
             }
             
             if(patientList2[indexPath.row].gender_id != "NULL" || patientList2[indexPath.row].gender_id != "undisclosed"){
-                for(var i=0; i<gendersList.count ; i++){
-                    if(patientList2[indexPath.row].gender_id==gendersList[i].gender_id){
-                        gender_text=gendersList[i].description;
+                for(var i=0; i<gendersList[0].count ; i++){
+                    if(patientList2[indexPath.row].gender_id==gendersList[0][i].gender_id){
+                        gender_text=gendersList[0][i].description;
                         break;
                     }
                 }

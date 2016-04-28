@@ -5,19 +5,63 @@
 //  Created by choi chun ho,chchoiac,20124979 on 1/4/16.
 //  Copyright © 2016 John. All rights reserved.
 //
-
+//for key in headers.keys{
+//    if(headers[key]!as String=="NULL"){
+//        headers.removeValueForKey(key)
+//    }
+//}
 import UIKit;
 import Alamofire;
 
 class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate{
     
+    @IBOutlet weak var piSwitch: UISwitch!
     @IBOutlet weak var ClinicButton: UIButton!
     @IBOutlet weak var UsernameTextField: UITextField!
     @IBOutlet weak var PasswordTextField: UITextField!
     @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var ConfirmButton: UIButton!
+    var got_genders = 0;
+    var got_medications = 0;
     
     override func viewDidLoad() {
+
+//        var searchDate:String;
+//        if(currentmonth<10){
+//         searchDate="\(currentyear)-0\(currentmonth)-\(currentDay)";
+//        }
+//        else{
+//         searchDate="\(currentyear)-\(currentmonth)-\(currentDay)";
+//        }
+//        var abc="2016-04-29T07:58:24.612Z";
+//        print(searchDate);
+//        print(abc.rangeOfString("2016-04-29"));
+//
+//        let headers = [
+//            "token": token,
+//        ]
+//        var visitsURL: String = "http://ehr-api.herokuapp.com/v2/visits";
+//        Alamofire.request(.GET, visitsURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
+//            if let visitJSON = Response.result.value{
+//                for(var i=0;i<visitJSON.count;i++){
+//                    if let y=visitJSON[i]["create_timestamp"]as? String{
+//                         print("\(y)")
+//                        if y.rangeOfString(searchDate) != nil{
+//                            print("\(y)")
+//                        }
+//                    }
+//                }
+//            }
+//        }
+        
+        //switch
+        if(Path==Path_Heroku){
+            piSwitch.on=false;
+        }
+        else{
+            piSwitch.on=true;
+        }
+        
         //keyboard
         self.hideKeyboardWhenTappedAround()
         UsernameTextField.delegate=self;
@@ -30,57 +74,7 @@ class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerView
         picker.tag=1;
         ConfirmButton.tag=2;
         UsernameTextField.text=nil;
-        PasswordTextField.text=nil;
-        
-//            let attachmentsjson: [String:AnyObject]=[
-//                //                    "attachment_id":currentAttachments.attachment_id,
-//                //                    "cloudinary_url":currentAttachments.cloudinary_url,
-//                "file_name":"PROFILE_pic",
-//                "user_id":userID,
-//                "create_timestamp":"2016-03-11 02:45:27" ,
-//                "file_in_base64":"hello" ,
-//            ]
-//            let headers = [
-//                "token": token,
-//                "Content-Type": "application/json"
-//            ];
-//            
-//            let attachmentsURL: String = "http://ehr-api.herokuapp.com/v2/attachments";
-//            print("POST: \(attachmentsURL)");
-//            Alamofire.request(.POST, attachmentsURL, parameters: attachmentsjson, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
-//                if let attachmentsJSON = Response.result.value{
-////                    print(attachmentsJSON["image_id"]as! String)
-//                    print(attachmentsJSON);
-//                }
-//        }
-        //                let related_datajson : [String: AnyObject] = [
-        //                    "data": "MODIFIED",
-        //                    "remark": "MODIFIED",
-        //                ];
-        //        let related_dataheaders = [
-        //            "token": token,
-        //                    "Content-Type": "application/json"
-        //        ];
-        //        let prescriptionsjson : [String: AnyObject] = [
-        //            "prescription_detail": "modified_details",
-        //            "prescribed": 0
-        //        ];
-        //        let prescriptionsheaders = [
-        //            "token": token,
-        //            "Content-Type": "application/json"
-        //        ];
-        //        let prescriptionsURL: String = "http://ehr-api.herokuapp.com/v2/prescriptions/RcVcK8FVbZ3G4KYH";
-        //        print("PUT: \(prescriptionsURL)");
-        //        Alamofire.request(.PUT, prescriptionsURL, parameters: prescriptionsjson, encoding: .JSON, headers: prescriptionsheaders).responseJSON { (Response) -> Void in
-        //            if let prescriptionsJSON = Response.result.value{
-        //                print("success")
-        //            }
-        //            else{
-        //                print("fail: PUT prescripsion")
-        //            }
-        //        }
-        
-        
+        PasswordTextField.text=nil;        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -116,7 +110,7 @@ class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerView
     func updateLabel(){
         let clinic = clinicsNameList[0][picker.selectedRowInComponent(0)]
         ClinicButton.setTitle("\(clinic)", forState: .Normal);
-        this_clinic_id = clinicsList[picker.selectedRowInComponent(0)].clinic_id;
+        CurrentClinic = clinicsList[picker.selectedRowInComponent(0)].clinic_id;
     }
     
     @IBAction func ClinicOnclick(sender: UIButton) {
@@ -126,7 +120,7 @@ class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerView
     @IBAction func ConfirmOnclick(sender: UIButton) {
         self.view.viewWithTag(1)?.hidden = true;
         self.view.viewWithTag(2)?.hidden = true;
-        print("Current clinic id: \(this_clinic_id)");
+        print("Current clinic id: \(CurrentClinic)");
     }
     
     override func didReceiveMemoryWarning() {
@@ -134,6 +128,14 @@ class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerView
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func piSwitchValueChange(sender: UISwitch) {
+        if(piSwitch.on){
+            Path=Path_Pi;
+        }
+        else{
+            Path=Path_Heroku;
+        }
+    }
     
     @IBAction func LoginOnclick(sender: UIButton) {
         let Username:String = String!(UsernameTextField.text);
@@ -143,13 +145,16 @@ class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerView
         print("\(Username) , \(Password)")
         
         if(1==1){ //token correct
-            var got_genders = 0;
-            var got_medications = 0;
             let headers = [
                 "token": token,
             ];
+            
+            let tempPath_medications=Path;
+            
             let medicationsURL: String = "http://ehr-api.herokuapp.com/v2/medications";
+            
             print("GET: \(medicationsURL)");
+            
             Alamofire.request(.GET, medicationsURL, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
                 if let JSON = Response.result.value{
                     medicationsList.removeAll();
@@ -160,40 +165,47 @@ class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerView
                         obj.medication = JSON[i]["medication"]as! String;
                         medicationsList.append(obj);
                     }
-                    if(got_genders==1){
+                    if(self.got_genders==1){
                     self.performSegueWithIdentifier("Login_MainMenu", sender: self);
                     }
                     else{
-                        got_medications=1;
+                        self.got_medications=1;
                     }
                 }
                 else{
-                    print("Fail: Get medications tuple");
+                    print("Fail: Get medications tuple at \(tempPath_medications)");
+                    self.backup_Getmedications(tempPath_medications);
                 }
             }
+            
+            let tempPath_genders=Path;
+            
             let gendersURL: String = "http://ehr-api.herokuapp.com/v2/genders";
             print("GET: \(gendersURL)");
             Alamofire.request(.GET, gendersURL, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
                 if let JSON = Response.result.value{
+                    print(JSON.count);
                     gendersList.removeAll();
+                    var tempList:[gender] = [gender]();
                     for(var i=0 ; i<JSON.count ; i++){
-                        var obj:genders = genders();
+                        var obj:gender = gender();
                         obj.gender_id = JSON[i]["gender_id"]as! String;
                         obj.description = JSON[i]["description"]as! String;
-                        gendersList.append(obj);
+                        tempList.append(obj);
                     }
-                    if(got_medications==1){
-                        self.performSegueWithIdentifier("Login_MainMenu", sender: self);
+                    gendersList.append(tempList);
+                    if(self.got_medications==1){
+                self.performSegueWithIdentifier("Login_MainMenu", sender: self);
                     }
                     else{
-                        got_genders=1;
+                        self.got_genders=1;
                     }
                 }
                 else{
-                    print("Fail: Get genders tuple");
+                    print("Fail: Get genders tuple at \(tempPath_genders)");
+                    self.backup_Getgenders(tempPath_genders);
                 }
             }
-
         }
         else{ //login problem incorrect
             
@@ -206,9 +218,92 @@ class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerView
         textField.resignFirstResponder()
         return true;
     }
+    
+    func backup_Getgenders(CurrentPath:String){
+        
+        switchPath(CurrentPath);
+        
+        let headers = [
+            "token": token,
+        ];
+        
+        let gendersURL: String = "http://ehr-api.herokuapp.com/v2/genders";
+        
+        print("GET: \(gendersURL)");
+        
+        Alamofire.request(.GET, gendersURL, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
+            if let JSON = Response.result.value{
+                gendersList.removeAll();
+                var tempList:[gender] = [gender]();
+                for(var i=0 ; i<JSON.count ; i++){
+                    var obj:gender = gender();
+                    obj.gender_id = JSON[i]["gender_id"]as! String;
+                    obj.description = JSON[i]["description"]as! String;
+                    tempList.append(obj);
+                }
+                gendersList.append(tempList);
+                if(self.got_medications==1){
+                    self.performSegueWithIdentifier("Login_MainMenu", sender: self);
+                }
+                else{
+                    self.got_genders=1;
+                    
+                }
+            }
+            else{
+                print("Fail: Get genders tuple");
+                
+            }
+        }
+    }
+    
+    func backup_Getmedications(CurrentPath:String){
+        
+        switchPath(CurrentPath);
+        
+        let headers = [
+            "token": token,
+        ];
+        
+        
+        let medicationsURL: String = "http://ehr-api.herokuapp.com/v2/medications";
+        
+        print("GET: \(medicationsURL)");
+        
+        Alamofire.request(.GET, medicationsURL, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
+            if let JSON = Response.result.value{
+                medicationsList.removeAll();
+                for(var i=0 ; i<JSON.count ; i++){
+                    var obj:medications = medications();
+                    obj.medication_id = JSON[i]["medication_id"]as! String;
+                    obj.user_id = JSON[i]["user_id"]as! String;
+                    obj.medication = JSON[i]["medication"]as! String;
+                    medicationsList.append(obj);
+                }
+                if(self.got_genders==1){
+                    self.performSegueWithIdentifier("Login_MainMenu", sender: self);
+                }
+                else{
+                   self.got_medications=1;
+                }
+            }
+            else{
+                print("Fail: Get medications tuple at http://ehr-api.herokuapp.com/v2/");
+            }
+        }
+    }
 }
 
 extension UIViewController {
+    func switchPath(Current:String){
+        if Current == Path_Heroku{
+            Path=Path_Pi;
+        }
+        else{
+            Path = Path_Heroku;
+        }
+    }
+    
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
@@ -233,6 +328,7 @@ extension UIViewController {
 
 extension UIImage {
     public func imageRotatedByDegrees(degrees: CGFloat, flip: Bool) -> UIImage {
+        
         let radiansToDegrees: (CGFloat) -> CGFloat = {
             return $0 * (180.0 / CGFloat(M_PI))
         }
@@ -272,5 +368,12 @@ extension UIImage {
         UIGraphicsEndImageContext()
         
         return newImage
+    }
+}
+extension Dictionary where Value: AnyObject {
+    
+    var nullsRemoved: [Key: Value] {
+        let tup = filter { !($0.1 is NSNull) }
+        return tup.reduce([Key: Value]()) { (var r, e) in r[e.0] = e.1; return r }
     }
 }

@@ -83,9 +83,9 @@ class BeforePharmacyViewController : UIViewController, UITableViewDataSource, UI
         }
         
         if(patientList1[indexPath.row].gender_id != "NULL" || patientList1[indexPath.row].gender_id != "undisclosed"){
-            for(var i=0; i<gendersList.count ; i++){
-                if(patientList1[indexPath.row].gender_id==gendersList[i].gender_id){
-                    gender_text=gendersList[i].description;
+            for(var i=0; i<gendersList[0].count ; i++){
+                if(patientList1[indexPath.row].gender_id==gendersList[0][i].gender_id){
+                    gender_text=gendersList[0][i].description;
                     break;
                 }
             }

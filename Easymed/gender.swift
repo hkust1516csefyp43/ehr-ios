@@ -1,4 +1,4 @@
-class genders{
+class gender{
     
     var gender_id:String = "NULL";
     var description:String = "NULL";

@@ -6,10 +6,10 @@ class Patient{
     var last_name: String! = "NULL";
     var address: String! = "NULL";
     var email: String! = "NULL";
-    var birth_year: Int = 1911;
-    var birth_month: Int = 11;
-    var birth_date: Int = 11;
-    var createTimeStamp = -1; //TODO: find libarary to change it
+    var birth_year: Int = 0;
+    var birth_month: Int = 0;
+    var birth_date: Int = 0;
+    var createTimeStamp = -0; //TODO: find libarary to change it
     var clinic_id: String = "NULL";
     var gender_id: String = "NULL";
     var image_id : String = "NULL";
@@ -17,6 +17,8 @@ class Patient{
     var phone_number_country_code: String = "NULL";
     var phone_number: String = "NULL";
     var natvie_name: String! = "NULL";
+    var visit_id:String = "NULL"
+    var tag:Int = 400;
     
     init(){
         

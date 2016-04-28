@@ -207,3 +207,37 @@
 //        //        }
 //    }
 //}
+
+
+
+
+//for key in patientsjson.keys{
+//    if(patientsjson[key]!as? String=="NULL"){
+//        patientsjson.removeValueForKey(key)
+//    }
+//    else if(patientsjson[key]!as? String=="0"){
+//        patientsjson.removeValueForKey(key)
+//    }
+//}
+//
+//
+//
+//
+//for key in visitsjson.keys{
+//    if(visitsjson[key]!as? String=="NULL"){
+//        visitsjson.removeValueForKey(key)
+//    }
+//    else if(visitsjson[key]!as? String=="0"){
+//        visitsjson.removeValueForKey(key)
+//    }
+//}
+//
+//
+//for key in triagesjson.keys{
+//    if(triagesjson[key]!as? String=="NULL"){
+//        triagesjson.removeValueForKey(key)
+//    }
+//    else if(triagesjson[key]!as? String=="0"){
+//        triagesjson.removeValueForKey(key)
+//    }
+//}

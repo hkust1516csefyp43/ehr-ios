@@ -85,7 +85,7 @@ class PharmacyModifyViewController : UIViewController, UITableViewDataSource, UI
         let headers = [
             "token": token,
         ]
-        var URL1: String = "http://ehr-api.herokuapp.com/v2/patients?clinic_id=\(this_clinic_id)&next_station=3";
+        var URL1: String = "http://ehr-api.herokuapp.com/v2/patients?clinic_id=\(CurrentClinic)&next_station=3";
         print("signal: \(signal) \n url: \(URL1)");
         Alamofire.request(.GET, URL1, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
             if let JSON = Response.result.value{
@@ -163,7 +163,7 @@ class PharmacyModifyViewController : UIViewController, UITableViewDataSource, UI
                 print("Error: Cannot get PatientList");
             }
         }
-        var URL2: String = "http://ehr-api.herokuapp.com/v2/patients?clinic_id=\(this_clinic_id)&next_station=1";
+        var URL2: String = "http://ehr-api.herokuapp.com/v2/patients?clinic_id=\(CurrentClinic)&next_station=1";
         print("signal: \(signal) \n url: \(URL2)");
         Alamofire.request(.GET, URL2, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
             if let JSON = Response.result.value{

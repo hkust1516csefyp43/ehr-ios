@@ -54,7 +54,7 @@ class TriageFTViewController : UIViewController, UITableViewDataSource, UITableV
                 }
             }
         }
-
+        
         
         if(patientList1[indexPath.row].last_name != "NULL"){
             lastname_text=patientList1[indexPath.row].last_name
@@ -81,9 +81,9 @@ class TriageFTViewController : UIViewController, UITableViewDataSource, UITableV
         }
         
         if(patientList1[indexPath.row].gender_id != "NULL" || patientList1[indexPath.row].gender_id != "undisclosed"){
-            for(var i=0; i<gendersList.count ; i++){
-                if(patientList1[indexPath.row].gender_id==gendersList[i].gender_id){
-                    gender_text=gendersList[i].description;
+            for(var i=0; i<gendersList[0].count ; i++){
+                if(patientList1[indexPath.row].gender_id==gendersList[0][i].gender_id){
+                    gender_text=gendersList[0][i].description;
                     break;
                 }
             }
@@ -113,76 +113,66 @@ class TriageFTViewController : UIViewController, UITableViewDataSource, UITableV
     //Onclick Cell Action
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //State change
-        AddVisitState=1;
+        AddVisitState=2;
         
         //Copy target data to variable
         currentVisit=Visit();
+        print("Original tag= \(patientList1[indexPath.row].tag)")
         currentVisit.clonePatient(patientList1[indexPath.row]);
+        currentVisit.visit_id=patientList1[indexPath.row].visit_id;
+        currentVisit.tag=patientList1[indexPath.row].tag;
         
         let headers = [
             "token": token,
         ]
         
-        var visitsURL: String = "http://ehr-api.herokuapp.com/v2/visits?patient_id=\(currentVisit.patient.patient_id)";
+        var triagesURL: String = "http://ehr-api.herokuapp.com/v2/triages?visit_id=\(currentVisit.visit_id)";
         
-        Alamofire.request(.GET, visitsURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
-            if let visitJSON = Response.result.value{
-                if(visitJSON.count != 1){
-                    print("error:patient has more than 1 visits");
+        Alamofire.request(.GET, triagesURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
+            if let triagesJSON = Response.result.value{
+                if(triagesJSON.count>0){
+                currentVisit.triage.triage_id=triagesJSON[0]["triage_id"]as! String;
+                currentVisit.triage.user_id = userID;
+                if let y = triagesJSON[0]["systolic"]as? Int{
+                    currentVisit.triage.systolic = String(y);
                 }
-                else{
-                    currentVisit.visit_id=visitJSON[0]["visit_id"]as! String;
-                    currentVisit.tag=visitJSON[0]["tag"]as! Int;
-                    var triagesURL: String = "http://ehr-api.herokuapp.com/v2/triages?visit_id=\(currentVisit.visit_id)";
-                    
-                    Alamofire.request(.GET, triagesURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
-                        if let triagesJSON = Response.result.value{
-                            currentVisit.triage.triage_id=triagesJSON[0]["triage_id"]as! String;
-                            currentVisit.triage.user_id = userID;
-                            if let y = triagesJSON[0]["systolic"]as? Int{
-                                currentVisit.triage.systolic = String(y);
-                            }
-                            if let y = triagesJSON[0]["diastolic"]as? Int{
-                                currentVisit.triage.diastolic = String(y);
-                            }
-                            if let y = triagesJSON[0]["heart_rate"]as? Int{
-                                currentVisit.triage.heartRate = String(y);
-                            }
-                            if let y = triagesJSON[0]["respiratory_rate"]as? Int{
-                                currentVisit.triage.respiratoryRate = String(y);
-                            }
-                            if let y = triagesJSON[0]["weight"]as? Int{
-                                currentVisit.triage.weight = String(y);
-                            }
-                            if let y = triagesJSON[0]["height"]as? Int{
-                                currentVisit.triage.height = String(y);
-                            }
-                            if let y = triagesJSON[0]["temperature"]as? Int{
-                                currentVisit.triage.temperature = String(y);
-                            }
-                            if let y = triagesJSON[0]["spo2"]as? Int{
-                                currentVisit.triage.spo2 = String(y);
-                            }
-                            if let y = triagesJSON[0]["head_circumference"]as? Int{
-                                currentVisit.triage.headCircumference = String(y);
-                            }
-                            //                    var lastDewormingTablet: String = "NULL";
-                            if let y = triagesJSON[0]["chief_complains"]as? String{
-                                currentVisit.triage.chiefComplains = y;
-                            }
-                            if let y = triagesJSON[0]["remark"]as? String{
-                                currentVisit.triage.remark = y;
-                            }
-                            //                    var editedInConsultation :String = "NULL";
-                            
-                            AddVisitState = 2;
-                            
-                            //Navigate to next controller
-                            let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TriageModifyViewController") as! TriageModifyViewController;
-                            self.navigationController?.pushViewController(nextViewController, animated: true);
-                        }
-                    }
+                if let y = triagesJSON[0]["diastolic"]as? Int{
+                    currentVisit.triage.diastolic = String(y);
                 }
+                if let y = triagesJSON[0]["heart_rate"]as? Int{
+                    currentVisit.triage.heartRate = String(y);
+                }
+                if let y = triagesJSON[0]["respiratory_rate"]as? Int{
+                    currentVisit.triage.respiratoryRate = String(y);
+                }
+                if let y = triagesJSON[0]["weight"]as? Int{
+                    currentVisit.triage.weight = String(y);
+                }
+                if let y = triagesJSON[0]["height"]as? Int{
+                    currentVisit.triage.height = String(y);
+                }
+                if let y = triagesJSON[0]["temperature"]as? Int{
+                    currentVisit.triage.temperature = String(y);
+                }
+                if let y = triagesJSON[0]["spo2"]as? Int{
+                    currentVisit.triage.spo2 = String(y);
+                }
+                if let y = triagesJSON[0]["head_circumference"]as? Int{
+                    currentVisit.triage.headCircumference = String(y);
+                }
+                //                    var lastDewormingTablet: String = "NULL";
+                if let y = triagesJSON[0]["chief_complains"]as? String{
+                    currentVisit.triage.chiefComplains = y;
+                }
+                if let y = triagesJSON[0]["remark"]as? String{
+                    currentVisit.triage.remark = y;
+                }
+                //                    var editedInConsultation :String = "NULL";
+                }
+                AddVisitState = 2;
+                //Navigate to next controller
+                let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TriageModifyViewController") as! TriageModifyViewController;
+                self.navigationController?.pushViewController(nextViewController, animated: true);
             }
         }
     }

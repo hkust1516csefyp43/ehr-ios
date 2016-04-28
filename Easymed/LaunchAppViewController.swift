@@ -9,6 +9,10 @@
 import UIKit;
 import Alamofire;
 
+var Path_Heroku:String = "http://ehr-api.herokuapp.com/v2/"
+var Path_Pi:String = "http://192.168.0.194:3000/v2/"
+//var Path:String = "http://192.168.0.194:3000/v2/"
+var Path:String = "http://ehr-api.herokuapp.com/v2/";
 //Save variable
 var edit_attachments = 0;
 var edit_patient = 0;
@@ -41,7 +45,7 @@ var AddVisitState = -1; //-1=default, 0=new PATIENT+ new VISIT, 1=existing PATIE
 var ConsultationState = -1; //-1=error, 0=waitlist Consultation(add consultation), 1=finished Consultation(modify consultation)
 var PharmacyState = -1; //-1=error, 0=waitlist Pharmacy(modify prescripsion), 1=finished Pharmacy (modify prescripsion)
 
-var this_clinic_id : String = "3";
+var CurrentClinic : String = "3";
 var PendingSignal : Int = -1; // -1= error, 1=ThisSlumPatient, 2=Finished Slum
 var token : String = "1";
 var next_stage : String = "-1"; // -1= error, 1=triage, 2=consultation,
@@ -61,7 +65,7 @@ var modified_related_dataList:[related_data] = [related_data]();
 var deleted_related_dataList:[related_data] = [related_data]();
 var keywordsList:[keywords] = [keywords]();
 var medicationsList:[medications] = [medications]();
-var gendersList:[genders] = [genders]();
+var gendersList:[[gender]] = [[gender]]();
 var prescriptionsList: [prescriptions] = [prescriptions]();
 var prescriptionsList_original: [prescriptions] = [prescriptions]();
 var attachmentsList:[attachments] = [attachments]();
@@ -74,6 +78,7 @@ let currentyear =  currentcomponents.year;
 let currentmonth =  currentcomponents.month;
 var currentDay = currentcomponents.day;
 var currentStage = 0;
+var TagList:[[Int]]=[[Int]]();
 
 class LaunchAppViewController: UIViewController {
     
@@ -84,18 +89,16 @@ class LaunchAppViewController: UIViewController {
         super.viewDidLoad()
         initializeVar();
         
+        
         //UI
         self.icon.image = UIImage(named: "easymed");
         loading.startAnimating();
         
         //Data
         // load header
-        let headers = [
-            "token": token,
-        ];
-        let URL: String = "http://ehr-api.herokuapp.com/v2/clinics";
+        var URL: String = "http://ehr-api.herokuapp.com/v2/clinics";
         print("GET: \(URL)");
-        Alamofire.request(.GET, URL, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
+        Alamofire.request(.GET, URL, encoding: .JSON).responseJSON { (Response) -> Void in
             if let JSON = Response.result.value{
                 clinicsList.removeAll();
                 var tempList:[String]=[String]();
@@ -143,10 +146,13 @@ class LaunchAppViewController: UIViewController {
                     //Todo word sort ascending order?
                 }
                 clinicsNameList.append(tempList)
+                
                 self.performSegueWithIdentifier("Launch_Login", sender: self);
+                
             }
             else{
-                print("Fail: Get clinics tuple");
+                print("Pi Fail: Get clinics tuple");
+                self.herokuGetClinic();
             }
         }
     }
@@ -184,7 +190,7 @@ class LaunchAppViewController: UIViewController {
         ConsultationState = -1; //-1=error, 0=waitlist Consultation(add consultation), 1=finished Consultation(modify consultation)
         PharmacyState = -1; //-1=error, 0=waitlist Pharmacy(modify prescripsion), 1=finished Pharmacy (modify prescripsion)
         
-        this_clinic_id = "3";
+        CurrentClinic = "3";
         PendingSignal = -1; // -1= error, 1=ThisSlumPatient, 2=Finished Slum
         token = "1";
         next_stage = "-1"; // -1= error, 1=triage, 2=consultation,
@@ -208,6 +214,79 @@ class LaunchAppViewController: UIViewController {
         prescriptionsList.removeAll()
         prescriptionsList_original.removeAll()
         attachmentsList.removeAll();
+        TagList.removeAll();
+        var tempList:[Int] = [Int]();
+        for(var i=1; i<401 ; i++){
+            tempList.append(i);
+        }
+        TagList.append(tempList);
     }
+    
+    func herokuGetClinic()-> Bool{
+        print("Reconnecting to Heroku...");
+        var returnValue=false;
+        Path=Path_Heroku;
+        var URL: String = "http://ehr-api.herokuapp.com/v2/clinics";
+        print("GET: \(URL)");
+        Alamofire.request(.GET, URL, encoding: .JSON).responseJSON { (Response) -> Void in
+            if let JSON = Response.result.value{
+                clinicsList.removeAll();
+                var tempList:[String]=[String]();
+                for(var i=0 ; i<JSON.count ; i++){
+                    var obj:Clinics = Clinics();
+                    
+                    if let y = JSON[i]["clinic_id"] as? String{
+                        obj.clinic_id = y;
+                    }
+                    if let y = JSON[i]["country_id"] as? String{
+                        obj.country_id = y;
+                    }
+                    if let y = JSON[i]["is_active"] as? Int{
+                        obj.is_active = y;
+                    }
+                    if let y = JSON[i]["english_name"] as? String{
+                        obj.english_name = y;
+                    }
+                    if let y = JSON[i]["native_name"] as? String{
+                        obj.native_name = y;
+                    }
+                    if let y = JSON[i]["latitude"] as? Double{
+                        obj.latitude = y;
+                    }
+                    if let y = JSON[i]["longitude"] as? Double{
+                        obj.longitude = y;
+                    }
+                    
+                    if let y = JSON[i]["remark"] as? String{
+                        obj.remark = y;
+                    }
+                    if let y = JSON[i]["is_global"] as? Int{
+                        obj.is_global = y;
+                    }
+                    if let y = JSON[i]["suitcase_id"] as? String{
+                        obj.suitcase_id = y;
+                    }
+                    clinicsList.append(obj);
+                    if(obj.native_name != "NULL"){
+                        tempList.append("\(obj.english_name) (\(obj.native_name))")
+                    }
+                    else{
+                        tempList.append("\(obj.english_name)")
+                    }
+                    //Todo word sort ascending order?
+                }
+                clinicsNameList.append(tempList)
+                
+                self.performSegueWithIdentifier("Launch_Login", sender: self);
+                
+                returnValue=true;
+            }
+            else{
+                print("Heroku Fail: Get clinics tuple");
+            }
+        }
+        return returnValue;
+    }
+    
 }
 

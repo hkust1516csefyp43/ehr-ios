@@ -148,71 +148,86 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
         if(AddVisitState==0){
             AddVisitState = -1;
             if(edit_attachments==1){
-                let attachmentsjson: [String:AnyObject]=[
+                var attachmentsjson: [String:AnyObject]=[
                     //                    "attachment_id":currentAttachments.attachment_id,
                     //                    "cloudinary_url":currentAttachments.cloudinary_url,
-                    "file_name":"PROFILE_pic",
+                    "file_name":"PROFILE",
                     "user_id":userID,
-                    "create_timestamp":timeString ,
+                    "create_timestamp":timeString,
                     "file_in_base64":currentAttachments.file_in_base64,
-                    //                    "file_in_base64":"testing"
                 ]
+                //here
+                for key in attachmentsjson.keys{
+                    if(attachmentsjson[key]!as! String=="NULL"){
+                        attachmentsjson.removeValueForKey(key)
+                    }
+                }
                 let headers = [
                     "token": token,
                     "Content-Type": "application/json"
                 ];
                 
                 let attachmentsURL: String = "http://ehr-api.herokuapp.com/v2/attachments";
-                print("POST: \(attachmentsURL)");
                 Alamofire.request(.POST, attachmentsURL, parameters: attachmentsjson, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
                     if let attachmentsJSON = Response.result.value{
                         print("SUCCESS: POST attachments tuple with visitstate=0")
                         
                         // POST patients
-                        let patientsjson : [String: AnyObject] = [
-                            "honorific":currentVisit.patient.honorific,
+                        var patientsjson : [String: AnyObject] = [
                             "first_name": currentVisit.patient.first_name,
                             "middle_name":currentVisit.patient.middle_name,
                             "last_name": currentVisit.patient.last_name,
                             "address":currentVisit.patient.address,
-                            "email":currentVisit.patient.email,
-                            //ref
-                            "clinic_id": this_clinic_id,
-                            //ref
-                            "gender_id": "caw23232",
+                            "clinic_id": CurrentClinic,
                             "birth_year":currentVisit.patient.birth_year,
                             "birth_month":currentVisit.patient.birth_month,
                             "birth_date":currentVisit.patient.birth_date,
-                            //ref value
-                            //                "blood_type_id":currentVisit.patient.blood_type_id,
-                            //ref value
-                            "image_id":attachmentsJSON["attachment_id"]as! String,
-                            "phone_number_country_code":"2",
                             "phone_number":currentVisit.patient.phone_number,
-                            "native_name":currentVisit.patient.natvie_name
+//                            "honorific":currentVisit.patient.honorific,
+//                            "email":currentVisit.patient.email,
+//                            "gender_id": currentVisit.patient.gender_id,
+                            //                "blood_type_id":currentVisit.patient.blood_type_id,
+                            
+//                            "phone_number_country_code":"2",
+//                            "native_name":currentVisit.patient.natvie_name
+                            "image_id":attachmentsJSON["attachment_id"]as! String,
                         ];
-                        
-                        
+                        //here
+                        for key in patientsjson.keys{
+                            if(patientsjson[key]!as? String=="NULL"){
+                                patientsjson.removeValueForKey(key)
+                            }
+                            else if(patientsjson[key]!as? String=="0"){
+                                patientsjson.removeValueForKey(key)
+                            }
+                        }
                         let patientsURL: String = "http://ehr-api.herokuapp.com/v2/patients";
                         print("POST: \(patientsURL)");
                         Alamofire.request(.POST, patientsURL, parameters: patientsjson, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
                             if let patientsJSON = Response.result.value{
                                 
-                                
                                 // POST visits
-                                let visitsjson : [String: AnyObject] = [
+                                var visitsjson : [String: AnyObject] = [
                                     "patient_id": patientsJSON["patient_id"] as! String,
-                                    "tag": tag,
-                                    "next_station": currentVisit.next_station
+                                    "tag": currentVisit.tag,
+                                    "next_station": 2
                                 ];
-                                
+                                //here
+                                for key in visitsjson.keys{
+                                    if(visitsjson[key]!as? String=="NULL"){
+                                        visitsjson.removeValueForKey(key)
+                                    }
+                                    else if(visitsjson[key]!as? String=="0"){
+                                        visitsjson.removeValueForKey(key)
+                                    }
+                                }
                                 let visitsURL: String = "http://ehr-api.herokuapp.com/v2/visits";
                                 print("POST: \(visitsURL)");
                                 Alamofire.request(.POST, visitsURL, parameters: visitsjson, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
                                     if let visitsJSON = Response.result.value{
                                         print("SUCCESS: POST visits tuple with visits state=0")
                                         // POST triages
-                                        let triagesjson : [String: AnyObject] = [
+                                        var triagesjson : [String: AnyObject] = [
                                             "visit_id": visitsJSON["visit_id"] as! String,
                                             "user_id": userID,
                                             "systolic": Int(currentVisit.triage.systolic)!,
@@ -223,14 +238,22 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                                             "height":Int(currentVisit.triage.height)!,
                                             "temperature":Int(currentVisit.triage.temperature)!,
                                             "spo2":Int(currentVisit.triage.spo2)!,
-                                            //                                                               "last_deworming_tablet":currentVisit.triage.lastDewormingTablet,
+                                            "last_deworming_tablet":currentVisit.triage.lastDewormingTablet,
                                             "chief_complains":currentVisit.triage.chiefComplains,
                                             "remark":currentVisit.triage.remark,
                                             "start_timestamp":self.timeString,
                                             "end_timestamp":visitsJSON["create_timestamp"] as! String,
-                                            //                                "edited_in_consultation":"FALSE",
                                             //                                "head_circumference":currentVisit.triage.headCircumference
                                         ];
+                                        //here
+                                        for key in triagesjson.keys{
+                                            if(triagesjson[key]!as? String=="NULL"){
+                                                triagesjson.removeValueForKey(key)
+                                            }
+                                            else if(triagesjson[key]!as? String=="0"){
+                                                triagesjson.removeValueForKey(key)
+                                            }
+                                        }
                                         
                                         let triagesURL: String = "http://ehr-api.herokuapp.com/v2/triages";
                                         print("POST: \(triagesURL)");
@@ -267,28 +290,33 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
             }
             else{
                 // POST patients
-                let patientsjson : [String: AnyObject] = [
-                    "honorific":currentVisit.patient.honorific,
+                var patientsjson : [String: AnyObject] = [
+//                    "honorific":currentVisit.patient.honorific,
                     "first_name": currentVisit.patient.first_name,
                     "middle_name":currentVisit.patient.middle_name,
                     "last_name": currentVisit.patient.last_name,
                     "address":currentVisit.patient.address,
-                    "email":currentVisit.patient.email,
-                    //ref
-                    "clinic_id": this_clinic_id,
-                    //ref
-                    "gender_id": "caw23232",
+                    "clinic_id": CurrentClinic,
                     "birth_year":currentVisit.patient.birth_year,
                     "birth_month":currentVisit.patient.birth_month,
                     "birth_date":currentVisit.patient.birth_date,
+                     "phone_number":currentVisit.patient.phone_number,
+//                   "native_name":currentVisit.patient.natvie_name,
+//                    "email":currentVisit.patient.email,
+//                    "gender_id": currentVisit.patient.gender_id,
                     //ref value
                     //                "blood_type_id":currentVisit.patient.blood_type_id,
-                    //ref value
-                    "phone_number_country_code":"2",
-                    "phone_number":currentVisit.patient.phone_number,
-                    "native_name":currentVisit.patient.natvie_name
+//                    "phone_number_country_code":"2",
                 ];
-                
+                for key in patientsjson.keys{
+                    if(patientsjson[key]!as? String=="NULL"){
+                        patientsjson.removeValueForKey(key)
+                    }
+                    else if(patientsjson[key]!as? String=="0"){
+                        patientsjson.removeValueForKey(key)
+                    }
+                }
+                print(patientsjson);
                 let patientsheaders = [
                     "token": token,
                     "Content-Type": "application/json"
@@ -300,11 +328,19 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                         
                         
                         // POST visits
-                        let visitsjson : [String: AnyObject] = [
+                        var visitsjson : [String: AnyObject] = [
                             "patient_id": patientsJSON["patient_id"] as! String,
-                            "tag": tag,
+                            "tag": currentVisit.tag,
                             "next_station": currentVisit.next_station
                         ];
+                        for key in visitsjson.keys{
+                            if(visitsjson[key]!as? String=="NULL"){
+                               visitsjson.removeValueForKey(key)
+                            }
+                            else if(visitsjson[key]!as? String=="0"){
+                                visitsjson.removeValueForKey(key)
+                            }
+                        }
                         let visitsheaders = [
                             "token": token,
                             "Content-Type": "application/json"
@@ -315,7 +351,7 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                             if let visitsJSON = Response.result.value{
                                 print("SUCCESS: POST visits tuple with visits state=0")
                                 // POST triages
-                                let triagesjson : [String: AnyObject] = [
+                                var triagesjson : [String: AnyObject] = [
                                     "visit_id": visitsJSON["visit_id"] as! String,
                                     "user_id": userID,
                                     "systolic": Int(currentVisit.triage.systolic)!,
@@ -327,13 +363,23 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                                     "temperature":Int(currentVisit.triage.temperature)!,
                                     "spo2":Int(currentVisit.triage.spo2)!,
                                     //                                                               "last_deworming_tablet":currentVisit.triage.lastDewormingTablet,
-                                    "chief_complains":currentVisit.triage.chiefComplains,
-                                    "remark":currentVisit.triage.remark,
+                                    "chief_complains":"COUGH",
+                                    "remark":"No remark",
                                     "start_timestamp":self.timeString ,
                                     "end_timestamp":visitsJSON["create_timestamp"] as! String,
                                     //                                "edited_in_consultation":"FALSE",
                                     //                                "head_circumference":currentVisit.triage.headCircumference
                                 ];
+                                
+                                for key in triagesjson.keys{
+                                    if(triagesjson[key]!as? String=="NULL"){
+                                        triagesjson.removeValueForKey(key)
+                                    }
+                                    else if(triagesjson[key]!as? String=="0"){
+                                        triagesjson.removeValueForKey(key)
+                                    }
+                                }
+                                print(triagesjson);
                                 let triagesheaders = [
                                     "token": token,
                                     "Content-Type": "application/json"
@@ -370,7 +416,7 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
             ];
             
             if(edit_patient==1 && edit_attachments>0){
-                let attachmentsjson: [String:AnyObject]=[
+                var attachmentsjson: [String:AnyObject]=[
                     //                    "attachment_id":currentAttachments.attachment_id,
                     //                    "cloudinary_url":currentAttachments.cloudinary_url,
                     "file_name":"PROFILE_pic_\(currentPatient.patient_id)",
@@ -380,13 +426,22 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                     //                    "file_in_base64":"testing"
                 ]
                 
+                for key in attachmentsjson.keys{
+                    if(attachmentsjson[key]!as? String=="NULL"){
+                        attachmentsjson.removeValueForKey(key)
+                    }
+                    else if(attachmentsjson[key]!as? String=="0"){
+                        attachmentsjson.removeValueForKey(key)
+                    }
+                }
+                
                 let attachmentsURL: String = "http://ehr-api.herokuapp.com/v2/attachments";
                 print("POST: \(attachmentsURL)");
                 Alamofire.request(.POST, attachmentsURL, parameters: attachmentsjson, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
                     if let attachmentsJSON = Response.result.value{
                         print("SUCCESS: POST attachments tuple with addvisitstate=1")
                         // PUT patients
-                        let patientsjson : [String: AnyObject] = [
+                        var patientsjson : [String: AnyObject] = [
                             "honorific":currentVisit.patient.honorific,
                             "first_name": currentVisit.patient.first_name,
                             "middle_name":currentVisit.patient.middle_name,
@@ -394,10 +449,10 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                             "address":currentVisit.patient.address,
                             "email":currentVisit.patient.email,
                             //ref
-                            "gender_id": "caw23232",
-//                            "birth_year":currentVisit.patient.birth_year,
-//                            "birth_month":currentVisit.patient.birth_month,
-//                            "birth_date":currentVisit.patient.birth_date,
+                            "gender_id": currentVisit.patient.gender_id,
+                            "birth_year":currentVisit.patient.birth_year,
+                            "birth_month":currentVisit.patient.birth_month,
+                            "birth_date":currentVisit.patient.birth_date,
                             "image_id":attachmentsJSON["attachment_id"]as! String,
                             //ref value
 //                                            "blood_type_id":currentVisit.patient.blood_type_id,
@@ -406,6 +461,15 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
 //                            "phone_number":currentVisit.patient.phone_number,
 //                            "native_name":currentVisit.patient.natvie_name
                         ];
+                        
+                        for key in patientsjson.keys{
+                            if(patientsjson[key]!as? String=="NULL"){
+                                patientsjson.removeValueForKey(key)
+                            }
+                            else if(patientsjson[key]!as? String=="0"){
+                                patientsjson.removeValueForKey(key)
+                            }
+                        }
                         
                         let patientsURL: String = "http://ehr-api.herokuapp.com/v2/patients/\(currentVisit.patient.patient_id)";
                         print("PUT: \(patientsURL)");
@@ -435,7 +499,7 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
             }
             else if(edit_patient==1){
                 // PUT patients
-                let patientsjson : [String: AnyObject] = [
+                var patientsjson : [String: AnyObject] = [
                     "honorific":currentVisit.patient.honorific,
                     "first_name": currentVisit.patient.first_name,
                     "middle_name":currentVisit.patient.middle_name,
@@ -443,10 +507,10 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                     "address":currentVisit.patient.address,
                     "email":currentVisit.patient.email,
                     //ref
-                    "gender_id": "caw23232",
-//                    "birth_year":currentVisit.patient.birth_year,
-//                    "birth_month":currentVisit.patient.birth_month,
-//                    "birth_date":currentVisit.patient.birth_date,
+                    "gender_id": currentVisit.patient.gender_id,
+                    "birth_year":currentVisit.patient.birth_year,
+                    "birth_month":currentVisit.patient.birth_month,
+                    "birth_date":currentVisit.patient.birth_date,
                     //ref value
                     //                "blood_type_id":currentVisit.patient.blood_type_id,
                     //ref value
@@ -454,6 +518,15 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                     "phone_number":currentVisit.patient.phone_number,
                     "native_name":currentVisit.patient.natvie_name
                 ];
+                
+                for key in patientsjson.keys{
+                    if(patientsjson[key]!as? String=="NULL"){
+                        patientsjson.removeValueForKey(key)
+                    }
+                    else if(patientsjson[key]!as? String=="0"){
+                        patientsjson.removeValueForKey(key)
+                    }
+                }
                 
                 let patientsURL: String = "http://ehr-api.herokuapp.com/v2/patients/\(currentVisit.patient.patient_id)";
                 print("PUT: \(patientsURL)");
@@ -479,11 +552,21 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
             
             
             // POST visits
-            let visitsjson : [String: AnyObject] = [
+            var visitsjson : [String: AnyObject] = [
                 "patient_id": currentVisit.patient.patient_id,
-                "tag": tag,
+                "tag": currentVisit.tag,
                 "next_station": 2,
             ];
+            
+            for key in visitsjson.keys{
+                if(visitsjson[key]!as? String=="NULL"){
+                    visitsjson.removeValueForKey(key)
+                }
+                else if(visitsjson[key]!as? String=="0"){
+                    visitsjson.removeValueForKey(key)
+                }
+            }
+            
             let visitsheaders = [
                 "token": token,
                 "Content-Type": "application/json"
@@ -494,7 +577,7 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                 if let visitsJSON = Response.result.value{
                    print("SUCCESS: POST visits tuple with visitstate=1");
                     // POST triages
-                    let triagesjson : [String: AnyObject] = [
+                    var triagesjson : [String: AnyObject] = [
                         "visit_id": visitsJSON["visit_id"] as! String,
                         "user_id": userID,
                         "systolic": Int(currentVisit.triage.systolic)!,
@@ -513,6 +596,16 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                         //                                "edited_in_consultation":"FALSE",
                         //                                "head_circumference":currentVisit.triage.headCircumference
                     ];
+                    
+                    for key in triagesjson.keys{
+                        print(triagesjson[key]!as? String);
+                        if(triagesjson[key]!as? String=="NULL"){
+                            triagesjson.removeValueForKey(key)
+                        }
+                        else if(triagesjson[key]!as? String=="0"){
+                            triagesjson.removeValueForKey(key)
+                        }
+                    }
                     
                     let triagesURL: String = "http://ehr-api.herokuapp.com/v2/triages";
                     print("POST: \(triagesURL)");
@@ -541,11 +634,10 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
             }
         }
         else if(AddVisitState==2){
-            print("-------------------------\(currentVisit.patient.birth_year) / \(currentVisit.patient.birth_month) / \(currentVisit.patient.birth_date)");
             AddVisitState = -1;
             if(edit_patient == 1){
                 // PUT patients
-                let patientsjson : [String: AnyObject] = [
+                var patientsjson : [String: AnyObject] = [
                     "honorific":currentVisit.patient.honorific,
                     "first_name": currentVisit.patient.first_name,
                     "middle_name":currentVisit.patient.middle_name,
@@ -553,7 +645,7 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                     "address":currentVisit.patient.address,
                     "email":currentVisit.patient.email,
                     //ref
-                    "gender_id": "caw23232",
+                    "gender_id": currentVisit.patient.gender_id,
                     "birth_year":currentVisit.patient.birth_year,
                     "birth_month":currentVisit.patient.birth_month,
                     "birth_date":currentVisit.patient.birth_date,
@@ -564,6 +656,15 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                     "phone_number":currentVisit.patient.phone_number,
                     "native_name":currentVisit.patient.natvie_name
                 ];
+                
+                for key in patientsjson.keys{
+                    if(patientsjson[key]!as? String=="NULL"){
+                        patientsjson.removeValueForKey(key)
+                    }
+                    else if(patientsjson[key]!as? String=="0"){
+                        patientsjson.removeValueForKey(key)
+                    }
+                }
                 
                 let patientsheaders = [
                     "token": token,
@@ -593,7 +694,7 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                 var components_2 = calendar_2.components([NSCalendarUnit.Day, NSCalendarUnit.Month, NSCalendarUnit.Year, NSCalendarUnit.Hour, NSCalendarUnit.Minute, NSCalendarUnit.Second], fromDate: date_2);
                 timeString = "\(components_2.year)-\(components_2.month)-\(components_2.day) \(components_2.hour):\(components_2.minute):\(components_2.second)";
                 // PUT triages
-                let triagesjson : [String: AnyObject] = [
+                var triagesjson : [String: AnyObject] = [
                     "user_id": userID,
                     "systolic": Int(currentVisit.triage.systolic)!,
                     "diastolic": Int(currentVisit.triage.diastolic)!,
@@ -611,6 +712,16 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                     //"edited_in_consultation":"FALSE",
                     "head_circumference":Int(currentVisit.triage.headCircumference)!
                 ];
+                
+                for key in triagesjson.keys{
+                    if(triagesjson[key]!as? String=="NULL"){
+                        triagesjson.removeValueForKey(key)
+                    }
+                    else if(triagesjson[key]!as? String=="0"){
+                        triagesjson.removeValueForKey(key)
+                    }
+                }
+                
                 let triagesheaders = [
                     "token": token,
                     "Content-Type": "application/json"

@@ -8,8 +8,8 @@
 
 class Visit{
     var visit_id: String = "NULL";
-    var createTimeStamp = -1; //TODO: find libarary to change it
-    var tag: Int = -1;
+    var createTimeStamp = 0; //TODO: find libarary to change it
+    var tag: Int = 0;
     var next_station: Int = 2;
     var patient : Patient = Patient();
     var triage : Triage = Triage();

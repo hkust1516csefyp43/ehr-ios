@@ -11,6 +11,7 @@ import UIKit;
 
 class RemarkViewController : UIViewController {
     
+    @IBOutlet weak var Switch: UISwitch!
     @IBOutlet weak var verticalScrollView: UIScrollView!
     @IBOutlet weak var remark: UITextView!
     override func viewDidLoad() {
@@ -19,6 +20,20 @@ class RemarkViewController : UIViewController {
         verticalScrollView.contentSize.height=1080;
         if(AddVisitState==2){
             remark.text=currentVisit.triage.remark;
+        }
+        if(currentVisit.triage.remark == "NULL"){
+            Switch.on=false;
+        }
+    }
+    @IBAction func SwitchChange(sender: UISwitch) {
+        if(Switch.on){
+            remark.editable=true;
+            remark.text="";
+        }
+        if(!Switch.on){
+            remark.text="NULL";
+            currentVisit.triage.remark="NULL";
+            remark.editable=false;
         }
     }
     func textViewDidChange(textView: UITextView) {
