@@ -26,7 +26,7 @@ class PendingViewController : UIViewController {
             "token": token,
         ]
         
-        let attachmentsURL: String = "http://ehr-api.herokuapp.com/v2/attachments";
+        let attachmentsURL: String = "\(Path)attachments";
         print("GET: \(attachmentsURL)");
         Alamofire.request(.GET, attachmentsURL, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
             if let JSON = Response.result.value{
@@ -54,15 +54,15 @@ class PendingViewController : UIViewController {
                 }
             }
             else{
-                print("FAIL: GET attachments tuples at http://ehr-api.herokuapp.com/v2/")
+                print("FAIL: GET attachments tuples at \(Path)")
                 return;
             }
         }
 
-        var URL1: String = "http://ehr-api.herokuapp.com/v2/patients?clinic_id=\(CurrentClinic)&next_station=2&visit_date=\(currentyear)-\(currentmonth)-\(currentDay)";
-//         var URL1: String = "http://ehr-api.herokuapp.com/v2/patients?clinic_id=\(CurrentClinic)&&next_station=2&&visit_date=\(currentyear)-\(currentmonth)-\(currentDay)";
-//        var URL1: String = "http://ehr-api.herokuapp.com/v2/patients?next_station=2";
-//        var URL1: String = "http://ehr-api.herokuapp.com/v2/patients?visit_date=\(currentyear)-\(currentmonth)-\(currentDay)";
+        var URL1: String = "\(Path)patients?clinic_id=\(CurrentClinic)&next_station=2&visit_date=\(currentyear)-\(currentmonth)-\(currentDay)";
+//         var URL1: String = "\(Path)patients?clinic_id=\(CurrentClinic)&&next_station=2&&visit_date=\(currentyear)-\(currentmonth)-\(currentDay)";
+//        var URL1: String = "\(Path)patients?next_station=2";
+//        var URL1: String = "\(Path)patients?visit_date=\(currentyear)-\(currentmonth)-\(currentDay)";
         print("GET: \(URL1)");
         Alamofire.request(.GET, URL1, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
             if let JSON = Response.result.value{
@@ -132,6 +132,7 @@ class PendingViewController : UIViewController {
                         }
                         patientList1.append(p1);
                     }
+                patientList1.sortInPlace({ $0.tag < $1.tag });
                 if(got_attachments==1 && got_p2==1){
                     self.performSegueWithIdentifier("Pending_Triage", sender: self);
                 }
@@ -144,7 +145,7 @@ class PendingViewController : UIViewController {
                 return;
             }
         }
-        var URL2: String = "http://ehr-api.herokuapp.com/v2/patients?clinic_id=\(3)";
+        var URL2: String = "\(Path)patients?clinic_id=\(3)";
         print("GET: \(URL2)");
         Alamofire.request(.GET, URL2, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
             if let JSON = Response.result.value{
@@ -223,7 +224,7 @@ class PendingViewController : UIViewController {
                 }
             }
             else{
-                print("Error: Cannot get PatientList at http://ehr-api.herokuapp.com/v2/");
+                print("Error: Cannot get PatientList at \(Path)");
                 return;
             }
         }

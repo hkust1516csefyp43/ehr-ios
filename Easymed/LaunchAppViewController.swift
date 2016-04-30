@@ -11,7 +11,7 @@ import Alamofire;
 
 var Path_Heroku:String = "http://ehr-api.herokuapp.com/v2/"
 var Path_Pi:String = "http://192.168.0.194:3000/v2/"
-//var Path:String = "http://192.168.0.194:3000/v2/"
+//var Path:String = "http://192.168.0.194:3000/v2/";
 var Path:String = "http://ehr-api.herokuapp.com/v2/";
 //Save variable
 var edit_attachments = 0;
@@ -82,21 +82,47 @@ var TagList:[[Int]]=[[Int]]();
 
 class LaunchAppViewController: UIViewController {
     
+    @IBOutlet weak var herokuIcon: UIImageView!
     @IBOutlet weak var icon: UIImageView!
+    @IBOutlet weak var piIcon: UIImageView!
     @IBOutlet weak var loading: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeVar();
         
-        
         //UI
         self.icon.image = UIImage(named: "easymed");
-        loading.startAnimating();
+        self.herokuIcon.image = UIImage(named: "heroku");
+        self.piIcon.image = UIImage(named: "pi");
+        self.icon.hidden=true;
+        self.loading.hidden=true;
         
+        let tapGestureRecognizerHeroku = UITapGestureRecognizer(target:self, action:Selector("heroku:"))
+        herokuIcon.userInteractionEnabled = true
+        herokuIcon.addGestureRecognizer(tapGestureRecognizerHeroku)
+        
+        let tapGestureRecognizerPi = UITapGestureRecognizer(target:self, action:Selector("pi:"))
+        piIcon.userInteractionEnabled = true
+        piIcon.addGestureRecognizer(tapGestureRecognizerPi)
+    }
+    func heroku(sender:AnyObject){
+        Path=Path_Heroku;
+        trigger();
+    }
+    func pi(sender:AnyObject){
+        Path=Path_Pi;
+        trigger();
+    }
+    func trigger(){
         //Data
         // load header
-        var URL: String = "http://ehr-api.herokuapp.com/v2/clinics";
+        self.herokuIcon.hidden=true;
+        self.piIcon.hidden=true;
+        self.icon.hidden=false;
+        self.loading.hidden=false;
+        self.loading.startAnimating();
+        var URL: String = "\(Path)clinics";
         print("GET: \(URL)");
         Alamofire.request(.GET, URL, encoding: .JSON).responseJSON { (Response) -> Void in
             if let JSON = Response.result.value{
@@ -152,11 +178,9 @@ class LaunchAppViewController: UIViewController {
             }
             else{
                 print("Pi Fail: Get clinics tuple");
-                self.herokuGetClinic();
             }
         }
     }
-    
     func initializeVar (){
         //Save iable
         edit_attachments = 0;
@@ -222,71 +246,6 @@ class LaunchAppViewController: UIViewController {
         TagList.append(tempList);
     }
     
-    func herokuGetClinic()-> Bool{
-        print("Reconnecting to Heroku...");
-        var returnValue=false;
-        Path=Path_Heroku;
-        var URL: String = "http://ehr-api.herokuapp.com/v2/clinics";
-        print("GET: \(URL)");
-        Alamofire.request(.GET, URL, encoding: .JSON).responseJSON { (Response) -> Void in
-            if let JSON = Response.result.value{
-                clinicsList.removeAll();
-                var tempList:[String]=[String]();
-                for(var i=0 ; i<JSON.count ; i++){
-                    var obj:Clinics = Clinics();
-                    
-                    if let y = JSON[i]["clinic_id"] as? String{
-                        obj.clinic_id = y;
-                    }
-                    if let y = JSON[i]["country_id"] as? String{
-                        obj.country_id = y;
-                    }
-                    if let y = JSON[i]["is_active"] as? Int{
-                        obj.is_active = y;
-                    }
-                    if let y = JSON[i]["english_name"] as? String{
-                        obj.english_name = y;
-                    }
-                    if let y = JSON[i]["native_name"] as? String{
-                        obj.native_name = y;
-                    }
-                    if let y = JSON[i]["latitude"] as? Double{
-                        obj.latitude = y;
-                    }
-                    if let y = JSON[i]["longitude"] as? Double{
-                        obj.longitude = y;
-                    }
-                    
-                    if let y = JSON[i]["remark"] as? String{
-                        obj.remark = y;
-                    }
-                    if let y = JSON[i]["is_global"] as? Int{
-                        obj.is_global = y;
-                    }
-                    if let y = JSON[i]["suitcase_id"] as? String{
-                        obj.suitcase_id = y;
-                    }
-                    clinicsList.append(obj);
-                    if(obj.native_name != "NULL"){
-                        tempList.append("\(obj.english_name) (\(obj.native_name))")
-                    }
-                    else{
-                        tempList.append("\(obj.english_name)")
-                    }
-                    //Todo word sort ascending order?
-                }
-                clinicsNameList.append(tempList)
-                
-                self.performSegueWithIdentifier("Launch_Login", sender: self);
-                
-                returnValue=true;
-            }
-            else{
-                print("Heroku Fail: Get clinics tuple");
-            }
-        }
-        return returnValue;
-    }
     
 }
 

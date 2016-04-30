@@ -82,7 +82,26 @@ class ExistingPatientViewController : UIViewController, UITableViewDataSource, U
         var middlename_text:String=""
         var lastname_text:String=""
         let cell=self.ExistingPatientTableView.dequeueReusableCellWithIdentifier("Cell_existingPatient", forIndexPath: indexPath) as! Cell_existingPatient;
+        
+        
         if(searchMode==1){
+            cell.imageDisplay.image = UIImage(named: "defaultPatient");
+            if (SearchPatientList[indexPath.row].image_id != "NULL"){
+                for(var i=0; i<attachmentsList.count ; i++){
+                    if(SearchPatientList[indexPath.row].image_id == attachmentsList[i].attachment_id){
+                        if(attachmentsList[i].file_in_base64.characters.count>40){
+                            let base64:String=attachmentsList[i].file_in_base64;
+                            let decodedData = NSData(base64EncodedString: base64, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
+                            let decodedimage = UIImage(data: decodedData!);
+                            cell.imageDisplay.image = decodedimage! as UIImage
+                            break;
+                        }
+                        else{
+                            break;
+                        }
+                    }
+                }
+            }
             year_age=Int(year)-SearchPatientList[indexPath.row].birth_year;
             if(SearchPatientList[indexPath.row].last_name != "NULL"){
                 lastname_text=SearchPatientList[indexPath.row].last_name
@@ -137,6 +156,24 @@ class ExistingPatientViewController : UIViewController, UITableViewDataSource, U
             cell.AgeLabel.text="\(gender_text) / \(age_text)"
         }
         else{
+            cell.imageDisplay.image = UIImage(named: "defaultPatient");
+            if (patientList2[indexPath.row].image_id != "NULL"){
+                for(var i=0; i<attachmentsList.count ; i++){
+                    if(patientList2[indexPath.row].image_id == attachmentsList[i].attachment_id){
+                        if(attachmentsList[i].file_in_base64.characters.count>40){
+                            let base64:String=attachmentsList[i].file_in_base64;
+                            let decodedData = NSData(base64EncodedString: base64, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
+                            let decodedimage = UIImage(data: decodedData!);
+                            cell.imageDisplay.image = decodedimage! as UIImage
+                            break;
+                        }
+                        else{
+                            break;
+                        }
+                    }
+                }
+            }
+
             year_age=Int(year)-patientList2[indexPath.row].birth_year;
             if(patientList2[indexPath.row].last_name != "NULL"){
                 lastname_text=patientList2[indexPath.row].last_name

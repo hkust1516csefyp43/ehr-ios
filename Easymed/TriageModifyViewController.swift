@@ -161,13 +161,16 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                     if(attachmentsjson[key]!as! String=="NULL"){
                         attachmentsjson.removeValueForKey(key)
                     }
+                    else if(attachmentsjson[key]!as? String=="0"||attachmentsjson[key]!as? String==" 0"||attachmentsjson[key]!as? String==" 0"){
+                        attachmentsjson.removeValueForKey(key)
+                    }
                 }
                 let headers = [
                     "token": token,
                     "Content-Type": "application/json"
                 ];
                 
-                let attachmentsURL: String = "http://ehr-api.herokuapp.com/v2/attachments";
+                let attachmentsURL: String = "\(Path)attachments";
                 Alamofire.request(.POST, attachmentsURL, parameters: attachmentsjson, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
                     if let attachmentsJSON = Response.result.value{
                         print("SUCCESS: POST attachments tuple with visitstate=0")
@@ -185,11 +188,11 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                             "phone_number":currentVisit.patient.phone_number,
 //                            "honorific":currentVisit.patient.honorific,
 //                            "email":currentVisit.patient.email,
-//                            "gender_id": currentVisit.patient.gender_id,
+                            "gender_id": currentVisit.patient.gender_id,
                             //                "blood_type_id":currentVisit.patient.blood_type_id,
                             
 //                            "phone_number_country_code":"2",
-//                            "native_name":currentVisit.patient.natvie_name
+                            "native_name":currentVisit.patient.natvie_name,
                             "image_id":attachmentsJSON["attachment_id"]as! String,
                         ];
                         //here
@@ -197,11 +200,11 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                             if(patientsjson[key]!as? String=="NULL"){
                                 patientsjson.removeValueForKey(key)
                             }
-                            else if(patientsjson[key]!as? String=="0"){
+                            else if(patientsjson[key]!as? String=="0"||patientsjson[key]!as? String==" 0"||patientsjson[key]!as? String==" 0"){
                                 patientsjson.removeValueForKey(key)
                             }
                         }
-                        let patientsURL: String = "http://ehr-api.herokuapp.com/v2/patients";
+                        let patientsURL: String = "\(Path)patients";
                         print("POST: \(patientsURL)");
                         Alamofire.request(.POST, patientsURL, parameters: patientsjson, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
                             if let patientsJSON = Response.result.value{
@@ -217,11 +220,12 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                                     if(visitsjson[key]!as? String=="NULL"){
                                         visitsjson.removeValueForKey(key)
                                     }
-                                    else if(visitsjson[key]!as? String=="0"){
+                                    else if(visitsjson[key]!as? String=="0"||visitsjson[key]!as? String==" 0"||visitsjson[key]!as? String==" 0"){
                                         visitsjson.removeValueForKey(key)
                                     }
+                                    
                                 }
-                                let visitsURL: String = "http://ehr-api.herokuapp.com/v2/visits";
+                                let visitsURL: String = "\(Path)visits";
                                 print("POST: \(visitsURL)");
                                 Alamofire.request(.POST, visitsURL, parameters: visitsjson, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
                                     if let visitsJSON = Response.result.value{
@@ -250,12 +254,12 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                                             if(triagesjson[key]!as? String=="NULL"){
                                                 triagesjson.removeValueForKey(key)
                                             }
-                                            else if(triagesjson[key]!as? String=="0"){
+                                            else if(triagesjson[key]!as? String=="0"||triagesjson[key]!as? String==" 0"||triagesjson[key]!as? String==" 0"){
                                                 triagesjson.removeValueForKey(key)
                                             }
                                         }
                                         
-                                        let triagesURL: String = "http://ehr-api.herokuapp.com/v2/triages";
+                                        let triagesURL: String = "\(Path)triages";
                                         print("POST: \(triagesURL)");
                                         Alamofire.request(.POST, triagesURL, parameters: triagesjson, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
                                             if let triagesJSON = Response.result.value{
@@ -301,9 +305,9 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                     "birth_month":currentVisit.patient.birth_month,
                     "birth_date":currentVisit.patient.birth_date,
                      "phone_number":currentVisit.patient.phone_number,
-//                   "native_name":currentVisit.patient.natvie_name,
+                   "native_name":currentVisit.patient.natvie_name,
 //                    "email":currentVisit.patient.email,
-//                    "gender_id": currentVisit.patient.gender_id,
+                    "gender_id": currentVisit.patient.gender_id,
                     //ref value
                     //                "blood_type_id":currentVisit.patient.blood_type_id,
 //                    "phone_number_country_code":"2",
@@ -312,7 +316,7 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                     if(patientsjson[key]!as? String=="NULL"){
                         patientsjson.removeValueForKey(key)
                     }
-                    else if(patientsjson[key]!as? String=="0"){
+                    else if(patientsjson[key]!as? String=="0"||patientsjson[key]!as? String==" 0"||patientsjson[key]!as? String==" 0"){
                         patientsjson.removeValueForKey(key)
                     }
                 }
@@ -321,7 +325,7 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                     "token": token,
                     "Content-Type": "application/json"
                 ];
-                let patientsURL: String = "http://ehr-api.herokuapp.com/v2/patients";
+                let patientsURL: String = "\(Path)patients";
                 print("POST: \(patientsURL)");
                 Alamofire.request(.POST, patientsURL, parameters: patientsjson, encoding: .JSON, headers: patientsheaders).responseJSON { (Response) -> Void in
                     if let patientsJSON = Response.result.value{
@@ -337,7 +341,7 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                             if(visitsjson[key]!as? String=="NULL"){
                                visitsjson.removeValueForKey(key)
                             }
-                            else if(visitsjson[key]!as? String=="0"){
+                            else if(visitsjson[key]!as? String=="0"||visitsjson[key]!as? String==" 0"||visitsjson[key]!as? String==" 0"){
                                 visitsjson.removeValueForKey(key)
                             }
                         }
@@ -345,7 +349,7 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                             "token": token,
                             "Content-Type": "application/json"
                         ];
-                        let visitsURL: String = "http://ehr-api.herokuapp.com/v2/visits";
+                        let visitsURL: String = "\(Path)visits";
                         print("POST: \(visitsURL)");
                         Alamofire.request(.POST, visitsURL, parameters: visitsjson, encoding: .JSON, headers: visitsheaders).responseJSON { (Response) -> Void in
                             if let visitsJSON = Response.result.value{
@@ -363,8 +367,8 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                                     "temperature":Int(currentVisit.triage.temperature)!,
                                     "spo2":Int(currentVisit.triage.spo2)!,
                                     //                                                               "last_deworming_tablet":currentVisit.triage.lastDewormingTablet,
-                                    "chief_complains":"COUGH",
-                                    "remark":"No remark",
+                                    "chief_complains":currentVisit.triage.chiefComplains,
+                                    "remark":currentVisit.triage.remark,
                                     "start_timestamp":self.timeString ,
                                     "end_timestamp":visitsJSON["create_timestamp"] as! String,
                                     //                                "edited_in_consultation":"FALSE",
@@ -375,7 +379,7 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                                     if(triagesjson[key]!as? String=="NULL"){
                                         triagesjson.removeValueForKey(key)
                                     }
-                                    else if(triagesjson[key]!as? String=="0"){
+                                    else if(triagesjson[key]!as? String=="0"||triagesjson[key]!as? String==" 0"||triagesjson[key]!as? String==" 0"){
                                         triagesjson.removeValueForKey(key)
                                     }
                                 }
@@ -384,7 +388,7 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                                     "token": token,
                                     "Content-Type": "application/json"
                                 ];
-                                let triagesURL: String = "http://ehr-api.herokuapp.com/v2/triages";
+                                let triagesURL: String = "\(Path)triages";
                                 print("POST: \(triagesURL)");
                                 Alamofire.request(.POST, triagesURL, parameters: triagesjson, encoding: .JSON, headers: triagesheaders).responseJSON { (Response) -> Void in
                                     if let triagesJSON = Response.result.value{
@@ -430,12 +434,12 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                     if(attachmentsjson[key]!as? String=="NULL"){
                         attachmentsjson.removeValueForKey(key)
                     }
-                    else if(attachmentsjson[key]!as? String=="0"){
+                    else if(attachmentsjson[key]!as? String=="0"||attachmentsjson[key]!as? String==" 0"||attachmentsjson[key]!as? String==" 0"){
                         attachmentsjson.removeValueForKey(key)
                     }
                 }
                 
-                let attachmentsURL: String = "http://ehr-api.herokuapp.com/v2/attachments";
+                let attachmentsURL: String = "\(Path)attachments";
                 print("POST: \(attachmentsURL)");
                 Alamofire.request(.POST, attachmentsURL, parameters: attachmentsjson, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
                     if let attachmentsJSON = Response.result.value{
@@ -458,20 +462,20 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
 //                                            "blood_type_id":currentVisit.patient.blood_type_id,
                             //ref value
 //                            "phone_number_country_code":currentVisit.patient.phone_number_country_code,
-//                            "phone_number":currentVisit.patient.phone_number,
-//                            "native_name":currentVisit.patient.natvie_name
+                            "phone_number":currentVisit.patient.phone_number,
+                            "native_name":currentVisit.patient.natvie_name
                         ];
                         
                         for key in patientsjson.keys{
                             if(patientsjson[key]!as? String=="NULL"){
                                 patientsjson.removeValueForKey(key)
                             }
-                            else if(patientsjson[key]!as? String=="0"){
+                            else if(patientsjson[key]!as? String=="0"||patientsjson[key]!as? String==" 0"||patientsjson[key]!as? String==" 0"){
                                 patientsjson.removeValueForKey(key)
                             }
                         }
                         
-                        let patientsURL: String = "http://ehr-api.herokuapp.com/v2/patients/\(currentVisit.patient.patient_id)";
+                        let patientsURL: String = "\(Path)patients/\(currentVisit.patient.patient_id)";
                         print("PUT: \(patientsURL)");
                         Alamofire.request(.PUT, patientsURL, parameters: patientsjson, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
                             if let patientsJSON = Response.result.value{
@@ -523,12 +527,12 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                     if(patientsjson[key]!as? String=="NULL"){
                         patientsjson.removeValueForKey(key)
                     }
-                    else if(patientsjson[key]!as? String=="0"){
+                    else if(patientsjson[key]!as? String=="0"||patientsjson[key]!as? String==" 0"||patientsjson[key]!as? String==" 0"){
                         patientsjson.removeValueForKey(key)
                     }
                 }
                 
-                let patientsURL: String = "http://ehr-api.herokuapp.com/v2/patients/\(currentVisit.patient.patient_id)";
+                let patientsURL: String = "\(Path)patients/\(currentVisit.patient.patient_id)";
                 print("PUT: \(patientsURL)");
                 Alamofire.request(.PUT, patientsURL, parameters: patientsjson, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
                     if let patientsJSON = Response.result.value{
@@ -562,7 +566,7 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                 if(visitsjson[key]!as? String=="NULL"){
                     visitsjson.removeValueForKey(key)
                 }
-                else if(visitsjson[key]!as? String=="0"){
+                else if(visitsjson[key]!as? String=="0"||visitsjson[key]!as? String==" 0"||visitsjson[key]!as? String==" 0"){
                     visitsjson.removeValueForKey(key)
                 }
             }
@@ -571,7 +575,7 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                 "token": token,
                 "Content-Type": "application/json"
             ];
-            let visitsURL: String = "http://ehr-api.herokuapp.com/v2/visits";
+            let visitsURL: String = "\(Path)visits";
             print("POST: \(visitsURL)");
             Alamofire.request(.POST, visitsURL, parameters: visitsjson, encoding: .JSON, headers: visitsheaders).responseJSON { (Response) -> Void in
                 if let visitsJSON = Response.result.value{
@@ -602,12 +606,12 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                         if(triagesjson[key]!as? String=="NULL"){
                             triagesjson.removeValueForKey(key)
                         }
-                        else if(triagesjson[key]!as? String=="0"){
+                        else if(triagesjson[key]!as? String=="0"||triagesjson[key]!as? String==" 0"||triagesjson[key]!as? String==" 0"){
                             triagesjson.removeValueForKey(key)
                         }
                     }
                     
-                    let triagesURL: String = "http://ehr-api.herokuapp.com/v2/triages";
+                    let triagesURL: String = "\(Path)triages";
                     print("POST: \(triagesURL)");
                     Alamofire.request(.POST, triagesURL, parameters: triagesjson, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
                         if let triagesJSON = Response.result.value{
@@ -661,7 +665,7 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                     if(patientsjson[key]!as? String=="NULL"){
                         patientsjson.removeValueForKey(key)
                     }
-                    else if(patientsjson[key]!as? String=="0"){
+                    else if(patientsjson[key]!as? String=="0"||patientsjson[key]!as? String==" 0"||patientsjson[key]!as? String==" 0"){
                         patientsjson.removeValueForKey(key)
                     }
                 }
@@ -670,7 +674,7 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                     "token": token,
                     "Content-Type": "application/json"
                 ];
-                let patientsURL: String = "http://ehr-api.herokuapp.com/v2/patients/\(currentVisit.patient.patient_id)";
+                let patientsURL: String = "\(Path)patients/\(currentVisit.patient.patient_id)";
                 print("PUT: \(patientsURL)");
                 Alamofire.request(.PUT, patientsURL, parameters: patientsjson, encoding: .JSON, headers: patientsheaders).responseJSON { (Response) -> Void in
                     if let patientsJSON = Response.result.value{
@@ -717,7 +721,7 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                     if(triagesjson[key]!as? String=="NULL"){
                         triagesjson.removeValueForKey(key)
                     }
-                    else if(triagesjson[key]!as? String=="0"){
+                    else if(triagesjson[key]!as? String=="0"||triagesjson[key]!as? String==" 0"||triagesjson[key]!as? String==" 0"){
                         triagesjson.removeValueForKey(key)
                     }
                 }
@@ -726,7 +730,7 @@ class TriageModifyViewController: UIViewController, PagingMenuControllerDelegate
                     "token": token,
                     "Content-Type": "application/json"
                 ];
-                let triagesURL: String = "http://ehr-api.herokuapp.com/v2/triages/\(currentVisit.triage.triage_id)";
+                let triagesURL: String = "\(Path)triages/\(currentVisit.triage.triage_id)";
                 print("POST: \(triagesURL)");
                 Alamofire.request(.PUT, triagesURL, parameters: triagesjson, encoding: .JSON, headers: triagesheaders).responseJSON { (Response) -> Void in
                     if let triagesJSON = Response.result.value{

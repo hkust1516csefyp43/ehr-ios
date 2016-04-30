@@ -95,6 +95,7 @@ class PersonalDataViewController : UIViewController,UITextFieldDelegate,UIImageP
             }
             else{
                 imageDisplay.image = UIImage(named: "defaultPatient");
+//                currentVisit.patient.gender_id=gendersList[0][3].gender_id; //HERE
             }
             
             //step1: Set text

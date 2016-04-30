@@ -35,6 +35,7 @@ class TriageFTViewController : UIViewController, UITableViewDataSource, UITableV
         var firstname_text:String=""
         var middlename_text:String=""
         var lastname_text:String=""
+        var tag_text:String="\(patientList1[indexPath.row].tag): "
         let cell=self.TriageFTTableView.dequeueReusableCellWithIdentifier("CellL_Triage", forIndexPath: indexPath) as! CellL_Triage;
         
         cell.imageDisplay.image = UIImage(named: "defaultPatient");
@@ -66,10 +67,10 @@ class TriageFTViewController : UIViewController, UITableViewDataSource, UITableV
             middlename_text=patientList1[indexPath.row].middle_name;
         }
         if(firstname_text == "" && lastname_text == "" && middlename_text == ""){
-            cell.NameLabel.text = "UNKNOWN Patient";
+            cell.NameLabel.text = "\(tag_text) UNKNOWN Patient";
         }
         else{
-            cell.NameLabel.text="\(firstname_text) \(middlename_text) \(lastname_text)"
+            cell.NameLabel.text="\(tag_text) \(firstname_text) \(middlename_text) \(lastname_text)"
         }
         
         if(patientList1[indexPath.row].birth_month > Int(month)){
@@ -126,7 +127,7 @@ class TriageFTViewController : UIViewController, UITableViewDataSource, UITableV
             "token": token,
         ]
         
-        var triagesURL: String = "http://ehr-api.herokuapp.com/v2/triages?visit_id=\(currentVisit.visit_id)";
+        var triagesURL: String = "\(Path)triages?visit_id=\(currentVisit.visit_id)";
         
         Alamofire.request(.GET, triagesURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
             if let triagesJSON = Response.result.value{

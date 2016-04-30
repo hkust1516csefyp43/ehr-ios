@@ -124,7 +124,7 @@ class BeforeConsultationViewController : UIViewController, UITableViewDataSource
             "token": token,
         ]
         
-        var visitsURL: String = "http://ehr-api.herokuapp.com/v2/visits?patient_id=\(currentVisit.patient.patient_id)";
+        var visitsURL: String = "\(Path)visits?patient_id=\(currentVisit.patient.patient_id)";
         
         Alamofire.request(.GET, visitsURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
             if let visitJSON = Response.result.value{
@@ -134,7 +134,7 @@ class BeforeConsultationViewController : UIViewController, UITableViewDataSource
                 else{
                     currentVisit.visit_id=visitJSON[0]["visit_id"]as! String;
                     currentVisit.tag=visitJSON[0]["tag"]as! Int;
-                    var triagesURL: String = "http://ehr-api.herokuapp.com/v2/triages?visit_id=\(currentVisit.visit_id)";
+                    var triagesURL: String = "\(Path)triages?visit_id=\(currentVisit.visit_id)";
                     
                     Alamofire.request(.GET, triagesURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
                         if let triagesJSON = Response.result.value{

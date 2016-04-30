@@ -60,14 +60,14 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
         let remarkViewController = self.storyboard?.instantiateViewControllerWithIdentifier("RemarkViewController") as! RemarkViewController;
         
         //html text
-        //        let hpiViewController = self.storyboard?.instantiateViewControllerWithIdentifier("HPIViewController") as! HPIViewController;
-        //        let familyhistoryViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FamilyHistoryViewController") as! FamilyHistoryViewController;
-        //        let socialhistoryViewController = self.storyboard?.instantiateViewControllerWithIdentifier("SocialHistoryViewController") as! SocialHistoryViewController;
+                let hpiViewController = self.storyboard?.instantiateViewControllerWithIdentifier("HPIViewController") as! HPIViewController;
+                let familyhistoryViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FamilyHistoryViewController") as! FamilyHistoryViewController;
+                let socialhistoryViewController = self.storyboard?.instantiateViewControllerWithIdentifier("SocialHistoryViewController") as! SocialHistoryViewController;
         
         //switch_page
-        //        let reviewofthesystemViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ReviewOfTheSystemViewController") as! ReviewOfTheSystemViewController;
-        //        let physicalExaminationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PhysicalExaminationViewController") as! PhysicalExaminationViewController;
-        //        let pregnancyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PregnancyViewController") as! PregnancyViewController;
+                let reviewofthesystemViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ReviewOfTheSystemViewController") as! ReviewOfTheSystemViewController;
+                let physicalExaminationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PhysicalExaminationViewController") as! PhysicalExaminationViewController;
+                let pregnancyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PregnancyViewController") as! PregnancyViewController;
         
         //consultation table
         let consultationremarkViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ConsultationRemarkViewController") as! ConsultationRemarkViewController;
@@ -85,7 +85,7 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
         
         
         //        let consultationmodifyViewController = [consultationremarkViewController];
-        let consultationmodifyViewController = [personaldataViewController, vitalsignsViewController, chiefcomplainViewController, remarkViewController, screeningViewController, allergyViewController, diagnosisViewController ,adviceViewController, followupViewController,drughistoryViewController,medicationViewController, consultationremarkViewController];
+        let consultationmodifyViewController = [personaldataViewController, vitalsignsViewController, chiefcomplainViewController, remarkViewController, screeningViewController, allergyViewController, diagnosisViewController ,adviceViewController, followupViewController,drughistoryViewController,medicationViewController, hpiViewController, familyhistoryViewController, socialhistoryViewController, reviewofthesystemViewController, physicalExaminationViewController, pregnancyViewController, consultationremarkViewController];
         
         let options = PagingMenuOptions()
         options.menuHeight = 30
@@ -341,7 +341,7 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
                     "token": token,
                     "Content-Type": "application/json"
                 ];
-                let patientsURL: String = "http://ehr-api.herokuapp.com/v2/patients/\(currentVisit.patient.patient_id)";
+                let patientsURL: String = "\(Path)patients/\(currentVisit.patient.patient_id)";
                 print("POST: \(patientsURL)");
                 Alamofire.request(.PUT, patientsURL, parameters: patientsjson, encoding: .JSON, headers: patientsheaders).responseJSON { (Response) -> Void in
                     if let patientsJSON = Response.result.value{
@@ -371,7 +371,7 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
                     "token": token,
                     "Content-Type": "application/json"
                 ];
-                let patientsURL: String = "http://ehr-api.herokuapp.com/v2/visits/\(currentVisit.visit_id)";
+                let patientsURL: String = "\(Path)visits/\(currentVisit.visit_id)";
                 print("POST: \(patientsURL)");
                 Alamofire.request(.PUT, patientsURL, parameters: visitsjson, encoding: .JSON, headers: visitsheaders).responseJSON { (Response) -> Void in
                     if let visitsJSON = Response.result.value{
@@ -415,7 +415,7 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
                     "token": token,
                     "Content-Type": "application/json"
                 ];
-                let triagesURL: String = "http://ehr-api.herokuapp.com/v2/triages/\(currentVisit.triage.triage_id)";
+                let triagesURL: String = "\(Path)triages/\(currentVisit.triage.triage_id)";
                 print("Put: \(triagesURL)");
                 Alamofire.request(.PUT, triagesURL, parameters: triagesjson, encoding: .JSON, headers: triagesheaders).responseJSON { (Response) -> Void in
                     if let triagesJSON = Response.result.value{
@@ -487,7 +487,7 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
                 "token": token,
                 "Content-Type": "application/json"
             ];
-            let consultationsURL: String = "http://ehr-api.herokuapp.com/v2/consultations";
+            let consultationsURL: String = "\(Path)consultations";
             print("POST: \(consultationsURL)");
             Alamofire.request(.POST, consultationsURL, parameters: consultationsjson, encoding: .JSON, headers: consultationsheaders).responseJSON { (Response) -> Void in
                 if let consultationsJSON = Response.result.value{
@@ -514,7 +514,7 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
                                 "token": token,
                                 "Content-Type": "application/json"
                             ];
-                            let related_dataURL: String = "http://ehr-api.herokuapp.com/v2/related_data";
+                            let related_dataURL: String = "\(Path)related_data";
                             print("POST: \(related_dataURL)");
                             Alamofire.request(.POST, related_dataURL, parameters: related_datajson, encoding: .JSON, headers: related_dataheaders).responseJSON { (Response) -> Void in
                                 if let related_dataJSON = Response.result.value{
@@ -555,7 +555,7 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
                                 "token": token,
                                 "Content-Type": "application/json"
                             ];
-                            let prescriptionsURL: String = "http://ehr-api.herokuapp.com/v2/prescriptions";
+                            let prescriptionsURL: String = "\(Path)prescriptions";
                             print("POST: \(prescriptionsURL)");
                             Alamofire.request(.POST, prescriptionsURL, parameters: prescriptionsjson, encoding: .JSON, headers: prescriptionsheaders).responseJSON { (Response) -> Void in
                                 if let prescriptionsJSON = Response.result.value{
@@ -631,7 +631,7 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
                         "token": token,
                         "Content-Type": "application/json"
                     ];
-                    let prescriptionsURL: String = "http://ehr-api.herokuapp.com/v2/prescriptions";
+                    let prescriptionsURL: String = "\(Path)prescriptions";
                     print("POST: \(prescriptionsURL)");
                     Alamofire.request(.POST, prescriptionsURL, parameters: prescriptionsjson, encoding: .JSON, headers: prescriptionsheaders).responseJSON { (Response) -> Void in
                         if let prescriptionsJSON = Response.result.value{
@@ -667,7 +667,7 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
                         "token": token,
                         "Content-Type": "application/json"
                     ];
-                    let prescriptionsURL: String = "http://ehr-api.herokuapp.com/v2/prescriptions/\(prescriptionsList_update[i].prescription_id)";
+                    let prescriptionsURL: String = "\(Path)prescriptions/\(prescriptionsList_update[i].prescription_id)";
                     print("PUT: \(prescriptionsURL)");
                     Alamofire.request(.PUT, prescriptionsURL, parameters: prescriptionsjson, encoding: .JSON, headers: prescriptionsheaders).responseJSON { (Response) -> Void in
                         if let prescriptionsJSON = Response.result.value{
@@ -700,7 +700,7 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
                         "token": token,
                         "Content-Type": "application/json"
                     ];
-                    let prescriptionsURL: String = "http://ehr-api.herokuapp.com/v2/prescriptions/\(prescriptionsList_delete[i].prescription_id)";
+                    let prescriptionsURL: String = "\(Path)prescriptions/\(prescriptionsList_delete[i].prescription_id)";
                     print("DELETE: \(prescriptionsURL)");
                     Alamofire.request(.DELETE, prescriptionsURL , encoding: .JSON, headers: prescriptionsheaders).responseJSON { (Response) -> Void in
                         if let prescriptionsJSON = Response.result.value{
@@ -744,7 +744,7 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
                     "token": token,
                     "Content-Type": "application/json"
                 ];
-                let patientsURL: String = "http://ehr-api.herokuapp.com/v2/patients/\(currentVisit.patient.patient_id)";
+                let patientsURL: String = "\(Path)patients/\(currentVisit.patient.patient_id)";
                 print("PUT: \(patientsURL)");
                 Alamofire.request(.PUT, patientsURL, parameters: patientsjson, encoding: .JSON, headers: patientsheaders).responseJSON { (Response) -> Void in
                     if let patientsJSON = Response.result.value{
@@ -786,7 +786,7 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
                     "token": token,
                     "Content-Type": "application/json"
                 ];
-                let triagesURL: String = "http://ehr-api.herokuapp.com/v2/triages/\(currentVisit.triage.triage_id)";
+                let triagesURL: String = "\(Path)triages/\(currentVisit.triage.triage_id)";
                 print("PUT: \(triagesURL)");
                 Alamofire.request(.PUT, triagesURL, parameters: triagesjson, encoding: .JSON, headers: triagesheaders).responseJSON { (Response) -> Void in
                     if let triagesJSON = Response.result.value{
@@ -857,7 +857,7 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
                     "token": token,
                     "Content-Type": "application/json"
                 ];
-                let consultationsURL: String = "http://ehr-api.herokuapp.com/v2/consultations/\(currentVisit.consultation.consultation_id)";
+                let consultationsURL: String = "\(Path)consultations/\(currentVisit.consultation.consultation_id)";
                 print("PUT: \(consultationsURL)");
                 Alamofire.request(.PUT, consultationsURL, parameters: consultationsjson, encoding: .JSON, headers: consultationsheaders).responseJSON { (Response) -> Void in
                     if let consultationsJSON = Response.result.value{
@@ -888,7 +888,7 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
                         "token": token,
                         "Content-Type": "application/json"
                     ];
-                    let related_dataURL: String = "http://ehr-api.herokuapp.com/v2/related_data";
+                    let related_dataURL: String = "\(Path)related_data";
                     print("POST: \(related_dataURL)");
                     Alamofire.request(.POST, related_dataURL, parameters: related_datajson, encoding: .JSON, headers: related_dataheaders).responseJSON { (Response) -> Void in
                         if let related_dataJSON = Response.result.value{
@@ -921,7 +921,7 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
                         "token": token,
                         "Content-Type": "application/json"
                     ];
-                    let related_dataURL: String = "http://ehr-api.herokuapp.com/v2/related_data/\(modified_related_dataList[i].rd_id)";
+                    let related_dataURL: String = "\(Path)related_data/\(modified_related_dataList[i].rd_id)";
                     print("PUT: \(related_dataURL)");
                     Alamofire.request(.PUT, related_dataURL, parameters: related_datajson, encoding: .JSON, headers: related_dataheaders).responseJSON { (Response) -> Void in
                         if let related_dataJSON = Response.result.value{
@@ -956,7 +956,7 @@ class ConsultationModifyViewController: UIViewController, PagingMenuControllerDe
                         "token": token,
                         "Content-Type": "application/json"
                     ];
-                    let related_dataURL: String = "http://ehr-api.herokuapp.com/v2/related_data?rd_id=\(modified_related_dataList[i].rd_id)";
+                    let related_dataURL: String = "\(Path)related_data?rd_id=\(modified_related_dataList[i].rd_id)";
                     print("PUT: \(related_dataURL)");
                     Alamofire.request(.PUT, related_dataURL, parameters: related_datajson, encoding: .JSON, headers: related_dataheaders).responseJSON { (Response) -> Void in
                         if let related_dataJSON = Response.result.value{

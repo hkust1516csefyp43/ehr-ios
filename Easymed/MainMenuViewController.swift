@@ -52,7 +52,7 @@ class MainMenuViewController: UIViewController {
             "token": token,
         ]
         
-        let attachmentsURL: String = "http://ehr-api.herokuapp.com/v2/attachments";
+        let attachmentsURL: String = "\(Path)attachments";
         print("GET: \(attachmentsURL)");
         Alamofire.request(.GET, attachmentsURL, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
             if let JSON = Response.result.value{
@@ -86,7 +86,7 @@ class MainMenuViewController: UIViewController {
             }
         }
         
-        var URL1: String = "http://ehr-api.herokuapp.com/v2/patients?clinic_id=\(CurrentClinic)&next_station=2&visit_date=";
+        var URL1: String = "\(Path)patients?clinic_id=\(CurrentClinic)&next_station=2&visit_date=";
         print("signal: \(signal) \n url: \(URL1)");
         Alamofire.request(.GET, URL1, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
             if let JSON = Response.result.value{
@@ -165,7 +165,7 @@ class MainMenuViewController: UIViewController {
             }
         }
         
-        var URL2: String = "http://ehr-api.herokuapp.com/v2/patients?clinic_id=\(CurrentClinic)&next_station=3";
+        var URL2: String = "\(Path)patients?clinic_id=\(CurrentClinic)&next_station=3";
         print("signal: \(signal) \n url: \(URL2)");
         Alamofire.request(.GET, URL2, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
             if let JSON = Response.result.value{
@@ -254,7 +254,7 @@ class MainMenuViewController: UIViewController {
         let headers = [
             "token": token,
         ]
-        let attachmentsURL: String = "http://ehr-api.herokuapp.com/v2/attachments";
+        let attachmentsURL: String = "\(Path)attachments";
         print("GET: \(attachmentsURL)");
         Alamofire.request(.GET, attachmentsURL, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
             if let JSON = Response.result.value{
@@ -288,7 +288,7 @@ class MainMenuViewController: UIViewController {
             }
         }
 
-        var URL1: String = "http://ehr-api.herokuapp.com/v2/patients?clinic_id=\(CurrentClinic)&next_station=3";
+        var URL1: String = "\(Path)patients?clinic_id=\(CurrentClinic)&next_station=3";
         print("signal: \(signal) \n url: \(URL1)");
         Alamofire.request(.GET, URL1, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
             if let JSON = Response.result.value{
@@ -365,7 +365,7 @@ class MainMenuViewController: UIViewController {
                 print("Error: Cannot get PatientList");
             }
         }
-        var URL2: String = "http://ehr-api.herokuapp.com/v2/patients?clinic_id=\(CurrentClinic)&next_station=1";
+        var URL2: String = "\(Path)patients?clinic_id=\(CurrentClinic)&next_station=1";
         print("signal: \(signal) \n url: \(URL2)");
         Alamofire.request(.GET, URL2, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
             if let JSON = Response.result.value{

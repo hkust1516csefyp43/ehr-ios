@@ -9,7 +9,7 @@ class Patient{
     var birth_year: Int = 0;
     var birth_month: Int = 0;
     var birth_date: Int = 0;
-    var createTimeStamp = -0; //TODO: find libarary to change it
+    var createTimeStamp = 0; //TODO: find libarary to change it
     var clinic_id: String = "NULL";
     var gender_id: String = "NULL";
     var image_id : String = "NULL";

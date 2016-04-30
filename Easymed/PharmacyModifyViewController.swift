@@ -85,7 +85,7 @@ class PharmacyModifyViewController : UIViewController, UITableViewDataSource, UI
         let headers = [
             "token": token,
         ]
-        var URL1: String = "http://ehr-api.herokuapp.com/v2/patients?clinic_id=\(CurrentClinic)&next_station=3";
+        var URL1: String = "\(Path)patients?clinic_id=\(CurrentClinic)&next_station=3";
         print("signal: \(signal) \n url: \(URL1)");
         Alamofire.request(.GET, URL1, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
             if let JSON = Response.result.value{
@@ -163,7 +163,7 @@ class PharmacyModifyViewController : UIViewController, UITableViewDataSource, UI
                 print("Error: Cannot get PatientList");
             }
         }
-        var URL2: String = "http://ehr-api.herokuapp.com/v2/patients?clinic_id=\(CurrentClinic)&next_station=1";
+        var URL2: String = "\(Path)patients?clinic_id=\(CurrentClinic)&next_station=1";
         print("signal: \(signal) \n url: \(URL2)");
         Alamofire.request(.GET, URL2, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
             if let JSON = Response.result.value{
@@ -265,7 +265,7 @@ class PharmacyModifyViewController : UIViewController, UITableViewDataSource, UI
             "token": token,
             "Content-Type": "application/json"
         ];
-        let patientsURL: String = "http://ehr-api.herokuapp.com/v2/visits/\(currentVisit.visit_id)";
+        let patientsURL: String = "\(Path)visits/\(currentVisit.visit_id)";
         print("PUT: \(patientsURL)");
         Alamofire.request(.PUT, patientsURL, parameters: visitsjson, encoding: .JSON, headers: visitsheaders).responseJSON { (Response) -> Void in
             if let visitsJSON = Response.result.value{
@@ -296,7 +296,7 @@ class PharmacyModifyViewController : UIViewController, UITableViewDataSource, UI
                     "token": token,
                     "Content-Type": "application/json"
                 ];
-                let prescriptionsURL: String = "http://ehr-api.herokuapp.com/v2/prescriptions/\(prescriptionsList_update[i].prescription_id)";
+                let prescriptionsURL: String = "\(Path)prescriptions/\(prescriptionsList_update[i].prescription_id)";
                 print("PUT: \(prescriptionsURL)");
                 Alamofire.request(.PUT, prescriptionsURL, parameters: prescriptionsjson, encoding: .JSON, headers: prescriptionsheaders).responseJSON { (Response) -> Void in
                     if let prescriptionsJSON = Response.result.value{

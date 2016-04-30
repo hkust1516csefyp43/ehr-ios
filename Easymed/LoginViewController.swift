@@ -14,16 +14,17 @@ import UIKit;
 import Alamofire;
 
 class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate{
-    
+    @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var piSwitch: UISwitch!
     @IBOutlet weak var ClinicButton: UIButton!
     @IBOutlet weak var UsernameTextField: UITextField!
     @IBOutlet weak var PasswordTextField: UITextField!
     @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var ConfirmButton: UIButton!
+    @IBOutlet weak var warningImage: UIImageView!
     var got_genders = 0;
     var got_medications = 0;
-    
+    var count=0;
     override func viewDidLoad() {
 
 //        var searchDate:String;
@@ -40,7 +41,7 @@ class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerView
 //        let headers = [
 //            "token": token,
 //        ]
-//        var visitsURL: String = "http://ehr-api.herokuapp.com/v2/visits";
+//        var visitsURL: String = "\(Path)visits";
 //        Alamofire.request(.GET, visitsURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
 //            if let visitJSON = Response.result.value{
 //                for(var i=0;i<visitJSON.count;i++){
@@ -53,6 +54,7 @@ class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerView
 //                }
 //            }
 //        }
+        self.icon.image = UIImage(named: "icon");
         
         //switch
         if(Path==Path_Heroku){
@@ -74,7 +76,20 @@ class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerView
         picker.tag=1;
         ConfirmButton.tag=2;
         UsernameTextField.text=nil;
-        PasswordTextField.text=nil;        
+        PasswordTextField.text=nil;
+        
+        
+        //here
+         self.warningImage.image = UIImage(named: "warning");
+        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("imageTapped:"))
+        warningImage.hidden=true;
+        warningImage.userInteractionEnabled = true
+        warningImage.addGestureRecognizer(tapGestureRecognizer)
+    
+    }
+    func imageTapped(img: AnyObject)
+    {
+        warningImage.hidden=true;
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -137,7 +152,21 @@ class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerView
         }
     }
     
+    @IBAction func PasswordChange(sender: UITextField) {
+        let Password:String = String!(PasswordTextField.text);
+        var returnSTR="";
+        for(var i=0;i<Password.length;i++){
+            returnSTR=returnSTR+"*";
+        }
+        PasswordTextField.text=returnSTR;
+    }
+    
     @IBAction func LoginOnclick(sender: UIButton) {
+        if(self.count==0){
+            warningImage.hidden=false;
+            self.count++;
+            return
+        }
         let Username:String = String!(UsernameTextField.text);
         let Password:String = String!(PasswordTextField.text);
         
@@ -151,7 +180,7 @@ class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerView
             
             let tempPath_medications=Path;
             
-            let medicationsURL: String = "http://ehr-api.herokuapp.com/v2/medications";
+            let medicationsURL: String = "\(Path)medications";
             
             print("GET: \(medicationsURL)");
             
@@ -180,7 +209,7 @@ class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerView
             
             let tempPath_genders=Path;
             
-            let gendersURL: String = "http://ehr-api.herokuapp.com/v2/genders";
+            let gendersURL: String = "\(Path)genders";
             print("GET: \(gendersURL)");
             Alamofire.request(.GET, gendersURL, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
                 if let JSON = Response.result.value{
@@ -227,7 +256,7 @@ class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerView
             "token": token,
         ];
         
-        let gendersURL: String = "http://ehr-api.herokuapp.com/v2/genders";
+        let gendersURL: String = "\(Path)genders";
         
         print("GET: \(gendersURL)");
         
@@ -266,7 +295,7 @@ class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerView
         ];
         
         
-        let medicationsURL: String = "http://ehr-api.herokuapp.com/v2/medications";
+        let medicationsURL: String = "\(Path)medications";
         
         print("GET: \(medicationsURL)");
         
@@ -288,7 +317,7 @@ class LoginViewController: UIViewController, UIPickerViewDataSource,UIPickerView
                 }
             }
             else{
-                print("Fail: Get medications tuple at http://ehr-api.herokuapp.com/v2/");
+                print("Fail: Get medications tuple at \(Path)");
             }
         }
     }
@@ -375,5 +404,10 @@ extension Dictionary where Value: AnyObject {
     var nullsRemoved: [Key: Value] {
         let tup = filter { !($0.1 is NSNull) }
         return tup.reduce([Key: Value]()) { (var r, e) in r[e.0] = e.1; return r }
+    }
+}
+extension String {
+    var length: Int {
+        return characters.count
     }
 }

@@ -66,7 +66,7 @@ class AllergyViewController : UIViewController, UITableViewDataSource, UITableVi
         let keywordsheaders = [
             "token": token,
         ];
-        let keywordsURL: String = "http://ehr-api.herokuapp.com/v2/keywords?allergen=1";
+        let keywordsURL: String = "\(Path)keywords?allergen=1";
         print("GET: \(keywordsURL)");
         Alamofire.request(.GET, keywordsURL, encoding: .JSON, headers: keywordsheaders).responseJSON { (Response) -> Void in
             if let keywordsJSON = Response.result.value{
@@ -107,7 +107,7 @@ class AllergyViewController : UIViewController, UITableViewDataSource, UITableVi
         let keywordsheaders = [
             "token": token,
         ];
-        let keywordsURL: String = "http://ehr-api.herokuapp.com/v2/keywords?allergen=1";
+        let keywordsURL: String = "\(Path)keywords?allergen=1";
         print("GET: \(keywordsURL)");
         Alamofire.request(.GET, keywordsURL, encoding: .JSON, headers: keywordsheaders).responseJSON { (Response) -> Void in
             if let keywordsJSON = Response.result.value{

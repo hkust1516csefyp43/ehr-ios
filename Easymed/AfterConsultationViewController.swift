@@ -129,7 +129,7 @@ class AfterConsultationViewController : UIViewController, UITableViewDataSource,
             "token": token,
         ]
         
-        var visitsURL: String = "http://ehr-api.herokuapp.com/v2/visits?patient_id=\(currentVisit.patient.patient_id)";
+        var visitsURL: String = "\(Path)visits?patient_id=\(currentVisit.patient.patient_id)";
         
         Alamofire.request(.GET, visitsURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
             if let visitJSON = Response.result.value{
@@ -140,7 +140,7 @@ class AfterConsultationViewController : UIViewController, UITableViewDataSource,
                     currentVisit.visit_id=visitJSON[0]["visit_id"]as! String;
                     currentVisit.tag=visitJSON[0]["tag"]as! Int;
                     
-                    var triagesURL: String = "http://ehr-api.herokuapp.com/v2/triages?visit_id=\(currentVisit.visit_id)";
+                    var triagesURL: String = "\(Path)triages?visit_id=\(currentVisit.visit_id)";
                     
                     Alamofire.request(.GET, triagesURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
                         if let triagesJSON = Response.result.value{
@@ -199,7 +199,7 @@ class AfterConsultationViewController : UIViewController, UITableViewDataSource,
                             print("Fail: GET triages tuple")
                         }
                     }
-                    var consultationsURL: String = "http://ehr-api.herokuapp.com/v2/consultations?visit_id=\(currentVisit.visit_id)";
+                    var consultationsURL: String = "\(Path)consultations?visit_id=\(currentVisit.visit_id)";
                     
                     Alamofire.request(.GET, consultationsURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
                         if let consultationsJSON = Response.result.value{
@@ -321,7 +321,7 @@ class AfterConsultationViewController : UIViewController, UITableViewDataSource,
                                 }
                                 
                                 //Get prescriptions
-                                let prescriptionsURL: String = "http://ehr-api.herokuapp.com/v2/prescriptions?consultation_id=\(currentVisit.consultation.consultation_id)";
+                                let prescriptionsURL: String = "\(Path)prescriptions?consultation_id=\(currentVisit.consultation.consultation_id)";
                                 print("GET: \(prescriptionsURL)");
                                 Alamofire.request(.GET, prescriptionsURL, encoding: .JSON, headers: headers).responseJSON { (Response) -> Void in
                                     if let prescriptionsJSON = Response.result.value{
@@ -369,7 +369,7 @@ class AfterConsultationViewController : UIViewController, UITableViewDataSource,
                                 }
                                 
                                 //Get related_data
-                                var relatedDataURL: String = "http://ehr-api.herokuapp.com/v2/related_data?consultation_id=\(currentVisit.consultation.consultation_id)";
+                                var relatedDataURL: String = "\(Path)related_data?consultation_id=\(currentVisit.consultation.consultation_id)";
                                 
                                 Alamofire.request(.GET, relatedDataURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { (Response) -> Void in
                                     if let relatedDataJSON = Response.result.value{
