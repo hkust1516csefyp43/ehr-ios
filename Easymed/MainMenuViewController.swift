@@ -15,9 +15,16 @@ class MainMenuViewController: UIViewController {
     @IBOutlet weak var NavigationItem: UINavigationItem!
     @IBOutlet weak var ConsultationButton: UIButton!
     @IBOutlet weak var PharmacyButton: UIButton!
+    @IBOutlet weak var NoEntry: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NoEntry.image = UIImage(named: "noentry")
+        self.NoEntry.hidden = true;
+        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("imageTapped:"))
+        NoEntry.userInteractionEnabled = true
+        NoEntry.addGestureRecognizer(tapGestureRecognizer);
+
         if(simulate_click==1){
             simulate_click=0;
             ConsultationOnclick(ConsultationButton);
@@ -28,6 +35,9 @@ class MainMenuViewController: UIViewController {
         }
     }
     
+    func imageTapped(sender: AnyObject){
+        NoEntry.hidden=true;
+    }
     @IBAction func LogoutOnclick(sender: UIButton) {
         //Navigate to next controller
         let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("LaunchAppViewController") as! LaunchAppViewController;
@@ -444,4 +454,16 @@ class MainMenuViewController: UIViewController {
         }
         
     }
+    @IBAction func InventoryOnclick(sender: UIButton) {
+        NoEntry.hidden=false;
+    }
+    @IBAction func AdminOnclick(sender: UIButton) {
+        NoEntry.hidden=false;
+    }
+
+    @IBAction func SettingOnclick(sender: UIButton) {
+        NoEntry.hidden=false;
+    }
+
+
 }
